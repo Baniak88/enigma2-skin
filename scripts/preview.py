@@ -22,7 +22,7 @@ def text(x, y, w, h, value, size=30, fill='#f5f5f5', align='left', nowrap=False)
     anchor = 'end' if align == 'right' else 'middle' if align == 'center' else 'start'
     tx = x + w if anchor == 'end' else x + w / 2 if anchor == 'middle' else x
     lines = []
-    for paragraph in value.splitlines():
+    for paragraph in value.replace('\\n', '\n').splitlines():
         if nowrap:
             capacity = max(1, int(w / (size * .56)))
             lines.append(paragraph if len(paragraph) <= capacity else paragraph[:capacity - 1] + '…')
