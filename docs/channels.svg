@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<title>CanalPL — ChannelSelection — wizualizacja, dane przykładowe</title>
+<g font-family="DejaVu Sans, sans-serif">
+<rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#0c0e10"/>
+<text x="72" y="104.0" font-size="48" fill="#f5f5f5" text-anchor="start">TELEWIZJA</text>
+<text x="1848" y="102.0" font-size="42" fill="#f5f5f5" text-anchor="end">20:45</text>
+<rect x="72" y="152" width="1776" height="4" fill="#00e676"/>
+
+<rect x="72" y="202" width="1116" height="700" fill="#0c0e10"/>
+<rect x="72" y="202" width="1116" height="70" fill="#00e676"/>
+<text x="96" y="244.0" font-size="30" fill="#0c0e10" text-anchor="start">01   CANAL+ PREMIUM</text>
+<text x="96" y="314.0" font-size="30" fill="#f5f5f5" text-anchor="start">02   CANAL+ FILM</text>
+<text x="96" y="384.0" font-size="30" fill="#f5f5f5" text-anchor="start">03   CANAL+ SPORT</text>
+<text x="96" y="454.0" font-size="30" fill="#f5f5f5" text-anchor="start">04   CANAL+ SERIALE</text>
+<text x="96" y="524.0" font-size="30" fill="#f5f5f5" text-anchor="start">05   TVP 1 HD</text>
+<text x="96" y="594.0" font-size="30" fill="#f5f5f5" text-anchor="start">06   TVP 2 HD</text>
+<text x="96" y="664.0" font-size="30" fill="#f5f5f5" text-anchor="start">07   TVN HD</text>
+<text x="96" y="734.0" font-size="30" fill="#f5f5f5" text-anchor="start">08   Polsat HD</text>
+<text x="96" y="804.0" font-size="30" fill="#f5f5f5" text-anchor="start">09   TVN 24</text>
+<text x="96" y="874.0" font-size="30" fill="#f5f5f5" text-anchor="start">10   Ale kino+</text>
+<rect x="1232" y="202" width="2" height="700" fill="#303438"/>
+
+<text x="1280" y="236.0" font-size="34" fill="#00e676" text-anchor="start">CANAL+ PREMIUM</text>
+<text x="1280" y="336.0" font-size="40" fill="#f5f5f5" text-anchor="start">Wszystko przed nami</text>
+<text x="1280" y="506.0" font-size="28" fill="#a3a8ae" text-anchor="start">20:00</text>
+<text x="1430" y="506.0" font-size="28" fill="#a3a8ae" text-anchor="start">– 21:30</text>
+<rect x="1280" y="548" width="568" height="6" fill="#303438"/>
+<rect x="1280" y="548" width="568" height="6" fill="#303438"/>
+<rect x="1280" y="548" width="284" height="6" fill="#00e676"/>
+<text x="1280" y="621.0" font-size="27" fill="#a3a8ae" text-anchor="start">Wieczór z wielkim kinem.</text><text x="1280" y="654.75" font-size="27" fill="#a3a8ae" text-anchor="start">Nieoczekiwane spotkanie zmienia życie</text><text x="1280" y="688.5" font-size="27" fill="#a3a8ae" text-anchor="start">bohaterów. Opowieść o odwadze,</text><text x="1280" y="722.25" font-size="27" fill="#a3a8ae" text-anchor="start">przyjaźni i wyborach, które zostają z</text><text x="1280" y="756.0" font-size="27" fill="#a3a8ae" text-anchor="start">nami na długo.</text>
+<rect x="72" y="956" width="1776" height="2" fill="#303438"/>
+
+<rect x="72" y="995" width="8" height="24" fill="#ff6262"/>
+
+<text x="96" y="1008.0" font-size="26" fill="#f5f5f5" text-anchor="start">Wszystkie</text>
+<rect x="516" y="995" width="8" height="24" fill="#00e676"/>
+
+<text x="540" y="1008.0" font-size="26" fill="#f5f5f5" text-anchor="start">Satelity</text>
+<rect x="960" y="995" width="8" height="24" fill="#f5ce55"/>
+
+<text x="984" y="1008.0" font-size="26" fill="#f5f5f5" text-anchor="start">Dostawcy</text>
+<rect x="1404" y="995" width="8" height="24" fill="#5eacff"/>
+
+<text x="1428" y="1008.0" font-size="26" fill="#f5f5f5" text-anchor="start">Ulubione</text>
+</g>
+</svg>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CanalPL 0.1.0: autorska inspiracja estetyką polskiej telewizji premium. -->
+<skin>
+  <output id="0"><resolution xres="1920" yres="1080" bpp="32" /></output>
+  <colors>
+    <color name="cpBackground" value="#000c0e10" />
+    <color name="cpPanel" value="#0017191c" />
+    <color name="cpOverlay" value="#180c0e10" />
+    <color name="cpWhite" value="#00f5f5f5" />
+    <color name="cpMuted" value="#00a3a8ae" />
+    <color name="cpGreen" value="#0000e676" />
+    <color name="cpLine" value="#00303438" />
+    <color name="cpRed" value="#00ff6262" />
+    <color name="cpYellow" value="#00f5ce55" />
+    <color name="cpBlue" value="#005eacff" />
+    <color name="cpTransparent" value="#ff000000" />
+  </colors>
+  <!-- Regular to font dostarczany przez system; bez zewnętrznych plików TTF. -->
+  <windowstyle type="skinned" id="0">
+    <title offset="24,12" font="Regular;30" />
+    <color name="Background" color="cpBackground" />
+    <color name="LabelForeground" color="cpWhite" />
+    <color name="ListboxBackground" color="cpBackground" />
+    <color name="ListboxForeground" color="cpWhite" />
+    <color name="ListboxSelectedBackground" color="cpGreen" />
+    <color name="ListboxSelectedForeground" color="cpBackground" />
+    <color name="ListboxMarkedBackground" color="cpPanel" />
+    <color name="ListboxMarkedForeground" color="cpGreen" />
+    <color name="ListboxMarkedAndSelectedBackground" color="cpGreen" />
+    <color name="ListboxMarkedAndSelectedForeground" color="cpBackground" />
+    <color name="WindowTitleForeground" color="cpWhite" />
+    <color name="WindowTitleBackground" color="cpBackground" />
+  </windowstyle>
+
+  <screen name="InfoBar" position="0,756" size="1920,324" flags="wfNoBorder" backgroundColor="cpOverlay">
+    <eLabel position="72,0" size="1776,4" backgroundColor="cpGreen" />
+    <eLabel text="TV" position="72,32" size="100,64" font="Regular;36" halign="center" valign="center" backgroundColor="cpGreen" foregroundColor="cpBackground" />
+    <widget source="session.CurrentService" render="Label" position="204,28" size="1240,64" font="Regular;42" foregroundColor="cpWhite" transparent="1" noWrap="1"><convert type="ServiceName">Name</convert></widget>
+    <widget source="global.CurrentTime" render="Label" position="1536,28" size="312,64" font="Regular;42" halign="right" foregroundColor="cpWhite" transparent="1"><convert type="ClockToText">Default</convert></widget>
+    <eLabel text="TERAZ" position="72,120" size="124,42" font="Regular;24" foregroundColor="cpGreen" transparent="1" />
+    <widget source="session.Event_Now" render="Label" position="204,113" size="138,48" font="Regular;30" transparent="1"><convert type="EventTime">StartTime</convert><convert type="ClockToText">Default</convert></widget>
+    <widget source="session.Event_Now" render="Label" position="360,108" size="1220,56" font="Regular;36" transparent="1" noWrap="1"><convert type="EventName">Name</convert></widget>
+    <widget source="session.Event_Now" render="Label" position="1592,118" size="256,44" font="Regular;26" foregroundColor="cpMuted" halign="right" transparent="1"><convert type="EventTime">Remaining</convert><convert type="RemainingToText">InMinutes</convert></widget>
+    <widget source="session.Event_Now" render="Progress" position="204,178" size="1644,6" backgroundColor="cpLine" foregroundColor="cpGreen" borderWidth="0"><convert type="EventTime">Progress</convert></widget>
+    <eLabel text="POTEM" position="72,211" size="124,42" font="Regular;24" foregroundColor="cpMuted" transparent="1" />
+    <widget source="session.Event_Next" render="Label" position="204,205" size="138,44" font="Regular;30" foregroundColor="cpMuted" transparent="1"><convert type="EventTime">StartTime</convert><convert type="ClockToText">Default</convert></widget>
+    <widget source="session.Event_Next" render="Label" position="360,205" size="1488,44" font="Regular;30" foregroundColor="cpMuted" transparent="1" noWrap="1"><convert type="EventName">Name</convert></widget>
+    <widget source="session.RecordState" render="FixedLabel" text="NAGRYWANIE" position="72,273" size="260,32" font="Regular;22" foregroundColor="cpRed" transparent="1"><convert type="ConditionalShowHide">Blink</convert></widget>
+  </screen>
+
+  <screen name="Menu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="cpBackground">
+    <eLabel text="CANALPL" position="96,64" size="580,72" font="Regular;54" foregroundColor="cpWhite" transparent="1" />
+    <eLabel position="96,158" size="1728,4" backgroundColor="cpGreen" />
+    <widget source="title" render="Label" position="96,218" size="780,70" font="Regular;42" foregroundColor="cpWhite" transparent="1" />
+    <widget source="menu" render="Listbox" position="96,330" size="1040,576" scrollbarMode="showOnDemand" backgroundColor="cpBackground" foregroundColor="cpWhite" backgroundColorSelected="cpGreen" foregroundColorSelected="cpBackground">
+      <convert type="TemplatedMultiContent">{"template": [MultiContentEntryText(pos=(24, 0), size=(970, 72), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER, text=0)], "fonts": [gFont("Regular", 34)], "itemHeight": 72}</convert>
+    </widget>
+    <eLabel position="1248,330" size="4,576" backgroundColor="cpLine" />
+    <eLabel text="TWÓJ WIECZÓR.\nTWÓJ WYBÓR." position="1320,350" size="504,190" font="Regular;46" foregroundColor="cpWhite" transparent="1" />
+    <eLabel text="Telewizja w dobrym stylu." position="1320,582" size="504,100" font="Regular;28" foregroundColor="cpMuted" transparent="1" />
+    <eLabel text="OK  Wybierz     EXIT  Powrót" position="96,984" size="1100,44" font="Regular;26" foregroundColor="cpMuted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1560,68" size="264,64" font="Regular;42" halign="right" transparent="1"><convert type="ClockToText">Default</convert></widget>
+  </screen>
+
+  <screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="cpBackground">
+    <eLabel text="TELEWIZJA" position="72,56" size="1420,72" font="Regular;48" foregroundColor="cpWhite" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1550,60" size="298,64" font="Regular;42" halign="right" transparent="1"><convert type="ClockToText">Default</convert></widget>
+    <eLabel position="72,152" size="1776,4" backgroundColor="cpGreen" />
+    <widget name="list" position="72,202" size="1116,700" scrollbarMode="showOnDemand" serviceNameFont="Regular;30" serviceInfoFont="Regular;25" serviceNumberFont="Regular;28" itemHeight="70" backgroundColor="cpBackground" foregroundColor="cpWhite" backgroundColorSelected="cpGreen" foregroundColorSelected="cpBackground" />
+    <eLabel position="1232,202" size="2,700" backgroundColor="cpLine" />
+    <widget source="ServiceEvent" render="Label" position="1280,202" size="568,58" font="Regular;34" foregroundColor="cpGreen" transparent="1" noWrap="1"><convert type="ServiceName">Name</convert></widget>
+    <widget source="ServiceEvent" render="Label" position="1280,296" size="568,152" font="Regular;40" transparent="1"><convert type="EventName">Name</convert></widget>
+    <widget source="ServiceEvent" render="Label" position="1280,478" size="140,46" font="Regular;28" foregroundColor="cpMuted" transparent="1"><convert type="EventTime">StartTime</convert><convert type="ClockToText">Default</convert></widget>
+    <widget source="ServiceEvent" render="Label" position="1430,478" size="160,46" font="Regular;28" foregroundColor="cpMuted" transparent="1"><convert type="EventTime">EndTime</convert><convert type="ClockToText">Format:– %H:%M</convert></widget>
+    <widget source="ServiceEvent" render="Progress" position="1280,548" size="568,6" foregroundColor="cpGreen" backgroundColor="cpLine" borderWidth="0"><convert type="EventTime">Progress</convert></widget>
+    <widget source="ServiceEvent" render="Label" position="1280,594" size="568,300" font="Regular;27" foregroundColor="cpMuted" transparent="1"><convert type="EventName">ExtendedDescription</convert></widget>
+    <eLabel position="72,956" size="1776,2" backgroundColor="cpLine" />
+    <eLabel position="72,995" size="8,24" backgroundColor="cpRed" /><widget name="key_red" position="96,982" size="404,48" font="Regular;26" transparent="1" valign="center" />
+    <eLabel position="516,995" size="8,24" backgroundColor="cpGreen" /><widget name="key_green" position="540,982" size="404,48" font="Regular;26" transparent="1" valign="center" />
+    <eLabel position="960,995" size="8,24" backgroundColor="cpYellow" /><widget name="key_yellow" position="984,982" size="404,48" font="Regular;26" transparent="1" valign="center" />
+    <eLabel position="1404,995" size="8,24" backgroundColor="cpBlue" /><widget name="key_blue" position="1428,982" size="420,48" font="Regular;26" transparent="1" valign="center" />
+  </screen>
+
+  <!-- Standardowa lista EPG. Warianty graficzne OpenATV używają ekranów systemowych. -->
+  <screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="cpBackground">
+    <eLabel text="PROGRAM TV" position="72,56" size="1776,72" font="Regular;48" transparent="1" />
+    <eLabel position="72,152" size="1776,4" backgroundColor="cpGreen" />
+    <widget name="list" position="72,202" size="1776,700" scrollbarMode="showOnDemand" backgroundColor="cpBackground" foregroundColor="cpWhite" backgroundColorSelected="cpGreen" foregroundColorSelected="cpBackground" />
+    <eLabel position="72,956" size="1776,2" backgroundColor="cpLine" />
+    <eLabel position="72,995" size="8,24" backgroundColor="cpRed" /><widget source="key_red" render="Label" position="96,982" size="404,48" font="Regular;26" transparent="1" valign="center" />
+    <eLabel position="516,995" size="8,24" backgroundColor="cpGreen" /><widget source="key_green" render="Label" position="540,982" size="404,48" font="Regular;26" transparent="1" valign="center" />
+    <eLabel position="960,995" size="8,24" backgroundColor="cpYellow" /><widget source="key_yellow" render="Label" position="984,982" size="404,48" font="Regular;26" transparent="1" valign="center" />
+    <eLabel position="1404,995" size="8,24" backgroundColor="cpBlue" /><widget source="key_blue" render="Label" position="1428,982" size="420,48" font="Regular;26" transparent="1" valign="center" />
+  </screen>
+
+  <screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="cpBackground">
+    <eLabel text="O AUDYCJI" position="96,56" size="1728,72" font="Regular;48" transparent="1" />
+    <eLabel position="96,152" size="1728,4" backgroundColor="cpGreen" />
+    <widget name="channel" position="96,198" size="1728,56" font="Regular;34" foregroundColor="cpGreen" transparent="1" />
+    <widget name="datetime" position="96,280" size="780,48" font="Regular;28" foregroundColor="cpMuted" transparent="1" />
+    <widget name="duration" position="1440,280" size="384,48" font="Regular;28" halign="right" foregroundColor="cpMuted" transparent="1" />
+    <widget name="epg_description" position="96,374" size="1728,522" font="Regular;32" transparent="1" />
+    <eLabel position="96,956" size="1728,2" backgroundColor="cpLine" />
+    <eLabel position="96,995" size="8,24" backgroundColor="cpRed" /><widget source="key_red" render="Label" position="120,982" size="390,48" font="Regular;25" transparent="1" valign="center" />
+    <eLabel position="528,995" size="8,24" backgroundColor="cpGreen" /><widget source="key_green" render="Label" position="552,982" size="390,48" font="Regular;25" transparent="1" valign="center" />
+    <eLabel position="960,995" size="8,24" backgroundColor="cpYellow" /><widget source="key_yellow" render="Label" position="984,982" size="390,48" font="Regular;25" transparent="1" valign="center" />
+    <eLabel position="1392,995" size="8,24" backgroundColor="cpBlue" /><widget source="key_blue" render="Label" position="1416,982" size="408,48" font="Regular;25" transparent="1" valign="center" />
+  </screen>
+
+  <screen name="MoviePlayer" position="0,800" size="1920,280" flags="wfNoBorder" backgroundColor="cpOverlay">
+    <eLabel position="72,0" size="1776,4" backgroundColor="cpGreen" />
+    <eLabel text="NAGRANIE" position="72,34" size="280,42" font="Regular;26" foregroundColor="cpGreen" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="72,98" size="1776,64" font="Regular;40" transparent="1" noWrap="1"><convert type="ServiceName">Name</convert></widget>
+    <widget source="session.CurrentService" render="Label" position="72,198" size="220,48" font="Regular;28" transparent="1"><convert type="ServicePosition">Position</convert></widget>
+    <widget source="session.CurrentService" render="Progress" position="320,216" size="1230,6" foregroundColor="cpGreen" backgroundColor="cpLine" borderWidth="0"><convert type="ServicePosition">Position</convert></widget>
+    <widget source="session.CurrentService" render="Label" position="1580,198" size="268,48" font="Regular;28" halign="right" foregroundColor="cpMuted" transparent="1"><convert type="ServicePosition">Remaining,Negate</convert></widget>
+  </screen>
+
+  <screen name="Volume" position="1340,80" size="500,110" zPosition="10" flags="wfNoBorder" backgroundColor="cpBackground">
+    <eLabel text="GŁOŚNOŚĆ" position="28,16" size="444,36" font="Regular;24" foregroundColor="cpWhite" transparent="1" />
+    <widget name="Volume" position="28,74" size="444,8" foregroundColor="cpGreen" backgroundColor="cpLine" borderWidth="0" />
+  </screen>
+  <screen name="Mute" position="1480,80" size="360,86" zPosition="10" flags="wfNoBorder" backgroundColor="cpBackground">
+    <eLabel position="0,0" size="6,86" backgroundColor="cpGreen" />
+    <eLabel text="WYCISZONO" position="30,22" size="300,44" font="Regular;28" foregroundColor="cpWhite" transparent="1" />
+  </screen>
+</skin>

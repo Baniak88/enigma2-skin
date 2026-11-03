@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<title>CanalPL — Menu — wizualizacja, dane przykładowe</title>
+<g font-family="DejaVu Sans, sans-serif">
+<rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#0c0e10"/>
+<text x="96" y="118.0" font-size="54" fill="#f5f5f5" text-anchor="start">CANALPL</text>
+<rect x="96" y="158" width="1728" height="4" fill="#00e676"/>
+
+<text x="96" y="260.0" font-size="42" fill="#f5f5f5" text-anchor="start">Menu główne</text>
+<rect x="96" y="330" width="1040" height="576" fill="#0c0e10"/>
+<rect x="96" y="330" width="1040" height="72" fill="#00e676"/>
+<text x="120" y="376.0" font-size="34" fill="#0c0e10" text-anchor="start">Telewizja</text>
+<text x="120" y="448.0" font-size="34" fill="#f5f5f5" text-anchor="start">Program TV</text>
+<text x="120" y="520.0" font-size="34" fill="#f5f5f5" text-anchor="start">Nagrania</text>
+<text x="120" y="592.0" font-size="34" fill="#f5f5f5" text-anchor="start">Wtyczki</text>
+<text x="120" y="664.0" font-size="34" fill="#f5f5f5" text-anchor="start">Ustawienia</text>
+<text x="120" y="736.0" font-size="34" fill="#f5f5f5" text-anchor="start">Czuwanie / restart</text>
+<rect x="1248" y="330" width="4" height="576" fill="#303438"/>
+
+<text x="1320" y="396.0" font-size="46" fill="#f5f5f5" text-anchor="start">TWÓJ WIECZÓR.\nTWÓJ</text><text x="1320" y="453.5" font-size="46" fill="#f5f5f5" text-anchor="start">WYBÓR.</text>
+<text x="1320" y="610.0" font-size="28" fill="#a3a8ae" text-anchor="start">Telewizja w dobrym stylu.</text>
+<text x="96" y="1010.0" font-size="26" fill="#a3a8ae" text-anchor="start">OK  Wybierz     EXIT  Powrót</text>
+<text x="1824" y="110.0" font-size="42" fill="#f5f5f5" text-anchor="end">20:45</text>
+</g>
+</svg>
