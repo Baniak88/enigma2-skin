@@ -32,7 +32,7 @@ def check(sources):
         path=sources/version/'lib/python/Components/Renderer/Picon.py'
         cls=next(n for n in ast.parse(path.read_text()).body if isinstance(n,ast.ClassDef) and n.name=='Picon')
         with tempfile.TemporaryDirectory() as tmp:
-            logo=Path(tmp)/'tvnhd.png';logo.write_bytes(fallback.read_bytes())
+            logo=Path(tmp)/'tvnhd.png';logo.write_bytes((ROOT/'CanalPL/icons/folder.png').read_bytes())
             settings=SimpleNamespace(usage=SimpleNamespace(showpicon=SimpleNamespace(value=True)))
             found=[str(logo)]
             ns=dict(Renderer=Renderer,ePixmap=Pixmap,exists=exists,getmtime=getmtime,getsize=getsize,join=join,

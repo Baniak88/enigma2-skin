@@ -91,7 +91,7 @@ def extract(directory):
         result.update(c['widgets']);required+=c['required']
         return result,required
     mapping={
-        'Menu':'Menu','ChannelSelection':'ChannelSelection','ChannelSelection_PIG':'ChannelSelection','ChannelSelection_NoPIG':'ChannelSelection',
+        'Menu':'Menu','QuickMenu':'QuickMenu','ChannelSelection':'ChannelSelection','ChannelSelection_PIG':'ChannelSelection','ChannelSelection_NoPIG':'ChannelSelection',
         'ChannelSelectionRadio':'ChannelSelectionRadio','SimpleChannelSelection':'SimpleChannelSelection','SlimChannelSelection':'SimpleChannelSelection',
         'BouquetSelector':'BouquetSelector','EPGBouquetSelector':'EPGBouquetSelector',
         **{x:'EPGSelection' for x in ['EPGSelection','QuickEPG','EPGSelectionMulti','GraphicalEPG','GraphicalEPGPIG','GraphicalInfoBarEPG','EPGvertical','EPGverticalPIG']},

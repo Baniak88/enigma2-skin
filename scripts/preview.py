@@ -51,10 +51,14 @@ def fake_picon(index,x,y,w,h):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia interfejsu'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia interfejsu'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
+    if screen=='QuickMenu':
+        if key=='description':return 'Aktualizacje oprogramowania, tworzenie kopii zapasowych i przywracanie ustawień. Wybierz działanie w prawej kolumnie.'
+        if key.startswith('key_'):return {'key_red':'Zamknij','key_green':'Info o systemie','key_yellow':'Urządzenia'}.get(key,'')
+    if screen=='ChoiceBox' and key=='text':return 'Wybierz nośnik do przeskanowania.'
     if key.startswith('key_'):
         if screen=='ChannelSelection':return {'key_red':'Wszystkie','key_green':'Listy odbioru','key_yellow':'Dostawcy','key_blue':'Bukiety'}.get(key,'')
         if screen=='BouquetSelector':return {'key_red':'Anuluj','key_green':'Wybierz'}.get(key,'')
@@ -71,7 +75,27 @@ def value(node,screen):
 
 
 def draw_list(name,key,x,y,w,h):
-    if name=='Menu':
+    if name=='QuickMenu':
+        if key=='mainlist':
+            rows=[('Menedżer oprogramowania','Aktualizacje i kopie zapasowe','setup'),('Softcam','Uruchom / zatrzymaj / wybierz','missing'),('System','Ustawienia systemu','setup'),('Montowanie','Ustawienia montowania','missing'),('Sieć','Połączenie sieciowe','missing'),('Audio / Wideo','Dźwięk i obraz','video_menu'),('Tuner','Konfiguracja i wyszukiwanie','mainmenu'),('Wtyczki','Dostępne rozszerzenia','plugin_selection')]
+            for i,(title,desc,icon) in enumerate(rows):
+                if i==0:rect(x,y,w,76,'selected')
+                png(ROOT/'CanalPL/mainmenu'/(icon+'.png'),x+12,y+i*76+14,52,48)
+                text(x+88,y+i*76+4,w-112,40,title,30,'white',nowrap=True)
+                text(x+88,y+i*76+44,w-112,28,desc,22,'white' if i==0 else 'muted',nowrap=True)
+        else:
+            rows=[('Aktualizacja oprogramowania','Sprawdź dostępne aktualizacje'),('Instalacja systemu online','Zainstaluj obraz systemu z sieci'),('Kopia zapasowa systemu','Utwórz pełną kopię obrazu'),('Kopia zapasowa ustawień','Zachowaj konfigurację i listy kanałów'),('Przywróć ustawienia','Wczytaj zapisaną kopię ustawień'),('Domyślne pliki kopii zapasowej','Wybierz zakres kopii'),('Dodatkowe pliki kopii zapasowej','Dodaj własne pliki'),('Wykluczone pliki kopii zapasowej','Pomiń wybrane pliki i katalogi')]
+            for i,(title,desc) in enumerate(rows):
+                text(x+20,y+i*76+4,w-40,40,title,30,'white',nowrap=True)
+                text(x+20,y+i*76+44,w-40,28,desc,23,'muted',nowrap=True)
+    elif name=='ChoiceBox':
+        rows=[('Back USB: Elements 25A2 (DISK_1)','/media/hdd/'),('Internal flash','/'),('Katalog tymczasowy','/tmp')]
+        for i,(title,path) in enumerate(rows):
+            if i==0:rect(x,y,w,72,'selected')
+            png(ROOT/'CanalPL/icons/folder.png',x+12,y+i*72+20,36,32)
+            text(x+64,y+i*72+16,int(w*.6),40,title,30,'white',nowrap=True)
+            text(x+int(w*.65),y+i*72+16,int(w*.3),40,path,30,'white',nowrap=True)
+    elif name=='Menu':
         rows=['Informacje','Timery','Nagrania','Wtyczki','Ustawienia','Czuwanie / restart']
         icons=['information','timermenu','movie_selection','plugin_selection','setup','shutdown']
         for i,row in enumerate(rows):
@@ -128,7 +152,7 @@ def render(name,target,make_png=False):
         elif key=='timeline_text':
             for i,t in enumerate(['20:00','20:30','21:00','21:30','22:00','22:30']):text(x+320+i*(w-320)/6,y,(w-320)/6,h,t,26,'muted')
         elif n.get('render')=='Progress':rect(x,y,w,h,'line');rect(x,y,int(w*.5),h,'green')
-        elif key in ('menu','list'):
+        elif key in ('menu','list','mainlist','sublist'):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
@@ -166,5 +190,5 @@ def render_png(path):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--png',action='store_true');args=p.parse_args()
-    for name,target in [('Menu','menu.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg')]:
+    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg')]:
         render(name,target,args.png)

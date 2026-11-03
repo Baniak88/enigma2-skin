@@ -63,7 +63,11 @@ def check(sources):
                     styles=instance.template.get('templates',{'default':None})
                     for style in styles:
                         # Slot count: OpenATV Menu=8, plugins=4, audio/subtitles=6.
-                        sample=tuple(range(8 if screen.get('name')=='Menu' else 4 if screen.get('name').startswith('Plugin') else 6))
+                        if screen.get('name')=='QuickMenu':
+                            slots=3 if xml is screen.find("widget[@source='mainlist']/convert") else 2
+                        else:
+                            slots=8 if screen.get('name')=='Menu' else 4 if screen.get('name').startswith('Plugin') else 6
+                        sample=tuple(range(slots))
                         instance.source=types.SimpleNamespace(style=style,list=[sample])
                         instance.changed((0,))
                         assert instance.content.height>0

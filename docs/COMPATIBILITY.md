@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.3.0
+# OpenATV — zakres zgodności 0.3.1
 
 Układy CanalPL są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -28,7 +28,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 | Obszar | Nazwy ekranów |
 | --- | --- |
-| Menu | Menu (tryby default, text, number, image, both) |
+| Menu | Menu (tryby default, text, number, image, both), QuickMenu |
 | Kanały | ChannelSelection, ChannelSelection_PIG, ChannelSelectionRadio, SimpleChannelSelection, SlimChannelSelection, ChannelSelection_NoPIG |
 | Bukiety | BouquetSelector, EPGBouquetSelector, lista bukietów wewnątrz EPG |
 | EPG | EPGSelection, EPGSelectionMulti, QuickEPG, GraphicalEPG, GraphicalEPGPIG, GraphicalInfoBarEPG, EPGvertical, EPGverticalPIG |
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 41 ekranów CanalPL.
+definicji. Mogą mieć inny układ niż 42 ekranów CanalPL.
 
 ## Ważne różnice względem 0.1.0
 
@@ -122,3 +122,22 @@ nazwy/tytułu, kontrast zaznaczenia i wariant bez wideo. Oryginalny Pig z OpenAT
 sterownika (`scripts/check_upstream_video.py`). Nadal potrzebny jest test obrazu
 na rzeczywistym urządzeniu. Nie zmieniamy mapowania pilota ani trybu przełączania
 kanałów przy przesuwaniu kursora.
+
+## Poprawki 0.3.1 — bez plusa i nowe QuickMenu
+
+Na zdjęciu użytkownika przez przezroczyste logo Polsat prześwitywał plus z pliku
+picon_default.png. Obraz zastępczy jest teraz jednolitym neutralnym tłem. Test
+pikseli PNG sprawdza, że plik nie zawiera kolorowego symbolu. Warstwy pikon
+pozostają takie jak w poprawce 0.2.2.
+
+Dodano QuickMenu zgodnie z kodem Screens/QuickMenu.py w 7.5, 7.6 i 8.0. Jego
+mainlist ma krotkę (nazwa, podtytuł, ikona), a sublist (nazwa, podtytuł).
+Szablony konwertera sprawdzono z trzema wersjami upstream: razem 11 kombinacji
+szablonu/stylu na wersję. Zachowano aktywną kolumnę i funkcje kolorowych przycisków.
+
+ChoiceBox ma osiem wierszy po 72 piksele. Alias ChoiceList ustawia faktyczny font
+CanalText 30 w komponencie ChoiceList, a parametry ChoicelistName/NameSingle/Icon
+ustalają pozycje zawartości. Oryginalne ChoiceList i ChoiceEntryComponent z trzech
+wersji przeszły próbę konstruktora i geometrii wiersza z zastąpioną warstwą C++
+(`scripts/check_upstream_choices.py`). Same atrybuty font/itemHeight na widżecie
+nie wystarczały do zmiany fontu listy wieloelementowej.

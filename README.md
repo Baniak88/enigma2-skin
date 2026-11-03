@@ -1,10 +1,10 @@
-# CanalPL 0.3.0 — skórka Enigma2 dla OpenATV
+# CanalPL 0.3.1 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.0 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.1 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
@@ -37,6 +37,18 @@ audycji. Przełączanie obrazu odbywa się standardowymi klawiszami OpenATV.
 Obsługa podglądu zależy od sterownika wideo urządzenia. Wariant bez podglądu
 pozostawia pełny panel informacji.
 
+## Poprawki 0.3.1 — pikony i niebieski przycisk
+
+- Usunięto plus z `picon_default.png`. Pod przezroczystymi fragmentami logotypów
+  znajduje się neutralne tło, które nie zawiera znaku ani innej grafiki.
+- Niebieski przycisk otwiera natywny **QuickMenu**. Ekran ma teraz układ CanalPL:
+  pełny nagłówek, dwie czytelne kolumny, regularne fonty i wspólny pasek przycisków.
+- Powiększono wiersze i faktyczny font komponentu ChoiceList, z którego korzysta
+  m.in. wybór nośnika do skanowania. To osobne ustawienie od fontu okna dialogowego.
+
+Po aktualizacji wykonaj restart GUI, aby odświeżyć obrazy oraz aliasy fontów.
+Układ nie zmienia działania przycisków ani operacji dostępnych w szybkim menu.
+
 ## Podglądy
 
 Wizualizacje powstają z układu XML i przykładowych danych. Listy, tytuły i pikony
@@ -45,6 +57,8 @@ wierszy i rozmiary fontów na dekoderze zależą także od ustawień OpenATV.
 Pole TV na wizualizacji jest symboliczne; nie zawiera obrazu z tunera.
 
 ![Menu główne](docs/menu.svg)
+![Szybkie menu — niebieski przycisk](docs/quickmenu.svg)
+![Wybór nośnika](docs/choices.svg)
 ![Lista kanałów z pikonami](docs/channels.svg)
 ![Wybór bukietów](docs/bouquets.svg)
 ![Graficzne EPG](docs/epg.svg)
@@ -52,7 +66,7 @@ Pole TV na wizualizacji jest symboliczne; nie zawiera obrazu z tunera.
 
 ## Co obejmuje
 
-- Menu główne i podmenu, opisy oraz standardowe style listy OpenATV.
+- Menu główne, QuickMenu z niebieskiego przycisku, podmenu i opisy.
 - Lista kanałów i radia, wybór bukietów i wariant z podglądem TV.
 - Pikona bieżącego i zaznaczonego kanału; natywne pikony w liście i EPG.
 - EPG pojedyncze, multi, graficzna siatka, PIG, szybkie i pionowe; bukiety w EPG.
@@ -60,17 +74,17 @@ Pole TV na wizualizacji jest symboliczne; nie zawiera obrazu z tunera.
 - Lista nagrań, odtwarzacz, pauza/przewijanie i stan timeshiftu.
 - Ustawienia, dźwięk/napisy, wtyczki lista/siatka i podstawowe okna dialogowe.
 
-Łącznie 41 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
+Łącznie 42 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
 korzystać z układu systemowego. Pełny zakres, źródła API i lista testów sprzętowych:
 [COMPATIBILITY.md](docs/COMPATIBILITY.md).
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-canalpl_0.3.0_all.ipk](packages/enigma2-plugin-skins-canalpl_0.3.0_all.ipk)
+Pobierz [enigma2-plugin-skins-canalpl_0.3.1_all.ipk](packages/enigma2-plugin-skins-canalpl_0.3.1_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-canalpl_0.3.0_all.ipk
+opkg install /tmp/enigma2-plugin-skins-canalpl_0.3.1_all.ipk
 ```
 
 Następnie wybierz **CanalPL** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -85,8 +99,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/CanalPL-0.3.0.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-canalpl_0.3.0_all.ipk &&
-opkg install /tmp/CanalPL-0.3.0.ipk
+wget -O /tmp/CanalPL-0.3.1.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-canalpl_0.3.1_all.ipk &&
+opkg install /tmp/CanalPL-0.3.1.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i CanalPL nie widnieje jako zainstalowana
@@ -105,7 +119,7 @@ kanałów nie została zmieniona.
 
 Jeśli logotypy działały na poprzedniej skórce, aktualizacja zachowa korzystanie
 z istniejącej paczki i ustawień OpenATV. Po aktualizacji wykonaj restart GUI.
-Jeżeli logo kanału nie zostanie znalezione, widać autorską grafikę zastępczą.
+Jeżeli logo kanału nie zostanie znalezione, pozostaje neutralne pole bez symboli.
 
 ## Pikony i lista kanałów
 
@@ -120,7 +134,7 @@ Jeżeli logo kanału nie zostanie znalezione, widać autorską grafikę zastępc
 
 Logotypy stacji nie są dołączone. Skórka korzysta z natywnego renderera `Picon`
 i wyszukiwania po referencji/nazwie kanału. Brakujący plik nie wymaga pobierania
-z internetu; w pasku i panelu kanału wyświetli się autorska pikona zastępcza.
+z internetu; w pasku i panelu kanału pozostanie neutralne tło.
 Wiersze natywnej listy mogą pozostawić puste miejsce przy braku logo.
 
 Bukiety w liście kanałów otwierasz **niebieskim klawiszem**. Nie trzeba instalować
@@ -137,12 +151,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [CanalPL-0.3.0.tar.gz](packages/CanalPL-0.3.0.tar.gz), prześlij do `/tmp`:
+Pobierz [CanalPL-0.3.1.tar.gz](packages/CanalPL-0.3.1.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/canalpl-install
 cd /tmp/canalpl-install
-tar -xzf /tmp/CanalPL-0.3.0.tar.gz
+tar -xzf /tmp/CanalPL-0.3.1.tar.gz
 sh install.sh
 ```
 

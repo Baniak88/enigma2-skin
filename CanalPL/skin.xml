@@ -37,8 +37,15 @@
     <font filename="LiberationSans-Bold.ttf" name="CanalStrong" scale="100" />
     <alias name="TextNormal" font="CanalText" size="30" height="40" />
     <alias name="ChoiceBoxDescription" font="CanalText" size="26" height="36" />
+    <alias name="ChoiceList" font="CanalText" size="30" height="72" />
     <alias name="MenuFont" font="CanalText" size="32" height="64" />
   </fonts>
+  <parameters>
+    <parameter name="ChoicelistName" value="64,16,1712,40" />
+    <parameter name="ChoicelistNameSingle" value="24,16,1744,40" />
+    <parameter name="ChoicelistIcon" value="12,20,36,32" />
+    <parameter name="ChoicelistDash" value="0,16,1792,40" />
+  </parameters>
   <screen name="Menu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="CanalStrong;40" foregroundColor="white" transparent="1" />
     <eLabel text="MENU" position="420,48" size="1110,44" font="CanalText;25" foregroundColor="muted" transparent="1" />
@@ -63,6 +70,32 @@
     <widget name="menuimage" position="1390,248" size="240,240" alphatest="blend" scale="1" />
     <widget source="description" render="Label" position="1264,540" size="592,266" font="CanalText;32" foregroundColor="muted" transparent="1" />
     <eLabel text="OK  Wybierz     EXIT  Powrót" position="64,906" size="1080,42" font="CanalText;24" foregroundColor="muted" transparent="1" />
+  </screen>
+  <screen name="QuickMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="CANALPL" position="64,38" size="320,60" font="CanalStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="SZYBKIE MENU" position="420,48" size="1110,44" font="CanalText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="CanalText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="CanalText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <eLabel position="64,1012" size="6,24" backgroundColor="red" />
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="CanalText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1" />
+    <eLabel position="512,1012" size="6,24" backgroundColor="green" />
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="CanalText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1" />
+    <eLabel position="960,1012" size="6,24" backgroundColor="yellow" />
+    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="CanalText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1" />
+    <eLabel text="KATEGORIE  ·  ← → zmień kolumnę" position="64,214" size="608,34" font="CanalText;20" foregroundColor="muted" transparent="1" />
+    <eLabel text="DOSTĘPNE DZIAŁANIA  ·  OK wybierz" position="736,214" size="1120,34" font="CanalText;20" foregroundColor="muted" transparent="1" />
+    <eLabel position="704,260" size="2,608" backgroundColor="line" />
+    <widget source="mainlist" render="Listbox" position="64,260" size="608,608" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">{"fonts":[gFont("CanalText",30),gFont("CanalText",22)],"itemHeight":76,"template":[MultiContentEntryPixmapAlphaBlend(pos=(12,14),size=(52,48),png=2,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(88,4),size=(496,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),MultiContentEntryText(pos=(88,44),size=(496,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}</convert>
+    </widget>
+    <widget source="sublist" render="Listbox" position="736,260" size="1120,608" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">{"fonts":[gFont("CanalText",30),gFont("CanalText",23)],"itemHeight":76,"template":[MultiContentEntryText(pos=(20,4),size=(1080,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),MultiContentEntryText(pos=(20,44),size=(1080,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}</convert>
+    </widget>
+    <widget name="description" position="64,888" size="1792,72" font="CanalText;25" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" base="ChannelSelection" label="CanalPL — standard z TV">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="CanalStrong;40" foregroundColor="white" transparent="1" />
@@ -746,14 +779,16 @@
   </screen>
   <screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="CanalStrong;40" foregroundColor="white" transparent="1" />
-    <eLabel text="OPCJE" position="420,48" size="1110,44" font="CanalText;25" foregroundColor="muted" transparent="1" />
+    <eLabel text="WYBÓR" position="420,48" size="1110,44" font="CanalText;25" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="CanalText;36" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <eLabel position="64,126" size="1792,2" backgroundColor="green" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="CanalText;27" noWrap="1" foregroundColor="muted" transparent="1" />
-    <widget name="text" position="64,220" size="1792,130" font="CanalText;30" transparent="1" />
-    <widget name="list" position="64,376" size="1792,560" font="CanalText;32" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
+    <widget name="text" position="64,216" size="1792,64" font="CanalText;30" transparent="1" />
+    <widget name="list" position="64,304" size="1792,576" font="CanalText;30" itemHeight="72" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <eLabel text="↑ ↓  Wybierz     OK  Zatwierdź     EXIT  Powrót" position="64,1000" size="1792,48" font="CanalText;25" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="CanalStrong;40" foregroundColor="white" transparent="1" />
@@ -772,7 +807,7 @@
     <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="CanalText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1" />
     <eLabel position="1408,1012" size="6,24" backgroundColor="blue" />
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="CanalText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1" />
-    <widget name="menu" position="64,236" size="1792,684" font="CanalText;32" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
+    <widget name="menu" position="64,236" size="1792,648" font="CanalText;30" itemHeight="72" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
   </screen>
   <screen name="MessageBox" position="320,200" size="1280,680" flags="wfNoBorder" backgroundColor="bg">
     <eLabel position="0,0" size="1280,4" backgroundColor="green" />

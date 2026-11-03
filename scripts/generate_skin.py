@@ -106,8 +106,16 @@ def build():
     fonts = add(skin, 'fonts')
     add(fonts,'font',filename='DejaVuSans.ttf',name='CanalText',scale='100')
     add(fonts,'font',filename='LiberationSans-Bold.ttf',name='CanalStrong',scale='100')
-    for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('MenuFont',32,64)]:
+    for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('ChoiceList',30,72), ('MenuFont',32,64)]:
         add(fonts, 'alias', name=name, font='CanalText', size=size, height=height)
+    parameters=add(skin,'parameters')
+    for name,value in {
+        'ChoicelistName':'64,16,1712,40',
+        'ChoicelistNameSingle':'24,16,1744,40',
+        'ChoicelistIcon':'12,20,36,32',
+        'ChoicelistDash':'0,16,1792,40',
+    }.items():
+        add(parameters,'parameter',name=name,value=value)
 
     s = screen('Menu'); header(s, 'MENU'); footer(s)
     n = source(s, 'menu', 64, 240, 1080, 640, render='Listbox', **LIST)
@@ -124,6 +132,21 @@ def build():
     widget(s, 'menuimage', 1390, 248, 240, 240, alphatest='blend', scale='1')
     source(s, 'description', 1264, 540, 592, 266, 32, 'muted')
     label(s, 'OK  Wybierz     EXIT  Powrót', 64, 906, 1080, 42, 24, 'muted')
+
+    s=screen('QuickMenu');header(s,'SZYBKIE MENU');footer(s,('red','green','yellow'))
+    label(s,'KATEGORIE  ·  ← → zmień kolumnę',64,214,608,34,20,'muted')
+    label(s,'DOSTĘPNE DZIAŁANIA  ·  OK wybierz',736,214,1120,34,20,'muted')
+    box(s,704,260,2,608)
+    n=source(s,'mainlist',64,260,608,608,render='Listbox',**LIST)
+    templated(n,'{"fonts":[gFont("CanalText",30),gFont("CanalText",22)],"itemHeight":76,"template":['
+        'MultiContentEntryPixmapAlphaBlend(pos=(12,14),size=(52,48),png=2,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
+        'MultiContentEntryText(pos=(88,4),size=(496,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),'
+        'MultiContentEntryText(pos=(88,44),size=(496,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}')
+    n=source(s,'sublist',736,260,1120,608,render='Listbox',**LIST)
+    templated(n,'{"fonts":[gFont("CanalText",30),gFont("CanalText",23)],"itemHeight":76,"template":['
+        'MultiContentEntryText(pos=(20,4),size=(1080,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),'
+        'MultiContentEntryText(pos=(20,44),size=(1080,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}')
+    widget(s,'description',64,888,1792,72,25,foregroundColor='muted',transparent='1')
 
     for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio'):
         s = screen(name); header(s, 'TELEWIZJA' if name != 'ChannelSelectionRadio' else 'RADIO'); footer(s)
@@ -243,13 +266,15 @@ def build():
     widget(s,'HelpWindow',64,240,1,1,conditional='HelpWindow',transparent='1')
 
     for name in ('ChoiceBox','ChannelContextMenu'):
-        s=screen(name); header(s,'OPCJE')
+        s=screen(name); header(s,'WYBÓR' if name=='ChoiceBox' else 'OPCJE')
         if name=='ChoiceBox':
-            widget(s,'text',64,220,1792,130,30,transparent='1')
-            widget(s,'list',64,376,1792,560,32,itemHeight='64',**LIST)
+            widget(s,'text',64,216,1792,64,30,transparent='1')
+            widget(s,'list',64,304,1792,576,30,itemHeight='72',**LIST)
+            box(s,64,974,1792,2)
+            label(s,'↑ ↓  Wybierz     OK  Zatwierdź     EXIT  Powrót',64,1000,1792,48,25,'muted')
         else:
             footer(s)
-            widget(s,'menu',64,236,1792,684,32,itemHeight='64',**LIST)
+            widget(s,'menu',64,236,1792,648,30,itemHeight='72',**LIST)
 
     for name in ('MessageBox','MessageBoxSimple'):
         s=screen(name,pos=(320,200),size=(1280,680))

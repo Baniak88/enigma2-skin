@@ -21,6 +21,7 @@
       "lib/python/Screens/MovieSelection.py": "44a3fbd16df94a848f2075ece849b5bc56e1c13001e110e6ddba561c4b4e8b42",
       "lib/python/Screens/PVRState.py": "afc72bebeb59fa46fbacbdacc26a833ef8c2e2a0fda85f1e2c37e99a4c0933b8",
       "lib/python/Screens/PluginBrowser.py": "fbb4e7c017a209f5d0f976bbc9c357197c072274c5cceda9de96f81292190f29",
+      "lib/python/Screens/QuickMenu.py": "6e6e5326dbebeb4499e2b63240cd457e0ff1700afb71ec5e9ffd2103bd3efebd",
       "lib/python/Screens/Screen.py": "500b9e47db363a03fa2b139d28645150b670a585a4aa756290f89bf4eb607590",
       "lib/python/Screens/Setup.py": "6013b45dede613c47ecee93aad885647c17f6a0025c7ad1c2bfb64b54f6f28df",
       "lib/python/Screens/Timers.py": "b2f9a27edecd5fa74d852081e7a2a8b9e5ac0c783489090f49d491f2164e086c",
@@ -48,6 +49,28 @@
           "editActions": "HelpableActionMap"
         },
         "required": []
+      },
+      "QuickMenu": {
+        "class": "QuickMenu",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "description": "Label",
+          "summary_description": "StaticText",
+          "mainlist": "List",
+          "sublist": "List",
+          "actions": "HelpableActionMap",
+          "numberActions": "HelpableNumberActionMap"
+        },
+        "required": [
+          "mainlist"
+        ]
       },
       "ChannelSelection": {
         "class": "ChannelSelection",
@@ -1467,6 +1490,7 @@
   },
   "7.6": {
     "source_sha256": {
+      "lib/python/Components/ChoiceList.py": "48e72ab31ab68a28bc8597583f7caf89766b42e3e6a2cbd8d2bf99853643bd33",
       "lib/python/Components/ConfigList.py": "2db8df2337e4c7db95d965537c3fcd5e6cefa5e9cc55f9cd0745507d80c5209f",
       "lib/python/Components/Converter/TemplatedMultiContent.py": "6ebf06edc3d90af6754748b0eef71c4fa709c4eb581da6281bfe3eb48d932615",
       "lib/python/Components/EpgList.py": "7c29764ad836a3fc69f6beae9758ba0eeaf4269c2f837dd5144521085d72280f",
@@ -1484,6 +1508,7 @@
       "lib/python/Screens/MovieSelection.py": "5db02dafad05c633d4a242d0bb188d5d06172359dc3287f1c5264bb1cef5a180",
       "lib/python/Screens/PVRState.py": "afc72bebeb59fa46fbacbdacc26a833ef8c2e2a0fda85f1e2c37e99a4c0933b8",
       "lib/python/Screens/PluginBrowser.py": "7eaac6ae1856f68cdb7122395cc7b826038e4f09ac3e5d08b7d5abe18ed656be",
+      "lib/python/Screens/QuickMenu.py": "a047beda66426cb496934f881f509b2ec2834eab6726d2c11ee119e8f3c9a872",
       "lib/python/Screens/Screen.py": "e2648d2e41bf3f352929ca4a603407536897fda991f07b6d9bdb7d97f1271fb0",
       "lib/python/Screens/Setup.py": "87fc0785fd6a4bd6b482e69e6c116d617b44cf3c65131b2b0fd237b0603d7d00",
       "lib/python/Screens/Timers.py": "ece6a41bd347e921ab0b648664b64aa286f359e795e1a8804556ee2406c19307"
@@ -1510,6 +1535,28 @@
           "editActions": "HelpableActionMap"
         },
         "required": []
+      },
+      "QuickMenu": {
+        "class": "QuickMenu",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "description": "Label",
+          "summary_description": "StaticText",
+          "mainlist": "List",
+          "sublist": "List",
+          "actions": "HelpableActionMap",
+          "numberActions": "HelpableNumberActionMap"
+        },
+        "required": [
+          "mainlist"
+        ]
       },
       "ChannelSelection": {
         "class": "ChannelSelection",
@@ -2936,9 +2983,11 @@
   },
   "8.0": {
     "source_sha256": {
+      "lib/python/Components/ChoiceList.py": "f964a7c3c81f21e9fb30fe32ca92349d6e131691ff7ebcfd0bb81a08f00661a2",
       "lib/python/Components/ConfigList.py": "f55b5c3a48827c4a2564837e04c95ad0c179ba8381b583eb842abb2fa5c978e7",
       "lib/python/Components/Converter/TemplatedMultiContent.py": "f5e145366c2650890e28baf9855942da71e3feaea5e4d46e0e4adaa10c39bc2a",
       "lib/python/Components/EpgList.py": "28b201cf95b746873717c68e07ba6df8c82159e4c9615ea0d53f95698e828179",
+      "lib/python/Components/MenuList.py": "d1a08e969efb5b565137360ced7ba231592974177fd6df5f30df77cc20ead150",
       "lib/python/Components/Renderer/Picon.py": "784854d368965cd2ef53c59bfb3b6889e8ec0b3fd80cb82f4ed51d080af08810",
       "lib/python/Components/Renderer/Pig.py": "e7dbb27f9606400ffe81f1ccfb24cf8a2c7e1d643a6ec4e8b3a71f3fd2f0aff8",
       "lib/python/Components/ServiceList.py": "ec55abf9c7a22481ed157ca14887f018fbac451195fa1a9f093bf8cff1232a6a",
@@ -2954,6 +3003,7 @@
       "lib/python/Screens/MovieSelection.py": "132e90e847f11afafa1e64472a87eba05cdb6c884cdd0083a5bf9e005f14fb75",
       "lib/python/Screens/PVRState.py": "350cb9075b12993495bbbf3958dca2718fe28328c56ad00070c8418bf9df790b",
       "lib/python/Screens/PluginBrowser.py": "2d9a0813e7eba8cfc6d63b922fea1f9f87854d2a026f3da6f5508fffe0b140f6",
+      "lib/python/Screens/QuickMenu.py": "b3ba7b75c3941eb79616a6f176f556e85f766d50bf8db0c120ee6ece09309677",
       "lib/python/Screens/Screen.py": "199e06f550f61fb58c230d4bfadaeef8432d59abbe347691cd7f58359ed8011f",
       "lib/python/Screens/Setup.py": "cb7db277cb35f7d6a36e17b9211e34dac9b33df7c4f4c183a30c79174c5b169c",
       "lib/python/Screens/Timers.py": "1b1edf6c9f6a44257be489405680791fe6aa9e235a7e5d5ec13a18d4e5221a44"
@@ -2980,6 +3030,28 @@
           "editActions": "HelpableActionMap"
         },
         "required": []
+      },
+      "QuickMenu": {
+        "class": "QuickMenu",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "description": "Label",
+          "summary_description": "StaticText",
+          "mainlist": "List",
+          "sublist": "List",
+          "actions": "HelpableActionMap",
+          "numberActions": "HelpableNumberActionMap"
+        },
+        "required": [
+          "mainlist"
+        ]
       },
       "ChannelSelection": {
         "class": "ChannelSelection",
