@@ -117,6 +117,7 @@ def render(name,target,make_png=False):
         if key in ('lab1','number','bouquetlist') or re_timeline(key):continue
         if n.get('backgroundColor') and n.get('transparent')!='1':rect(x,y,w,h,n.get('backgroundColor'))
         if n.get('render')=='Picon':fake_picon(0,x,y,w,h)
+        elif n.tag=='ePixmap':png(ROOT/n.get('pixmap'),x,y,w,h)
         elif key=='menuimage':png(ROOT/'CanalPL/mainmenu/information.png',x,y,w,h)
         elif key=='timeline_text':
             for i,t in enumerate(['20:00','20:30','21:00','21:30','22:00','22:30']):text(x+320+i*(w-320)/6,y,(w-320)/6,h,t,26,'muted')

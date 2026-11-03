@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.2.1
+# OpenATV — zakres zgodności 0.2.2
 
 Układy CanalPL są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -84,3 +84,19 @@ wierszy, rozmiarów fontów, szerokości nazw kanałów i obsługi PIG danego de
   Te kontrole nie zastępują próby instalacji przez `opkg` na odbiorniku.
 - Bez pełnego błędu instalacji z dekodera przyczyna pierwotnego zgłoszenia
   pozostaje niepotwierdzona. Format pakietu i zgodność GUI są osobnymi kwestiami.
+
+## Poprawka 0.2.2 — zasłonięte pikony
+
+Zgłoszenie zawierało zdjęcie pustego panelu w InfoBar oraz potwierdzenie, że
+pikony działały na poprzedniej skórce. W poprzednim XML dekoracyjne tło i renderer
+Picon miały domyślne zPosition=0. `Screen.createGUIScreen` tworzy renderery przed
+`additionalWidgets`, a `eWidget::insertIntoParent` wstawia późniejsze elementy
+za istniejącymi o tej samej warstwie. Tło zasłaniało obrazek.
+
+Teraz renderer ma zPosition=1, a jawna, skalowana grafika zastępcza zPosition=0.
+Test regresji wykrywa pierwotny układ. Walidator sprawdza zasłanianie prostokątów
+pikon przez dekoracje na wszystkich ekranach. Oryginalne klasy Picon z 7.5, 7.6
+oraz 8.0 przeszły próby znalezionego/brakującego logo, wyłączenia pikon i
+wyczyszczenia źródła z zastąpioną warstwą C++:
+`python3 scripts/check_upstream_picons.py <katalog-checkoutów>`.
+Nie jest to uruchomienie interfejsu na fizycznym dekoderze.

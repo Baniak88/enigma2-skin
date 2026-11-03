@@ -51,6 +51,23 @@ def check_png(path):
     assert len(zlib.decompress(raw))==size[1]*(1+size[0]*4)
 
 
+def check_picon_layers(screen):
+    """Enigma2 tworzy renderery przed eLabel/ePixmap niezależnie od kolejności XML.
+
+    Przy tym samym z dekoracja znajdzie się nad rendererem. Wykrywamy pełne
+    zasłonięcie prostokąta pikony, a nie tylko obecność konkretnego atrybutu.
+    """
+    for picon in screen.findall("widget[@render='Picon']"):
+        x,y=map(int,picon.get('position').split(','));w,h=map(int,picon.get('size').split(','))
+        pz=int(picon.get('zPosition','0'))
+        for decoration in screen:
+            if decoration.tag not in ('eLabel','ePixmap'):continue
+            if decoration.tag=='eLabel' and not decoration.get('backgroundColor'):continue
+            dx,dy=map(int,decoration.get('position').split(','));dw,dh=map(int,decoration.get('size').split(','))
+            covers=dx<=x and dy<=y and dx+dw>=x+w and dy+dh>=y+h
+            assert not covers or int(decoration.get('zPosition','0'))<pz,(screen.get('name'),'decoration covers picon',decoration.attrib)
+
+
 def validate():
     skin=E.parse(ROOT/'CanalPL/skin.xml').getroot()
     colors={x.get('name') for x in skin.findall('colors/color')}
@@ -59,6 +76,7 @@ def validate():
     assert len(names)==len(set(names))
     assert {'Menu','BouquetSelector','EPGBouquetSelector','GraphicalEPG','GraphicalEPGPIG','EPGSelectionMulti','EPGvertical','Setup','MovieSelection','RecordTimerOverview'}<=set(names)
     for s in skin.findall('screen'):
+        check_picon_layers(s)
         sw,sh=map(int,s.get('size').split(','));sx,sy=map(int,s.get('position').split(','))
         assert sx>=0 and sy>=0 and sx+sw<=1920 and sy+sh<=1080,s.get('name')
         for n in s:

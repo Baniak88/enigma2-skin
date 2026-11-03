@@ -5,6 +5,7 @@
 <text x="960.0" y="392.0" font-size="42" fill="#758187" text-anchor="middle">Miejsce na obraz telewizyjny</text>
 <rect x="0" y="726" width="1920" height="354" fill="#0c0e10"/>
 <rect x="64" y="726" width="1792" height="4" fill="#00e676"/>
+<image x="64" y="760" width="220" height="132" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAACECAYAAAD7h0UbAAABqUlEQVR42u3asREAEBBFQW2YEahSyTq4mA4MiYANXgPnbyblUoekOyVHkICTgJMEnAScJOAk4CTgJAEnAScJOAk4CThJwEnASQJOAk4ScBJwEnCSgJOAkwScBJx2H6i3o9wMOAEn4IATcAIOOAEn4IADDjgBJ+CAE3ACDjgBJ+CAAw44ASfggBNwAk7AASfgBBxwAk7AAQcccAJOwAEn4AQccAJOwAEHHHACTsABJ+AEHHACTsAJOOAEnIADDjjgfh7+b9kIcMABBxxwwAEn4IADDjjggANOwAEHHHDAAQecgAMOOOCAAw44AQcccMABB5x8XhZwwAk4AQecgBNwwAEHnIATcMC5GXACTsABJ+AEHHACTsABBxxwAk7AASfgBBxwAk7AAQcccAJOwAEn4AScgANOwAk44AScgAMOOOAEnIADTsAJOOAEnIADDjjgBJyAk4CTgJMEnAScJOAk4CQBJwEnAScJOAk4ScBJwEnAaVVEaJGNAAcccMABBxxwkoCTgJMEnAScJOAk4CTgJAEnAScJOAk4CThJwEnASQJOAk4ScBJw0tNNEEYx0qAALAoAAAAASUVORK5CYII="/>
 <rect x="64" y="760" width="220" height="132" fill="#191c20"/>
 <rect x="64" y="760" width="220" height="132" fill="#191c20"/>
 <rect x="64" y="760" width="220" height="4" fill="#00e676"/>

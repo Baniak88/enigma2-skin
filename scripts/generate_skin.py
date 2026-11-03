@@ -33,9 +33,11 @@ def widget(s, name, x, y, w, h, font=None, **kw):
 def source(s, name, x, y, w, h, font=28, color='white', render='Label', converts=(), **kw):
     if render != 'Picon':
         kw.setdefault('foregroundColor', color)
+    if render in ('Label', 'FixedLabel'):
+        kw.setdefault('transparent', '1')
     n = add(s, 'widget', source=name, render=render, position=f'{x},{y}', size=f'{w},{h}',
             font=f'Regular;{font}' if render in ('Label', 'FixedLabel') else None,
-            transparent='1' if render in ('Label', 'FixedLabel') else None, **kw)
+            **kw)
     for kind, arg in converts:
         add(n, 'convert', type=kind).text = arg
     return n
@@ -67,8 +69,12 @@ LIST = dict(backgroundColor='bg', foregroundColor='white',
 
 
 def picon(s, src, x, y, w=220, h=132):
-    box(s, x, y, w, h, 'panel')
-    return source(s, src, x, y, w, h, render='Picon', converts=[('ServiceName', 'Reference')], alphatest='blend')
+    # Screen.createGUIScreen tworzy additionalWidgets PO rendererach.
+    # Jawne warstwy są konieczne: dekoracja z tym samym z zasłoniłaby Picon.
+    add(s,'ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap='CanalPL/picon_default.png',
+        scale='1',alphatest='blend',zPosition='0')
+    return source(s, src, x, y, w, h, render='Picon', converts=[('ServiceName', 'Reference')],
+        alphatest='blend',zPosition='1',backgroundColor='panel',transparent='0')
 
 
 def event(s, src, x, y, w, desc=True):

@@ -7,7 +7,7 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.2.1'
+VERSION='0.2.2'
 PACKAGE=f'enigma2-plugin-skins-canalpl_{VERSION}_all.ipk'
 
 

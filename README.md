@@ -1,10 +1,10 @@
-# CanalPL 0.2.1 — skórka Enigma2 dla OpenATV
+# CanalPL 0.2.2 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.2.1 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.2.2 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
@@ -37,11 +37,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-canalpl_0.2.1_all.ipk](packages/enigma2-plugin-skins-canalpl_0.2.1_all.ipk)
+Pobierz [enigma2-plugin-skins-canalpl_0.2.2_all.ipk](packages/enigma2-plugin-skins-canalpl_0.2.2_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-canalpl_0.2.1_all.ipk
+opkg install /tmp/enigma2-plugin-skins-canalpl_0.2.2_all.ipk
 ```
 
 Następnie wybierz **CanalPL** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -51,7 +51,7 @@ Aktualizacjami i usuwaniem wersji `.ipk` zarządza `opkg`.
 
 ## Instalacja z terminala — również OpenATV 8.0
 
-OpenATV 8.0 używa `opkg`. Wersja 0.2.1 dopasowuje kontrole do nowych klas EPG
+OpenATV 8.0 używa `opkg`. Wersja 0.2.2 dopasowuje kontrole do nowych klas EPG
 oraz zapisuje w `.ipk` katalogi i ścieżki `./` w stylu `opkg-build`.
 Nie znamy jeszcze komunikatu błędu zgłoszonego dla 0.2.0, więc nie przypisujemy
 mu jednej potwierdzonej przyczyny.
@@ -59,8 +59,8 @@ mu jednej potwierdzonej przyczyny.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/CanalPL-0.2.1.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-canalpl_0.2.1_all.ipk &&
-opkg install /tmp/CanalPL-0.2.1.ipk
+wget -O /tmp/CanalPL-0.2.2.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-canalpl_0.2.2_all.ipk &&
+opkg install /tmp/CanalPL-0.2.2.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i CanalPL nie widnieje jako zainstalowana
@@ -68,6 +68,18 @@ paczka w `opkg`, można użyć instalacji ręcznej opisanej niżej. Pobiera ona 
 plików i omija obsługę `.ipk`. Nie potwierdza to działania GUI na danym sprzęcie.
 Nie uruchamiaj aktualizacji całego systemu ani opcji wymuszających zależności,
 żeby naprawić błąd jednej skórki. Zachowaj dokładny komunikat z terminala.
+
+## Pikony — poprawka 0.2.2
+
+Usunięto zasłanianie pikon przez tło panelu. Enigma2 tworzy dekoracje po
+rendererach, dlatego teraz logo ma wyższą warstwę niż grafika zastępcza.
+Poprawka dotyczy paska informacji, panelu wybranego kanału i ekranów EPG
+korzystających z renderera `Picon`. Obsługa pikonów wewnątrz natywnej listy
+kanałów nie została zmieniona.
+
+Jeśli logotypy działały na poprzedniej skórce, aktualizacja zachowa korzystanie
+z istniejącej paczki i ustawień OpenATV. Po aktualizacji wykonaj restart GUI.
+Jeżeli logo kanału nie zostanie znalezione, widać autorską grafikę zastępczą.
 
 ## Pikony i lista kanałów
 
@@ -99,12 +111,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [CanalPL-0.2.1.tar.gz](packages/CanalPL-0.2.1.tar.gz), prześlij do `/tmp`:
+Pobierz [CanalPL-0.2.2.tar.gz](packages/CanalPL-0.2.2.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/canalpl-install
 cd /tmp/canalpl-install
-tar -xzf /tmp/CanalPL-0.2.1.tar.gz
+tar -xzf /tmp/CanalPL-0.2.2.tar.gz
 sh install.sh
 ```
 
