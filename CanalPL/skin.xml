@@ -296,7 +296,7 @@
     <widget source="Event" render="Label" position="1312,588" size="544,186" font="Regular;26" transparent="1" foregroundColor="muted">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
-    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" />
+    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" conditional="number" />
   </screen>
   <screen name="QuickEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="Regular;42" foregroundColor="white" transparent="1" />
@@ -338,7 +338,7 @@
     <widget source="Event" render="Label" position="1312,588" size="544,186" font="Regular;26" transparent="1" foregroundColor="muted">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
-    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" />
+    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" conditional="number" />
   </screen>
   <screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="Regular;42" foregroundColor="white" transparent="1" />
@@ -388,7 +388,7 @@
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
     <widget name="bouquetlist" position="64,300" size="720,616" font="Regular;30" itemHeight="70" zPosition="4" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="green" foregroundColorSelected="bg" scrollbarMode="showOnDemand" />
-    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" />
+    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" conditional="number" />
   </screen>
   <screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="Regular;42" foregroundColor="white" transparent="1" />
@@ -429,7 +429,7 @@
     <widget name="timeline5" position="64,366" size="2,560" pixmap="CanalPL/assets/timeline.png" scale="1" zPosition="2" />
     <widget name="timeline_now" position="64,366" size="4,560" pixmap="CanalPL/assets/timeline-now.png" scale="1" zPosition="3" />
     <widget name="bouquetlist" position="64,366" size="720,560" font="Regular;30" itemHeight="70" zPosition="4" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="green" foregroundColorSelected="bg" scrollbarMode="showOnDemand" />
-    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" />
+    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" conditional="number" />
   </screen>
   <screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="Regular;42" foregroundColor="white" transparent="1" />
@@ -471,7 +471,7 @@
     <widget name="timeline5" position="64,506" size="2,420" pixmap="CanalPL/assets/timeline.png" scale="1" zPosition="2" />
     <widget name="timeline_now" position="64,506" size="4,420" pixmap="CanalPL/assets/timeline-now.png" scale="1" zPosition="3" />
     <widget name="bouquetlist" position="64,506" size="720,420" font="Regular;30" itemHeight="70" zPosition="4" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="green" foregroundColorSelected="bg" scrollbarMode="showOnDemand" />
-    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" />
+    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" conditional="number" />
   </screen>
   <screen name="GraphicalInfoBarEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="Regular;42" foregroundColor="white" transparent="1" />
@@ -512,7 +512,7 @@
     <widget name="timeline5" position="64,366" size="2,560" pixmap="CanalPL/assets/timeline.png" scale="1" zPosition="2" />
     <widget name="timeline_now" position="64,366" size="4,560" pixmap="CanalPL/assets/timeline-now.png" scale="1" zPosition="3" />
     <widget name="bouquetlist" position="64,366" size="720,560" font="Regular;30" itemHeight="70" zPosition="4" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="green" foregroundColorSelected="bg" scrollbarMode="showOnDemand" />
-    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" />
+    <widget name="number" position="1660,214" size="196,48" font="Regular;30" foregroundColor="green" halign="right" transparent="1" zPosition="6" conditional="number" />
   </screen>
   <screen name="EPGvertical" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="CANALPL" position="64,38" size="320,60" font="Regular;42" foregroundColor="white" transparent="1" />

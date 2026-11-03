@@ -7,15 +7,25 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.2.0'
+VERSION='0.2.1'
 PACKAGE=f'enigma2-plugin-skins-canalpl_{VERSION}_all.ipk'
 
 
-def tar_gz(files):
+def tar_gz(files, ipk=False):
     buffer=io.BytesIO()
     with tarfile.open(fileobj=buffer,mode='w',format=tarfile.GNU_FORMAT) as archive:
+        if ipk:
+            # Match opkg-build: explicit directories precede ./relative file names.
+            dirs={'.'}
+            for name,_,_ in files:
+                parent=Path(name).parent
+                while str(parent)!='.':
+                    dirs.add('./'+str(parent));parent=parent.parent
+            for name in sorted(dirs,key=lambda n:(n.count('/'),n)):
+                info=tarfile.TarInfo(name+'/');info.type=tarfile.DIRTYPE;info.mode=0o755;info.mtime=0
+                archive.addfile(info)
         for name,data,mode in files:
-            info=tarfile.TarInfo(name);info.size=len(data);info.mode=mode;info.mtime=0
+            info=tarfile.TarInfo('./'+name if ipk else name);info.size=len(data);info.mode=mode;info.mtime=0
             archive.addfile(info,io.BytesIO(data))
     return gzip.compress(buffer.getvalue(),mtime=0)
 
@@ -41,9 +51,9 @@ def build():
     control=(f'Package: enigma2-plugin-skins-canalpl\nVersion: {VERSION}\nArchitecture: all\n'
              f'Maintainer: CanalPL contributors\nSection: skins\nPriority: optional\nDepends: enigma2\n'
              f'Installed-Size: {(sum(len(data) for _,data,_ in payload)+1023)//1024}\n'
-             'Description: CanalPL Full HD skin for OpenATV 7.5 and 7.6\n')
-    data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload])
-    controltar=tar_gz([('control',control.encode(),0o644)])
+             'Description: CanalPL Full HD skin for OpenATV 7.5, 7.6 and 8.0\n')
+    data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload],ipk=True)
+    controltar=tar_gz([('control',control.encode(),0o644)],ipk=True)
     (out/PACKAGE).write_bytes(ar([('debian-binary',b'2.0\n'),('control.tar.gz',controltar),('data.tar.gz',data)]))
     print(out/f'CanalPL-{VERSION}.tar.gz');print(out/PACKAGE)
 

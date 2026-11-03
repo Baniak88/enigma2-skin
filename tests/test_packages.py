@@ -39,18 +39,20 @@ class Packages(unittest.TestCase):
         self.assertEqual(set(files),{'debian-binary','control.tar.gz','data.tar.gz'})
         self.assertEqual(files['debian-binary'],b'2.0\n')
         with tarfile.open(fileobj=io.BytesIO(files['control.tar.gz'])) as t:
-            control=t.extractfile('control').read().decode()
+            control=t.extractfile('./control').read().decode()
+            self.assertTrue(t.getmember('.').isdir())
         self.assertIn('Architecture: all\n',control)
         self.assertIn('Depends: enigma2\n',control)
         with tarfile.open(fileobj=io.BytesIO(files['data.tar.gz'])) as t:
-            names=set(t.getnames())
+            names={m.name.removeprefix('./') for m in t if m.isfile()}
             expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for p in (ROOT/'CanalPL').rglob('*') if p.is_file()}
             self.assertEqual(names,expected)
             for p in (ROOT/'CanalPL').rglob('*'):
                 if p.is_file():
-                    name='usr/share/enigma2/'+str(p.relative_to(ROOT))
+                    name='./usr/share/enigma2/'+str(p.relative_to(ROOT))
                     self.assertEqual(t.extractfile(name).read(),p.read_bytes())
                     self.assertEqual(t.getmember(name).mode,0o644)
+                    self.assertTrue(t.getmember('./'+str(Path(name).parent)).isdir())
 
     def test_manual_install_backup_and_symlink_refusal(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -80,9 +82,9 @@ class Packages(unittest.TestCase):
             self.assertFalse(list(outside.iterdir()))
 
     def test_reproducible_archives(self):
-        before={p.name:p.read_bytes() for p in (ROOT/'dist').glob('*0.2.0*')}
+        before={p.name:p.read_bytes() for p in (ROOT/'dist').glob(f'*{VERSION}*')}
         build()
-        self.assertEqual(before,{p.name:p.read_bytes() for p in (ROOT/'dist').glob('*0.2.0*')})
+        self.assertEqual(before,{p.name:p.read_bytes() for p in (ROOT/'dist').glob(f'*{VERSION}*')})
 
 
 if __name__=='__main__':

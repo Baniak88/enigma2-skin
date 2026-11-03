@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Autorskie układy, nazwy widgetów zgodne z OpenATV 7.5/7.6.
+"""Autorskie układy, nazwy widgetów sprawdzone w OpenATV 7.5/7.6/8.0.
 
 Źródło API opisane w docs/COMPATIBILITY.md. Nie kopiuje kodu Python Enigma2.
 """
@@ -186,7 +186,7 @@ def build():
             event(s,'Event',1312,456,544)
             if multi:
                 widget(s,'bouquetlist',64,300,720,616,30,itemHeight='70',zPosition='4',**LIST)
-        widget(s,'number',1660,214,196,48,30,foregroundColor='green',halign='right',transparent='1',zPosition='6')
+        widget(s,'number',1660,214,196,48,30,foregroundColor='green',halign='right',transparent='1',zPosition='6',conditional='number')
 
     for name in ('EPGvertical','EPGverticalPIG'):
         s=screen(name); header(s,'PROGRAM TV / UKŁAD PIONOWY'); footer(s)

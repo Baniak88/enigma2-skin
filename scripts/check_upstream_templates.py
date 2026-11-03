@@ -2,7 +2,7 @@
 """Uruchamia oryginalny konwerter TemplatedMultiContent ze stubem warstwy C++.
 
 Sprawdza tworzenie/switch stylów, nie renderuje ani nie emuluje całego Enigma2.
-Argument: katalog z checkoutami 7.5/ i 7.6/; kod upstream nie jest dołączany.
+Argument: katalog z checkoutami 7.5/, 7.6/, 8.0/; kod upstream nie jest dołączany.
 """
 import ast
 import contextlib
@@ -44,7 +44,7 @@ def check(sources):
     multi.MultiContentTemplateColor=lambda *a:a
     skin=types.ModuleType('skin');skin.getSkinFactor=lambda:1.5;skin.parseFont=lambda s:Font(s.split(';')[0],int(s.split(';')[1]))
     sys.modules.update({'enigma':enigma,'skin':skin,'Components.MultiContent':multi})
-    for version in ('7.5','7.6'):
+    for version in ('7.5','7.6','8.0'):
         p=sources/version/'lib/python/Components/Converter/TemplatedMultiContent.py'
         parsed=ast.parse(p.read_text())
         cls=next(n for n in parsed.body if isinstance(n,ast.ClassDef))

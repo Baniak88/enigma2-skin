@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.2.0
+# OpenATV — zakres zgodności 0.2.1
 
 Układy CanalPL są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -9,16 +9,17 @@ Forum posłużyło jako punkt odniesienia dla zakresu typowej skórki Enigma2.
 
 - [OpenATV 7.5](https://github.com/openatv/enigma2/tree/29c41504a2bdecd764d54373109e3c692810b189)
 - [OpenATV 7.6](https://github.com/openatv/enigma2/tree/e42a0ffb0064962321bf500999ac2bc48cadec34)
+- [OpenATV 8.0](https://github.com/openatv/enigma2/tree/39f548521c4c3a667348139720ebe3bf3ac3cf22)
 
 Kontrakty w `scripts/openatv-contracts.json` zapisują nazwy i typy komponentów,
 wymagane widgety oraz SHA-256 analizowanych plików. Powstają przez odczyt AST
 źródeł Pythona, bez ich wykonywania. Listy i źródła tworzone warunkowo są w nim
 zebrane łącznie; sam kontrakt nie dowodzi działania każdego warunku na urządzeniu.
 Kontrole nie uruchamiają GUI Enigma2, nie odtwarzają telewizji i nie zastępują
-testów na dekoderze. Status: **dopasowana do API 7.5/7.6, test sprzętowy oczekuje**.
+testów na dekoderze. Status: **dopasowana do API 7.5/7.6/8.0, test sprzętowy oczekuje**.
 Starsze OpenATV, OpenPLi, VTi i DreamOS nie są celem tego wydania.
 
-Oryginalny `TemplatedMultiContent` z obu gałęzi przyjął również 9 kombinacji
+Oryginalny `TemplatedMultiContent` z trzech gałęzi przyjął również 9 kombinacji
 szablonu/stylu menu, wtyczek i wyboru dźwięku. W tej próbie zastąpiono warstwę C++
 stubem; sprawdzono inicjalizację, zmianę stylu i indeksy pól. Można ją powtórzyć
 poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
@@ -72,3 +73,14 @@ definicji. Mogą mieć inny układ niż 40 ekranów CanalPL.
 
 Rozdzielczość framebufferu: 1920×1080. Wynik na sprzęcie zależy od ustawień liczby
 wierszy, rozmiarów fontów, szerokości nazw kanałów i obsługi PIG danego dekodera.
+
+## Poprawki 0.2.1 po zgłoszeniu z OpenATV 8.0
+
+- Mapowanie kontraktów uwzględnia rozdzielenie EPG na klasy Single, Multi, Grid
+  oraz Vertical w OpenATV 8.0. Odczyt AST obejmuje też widgety tworzone w pętlach.
+- Pole wyboru numeru w EPG jest opcjonalne (`conditional="number"`), ponieważ
+  wariant siatki OpenATV 8.0 nie tworzy tego pola.
+- Kontenery `.ipk` mają teraz jawne katalogi i nazwy `./control`, `./usr/...`.
+  Te kontrole nie zastępują próby instalacji przez `opkg` na odbiorniku.
+- Bez pełnego błędu instalacji z dekodera przyczyna pierwotnego zgłoszenia
+  pozostaje niepotwierdzona. Format pakietu i zgodność GUI są osobnymi kwestiami.

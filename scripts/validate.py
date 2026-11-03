@@ -98,7 +98,7 @@ def validate():
     assert all(graph.find(f"widget[@name='timeline{i}']") is not None for i in range(6))
     assert graph.find("widget[@name='bouquetlist']") is not None
     assert (ROOT/'CanalPL/picon_default.png').is_file()
-    print(f'OK: {len(names)} screens, OpenATV 7.5/7.6 widget contracts, templates, geometry, PNG assets.')
+    print(f'OK: {len(names)} screens, OpenATV '+('/'.join(contracts))+' widget contracts, templates, geometry, PNG assets.')
 
 
 if __name__=='__main__':

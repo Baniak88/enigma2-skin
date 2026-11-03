@@ -2,7 +2,7 @@
 """Odczytuje AST źródeł OpenATV, bez importowania/wykonywania ich kodu.
 
 Użycie: python3 scripts/audit_openatv.py /tmp/canalpl-openatv --write
-Wymaga checkoutów 7.5 i 7.6 w podkatalogach argumentu.
+Wymaga checkoutów 7.5, 7.6 i 8.0 w podkatalogach argumentu.
 Zapisany kontrakt pozwala ponawiać kontrolę bez sieci i bez odbiornika.
 """
 import argparse
@@ -12,6 +12,7 @@ import json
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+VERSIONS=('7.5','7.6','8.0')
 
 
 def callname(node):
@@ -32,6 +33,17 @@ def subkey(node):
     return None
 
 
+def loop_value(node,env):
+    if isinstance(node,ast.Constant):return node.value
+    if isinstance(node,ast.Name) and node.id in env:return env[node.id]
+    if isinstance(node,(ast.Tuple,ast.List)):return [loop_value(x,env) for x in node.elts]
+    if isinstance(node,ast.JoinedStr):
+        return ''.join(str(loop_value(x.value,env)) if isinstance(x,ast.FormattedValue) else x.value for x in node.values)
+    if isinstance(node,ast.Call) and isinstance(node.func,ast.Name) and node.func.id=='range':
+        return list(range(*[loop_value(x,env) for x in node.args]))
+    raise ValueError('Non-static loop')
+
+
 def extract(directory):
     classes={}; fingerprints={}
     for path in sorted((directory/'lib/python').rglob('*.py')):
@@ -47,6 +59,19 @@ def extract(directory):
                             key=subkey(target)
                             if key:
                                 entries.setdefault(key,kind)
+                if isinstance(node,ast.For) and isinstance(node.target,ast.Name):
+                    try: values=loop_value(node.iter,{})
+                    except (ValueError,TypeError):continue
+                    for value in values:
+                        for child in ast.walk(node):
+                            if not isinstance(child,ast.Assign):continue
+                            kind=callname(child.value)
+                            if not kind:continue
+                            for target in child.targets:
+                                if isinstance(target,ast.Subscript) and isinstance(target.value,ast.Name) and target.value.id=='self':
+                                    try:key=loop_value(target.slice,{node.target.id:value})
+                                    except (ValueError,TypeError):continue
+                                    if isinstance(key,str):entries.setdefault(key,kind)
                 if isinstance(node,ast.Call):
                     for kw in node.keywords:
                         if kw.arg=='mandatoryWidgets' and isinstance(kw.value,ast.List):
@@ -78,13 +103,18 @@ def extract(directory):
         'MoviePlayer':'MoviePlayer','PVRState':'PVRState','TimeshiftState':'TimeshiftState','NumberZap':'NumberZap'
         ,'AudioSelection':'AudioSelection','QuickSubtitlesConfigMenu':'QuickSubtitlesConfigMenu'
     }
+    if directory.name=='8.0':
+        mapping.update(EPGSelection='EPGSelectionSingle',QuickEPG='EPGSelectionInfobarSingle',
+            EPGSelectionMulti='EPGSelectionMulti',GraphicalEPG='EPGSelectionGrid',
+            GraphicalEPGPIG='EPGSelectionGrid',GraphicalInfoBarEPG='EPGSelectionInfobarGrid',
+            EPGvertical='EPGSelectionVertical',EPGverticalPIG='EPGSelectionVertical')
     screens={}
     for screen,cls in mapping.items():
         widgets,required=inherited(cls)
         widgets.update(inherited('Screen')[0])
         if cls=='PluginBrowser':
             widgets.update(pluginList='List',pluginGrid='List')  # self[self.layout]
-        if cls=='EPGSelection':
+        if cls in ('EPGSelection','EPGSelectionGrid','EPGSelectionInfobarGrid'):
             widgets.update({f'timeline{i}':'Pixmap' for i in range(6)})  # f-string loop
         screens[screen]={'class':cls,'widgets':widgets,'required':sorted(set(required))}
     # Volume/Mute to core Enigma2 screens (C++), only these fixed widgets.
@@ -96,7 +126,7 @@ def extract(directory):
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('sources',type=Path);parser.add_argument('--write',action='store_true')
     args=parser.parse_args()
-    result={version:extract(args.sources/version) for version in ('7.5','7.6')}
+    result={version:extract(args.sources/version) for version in VERSIONS}
     if args.write:
         target=ROOT/'scripts/openatv-contracts.json'
         target.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
