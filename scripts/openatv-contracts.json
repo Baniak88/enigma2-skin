@@ -111,6 +111,37 @@
         },
         "required": []
       },
+      "ChannelSelection_NoPIG": {
+        "class": "ChannelSelection",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "list": "ServiceListLegacy",
+          "channelSelectBaseActions": "HelpableNumberActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "newNavigationActions": "HelpableActionMap",
+          "neutrinoNavigationActions": "HelpableActionMap",
+          "key_menu": "StaticText",
+          "channelSelectEditActions": "ChannelSelectionEditActionMap",
+          "key_info": "StaticText",
+          "channelSelectEPGActions": "ButtonSetupActionMap",
+          "recordingActions": "HelpableActionMap",
+          "dialogActions": "HelpableActionMap",
+          "Service": "ServiceEvent",
+          "ServiceEvent": "ServiceEvent",
+          "Event": "Event",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
       "ChannelSelectionRadio": {
         "class": "ChannelSelectionRadio",
         "widgets": {
@@ -1542,6 +1573,37 @@
         },
         "required": []
       },
+      "ChannelSelection_NoPIG": {
+        "class": "ChannelSelection",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "list": "ServiceListLegacy",
+          "channelSelectBaseActions": "HelpableNumberActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "newNavigationActions": "HelpableActionMap",
+          "neutrinoNavigationActions": "HelpableActionMap",
+          "key_menu": "StaticText",
+          "channelSelectEditActions": "ChannelSelectionEditActionMap",
+          "key_info": "StaticText",
+          "channelSelectEPGActions": "ButtonSetupActionMap",
+          "recordingActions": "HelpableActionMap",
+          "dialogActions": "HelpableActionMap",
+          "Service": "ServiceEvent",
+          "ServiceEvent": "ServiceEvent",
+          "Event": "Event",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
       "ChannelSelectionRadio": {
         "class": "ChannelSelectionRadio",
         "widgets": {
@@ -2878,6 +2940,7 @@
       "lib/python/Components/Converter/TemplatedMultiContent.py": "f5e145366c2650890e28baf9855942da71e3feaea5e4d46e0e4adaa10c39bc2a",
       "lib/python/Components/EpgList.py": "28b201cf95b746873717c68e07ba6df8c82159e4c9615ea0d53f95698e828179",
       "lib/python/Components/Renderer/Picon.py": "784854d368965cd2ef53c59bfb3b6889e8ec0b3fd80cb82f4ed51d080af08810",
+      "lib/python/Components/Renderer/Pig.py": "e7dbb27f9606400ffe81f1ccfb24cf8a2c7e1d643a6ec4e8b3a71f3fd2f0aff8",
       "lib/python/Components/ServiceList.py": "ec55abf9c7a22481ed157ca14887f018fbac451195fa1a9f093bf8cff1232a6a",
       "lib/python/Screens/AudioSelection.py": "3886d34b721b536a0241a8be7f7b422f324729eaad16515c62ba58f7fb9341fb",
       "lib/python/Screens/ChannelSelection.py": "5129bad4f7639510b8e67ee55e07b9d618fc9b3521231ffedde9a42a268f5c02",
@@ -2950,6 +3013,37 @@
         "required": []
       },
       "ChannelSelection_PIG": {
+        "class": "ChannelSelection",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "list": "ServiceListLegacy",
+          "channelSelectBaseActions": "HelpableNumberActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "newNavigationActions": "HelpableActionMap",
+          "neutrinoNavigationActions": "HelpableActionMap",
+          "key_menu": "StaticText",
+          "channelSelectEditActions": "ChannelSelectionEditActionMap",
+          "key_info": "StaticText",
+          "channelSelectEPGActions": "ButtonSetupActionMap",
+          "recordingActions": "HelpableActionMap",
+          "dialogActions": "HelpableActionMap",
+          "Service": "ServiceEvent",
+          "ServiceEvent": "ServiceEvent",
+          "Event": "Event",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "ChannelSelection_NoPIG": {
         "class": "ChannelSelection",
         "widgets": {
           "ScreenPath": "StaticText",

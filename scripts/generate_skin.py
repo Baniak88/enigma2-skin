@@ -7,7 +7,7 @@ from pathlib import Path
 import xml.etree.ElementTree as E
 
 ROOT = Path(__file__).resolve().parents[1]
-PALETTE = dict(bg='0c0e10', panel='191c20', white='f5f5f5', muted='a5adb6',
+PALETTE = dict(bg='0c0e10', panel='191c20', selected='1c352b', white='f2f5f7', muted='b0bbc5',
                green='00e676', line='30363d', red='ff6262', yellow='f5ce55', blue='5eacff')
 skin = E.Element('skin')
 
@@ -20,14 +20,14 @@ def box(s, x, y, w, h, color='line', **kw):
     return add(s, 'eLabel', position=f'{x},{y}', size=f'{w},{h}', backgroundColor=color, **kw)
 
 
-def label(s, text, x, y, w, h, font=28, color='white', **kw):
+def label(s, text, x, y, w, h, font=28, color='white', family='CanalText', **kw):
     return add(s, 'eLabel', text=text, position=f'{x},{y}', size=f'{w},{h}',
-               font=f'Regular;{font}', foregroundColor=color, transparent='1', **kw)
+               font=f'{family};{font}', foregroundColor=color, transparent='1', **kw)
 
 
 def widget(s, name, x, y, w, h, font=None, **kw):
     return add(s, 'widget', name=name, position=f'{x},{y}', size=f'{w},{h}',
-               font=f'Regular;{font}' if font else None, **kw)
+               font=f'CanalText;{font}' if font else None, **kw)
 
 
 def source(s, name, x, y, w, h, font=28, color='white', render='Label', converts=(), **kw):
@@ -36,7 +36,7 @@ def source(s, name, x, y, w, h, font=28, color='white', render='Label', converts
     if render in ('Label', 'FixedLabel'):
         kw.setdefault('transparent', '1')
     n = add(s, 'widget', source=name, render=render, position=f'{x},{y}', size=f'{w},{h}',
-            font=f'Regular;{font}' if render in ('Label', 'FixedLabel') else None,
+            font=f'CanalText;{font}' if render in ('Label', 'FixedLabel') else None,
             **kw)
     for kind, arg in converts:
         add(n, 'convert', type=kind).text = arg
@@ -49,11 +49,11 @@ def screen(name, pos=(0, 0), size=(1920, 1080), bg='bg'):
 
 
 def header(s, section):
-    label(s, 'CANALPL', 64, 38, 320, 60, 42)
-    label(s, section, 420, 46, 1110, 48, 28, 'green')
-    source(s, 'global.CurrentTime', 1600, 40, 256, 58, 38, halign='right', converts=[('ClockToText', 'Default')])
-    box(s, 64, 126, 1792, 3, 'green')
-    source(s, 'Title', 64, 150, 1792, 52, 32, 'muted', noWrap='1')
+    label(s, 'CANALPL', 64, 38, 320, 60, 40, family='CanalStrong')
+    label(s, section, 420, 48, 1110, 44, 25, 'muted')
+    source(s, 'global.CurrentTime', 1600, 40, 256, 58, 36, halign='right', converts=[('ClockToText', 'Default')])
+    box(s, 64, 126, 1792, 2, 'green')
+    source(s, 'Title', 64, 150, 1792, 48, 27, 'muted', noWrap='1')
 
 
 def footer(s, keys=('red', 'green', 'yellow', 'blue')):
@@ -65,7 +65,7 @@ def footer(s, keys=('red', 'green', 'yellow', 'blue')):
 
 
 LIST = dict(backgroundColor='bg', foregroundColor='white',
-            backgroundColorSelected='green', foregroundColorSelected='bg', scrollbarMode='showOnDemand')
+            backgroundColorSelected='selected', foregroundColorSelected='white', scrollbarMode='showOnDemand')
 
 
 def picon(s, src, x, y, w=220, h=132):
@@ -97,22 +97,24 @@ def build():
     add(colors, 'color', name='overlay', value='#100c0e10')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
-    add(style, 'title', offset='24,12', font='Regular;30')
+    add(style, 'title', offset='24,12', font='CanalText;30')
     for name, color in dict(Background='bg', LabelForeground='white', ListboxBackground='bg', ListboxForeground='white',
-        ListboxSelectedBackground='green', ListboxSelectedForeground='bg', ListboxMarkedBackground='panel',
+        ListboxSelectedBackground='selected', ListboxSelectedForeground='white', ListboxMarkedBackground='panel',
         ListboxMarkedForeground='green', ListboxMarkedAndSelectedBackground='green',
         ListboxMarkedAndSelectedForeground='bg', WindowTitleForeground='white', WindowTitleBackground='bg').items():
         add(style, 'color', name=name, color=color)
     fonts = add(skin, 'fonts')
+    add(fonts,'font',filename='DejaVuSans.ttf',name='CanalText',scale='100')
+    add(fonts,'font',filename='LiberationSans-Bold.ttf',name='CanalStrong',scale='100')
     for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('MenuFont',32,64)]:
-        add(fonts, 'alias', name=name, font='Regular', size=size, height=height)
+        add(fonts, 'alias', name=name, font='CanalText', size=size, height=height)
 
     s = screen('Menu'); header(s, 'MENU'); footer(s)
     n = source(s, 'menu', 64, 240, 1080, 640, render='Listbox', **LIST)
     common = 'MultiContentEntryText(pos=(92,0),size=(950,80),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=3)'
     icon = 'MultiContentEntryPixmapAlphaBlend(pos=(16,12),size=(56,56),png=1,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO)'
     number = 'MultiContentEntryText(pos=(12,0),size=(60,80),font=1,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER,text=2)'
-    templated(n, '{"fonts":[gFont("Regular",32),gFont("Regular",26)],"templates":{' +
+    templated(n, '{"fonts":[gFont("CanalText",32),gFont("CanalText",26)],"templates":{' +
         ','.join('"%s":(80,[%s])' % (k, v) for k,v in {
             'default': 'MultiContentEntryText(pos=(24,0),size=(1030,80),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=0)',
             'text':common, 'number':number+','+common, 'image':icon+','+common,
@@ -123,24 +125,38 @@ def build():
     source(s, 'description', 1264, 540, 592, 266, 32, 'muted')
     label(s, 'OK  Wybierz     EXIT  Powrót', 64, 906, 1080, 42, 24, 'muted')
 
-    for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelectionRadio'):
-        s = screen(name); header(s, 'TELEWIZJA / BUKIETY' if name != 'ChannelSelectionRadio' else 'RADIO / BUKIETY'); footer(s)
-        s.set('base','ChannelSelection'); s.set('label','CanalPL — '+('podgląd TV' if name.endswith('PIG') else 'lista'))
-        widget(s, 'list', 64, 236, 1160, 684, serviceNameFont='Regular;29', serviceInfoFont='Regular;24',
-            serviceNumberFont='Regular;26', serviceItemHeight='68', foregroundColorEvent='muted',
-            foregroundColorEventSelected='bg', colorEventProgressbar='green', colorEventProgressbarSelected='bg', **LIST)
-        box(s, 1260, 236, 2, 684)
-        picon(s, 'ServiceEvent', 1312, 236)
-        source(s, 'ServiceEvent', 1312, 390, 544, 48, 30, 'green', converts=[('ServiceName','Name')], noWrap='1')
-        event(s, 'ServiceEvent', 1312, 464, 544)
-        if name == 'ChannelSelection_PIG':
-            # Wariant PIG: obraz zamiast opisu; układ listy pozostaje taki sam.
-            s.remove(s[-1])
-            source(s, 'session.VideoPicture', 1312, 642, 544, 306, render='Pig', backgroundColor='transparent', zPosition='2')
+    for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio'):
+        s = screen(name); header(s, 'TELEWIZJA' if name != 'ChannelSelectionRadio' else 'RADIO'); footer(s)
+        if name != 'ChannelSelectionRadio':
+            s.set('base','ChannelSelection')
+            s.set('label',{'ChannelSelection':'CanalPL — standard z TV','ChannelSelection_PIG':'CanalPL — podgląd TV','ChannelSelection_NoPIG':'CanalPL — bez podglądu'}[name])
+        widget(s,'list',64,220,1088,704,serviceNameFont='CanalText;31',serviceInfoFont='CanalText;25',
+            serviceNumberFont='CanalText;25',serviceItemHeight='88',foregroundColorEvent='muted',
+            foregroundColorEventSelected='white',colorEventProgressbar='green',colorEventProgressbarSelected='green',**LIST)
+        label(s,'OK — kanał     INFO — opis     EXIT — powrót',64,936,1088,30,22,'muted')
+        box(s,1184,220,2,704)
+        video = name in ('ChannelSelection','ChannelSelection_PIG')
+        if video:
+            # Decoder 0: obraz aktualnie oglądanego kanału, bez drugiego tunera.
+            # Brak dekoracji w prostokącie video: przezroczyste okno OSD odsłania obraz.
+            source(s,'session.VideoPicture',1216,220,640,360,render='Pig',backgroundColor='transparent',zPosition='2')
+            label(s,'TERAZ OGLĄDASZ',1216,598,640,32,20,'muted')
+            source(s,'session.CurrentService',1216,636,640,42,27,'green',converts=[('ServiceName','Name')],noWrap='1')
+            box(s,1216,698,640,1)
+            source(s,'ServiceEvent',1216,720,640,84,31,converts=[('EventName','Name')])
+            source(s,'ServiceEvent',1216,818,130,38,25,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
+            source(s,'ServiceEvent',1356,818,170,38,25,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
+            source(s,'ServiceEvent',1216,876,640,62,23,'muted',converts=[('EventName','ExtendedDescription')])
+            label(s,'INFO — pełny opis',1216,944,640,28,20,'muted')
+        else:
+            picon(s,'ServiceEvent',1216,220)
+            source(s,'ServiceEvent',1216,384,640,48,30,'green',converts=[('ServiceName','Name')],noWrap='1')
+            event(s,'ServiceEvent',1216,464,640)
+            label(s,'INFO — pełny opis audycji',1216,878,640,44,24,'muted')
 
     for name in ('SimpleChannelSelection','SlimChannelSelection'):
         s=screen(name); header(s,'WYBIERZ KANAŁ / BUKIET'); footer(s)
-        widget(s,'list',64,236,1792,684,serviceNameFont='Regular;30',serviceInfoFont='Regular;25',serviceNumberFont='Regular;26',serviceItemHeight='68',**LIST)
+        widget(s,'list',64,236,1792,684,serviceNameFont='CanalText;30',serviceInfoFont='CanalText;25',serviceNumberFont='CanalText;26',serviceItemHeight='68',**LIST)
 
     for name in ('BouquetSelector','EPGBouquetSelector'):
         s=screen(name); header(s,'WYBÓR BUKIETU'); footer(s,('red','green'))
@@ -149,13 +165,13 @@ def build():
         label(s,'TWOJE KANAŁY',1312,260,544,70,38,'green')
         label(s,'Wybierz bukiet z listy.\n\nOK — otwórz\nEXIT — wróć',1312,372,544,300,30,'muted')
 
-    epg_attrs=dict(ServiceFontGraphical='Regular;26',EntryFontGraphical='Regular;26',ServiceFontInfobar='Regular;26',
-        EventFontInfobar='Regular;26',EventFontSingle='Regular;29',EventFontMulti='Regular;28',EventFontVertical='Regular;25',
-        TimeFontVertical='Regular;23',ServiceForegroundColor='white',ServiceForegroundColorNow='green',ServiceBackgroundColor='panel',
-        ServiceBackgroundColorNow='panel',EntryForegroundColor='white',EntryForegroundColorSelected='bg',EntryBackgroundColor='panel',
-        EntryBackgroundColorSelected='green',EntryBackgroundColorNow='panel',EntryBackgroundColorNowSelected='green',
-        EntryForegroundColorNow='white',EntryForegroundColorNowSelected='bg',EntryBackgroundColorPast='bg',
-        EntryBackgroundColorPastSelected='green',EntryForegroundColorPast='muted',EntryForegroundColorPastSelected='bg',
+    epg_attrs=dict(ServiceFontGraphical='CanalText;26',EntryFontGraphical='CanalText;26',ServiceFontInfobar='CanalText;26',
+        EventFontInfobar='CanalText;28',EventFontSingle='CanalText;30',EventFontMulti='CanalText;29',EventFontVertical='CanalText;26',
+        TimeFontVertical='CanalText;23',ServiceForegroundColor='white',ServiceForegroundColorNow='green',ServiceBackgroundColor='panel',
+        ServiceBackgroundColorNow='panel',EntryForegroundColor='white',EntryForegroundColorSelected='white',EntryBackgroundColor='panel',
+        EntryBackgroundColorSelected='selected',EntryBackgroundColorNow='panel',EntryBackgroundColorNowSelected='selected',
+        EntryForegroundColorNow='white',EntryForegroundColorNowSelected='white',EntryBackgroundColorPast='bg',
+        EntryBackgroundColorPastSelected='selected',EntryForegroundColorPast='muted',EntryForegroundColorPastSelected='white',
         EntryBorderColor='bg',ServiceBorderColor='bg',ServiceBorderWidth='2',EventBorderWidth='2',EventNamePadding='12',
         ServiceNamePadding='12',RecordForegroundColor='white',RecordForegroundColorSelected='white',RecordBackgroundColor='red',
         RecordBackgroundColorSelected='red',ZapForegroundColor='white',ZapBackgroundColor='blue',ZapForegroundColorSelected='bg',ZapBackgroundColorSelected='green')
@@ -170,7 +186,7 @@ def build():
                 source(s,'session.VideoPicture',1376,208,480,270,render='Pig',backgroundColor='transparent',zPosition='2')
             y=506 if pig else 366
             height=420 if pig else 560
-            widget(s,'timeline_text',64,y-46,1792,46,TimelineFont='Regular;26',itemHeight='46',foregroundColor='muted',backgroundColor='bg')
+            widget(s,'timeline_text',64,y-46,1792,46,TimelineFont='CanalText;26',itemHeight='46',foregroundColor='muted',backgroundColor='bg')
             widget(s,'list',64,y,1792,height,NumberOfRows='6' if pig else '8',**epg_attrs,**LIST)
             widget(s,'lab1',64,y,1792,height,32,halign='center',valign='center',backgroundColor='bg',zPosition='5')
             for i in range(6):
@@ -270,7 +286,7 @@ def build():
         tpl='[MultiContentEntryPixmapAlphaBlend(pos=(24,12),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(156,4),size=(1580,42),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1),MultiContentEntryText(pos=(156,48),size=(1580,40),font=1,text=2)]'
         if grid:
             tpl='[MultiContentEntryPixmapAlphaBlend(pos=(124,20),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(12,100),size=(324,80),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)]'
-        templated(n,'{"template":'+tpl+',"fonts":[gFont("Regular",30),gFont("Regular",24)],"itemHeight":'+('200,"itemWidth":352}' if grid else '100}'))
+        templated(n,'{"template":'+tpl+',"fonts":[gFont("CanalText",30),gFont("CanalText",24)],"itemHeight":'+('200,"itemWidth":352}' if grid else '100}'))
         widget(s,'quickselect',64,236,1792,600,80,halign='center',valign='center',transparent='1',foregroundColor='green',zPosition='5')
         widget(s,'description',64,860,1792,90,27,foregroundColor='muted',transparent='1')
 
@@ -281,7 +297,7 @@ def build():
         source(s,'key_'+key,64,244+i*56,30,40,24,key,render='FixedLabel',text='●',converts=[('ConditionalShowHide',None)])
     entries='[MultiContentEntryText(pos=(20,0),size=(90,64),font=0,flags=RT_VALIGN_CENTER,text=2),MultiContentEntryText(pos=(130,0),size=(560,64),font=0,flags=RT_VALIGN_CENTER,text=3),MultiContentEntryText(pos=(720,0),size=(860,64),font=0,flags=RT_VALIGN_CENTER,text=4),MultiContentEntryText(pos=(1640,0),size=(100,64),font=0,flags=RT_VALIGN_CENTER,text=5)]'
     n=source(s,'streams',64,560,1792,384,render='Listbox',**LIST)
-    templated(n,'{"fonts":[gFont("Regular",30)],"templates":{"default":(64,'+entries+',True,"showOnDemand"),"notselected":(64,'+entries+',False,"showOnDemand")}}')
+    templated(n,'{"fonts":[gFont("CanalText",30)],"templates":{"default":(64,'+entries+',True,"showOnDemand"),"notselected":(64,'+entries+',False,"showOnDemand")}}')
     for i,key in enumerate(('key_left','key_right')):
         widget(s,key,64+i*40,484,24,24,pixmap='CanalPL/assets/state.png',alphatest='blend')
     s=screen('QuickSubtitlesConfigMenu'); header(s,'USTAWIENIA NAPISÓW')

@@ -3,37 +3,38 @@
 <g font-family="DejaVu Sans, sans-serif">
 <rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
 <rect x="0" y="0" width="1920" height="1080" fill="#0c0e10"/>
-<text x="64" y="80.0" font-size="42" fill="#f5f5f5" text-anchor="start">CANALPL</text>
-<text x="420" y="74.0" font-size="28" fill="#00e676" text-anchor="start">MENU</text>
-<text x="1856" y="78.0" font-size="38" fill="#f5f5f5" text-anchor="end">20:45</text>
-<rect x="64" y="126" width="1792" height="3" fill="#00e676"/>
-<text x="64" y="182.0" font-size="32" fill="#a5adb6" text-anchor="start">Menu główne</text>
+<text x="64" y="78.0" font-size="40" font-weight="bold" fill="#f2f5f7" text-anchor="start">CANALPL</text>
+<text x="420" y="73.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">MENU</text>
+<text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f2f5f7" text-anchor="end">20:45</text>
+<rect x="64" y="126" width="1792" height="2" fill="#00e676"/>
+<text x="64" y="177.0" font-size="27" font-weight="normal" fill="#b0bbc5" text-anchor="start">Menu główne</text>
 <rect x="64" y="974" width="1792" height="2" fill="#30363d"/>
 <rect x="64" y="1012" width="6" height="24" fill="#ff6262"/>
-<text x="86" y="1023.0" font-size="25" fill="#f5f5f5" text-anchor="start">Wyjdź</text>
+<text x="86" y="1023.0" font-size="25" font-weight="normal" fill="#f2f5f7" text-anchor="start">Wyjdź</text>
 <rect x="512" y="1012" width="6" height="24" fill="#00e676"/>
 <rect x="960" y="1012" width="6" height="24" fill="#f5ce55"/>
 <rect x="1408" y="1012" width="6" height="24" fill="#5eacff"/>
-<text x="1430" y="1023.0" font-size="25" fill="#f5f5f5" text-anchor="start">Tryb edycji</text>
+<text x="1430" y="1023.0" font-size="25" font-weight="normal" fill="#f2f5f7" text-anchor="start">Tryb edycji</text>
 <rect x="64" y="240" width="1080" height="640" fill="#0c0e10"/>
-<rect x="64" y="240" width="1080" height="80" fill="#00e676"/>
+<rect x="64" y="240" width="1080" height="80" fill="#1c352b"/>
+<rect x="64" y="240" width="4" height="80" fill="#00e676"/>
 <image x="80" y="252" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
-<text x="156" y="290.0" font-size="32" fill="#0c0e10" text-anchor="start">Informacje</text>
+<text x="156" y="290.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Informacje</text>
 <image x="80" y="332" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAACS0lEQVR42u3TsQkAIBADQKd2ZDf4+u0V7BTRO8gCCSkFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYIOISPk3HuAg4iAOIg7iIOIgDiIO4iDiIA4iDuIg4iA/H0RD9lWgAu2LAu1rXwViXwViXwViXwViXwViXwViXwViXwUq0L4o0L72VeCk1VzGvjiIgziIAh3EQRToIPZVoIPYV4EOYl8FOoh9Fegg9lWgg9jXQRzEvg7iIA6CAh3EQRToIA6iQAexrwIdxL4KdBD7KtBB7KtAB7GvgziIfR3EQeyLgziIgyjQQRxEgQ5iXwU6iH0V6CD2VaCD2FeBDmJfBTqIfR3EQezrIA7iICjQQRxEgQ7iIAp0EPsq0EHsq0AHsa8CHcS+CnQQ+zqIg9jXQRzEvjiIgziIAh3EQRToIPZVoIPYV4EOYl8F3nyQW2JfB3EQB3EQB3EQB3EQB3EQB3EQB3EQB8FBHMRBFOggDqJA7KtA7KtA7KtA7KtA7KtA7KtABdpXgQq0Lwq0r30ViH0ViH0ViH0ViH0ViH0ViH0ViH0VqED7okD72leB9rWvArGvArGvArGvArGvArGvArGvArGvAhVoXxRoX/sqEPsqEPsqEPsqEPsqEPsqEPsqEPsqUIH2RYH2ta8C7WtfBWJfBWJfBWJfBWJfBWJfBWJfBWJfBSrQvijQvvZVIPY9VKC8HQ9wEHEQBxEHcRBxEAcRB3EQcRAHEQdxEHEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEEHU+FaUW4dTWIAAAAASUVORK5CYII="/>
-<text x="156" y="370.0" font-size="32" fill="#f5f5f5" text-anchor="start">Timery</text>
+<text x="156" y="370.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Timery</text>
 <image x="80" y="412" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAABy0lEQVR42u3ZsQkAMAgEQKfOyNnA2qwQUgSUO3CB578yAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARsrMcu71DMQ5A3HOQAzEGYiBOAMxEGcgBuIMxECcgXQeiE+RP5mBGAj6IQD0QwDohwDQDwGgHwJAPwSAfggA/RAABmIgBoJ+CAD9EAD6IQD0QwDohwDQDwGgHwJAPwSAfggAAzEQA0E/BIB+CAD9EAD6IQD0QwDohwDQDwGgHwLAQAzEQNAPAaAfAkA/BIB+CAD9EAD6IQD0QwDohwDQDwFgIAZiIOiHANAPAaAfAkA/BIB+CAD9EAD6IQD0QwAYiIEYCPohAPRDAOiHANAPAaAfAkA/BIB+CAD9EAD6IQAMxEAMBP0QAPohAPRDAOiHANAPAaAfAkA/BIB+CAADMRADMRADMRD0QwDohwDQDwGgHwJAPwSAfggA/RAA+iEADMRADAT9uA/AOQNxzkAMxBmIgTgDMRBnIAbiDMRAnIEYiDMQAAAAAAAAAAAAGG+v+npgIAaCgRgIBmIgGIiBgIGAgYCBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANDJATApuxrizPC8AAAAAElFTkSuQmCC"/>
-<text x="156" y="450.0" font-size="32" fill="#f5f5f5" text-anchor="start">Nagrania</text>
+<text x="156" y="450.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Nagrania</text>
 <image x="80" y="492" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
-<text x="156" y="530.0" font-size="32" fill="#f5f5f5" text-anchor="start">Wtyczki</text>
+<text x="156" y="530.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Wtyczki</text>
 <image x="80" y="572" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
-<text x="156" y="610.0" font-size="32" fill="#f5f5f5" text-anchor="start">Ustawienia</text>
+<text x="156" y="610.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Ustawienia</text>
 <image x="80" y="652" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
-<text x="156" y="690.0" font-size="32" fill="#f5f5f5" text-anchor="start">Czuwanie / restart</text>
+<text x="156" y="690.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Czuwanie / restart</text>
 <rect x="1200" y="240" width="2" height="640" fill="#30363d"/>
 <image x="1390" y="248" width="240" height="240" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
-<text x="1264" y="572.0" font-size="32" fill="#a5adb6" text-anchor="start">Informacje o dekoderze, obrazie</text>
-<text x="1264" y="612.0" font-size="32" fill="#a5adb6" text-anchor="start">OpenATV, tunerach, pamięci i</text>
-<text x="1264" y="652.0" font-size="32" fill="#a5adb6" text-anchor="start">połączeniu sieciowym.</text>
-<text x="64" y="930.0" font-size="24" fill="#a5adb6" text-anchor="start">OK  Wybierz     EXIT  Powrót</text>
+<text x="1264" y="572.0" font-size="32" font-weight="normal" fill="#b0bbc5" text-anchor="start">Informacje o dekoderze, obrazie</text>
+<text x="1264" y="612.0" font-size="32" font-weight="normal" fill="#b0bbc5" text-anchor="start">OpenATV, tunerach, pamięci i</text>
+<text x="1264" y="652.0" font-size="32" font-weight="normal" fill="#b0bbc5" text-anchor="start">połączeniu sieciowym.</text>
+<text x="64" y="930.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="start">OK  Wybierz     EXIT  Powrót</text>
 </g>
 </svg>

@@ -25,7 +25,7 @@ def rect(x,y,w,h,fill):
     out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{color(fill)}"/>')
 
 
-def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False):
+def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False,bold=False):
     lines=[]
     for paragraph in value.replace('\\n','\n').splitlines():
         capacity=max(1,int(w/(size*.57)))
@@ -34,7 +34,7 @@ def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False):
     anchor={'left':'start','center':'middle','right':'end'}.get(align,'start')
     tx=x+w if anchor=='end' else x+w/2 if anchor=='middle' else x
     for i,line in enumerate(lines[:max(1,int(h/(size*1.25)))]):
-        out.append(f'<text x="{tx}" y="{y+size+i*size*1.25}" font-size="{size}" fill="{color(fill)}" text-anchor="{anchor}">{escape(line)}</text>')
+        out.append(f'<text x="{tx}" y="{y+size+i*size*1.25}" font-size="{size}" font-weight="{"bold" if bold else "normal"}" fill="{color(fill)}" text-anchor="{anchor}">{escape(line)}</text>')
 
 
 def png(path,x,y,w,h):
@@ -75,21 +75,22 @@ def draw_list(name,key,x,y,w,h):
         rows=['Informacje','Timery','Nagrania','Wtyczki','Ustawienia','Czuwanie / restart']
         icons=['information','timermenu','movie_selection','plugin_selection','setup','shutdown']
         for i,row in enumerate(rows):
-            if i==0:rect(x,y,w,80,'green')
+            if i==0:rect(x,y,w,80,'selected');rect(x,y,4,80,'green')
             png(ROOT/'CanalPL/mainmenu'/(icons[i]+'.png'),x+16,y+i*80+12,56,56)
-            text(x+92,y+i*80+18,w-116,60,row,32,'bg' if i==0 else 'white',nowrap=True)
+            text(x+92,y+i*80+18,w-116,60,row,32,'white',nowrap=True)
     elif name=='BouquetSelector':
         for i,row in enumerate(['Ulubione','CANAL+','Filmy i seriale','Sport','Informacyjne','Dzieci','Dokumentalne','Radio']):
-            if i==0:rect(x,y,w,80,'green')
-            text(x+24,y+i*80+18,w-48,60,row,32,'bg' if i==0 else 'white',nowrap=True)
-    elif name=='ChannelSelection':
+            if i==0:rect(x,y,w,80,'selected');rect(x,y,4,80,'green')
+            text(x+24,y+i*80+18,w-48,60,row,32,'white',nowrap=True)
+    elif name.startswith('ChannelSelection'):
         for i,(channel,show) in enumerate(zip(CHANNELS,SHOWS)):
-            rh=76
-            if i==0:rect(x,y,w,rh,'green')
-            text(x+10,y+i*rh+22,70,50,str(i+1),25,'bg' if i==0 else 'muted','right')
-            fake_picon(i,x+100,y+i*rh+8,100,60)
-            text(x+224,y+i*rh+6,w-250,38,channel,28,'bg' if i==0 else 'white',nowrap=True)
-            text(x+224,y+i*rh+44,w-250,30,show,23,'bg' if i==0 else 'muted',nowrap=True)
+            rh=88
+            if i==0:rect(x,y,w,rh,'selected');rect(x,y,4,rh,'green')
+            else:rect(x+8,y+i*rh+87,w-8,1,'line')
+            text(x+16,y+i*rh+28,52,44,str(i+1),24,'green' if i==0 else 'muted','right')
+            fake_picon(i,x+88,y+i*rh+12,112,64)
+            text(x+236,y+i*rh+8,w-260,40,channel,32,'white',nowrap=True)
+            text(x+236,y+i*rh+52,w-260,32,show,25,'white' if i==0 else 'muted',nowrap=True)
     elif name=='GraphicalEPG' and key=='list':
         service=320;rowh=h/8;area=w-service
         for i,(channel,show) in enumerate(zip(CHANNELS,SHOWS)):
@@ -100,8 +101,9 @@ def draw_list(name,key,x,y,w,h):
             titles=[show,'Nocna zmiana' if i==0 else 'Kolejna audycja','Program wieczorny']
             for j,show in enumerate(titles):
                 xx=x+service+j*area/3
-                rect(xx,yy,area/3-2,rowh-2,'green' if i==0 and j==0 else 'panel')
-                text(xx+12,yy+18,area/3-26,rowh-18,show,25,'bg' if i==0 and j==0 else 'white',nowrap=True)
+                rect(xx,yy,area/3-2,rowh-2,'selected' if i==0 and j==0 else 'panel')
+                if i==0 and j==0:rect(xx,yy,3,rowh-2,'green')
+                text(xx+12,yy+18,area/3-26,rowh-18,show,25,'white',nowrap=True)
 
 
 def render(name,target,make_png=False):
@@ -115,8 +117,12 @@ def render(name,target,make_png=False):
         x,y=map(int,n.get('position').split(','));w,h=map(int,n.get('size').split(','));x+=ox;y+=oy
         key=n.get('name') or n.get('source','')
         if key in ('lab1','number','bouquetlist') or re_timeline(key):continue
-        if n.get('backgroundColor') and n.get('transparent')!='1':rect(x,y,w,h,n.get('backgroundColor'))
-        if n.get('render')=='Picon':fake_picon(0,x,y,w,h)
+        if n.get('backgroundColor') and n.get('backgroundColor')!='transparent' and n.get('transparent')!='1':rect(x,y,w,h,n.get('backgroundColor'))
+        if n.get('render')=='Pig':
+            rect(x,y,w,h,'#12232e');rect(x+2,y+2,w-4,2,'line')
+            out.append(f'<polygon points="{x+w/2-22},{y+h/2-38} {x+w/2-22},{y+h/2+18} {x+w/2+26},{y+h/2-10}" fill="{color("green")}"/>')
+            text(x,y+h/2+38,w,60,'Podgląd TV · 16:9',25,'muted','center')
+        elif n.get('render')=='Picon':fake_picon(0,x,y,w,h)
         elif n.tag=='ePixmap':png(ROOT/n.get('pixmap'),x,y,w,h)
         elif key=='menuimage':png(ROOT/'CanalPL/mainmenu/information.png',x,y,w,h)
         elif key=='timeline_text':
@@ -126,7 +132,7 @@ def render(name,target,make_png=False):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
-            text(x,y,w,h,value(n,name),size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1')
+            text(x,y,w,h,value(n,name),size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1',n.get('font','').startswith('CanalStrong;'))
     if name=='GraphicalEPG':rect(64+320+360,366,3,560,'green')
     out+=['</g>','</svg>']
     dest=ROOT/'docs'/target;dest.parent.mkdir(exist_ok=True);dest.write_text('\n'.join(out)+'\n')
@@ -146,12 +152,15 @@ def render_png(path):
         if tag=='rect':
             x,y,w,h=[float(n.get(k)) for k in ('x','y','width','height')];draw.rectangle((x,y,x+w,y+h),fill=n.get('fill'))
         elif tag=='text':
-            font=ImageFont.truetype('DejaVuSans.ttf',int(n.get('font-size')))
+            font=ImageFont.truetype('DejaVuSans-Bold.ttf' if n.get('font-weight')=='bold' else 'DejaVuSans.ttf',int(n.get('font-size')))
             draw.text((float(n.get('x')),float(n.get('y'))),n.text or '',font=font,fill=n.get('fill'),anchor={'start':'ls','middle':'ms','end':'rs'}[n.get('text-anchor')])
         elif tag=='image':
             pic=Image.open(io.BytesIO(base64.b64decode(n.get('href').split(',')[1]))).convert('RGBA')
             pic=pic.resize((int(float(n.get('width'))),int(float(n.get('height')))))
             im.paste(pic,(int(float(n.get('x'))),int(float(n.get('y')))),pic)
+        elif tag=='polygon':
+            points=[tuple(map(float,p.split(','))) for p in n.get('points').split()]
+            draw.polygon(points,fill=n.get('fill'))
     im.resize((1280,720),Image.Resampling.LANCZOS).save(path.with_suffix('.png'))
 
 

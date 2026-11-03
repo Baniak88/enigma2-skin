@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.2.2
+# OpenATV — zakres zgodności 0.3.0
 
 Układy CanalPL są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -29,7 +29,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 | Obszar | Nazwy ekranów |
 | --- | --- |
 | Menu | Menu (tryby default, text, number, image, both) |
-| Kanały | ChannelSelection, ChannelSelection_PIG, ChannelSelectionRadio, SimpleChannelSelection, SlimChannelSelection |
+| Kanały | ChannelSelection, ChannelSelection_PIG, ChannelSelectionRadio, SimpleChannelSelection, SlimChannelSelection, ChannelSelection_NoPIG |
 | Bukiety | BouquetSelector, EPGBouquetSelector, lista bukietów wewnątrz EPG |
 | EPG | EPGSelection, EPGSelectionMulti, QuickEPG, GraphicalEPG, GraphicalEPGPIG, GraphicalInfoBarEPG, EPGvertical, EPGverticalPIG |
 | Audycja | EventView, InfoBarEventView |
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 40 ekranów CanalPL.
+definicji. Mogą mieć inny układ niż 41 ekranów CanalPL.
 
 ## Ważne różnice względem 0.1.0
 
@@ -100,3 +100,25 @@ oraz 8.0 przeszły próby znalezionego/brakującego logo, wyłączenia pikon i
 wyczyszczenia źródła z zastąpioną warstwą C++:
 `python3 scripts/check_upstream_picons.py <katalog-checkoutów>`.
 Nie jest to uruchomienie interfejsu na fizycznym dekoderze.
+
+## Układ i podgląd 0.3.0
+
+Domyślny ChannelSelection ma teraz natywny `session.VideoPicture` / `Pig`.
+Wcześniej to okno było obecne wyłącznie w oddzielnym wariancie PIG. Podgląd ma
+rozmiar 640×360, osobne miejsce na nazwę oglądanego kanału oraz panel opisu
+zaznaczonej audycji. Dodano ChannelSelection_NoPIG jako wariant bez wideo.
+
+Fonty `CanalText` i `CanalStrong` wskazują odpowiednio DejaVuSans.ttf oraz
+LiberationSans-Bold.ttf dostarczane przez Enigma2 (`data/fonts/Makefile.am` w
+7.5, 7.6, 8.0). Nie redefiniujemy globalnego fontu Regular dla obcych wtyczek.
+Szablon CanalPL ma 88-pikselowe wiersze w liście o wysokości 704 pikseli,
+co daje osiem wierszy. W Legacy wysokość wiersza oblicza system na podstawie
+ustawień użytkownika; nie można wymusić ośmiu wierszy samym serviceItemHeight.
+
+Testy sprawdzają obecność podglądu w obu standardowych wariantach, brak
+zasłaniających dekoracji w oknie wideo, proporcje 16:9, fonty, rozdzielenie
+nazwy/tytułu, kontrast zaznaczenia i wariant bez wideo. Oryginalny Pig z OpenATV
+8.0 przeszedł próbę decoder=0, geometrii i przywracania pełnego ekranu ze stubem
+sterownika (`scripts/check_upstream_video.py`). Nadal potrzebny jest test obrazu
+na rzeczywistym urządzeniu. Nie zmieniamy mapowania pilota ani trybu przełączania
+kanałów przy przesuwaniu kursora.

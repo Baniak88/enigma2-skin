@@ -6,6 +6,7 @@ import zlib
 
 ROOT=Path(__file__).resolve().parents[1]/'CanalPL'
 BG=(12,14,16,255); PANEL=(25,28,32,255); GREEN=(0,230,118,255)
+SELECTED=(28,53,43,255)
 WHITE=(245,245,245,255); RED=(255,98,98,255); BLUE=(94,172,255,255)
 
 
@@ -31,7 +32,7 @@ def build():
     normal=['CurrentEvent','OtherEvent','CurrentService','OtherService','TimeLineDate','TimeLineTime']
     selected=['SelectedCurrentEvent','SelectedEvent','SelectedZapEvent']
     for name in normal+selected+['RecordEvent','SelectedRecordEvent','RecordingEvent','ZapEvent']:
-        c=GREEN if name in selected else RED if 'Record' in name else BLUE if name=='ZapEvent' else PANEL
+        c=SELECTED if name in selected else RED if 'Record' in name else BLUE if name=='ZapEvent' else PANEL
         png(Path('epg')/(name+'.png'),8,8,c)
     for name in ['BorderTop','BorderBottom','BorderLeft','BorderRight','SelectedBorderTop','SelectedBorderBottom','SelectedBorderLeft','SelectedBorderRight']:
         png(Path('epg')/(name+'.png'),2,2,BG)
