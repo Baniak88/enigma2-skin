@@ -3,9 +3,9 @@
 set -eu
 SOURCE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 ROOT=${DESTDIR:-}
-TARGET="$ROOT/usr/share/enigma2/CanalPL"
-if [ ! -f "$SOURCE/CanalPL/skin.xml" ]; then
-    echo 'Brak CanalPL/skin.xml obok install.sh.' >&2
+TARGET="$ROOT/usr/share/enigma2/TvSat"
+if [ ! -f "$SOURCE/TvSat/skin.xml" ]; then
+    echo 'Brak TvSat/skin.xml obok install.sh.' >&2
     exit 1
 fi
 if [ -z "$ROOT" ] && [ ! -d /usr/share/enigma2 ]; then
@@ -18,14 +18,14 @@ if [ -L "$TARGET" ]; then
 fi
 PARENT="$ROOT/usr/share/enigma2"
 mkdir -p "$PARENT"
-STAGE="$PARENT/.CanalPL-install-$$"
+STAGE="$PARENT/.TvSat-install-$$"
 if [ -e "$STAGE" ] || [ -L "$STAGE" ]; then
     echo 'Katalog tymczasowy już istnieje.' >&2
     exit 1
 fi
 mkdir "$STAGE"
 trap 'rm -rf "$STAGE"' EXIT HUP INT TERM
-cp -R "$SOURCE/CanalPL/." "$STAGE/"
+cp -R "$SOURCE/TvSat/." "$STAGE/"
 find "$STAGE" -type d -exec chmod 755 {} \;
 find "$STAGE" -type f -exec chmod 644 {} \;
 BACKUP=
@@ -39,4 +39,4 @@ if ! mv "$STAGE" "$TARGET"; then
     exit 1
 fi
 echo "Zainstalowano: $TARGET/skin.xml"
-echo 'Wybierz CanalPL w ustawieniach interfejsu/skórek, następnie uruchom ponownie GUI.'
+echo 'Wybierz TvSat w ustawieniach interfejsu/skórek, następnie uruchom ponownie GUI.'

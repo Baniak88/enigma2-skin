@@ -4,7 +4,7 @@ from pathlib import Path
 import struct
 import zlib
 
-ROOT=Path(__file__).resolve().parents[1]/'CanalPL'
+ROOT=Path(__file__).resolve().parents[1]/'TvSat'
 BG=(12,14,16,255); PANEL=(25,28,32,255); GREEN=(0,230,118,255)
 SELECTED=(28,53,43,255)
 WHITE=(245,245,245,255); RED=(255,98,98,255); BLUE=(94,172,255,255)

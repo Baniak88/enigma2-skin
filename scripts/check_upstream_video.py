@@ -35,7 +35,7 @@ def check(sources):
     ns={'Renderer':Renderer,'eVideoWidget':Video,'getDesktop':lambda index:SimpleNamespace(size=lambda:(1920,1080)),'PipPigMode':calls.append}
     exec(compile(ast.Module(body=[node],type_ignores=[]),str(path),'exec'),ns)
     for name in ('ChannelSelection','ChannelSelection_PIG'):
-        xml=E.parse(ROOT/'CanalPL/skin.xml').getroot().find(f"screen[@name='{name}']/widget[@render='Pig']")
+        xml=E.parse(ROOT/'TvSat/skin.xml').getroot().find(f"screen[@name='{name}']/widget[@render='Pig']")
         pos=tuple(map(int,xml.get('position').split(',')));size=tuple(map(int,xml.get('size').split(',')))
         renderer=ns['Pig']();renderer.skinAttributes=list(xml.attrib.items());renderer.instance=Video(pos,size)
         renderer.postWidgetCreate(renderer.instance)

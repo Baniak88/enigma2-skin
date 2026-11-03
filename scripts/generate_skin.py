@@ -20,14 +20,14 @@ def box(s, x, y, w, h, color='line', **kw):
     return add(s, 'eLabel', position=f'{x},{y}', size=f'{w},{h}', backgroundColor=color, **kw)
 
 
-def label(s, text, x, y, w, h, font=28, color='white', family='CanalText', **kw):
+def label(s, text, x, y, w, h, font=28, color='white', family='TvSatText', **kw):
     return add(s, 'eLabel', text=text, position=f'{x},{y}', size=f'{w},{h}',
                font=f'{family};{font}', foregroundColor=color, transparent='1', **kw)
 
 
 def widget(s, name, x, y, w, h, font=None, **kw):
     return add(s, 'widget', name=name, position=f'{x},{y}', size=f'{w},{h}',
-               font=f'CanalText;{font}' if font else None, **kw)
+               font=f'TvSatText;{font}' if font else None, **kw)
 
 
 def source(s, name, x, y, w, h, font=28, color='white', render='Label', converts=(), **kw):
@@ -36,7 +36,7 @@ def source(s, name, x, y, w, h, font=28, color='white', render='Label', converts
     if render in ('Label', 'FixedLabel'):
         kw.setdefault('transparent', '1')
     n = add(s, 'widget', source=name, render=render, position=f'{x},{y}', size=f'{w},{h}',
-            font=f'CanalText;{font}' if render in ('Label', 'FixedLabel') else None,
+            font=f'TvSatText;{font}' if render in ('Label', 'FixedLabel') else None,
             **kw)
     for kind, arg in converts:
         add(n, 'convert', type=kind).text = arg
@@ -49,7 +49,7 @@ def screen(name, pos=(0, 0), size=(1920, 1080), bg='bg'):
 
 
 def header(s, section):
-    label(s, 'CANALPL', 64, 38, 320, 60, 40, family='CanalStrong')
+    label(s, 'TvSat', 64, 38, 320, 60, 40, family='TvSatStrong')
     label(s, section, 420, 48, 1110, 44, 25, 'muted')
     source(s, 'global.CurrentTime', 1600, 40, 256, 58, 36, halign='right', converts=[('ClockToText', 'Default')])
     box(s, 64, 126, 1792, 2, 'green')
@@ -71,7 +71,7 @@ LIST = dict(backgroundColor='bg', foregroundColor='white',
 def picon(s, src, x, y, w=220, h=132):
     # Screen.createGUIScreen tworzy additionalWidgets PO rendererach.
     # Jawne warstwy są konieczne: dekoracja z tym samym z zasłoniłaby Picon.
-    add(s,'ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap='CanalPL/picon_default.png',
+    add(s,'ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap='TvSat/picon_default.png',
         scale='1',alphatest='blend',zPosition='0')
     return source(s, src, x, y, w, h, render='Picon', converts=[('ServiceName', 'Reference')],
         alphatest='blend',zPosition='1',backgroundColor='panel',transparent='0')
@@ -97,17 +97,17 @@ def build():
     add(colors, 'color', name='overlay', value='#100c0e10')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
-    add(style, 'title', offset='24,12', font='CanalText;30')
+    add(style, 'title', offset='24,12', font='TvSatText;30')
     for name, color in dict(Background='bg', LabelForeground='white', ListboxBackground='bg', ListboxForeground='white',
         ListboxSelectedBackground='selected', ListboxSelectedForeground='white', ListboxMarkedBackground='panel',
         ListboxMarkedForeground='green', ListboxMarkedAndSelectedBackground='green',
         ListboxMarkedAndSelectedForeground='bg', WindowTitleForeground='white', WindowTitleBackground='bg').items():
         add(style, 'color', name=name, color=color)
     fonts = add(skin, 'fonts')
-    add(fonts,'font',filename='DejaVuSans.ttf',name='CanalText',scale='100')
-    add(fonts,'font',filename='LiberationSans-Bold.ttf',name='CanalStrong',scale='100')
+    add(fonts,'font',filename='DejaVuSans.ttf',name='TvSatText',scale='100')
+    add(fonts,'font',filename='LiberationSans-Bold.ttf',name='TvSatStrong',scale='100')
     for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('ChoiceList',30,72), ('MenuFont',32,64)]:
-        add(fonts, 'alias', name=name, font='CanalText', size=size, height=height)
+        add(fonts, 'alias', name=name, font='TvSatText', size=size, height=height)
     parameters=add(skin,'parameters')
     for name,value in {
         'ChoicelistName':'64,16,1712,40',
@@ -122,7 +122,7 @@ def build():
     common = 'MultiContentEntryText(pos=(92,0),size=(950,80),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=3)'
     icon = 'MultiContentEntryPixmapAlphaBlend(pos=(16,12),size=(56,56),png=1,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO)'
     number = 'MultiContentEntryText(pos=(12,0),size=(60,80),font=1,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER,text=2)'
-    templated(n, '{"fonts":[gFont("CanalText",32),gFont("CanalText",26)],"templates":{' +
+    templated(n, '{"fonts":[gFont("TvSatText",32),gFont("TvSatText",26)],"templates":{' +
         ','.join('"%s":(80,[%s])' % (k, v) for k,v in {
             'default': 'MultiContentEntryText(pos=(24,0),size=(1030,80),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=0)',
             'text':common, 'number':number+','+common, 'image':icon+','+common,
@@ -138,12 +138,12 @@ def build():
     label(s,'DOSTĘPNE DZIAŁANIA  ·  OK wybierz',736,214,1120,34,20,'muted')
     box(s,704,260,2,608)
     n=source(s,'mainlist',64,260,608,608,render='Listbox',**LIST)
-    templated(n,'{"fonts":[gFont("CanalText",30),gFont("CanalText",22)],"itemHeight":76,"template":['
+    templated(n,'{"fonts":[gFont("TvSatText",30),gFont("TvSatText",22)],"itemHeight":76,"template":['
         'MultiContentEntryPixmapAlphaBlend(pos=(12,14),size=(52,48),png=2,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
         'MultiContentEntryText(pos=(88,4),size=(496,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),'
         'MultiContentEntryText(pos=(88,44),size=(496,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}')
     n=source(s,'sublist',736,260,1120,608,render='Listbox',**LIST)
-    templated(n,'{"fonts":[gFont("CanalText",30),gFont("CanalText",23)],"itemHeight":76,"template":['
+    templated(n,'{"fonts":[gFont("TvSatText",30),gFont("TvSatText",23)],"itemHeight":76,"template":['
         'MultiContentEntryText(pos=(20,4),size=(1080,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),'
         'MultiContentEntryText(pos=(20,44),size=(1080,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}')
     widget(s,'description',64,888,1792,72,25,foregroundColor='muted',transparent='1')
@@ -152,9 +152,9 @@ def build():
         s = screen(name); header(s, 'TELEWIZJA' if name != 'ChannelSelectionRadio' else 'RADIO'); footer(s)
         if name != 'ChannelSelectionRadio':
             s.set('base','ChannelSelection')
-            s.set('label',{'ChannelSelection':'CanalPL — standard z TV','ChannelSelection_PIG':'CanalPL — podgląd TV','ChannelSelection_NoPIG':'CanalPL — bez podglądu'}[name])
-        widget(s,'list',64,220,1088,704,serviceNameFont='CanalText;31',serviceInfoFont='CanalText;25',
-            serviceNumberFont='CanalText;25',serviceItemHeight='88',foregroundColorEvent='muted',
+            s.set('label',{'ChannelSelection':'TvSat — standard z TV','ChannelSelection_PIG':'TvSat — podgląd TV','ChannelSelection_NoPIG':'TvSat — bez podglądu'}[name])
+        widget(s,'list',64,220,1088,704,serviceNameFont='TvSatText;31',serviceInfoFont='TvSatText;25',
+            serviceNumberFont='TvSatText;25',serviceItemHeight='88',foregroundColorEvent='muted',
             foregroundColorEventSelected='white',colorEventProgressbar='green',colorEventProgressbarSelected='green',**LIST)
         label(s,'OK — kanał     INFO — opis     EXIT — powrót',64,936,1088,30,22,'muted')
         box(s,1184,220,2,704)
@@ -179,7 +179,7 @@ def build():
 
     for name in ('SimpleChannelSelection','SlimChannelSelection'):
         s=screen(name); header(s,'WYBIERZ KANAŁ / BUKIET'); footer(s)
-        widget(s,'list',64,236,1792,684,serviceNameFont='CanalText;30',serviceInfoFont='CanalText;25',serviceNumberFont='CanalText;26',serviceItemHeight='68',**LIST)
+        widget(s,'list',64,236,1792,684,serviceNameFont='TvSatText;30',serviceInfoFont='TvSatText;25',serviceNumberFont='TvSatText;26',serviceItemHeight='68',**LIST)
 
     for name in ('BouquetSelector','EPGBouquetSelector'):
         s=screen(name); header(s,'WYBÓR BUKIETU'); footer(s,('red','green'))
@@ -188,9 +188,9 @@ def build():
         label(s,'TWOJE KANAŁY',1312,260,544,70,38,'green')
         label(s,'Wybierz bukiet z listy.\n\nOK — otwórz\nEXIT — wróć',1312,372,544,300,30,'muted')
 
-    epg_attrs=dict(ServiceFontGraphical='CanalText;26',EntryFontGraphical='CanalText;26',ServiceFontInfobar='CanalText;26',
-        EventFontInfobar='CanalText;28',EventFontSingle='CanalText;30',EventFontMulti='CanalText;29',EventFontVertical='CanalText;26',
-        TimeFontVertical='CanalText;23',ServiceForegroundColor='white',ServiceForegroundColorNow='green',ServiceBackgroundColor='panel',
+    epg_attrs=dict(ServiceFontGraphical='TvSatText;26',EntryFontGraphical='TvSatText;26',ServiceFontInfobar='TvSatText;26',
+        EventFontInfobar='TvSatText;28',EventFontSingle='TvSatText;30',EventFontMulti='TvSatText;29',EventFontVertical='TvSatText;26',
+        TimeFontVertical='TvSatText;23',ServiceForegroundColor='white',ServiceForegroundColorNow='green',ServiceBackgroundColor='panel',
         ServiceBackgroundColorNow='panel',EntryForegroundColor='white',EntryForegroundColorSelected='white',EntryBackgroundColor='panel',
         EntryBackgroundColorSelected='selected',EntryBackgroundColorNow='panel',EntryBackgroundColorNowSelected='selected',
         EntryForegroundColorNow='white',EntryForegroundColorNowSelected='white',EntryBackgroundColorPast='bg',
@@ -209,18 +209,18 @@ def build():
                 source(s,'session.VideoPicture',1376,208,480,270,render='Pig',backgroundColor='transparent',zPosition='2')
             y=506 if pig else 366
             height=420 if pig else 560
-            widget(s,'timeline_text',64,y-46,1792,46,TimelineFont='CanalText;26',itemHeight='46',foregroundColor='muted',backgroundColor='bg')
+            widget(s,'timeline_text',64,y-46,1792,46,TimelineFont='TvSatText;26',itemHeight='46',foregroundColor='muted',backgroundColor='bg')
             widget(s,'list',64,y,1792,height,NumberOfRows='6' if pig else '8',**epg_attrs,**LIST)
             widget(s,'lab1',64,y,1792,height,32,halign='center',valign='center',backgroundColor='bg',zPosition='5')
             for i in range(6):
-                widget(s,f'timeline{i}',64,y,2,height,pixmap='CanalPL/assets/timeline.png',scale='1',zPosition='2')
-            widget(s,'timeline_now',64,y,4,height,pixmap='CanalPL/assets/timeline-now.png',scale='1',zPosition='3')
+                widget(s,f'timeline{i}',64,y,2,height,pixmap='TvSat/assets/timeline.png',scale='1',zPosition='2')
+            widget(s,'timeline_now',64,y,4,height,pixmap='TvSat/assets/timeline-now.png',scale='1',zPosition='3')
             widget(s,'bouquetlist',64,y,720,height,30,itemHeight='70',zPosition='4',**LIST)
         else:
             if multi:
                 for i,part in enumerate(('now','next','more')):
-                    widget(s,part+'_button',64+i*240,216,224,48,pixmap='CanalPL/epg/OtherEvent.png')
-                    widget(s,part+'_button_sel',64+i*240,216,224,48,pixmap='CanalPL/epg/SelectedEvent.png',zPosition='1')
+                    widget(s,part+'_button',64+i*240,216,224,48,pixmap='TvSat/epg/OtherEvent.png')
+                    widget(s,part+'_button_sel',64+i*240,216,224,48,pixmap='TvSat/epg/SelectedEvent.png',zPosition='1')
                     widget(s,part+'_text',76+i*240,222,200,40,25,transparent='1',zPosition='2',halign='center')
                 widget(s,'date',1440,216,416,48,26,halign='right',transparent='1')
             else:
@@ -280,7 +280,7 @@ def build():
         s=screen(name,pos=(320,200),size=(1280,680))
         box(s,0,0,1280,4,'green')
         source(s,'Title',40,32,1200,58,36)
-        widget(s,'icon',40,132,80,80,pixmaps=','.join('CanalPL/assets/'+x+'.png' for x in ('question','info','warning','error','message')),conditional='icon',alphatest='blend',scale='1')
+        widget(s,'icon',40,132,80,80,pixmaps=','.join('TvSat/assets/'+x+'.png' for x in ('question','info','warning','error','message')),conditional='icon',alphatest='blend',scale='1')
         widget(s,'text',160,132,1080,344,30,transparent='1')
         widget(s,'list',40,508,1200,128,30,itemHeight='64',**LIST)
 
@@ -291,13 +291,13 @@ def build():
         widget(s,'chosenletter',64,236,1160,650,80,halign='center',valign='center',foregroundColor='green',transparent='1',zPosition='6')
         # OpenATV odwołuje się do instance DescriptionBorder przy zmianie trybu opisu.
         # Wąska niewidoczna ramka zachowuje wymagany obiekt bez panelu pod listą.
-        widget(s,'DescriptionBorder',64,236,1,1,pixmap='CanalPL/assets/state.png',alphatest='blend')
+        widget(s,'DescriptionBorder',64,236,1,1,pixmap='TvSat/assets/state.png',alphatest='blend')
         source(s,'Service',1312,236,544,140,32,converts=[('MovieInfo','ShortDescription')])
         source(s,'Service',1312,412,544,50,26,'green',converts=[('MovieInfo','RecordServiceName')])
         source(s,'Service',1312,508,544,340,27,'muted',converts=[('EventName','ExtendedDescription')])
         widget(s,'freeDiskSpace',64,916,1792,40,25,foregroundColor='muted',transparent='1',halign='right')
         for i,key in enumerate(('movie_sort','movie_off')):
-            widget(s,key,64+i*48,916,32,32,pixmaps=','.join(['CanalPL/assets/state.png']*10),alphatest='blend')
+            widget(s,key,64+i*48,916,32,32,pixmaps=','.join(['TvSat/assets/state.png']*10),alphatest='blend')
 
     for name in ('TimerOverview','RecordTimerOverview','TimerEditList'):
         s=screen(name); header(s,'ZAPLANOWANE NAGRANIA'); footer(s)
@@ -311,7 +311,7 @@ def build():
         tpl='[MultiContentEntryPixmapAlphaBlend(pos=(24,12),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(156,4),size=(1580,42),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1),MultiContentEntryText(pos=(156,48),size=(1580,40),font=1,text=2)]'
         if grid:
             tpl='[MultiContentEntryPixmapAlphaBlend(pos=(124,20),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(12,100),size=(324,80),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)]'
-        templated(n,'{"template":'+tpl+',"fonts":[gFont("CanalText",30),gFont("CanalText",24)],"itemHeight":'+('200,"itemWidth":352}' if grid else '100}'))
+        templated(n,'{"template":'+tpl+',"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":'+('200,"itemWidth":352}' if grid else '100}'))
         widget(s,'quickselect',64,236,1792,600,80,halign='center',valign='center',transparent='1',foregroundColor='green',zPosition='5')
         widget(s,'description',64,860,1792,90,27,foregroundColor='muted',transparent='1')
 
@@ -322,9 +322,9 @@ def build():
         source(s,'key_'+key,64,244+i*56,30,40,24,key,render='FixedLabel',text='●',converts=[('ConditionalShowHide',None)])
     entries='[MultiContentEntryText(pos=(20,0),size=(90,64),font=0,flags=RT_VALIGN_CENTER,text=2),MultiContentEntryText(pos=(130,0),size=(560,64),font=0,flags=RT_VALIGN_CENTER,text=3),MultiContentEntryText(pos=(720,0),size=(860,64),font=0,flags=RT_VALIGN_CENTER,text=4),MultiContentEntryText(pos=(1640,0),size=(100,64),font=0,flags=RT_VALIGN_CENTER,text=5)]'
     n=source(s,'streams',64,560,1792,384,render='Listbox',**LIST)
-    templated(n,'{"fonts":[gFont("CanalText",30)],"templates":{"default":(64,'+entries+',True,"showOnDemand"),"notselected":(64,'+entries+',False,"showOnDemand")}}')
+    templated(n,'{"fonts":[gFont("TvSatText",30)],"templates":{"default":(64,'+entries+',True,"showOnDemand"),"notselected":(64,'+entries+',False,"showOnDemand")}}')
     for i,key in enumerate(('key_left','key_right')):
-        widget(s,key,64+i*40,484,24,24,pixmap='CanalPL/assets/state.png',alphatest='blend')
+        widget(s,key,64+i*40,484,24,24,pixmap='TvSat/assets/state.png',alphatest='blend')
     s=screen('QuickSubtitlesConfigMenu'); header(s,'USTAWIENIA NAPISÓW')
     widget(s,'config',64,236,1792,616,30,itemHeight='56',**LIST)
     widget(s,'videofps',64,890,1792,48,26,foregroundColor='muted',transparent='1')
@@ -356,17 +356,17 @@ def build():
     source(s,'session.CurrentService',1550,208,306,48,28,'muted',halign='right',converts=[('ServicePosition','Remaining,Negate')])
     widget(s,'state',1200,30,400,42,26,foregroundColor='green',transparent='1')
     widget(s,'speed',1640,30,216,42,26,transparent='1',halign='right')
-    widget(s,'statusicon',0,0,1,1,pixmaps=','.join(['CanalPL/assets/state.png']*7),alphatest='blend')
+    widget(s,'statusicon',0,0,1,1,pixmaps=','.join(['TvSat/assets/state.png']*7),alphatest='blend')
 
     for name in ('PVRState','TimeshiftState'):
         s=screen(name,pos=(64,62),size=(540,176))
         widget(s,'state',24,18,320,62,34,foregroundColor='green',transparent='1')
         widget(s,'speed',366,18,150,62,30,transparent='1',halign='right')
-        widget(s,'statusicon',0,0,1,1,pixmaps=','.join(['CanalPL/assets/state.png']*7),alphatest='blend')
+        widget(s,'statusicon',0,0,1,1,pixmaps=','.join(['TvSat/assets/state.png']*7),alphatest='blend')
         widget(s,'eventname',24,120,492,44,24,foregroundColor='muted',transparent='1')
         if name=='TimeshiftState':
-            widget(s,'PTSSeekBack',24,96,492,6,pixmap='CanalPL/assets/timeline.png',scale='1')
-            widget(s,'PTSSeekPointer',24,90,4,18,pixmap='CanalPL/assets/timeline-now.png',scale='1',zPosition='2')
+            widget(s,'PTSSeekBack',24,96,492,6,pixmap='TvSat/assets/timeline.png',scale='1')
+            widget(s,'PTSSeekPointer',24,90,4,18,pixmap='TvSat/assets/timeline-now.png',scale='1',zPosition='2')
 
     s=screen('NumberZap',pos=(1200,70),size=(656,164))
     box(s,0,0,6,164,'green')
@@ -378,7 +378,7 @@ def build():
     s=screen('Mute',pos=(1496,70),size=(360,86))
     box(s,0,0,6,86,'green'); label(s,'WYCISZONO',30,22,300,44,28)
     E.indent(skin,space='  ')
-    (ROOT/'CanalPL/skin.xml').write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n'+E.tostring(skin,encoding='utf-8')+b'\n')
+    (ROOT/'TvSat/skin.xml').write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n'+E.tostring(skin,encoding='utf-8')+b'\n')
     print(f'Generated {len(skin.findall("screen"))} OpenATV screens')
 
 

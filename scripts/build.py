@@ -7,8 +7,8 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.3.1'
-PACKAGE=f'enigma2-plugin-skins-canalpl_{VERSION}_all.ipk'
+VERSION='0.3.2'
+PACKAGE=f'enigma2-plugin-skins-tvsat_{VERSION}_all.ipk'
 
 
 def tar_gz(files, ipk=False):
@@ -43,19 +43,19 @@ def ar(files):
 def build():
     validate()
     out=ROOT/'dist';out.mkdir(exist_ok=True)
-    skinfiles=sorted(p for p in (ROOT/'CanalPL').rglob('*') if p.is_file())
+    skinfiles=sorted(p for p in (ROOT/'TvSat').rglob('*') if p.is_file())
     payload=[(str(p.relative_to(ROOT)),p.read_bytes(),0o644) for p in skinfiles]
     docs=['README.md','LICENSE','docs/COMPATIBILITY.md']
     manual=payload+[(p,(ROOT/p).read_bytes(),0o644) for p in docs]+[('install.sh',(ROOT/'install.sh').read_bytes(),0o755)]
-    (out/f'CanalPL-{VERSION}.tar.gz').write_bytes(tar_gz(manual))
-    control=(f'Package: enigma2-plugin-skins-canalpl\nVersion: {VERSION}\nArchitecture: all\n'
-             f'Maintainer: CanalPL contributors\nSection: skins\nPriority: optional\nDepends: enigma2\n'
+    (out/f'TvSat-{VERSION}.tar.gz').write_bytes(tar_gz(manual))
+    control=(f'Package: enigma2-plugin-skins-tvsat\nVersion: {VERSION}\nArchitecture: all\n'
+             f'Maintainer: TvSat contributors\nSection: skins\nPriority: optional\nDepends: enigma2\n'
              f'Installed-Size: {(sum(len(data) for _,data,_ in payload)+1023)//1024}\n'
-             'Description: CanalPL Full HD skin for OpenATV 7.5, 7.6 and 8.0\n')
+             'Description: TvSat Full HD skin for OpenATV 7.5, 7.6 and 8.0\n')
     data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload],ipk=True)
     controltar=tar_gz([('control',control.encode(),0o644)],ipk=True)
     (out/PACKAGE).write_bytes(ar([('debian-binary',b'2.0\n'),('control.tar.gz',controltar),('data.tar.gz',data)]))
-    print(out/f'CanalPL-{VERSION}.tar.gz');print(out/PACKAGE)
+    print(out/f'TvSat-{VERSION}.tar.gz');print(out/PACKAGE)
 
 
 if __name__=='__main__':

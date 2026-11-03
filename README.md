@@ -1,13 +1,27 @@
-# CanalPL 0.3.1 — skórka Enigma2 dla OpenATV
+# TvSat 0.3.2 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.1 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.2 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## TvSat — nowa nazwa i miniaturka (0.3.2)
+
+Skórka, nagłówki, style ekranu i szablon listy mają nazwę **TvSat**.
+Miniaturka `TvSat/prev.png` jest wyświetlana przez natywny wybór skórek OpenATV.
+Przedstawia układ menu z przykładowymi danymi, bez obrazu z tunera.
+
+![Miniaturka TvSat](TvSat/prev.png)
+
+TvSat instaluje się do osobnego katalogu `/usr/share/enigma2/TvSat` i używa paczki
+`enigma2-plugin-skins-tvsat`. Wcześniej zainstalowana skórka CanalPL pozostaje
+na dekoderze. Po instalacji wybierz **TvSat** w wyborze skórek i zrestartuj GUI.
+W ustawieniach listy kanałów wybierz ponownie styl **TvSat — podgląd TV**
+i szablon **TvSat**, jeśli poprzednio były ustawione warianty CanalPL.
 
 ## Układ listy kanałów — 0.3.0
 
@@ -15,15 +29,15 @@ jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
   czyli 16:9. Natywny renderer `Pig` pokazuje aktualnie odtwarzany kanał.
 - Opis zaznaczonej audycji znajduje się pod podglądem. Nie trzeba zasłaniać go
   pełnym tekstem; klawisz INFO otwiera pełny opis.
-- Czcionka interfejsu to DejaVu Sans Regular (`CanalText`), z osobnym krojem
+- Czcionka interfejsu to DejaVu Sans Regular (`TvSatText`), z osobnym krojem
   dla mocniejszych nagłówków. Oba pliki fontów dostarcza OpenATV.
 - Zaznaczenie jest ciemnozielone z białym tekstem i zielonym paskiem w szablonie
-  CanalPL. Nazwa kanału i tytuł audycji są w oddzielnych liniach.
-- Dostępny jest także wariant **CanalPL — bez podglądu**.
+  TvSat. Nazwa kanału i tytuł audycji są w oddzielnych liniach.
+- Dostępny jest także wariant **TvSat — bez podglądu**.
 
 **Aby uzyskać osiem wierszy jak na podglądzie:** w ustawieniach listy kanałów
-wybierz styl ekranu **CanalPL — podgląd TV** (lub **CanalPL — standard z TV**)
-i szablon listy **CanalPL**. Włącz pikony listy i zatwierdź zmiany.
+wybierz styl ekranu **TvSat — podgląd TV** (lub **TvSat — standard z TV**)
+i szablon listy **TvSat**. Włącz pikony listy i zatwierdź zmiany.
 W liście kanałów menu ustawień otwierasz klawiszem MENU; nazwy pozycji zależą
 od tłumaczenia OpenATV. Po aktualizacji skórki wykonaj restart GUI.
 
@@ -41,7 +55,7 @@ pozostawia pełny panel informacji.
 
 - Usunięto plus z `picon_default.png`. Pod przezroczystymi fragmentami logotypów
   znajduje się neutralne tło, które nie zawiera znaku ani innej grafiki.
-- Niebieski przycisk otwiera natywny **QuickMenu**. Ekran ma teraz układ CanalPL:
+- Niebieski przycisk otwiera natywny **QuickMenu**. Ekran ma teraz układ TvSat:
   pełny nagłówek, dwie czytelne kolumny, regularne fonty i wspólny pasek przycisków.
 - Powiększono wiersze i faktyczny font komponentu ChoiceList, z którego korzysta
   m.in. wybór nośnika do skanowania. To osobne ustawienie od fontu okna dialogowego.
@@ -80,14 +94,14 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-canalpl_0.3.1_all.ipk](packages/enigma2-plugin-skins-canalpl_0.3.1_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.3.2_all.ipk](packages/enigma2-plugin-skins-tvsat_0.3.2_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-canalpl_0.3.1_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.3.2_all.ipk
 ```
 
-Następnie wybierz **CanalPL** w ustawieniach interfejsu / wyborze skórki i zatwierdź
+Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
 restart GUI. Dokładne nazwy menu zależą od tłumaczenia i wydania OpenATV.
 Pakiet nie przełącza skórki ani nie restartuje dekodera automatycznie.
 Aktualizacjami i usuwaniem wersji `.ipk` zarządza `opkg`.
@@ -99,11 +113,11 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/CanalPL-0.3.1.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-canalpl_0.3.1_all.ipk &&
-opkg install /tmp/CanalPL-0.3.1.ipk
+wget -O /tmp/TvSat-0.3.2.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.3.2_all.ipk &&
+opkg install /tmp/TvSat-0.3.2.ipk
 ```
 
-Jeśli instalacja pakietu nie powiodła się i CanalPL nie widnieje jako zainstalowana
+Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
 paczka w `opkg`, można użyć instalacji ręcznej opisanej niżej. Pobiera ona komplet
 plików i omija obsługę `.ipk`. Nie potwierdza to działania GUI na danym sprzęcie.
 Nie uruchamiaj aktualizacji całego systemu ani opcji wymuszających zależności,
@@ -127,8 +141,8 @@ Jeżeli logo kanału nie zostanie znalezione, pozostaje neutralne pole bez symbo
    `/usr/share/enigma2/picon/`, `/media/usb/picon/`, `/media/hdd/picon/`.
    OpenATV wykrywa katalogi `picon` na zamontowanych nośnikach.
 2. Włącz wyświetlanie pikonów w ustawieniach interfejsu i listy kanałów.
-3. W ustawieniach listy kanałów wybierz styl ekranu **CanalPL — podgląd TV** i szablon
-   listy **CanalPL**, następnie włącz pikony. Są to natywne ustawienia OpenATV.
+3. W ustawieniach listy kanałów wybierz styl ekranu **TvSat — podgląd TV** i szablon
+   listy **TvSat**, następnie włącz pikony. Są to natywne ustawienia OpenATV.
    Po zmianie skórki ustawienia mogą wymagać ponownego wybrania.
 4. Jeśli używasz trybu Legacy, włącz jego oddzielne ustawienie pikonów listy.
 
@@ -151,19 +165,19 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [CanalPL-0.3.1.tar.gz](packages/CanalPL-0.3.1.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.3.2.tar.gz](packages/TvSat-0.3.2.tar.gz), prześlij do `/tmp`:
 
 ```sh
-mkdir -p /tmp/canalpl-install
-cd /tmp/canalpl-install
-tar -xzf /tmp/CanalPL-0.3.1.tar.gz
+mkdir -p /tmp/tvsat-install
+cd /tmp/tvsat-install
+tar -xzf /tmp/TvSat-0.3.2.tar.gz
 sh install.sh
 ```
 
-Instalator kopiuje **cały katalog** CanalPL razem z grafikami i szablonem.
-Przy aktualizacji zachowuje istniejący katalog jako `CanalPL.backup-...`.
+Instalator kopiuje **cały katalog** TvSat razem z grafikami i szablonem.
+Przy aktualizacji zachowuje istniejący katalog jako `TvSat.backup-...`.
 Nie zmienia ustawień użytkownika. Archiwum `.tar.gz` nie jest paczką `opkg`.
-Przez SFTP także prześlij cały katalog `CanalPL` do `/usr/share/enigma2/`;
+Przez SFTP także prześlij cały katalog `TvSat` do `/usr/share/enigma2/`;
 samo `skin.xml` nie wystarczy w tej wersji. Nie mieszaj instalacji ręcznej i `opkg`.
 
 ## Powrót do poprzedniej skórki
@@ -173,7 +187,7 @@ zaloguj się przez SSH, zatrzymaj je (`init 4` w obrazach z runlevel), zachowaj
 kopię `/etc/enigma2/settings` i usuń z niego wyłącznie wiersz:
 
 ```text
-config.skin.primary_skin=CanalPL/skin.xml
+config.skin.primary_skin=TvSat/skin.xml
 ```
 
 Uruchom GUI (`init 3` w obrazach z runlevel). Zostanie wybrana skórka domyślna.
@@ -193,10 +207,10 @@ python3 -m unittest discover -s tests -v
 ```
 
 Pliki wynikowe trafiają do `dist/`. Generowanie podglądów PNG wymaga opcjonalnego
-Pillow: `python3 scripts/preview.py --png`. Podglądy SVG nie wymagają Pillow.
+Pillow: `python3 scripts/preview.py --png --thumbnail`. Podglądy SVG nie wymagają Pillow.
 Testy sprawdzają strukturę `.ipk`, kompletność plików, instalację i kopię aktualizacji.
 Walidator porównuje widgety z zapisanymi kontraktami oficjalnego kodu OpenATV.
 To kontrole statyczne/integracyjne, a nie test uruchomienia GUI Enigma2.
 
 Do zgłoszenia problemu dołącz model dekodera, wersję OpenATV, nazwę ekranu i log
-błędu. Pliki i grafiki CanalPL: MIT. Nazwa CANAL+ należy do jej właściciela.
+błędu. Pliki i grafiki TvSat: MIT. Nazwa CANAL+ należy do jej właściciela.

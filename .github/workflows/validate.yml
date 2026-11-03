@@ -1,4 +1,4 @@
-name: Validate CanalPL
+name: Validate TvSat
 on: [push, pull_request, workflow_dispatch]
 jobs:
   validate:
@@ -12,7 +12,7 @@ jobs:
         run: |
           python3 scripts/generate_skin.py
           python3 scripts/build_assets.py
-          git diff --exit-code -- CanalPL
+          git diff --exit-code -- TvSat
       - name: Validate and test packages
         run: |
           python3 scripts/validate.py

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Odczytuje AST źródeł OpenATV, bez importowania/wykonywania ich kodu.
 
-Użycie: python3 scripts/audit_openatv.py /tmp/canalpl-openatv --write
+Użycie: python3 scripts/audit_openatv.py /tmp/tvsat-openatv --write
 Wymaga checkoutów 7.5, 7.6 i 8.0 w podkatalogach argumentu.
 Zapisany kontrakt pozwala ponawiać kontrolę bez sieci i bez odbiornika.
 """

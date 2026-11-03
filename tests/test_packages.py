@@ -45,9 +45,9 @@ class Packages(unittest.TestCase):
         self.assertIn('Depends: enigma2\n',control)
         with tarfile.open(fileobj=io.BytesIO(files['data.tar.gz'])) as t:
             names={m.name.removeprefix('./') for m in t if m.isfile()}
-            expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for p in (ROOT/'CanalPL').rglob('*') if p.is_file()}
+            expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for p in (ROOT/'TvSat').rglob('*') if p.is_file()}
             self.assertEqual(names,expected)
-            for p in (ROOT/'CanalPL').rglob('*'):
+            for p in (ROOT/'TvSat').rglob('*'):
                 if p.is_file():
                     name='./usr/share/enigma2/'+str(p.relative_to(ROOT))
                     self.assertEqual(t.extractfile(name).read(),p.read_bytes())
@@ -57,22 +57,22 @@ class Packages(unittest.TestCase):
     def test_manual_install_backup_and_symlink_refusal(self):
         with tempfile.TemporaryDirectory() as temp:
             temp=Path(temp);source=temp/'package'
-            with tarfile.open(ROOT/'dist'/f'CanalPL-{VERSION}.tar.gz') as t:
+            with tarfile.open(ROOT/'dist'/f'TvSat-{VERSION}.tar.gz') as t:
                 for m in t:
                     self.assertFalse(Path(m.name).is_absolute())
                     self.assertNotIn('..',Path(m.name).parts)
                 t.extractall(source,filter='data')
             env=dict(os.environ,DESTDIR=str(temp/'receiver'))
-            target=temp/'receiver/usr/share/enigma2/CanalPL'
+            target=temp/'receiver/usr/share/enigma2/TvSat'
             def install():
                 return subprocess.run(['sh',str(source/'install.sh')],env=env,capture_output=True,text=True)
             first=install();self.assertEqual(first.returncode,0,first.stderr)
-            for p in (ROOT/'CanalPL').rglob('*'):
-                if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'CanalPL')).read_bytes(),p.read_bytes())
+            for p in (ROOT/'TvSat').rglob('*'):
+                if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'TvSat')).read_bytes(),p.read_bytes())
             (target/'skin.xml').write_text('old skin')
             (target/'user-note').write_text('keep in backup')
             second=install();self.assertEqual(second.returncode,0,second.stderr)
-            backups=list(target.parent.glob('CanalPL.backup-*'));self.assertEqual(len(backups),1)
+            backups=list(target.parent.glob('TvSat.backup-*'));self.assertEqual(len(backups),1)
             self.assertEqual((backups[0]/'skin.xml').read_text(),'old skin')
             self.assertEqual((backups[0]/'user-note').read_text(),'keep in backup')
             self.assertFalse((target/'user-note').exists())

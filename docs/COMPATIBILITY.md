@@ -1,6 +1,6 @@
-# OpenATV — zakres zgodności 0.3.1
+# OpenATV — zakres zgodności 0.3.2
 
-Układy CanalPL są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
+Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
 Nie wykorzystujemy kodu, grafiki ani rendererów skórek z forum LinuxSat.
 Forum posłużyło jako punkt odniesienia dla zakresu typowej skórki Enigma2.
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 42 ekranów CanalPL.
+definicji. Mogą mieć inny układ niż 42 ekranów TvSat.
 
 ## Ważne różnice względem 0.1.0
 
@@ -63,7 +63,7 @@ definicji. Mogą mieć inny układ niż 42 ekranów CanalPL.
 1. Sprawdź start GUI po wyborze skórki; zachowaj dostęp SSH do przywrócenia ustawień.
 2. Otwórz menu i podmenu w każdym używanym stylu menu. Sprawdź długie polskie nazwy.
 3. W liście kanałów otwórz bukiety niebieskim klawiszem. Sprawdź kilka bukietów,
-   tryb radia i pusty bukiet. Sprawdź tryb Legacy oraz szablon CanalPL.
+   tryb radia i pusty bukiet. Sprawdź tryb Legacy oraz szablon TvSat.
 4. Sprawdź pikonę bieżącego i zaznaczonego kanału, pikonę w liście i brak logo.
 5. Otwórz EPG pojedyncze, multi, graficzne tekstowe, graficzne z teksturami,
    wariant PIG i pionowe. Zmień bukiet i dzień, otwórz opis i dodaj timer.
@@ -108,10 +108,10 @@ Wcześniej to okno było obecne wyłącznie w oddzielnym wariancie PIG. Podgląd
 rozmiar 640×360, osobne miejsce na nazwę oglądanego kanału oraz panel opisu
 zaznaczonej audycji. Dodano ChannelSelection_NoPIG jako wariant bez wideo.
 
-Fonty `CanalText` i `CanalStrong` wskazują odpowiednio DejaVuSans.ttf oraz
+Fonty `TvSatText` i `TvSatStrong` wskazują odpowiednio DejaVuSans.ttf oraz
 LiberationSans-Bold.ttf dostarczane przez Enigma2 (`data/fonts/Makefile.am` w
 7.5, 7.6, 8.0). Nie redefiniujemy globalnego fontu Regular dla obcych wtyczek.
-Szablon CanalPL ma 88-pikselowe wiersze w liście o wysokości 704 pikseli,
+Szablon TvSat ma 88-pikselowe wiersze w liście o wysokości 704 pikseli,
 co daje osiem wierszy. W Legacy wysokość wiersza oblicza system na podstawie
 ustawień użytkownika; nie można wymusić ośmiu wierszy samym serviceItemHeight.
 
@@ -136,8 +136,16 @@ Szablony konwertera sprawdzono z trzema wersjami upstream: razem 11 kombinacji
 szablonu/stylu na wersję. Zachowano aktywną kolumnę i funkcje kolorowych przycisków.
 
 ChoiceBox ma osiem wierszy po 72 piksele. Alias ChoiceList ustawia faktyczny font
-CanalText 30 w komponencie ChoiceList, a parametry ChoicelistName/NameSingle/Icon
+TvSatText 30 w komponencie ChoiceList, a parametry ChoicelistName/NameSingle/Icon
 ustalają pozycje zawartości. Oryginalne ChoiceList i ChoiceEntryComponent z trzech
 wersji przeszły próbę konstruktora i geometrii wiersza z zastąpioną warstwą C++
 (`scripts/check_upstream_choices.py`). Same atrybuty font/itemHeight na widżecie
 nie wystarczały do zmiany fontu listy wieloelementowej.
+
+## Nazwa i miniaturka — 0.3.2
+
+Katalog, nazwa paczki, style listy i nagłówki używają nazwy TvSat. Miniaturka
+`TvSat/prev.png` ma rozmiar 640×360 i format RGBA PNG. Jest generowana z podglądu
+menu; natywny `Screens/SkinSelection.py` z OpenATV 8.0 wyszukuje `prev.png`
+w katalogu wybranej skórki. Starsza instalacja CanalPL nie jest usuwana ani
+automatycznie przełączana. Po instalacji wybierz TvSat i jego szablon listy.

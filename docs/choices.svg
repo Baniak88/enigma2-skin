@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-<title>CanalPL — ChoiceBox — dane przykładowe</title>
+<title>TvSat — ChoiceBox — dane przykładowe</title>
 <g font-family="DejaVu Sans, sans-serif">
 <rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
 <rect x="0" y="0" width="1920" height="1080" fill="#0c0e10"/>
-<text x="64" y="78.0" font-size="40" font-weight="bold" fill="#f2f5f7" text-anchor="start">CANALPL</text>
+<text x="64" y="78.0" font-size="40" font-weight="bold" fill="#f2f5f7" text-anchor="start">TvSat</text>
 <text x="420" y="73.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">WYBÓR</text>
 <text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f2f5f7" text-anchor="end">20:45</text>
 <rect x="64" y="126" width="1792" height="2" fill="#00e676"/>

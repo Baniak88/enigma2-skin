@@ -69,7 +69,7 @@ def check_picon_layers(screen):
 
 
 def validate():
-    skin=E.parse(ROOT/'CanalPL/skin.xml').getroot()
+    skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
     colors={x.get('name') for x in skin.findall('colors/color')}
     contracts=json.loads((ROOT/'scripts/openatv-contracts.json').read_text())
     names=[s.get('name') for s in skin.findall('screen')]
@@ -107,15 +107,18 @@ def validate():
         present={n.get('name') or n.get('source') for n in s.findall('widget')}
         for version,contract in contracts.items():
             assert set(contract['screens'][s.get('name')]['required'])<=present,(version,s.get('name'),'mandatory widgets')
-    template=E.parse(ROOT/'CanalPL/skinTemplates.xml').getroot().find('template')
+    template=E.parse(ROOT/'TvSat/skinTemplates.xml').getroot().find('template')
     assert template.get('component')=='serviceList'
     assert {x.get('name') for x in template.findall('mode')}=={'services','bouquets','other'}
     assert template.find('.//pixmap[@index="Picon"]') is not None
-    for path in (ROOT/'CanalPL').rglob('*.png'):check_png(path)
+    for path in (ROOT/'TvSat').rglob('*.png'):check_png(path)
     graph=skin.find("screen[@name='GraphicalEPG']")
     assert all(graph.find(f"widget[@name='timeline{i}']") is not None for i in range(6))
     assert graph.find("widget[@name='bouquetlist']") is not None
-    assert (ROOT/'CanalPL/picon_default.png').is_file()
+    assert (ROOT/'TvSat/picon_default.png').is_file()
+    # SkinSelection wyszukuje prev.png w katalogu skórki (bez wpisu w XML).
+    thumbnail=(ROOT/'TvSat/prev.png').read_bytes()
+    assert struct.unpack('>II',thumbnail[16:24])==(640,360)
     print(f'OK: {len(names)} screens, OpenATV '+('/'.join(contracts))+' widget contracts, templates, geometry, PNG assets.')
 
 

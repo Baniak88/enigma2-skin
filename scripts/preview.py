@@ -9,7 +9,7 @@ import textwrap
 import xml.etree.ElementTree as E
 
 ROOT=Path(__file__).resolve().parents[1]
-SKIN=E.parse(ROOT/'CanalPL/skin.xml').getroot()
+SKIN=E.parse(ROOT/'TvSat/skin.xml').getroot()
 COLORS={c.get('name'):'#'+c.get('value')[-6:] for c in SKIN.findall('colors/color')}
 CHANNELS=['CANAL+ PREMIUM','CANAL+ FILM','CANAL+ SPORT','CANAL+ SERIALE','TVP 1 HD','TVP 2 HD','TVN HD','Polsat HD']
 SHORT=['C+ PREMIUM','C+ FILM','C+ SPORT','C+ SERIALE','TVP 1','TVP 2','TVN','POLSAT']
@@ -80,7 +80,7 @@ def draw_list(name,key,x,y,w,h):
             rows=[('Menedżer oprogramowania','Aktualizacje i kopie zapasowe','setup'),('Softcam','Uruchom / zatrzymaj / wybierz','missing'),('System','Ustawienia systemu','setup'),('Montowanie','Ustawienia montowania','missing'),('Sieć','Połączenie sieciowe','missing'),('Audio / Wideo','Dźwięk i obraz','video_menu'),('Tuner','Konfiguracja i wyszukiwanie','mainmenu'),('Wtyczki','Dostępne rozszerzenia','plugin_selection')]
             for i,(title,desc,icon) in enumerate(rows):
                 if i==0:rect(x,y,w,76,'selected')
-                png(ROOT/'CanalPL/mainmenu'/(icon+'.png'),x+12,y+i*76+14,52,48)
+                png(ROOT/'TvSat/mainmenu'/(icon+'.png'),x+12,y+i*76+14,52,48)
                 text(x+88,y+i*76+4,w-112,40,title,30,'white',nowrap=True)
                 text(x+88,y+i*76+44,w-112,28,desc,22,'white' if i==0 else 'muted',nowrap=True)
         else:
@@ -92,7 +92,7 @@ def draw_list(name,key,x,y,w,h):
         rows=[('Back USB: Elements 25A2 (DISK_1)','/media/hdd/'),('Internal flash','/'),('Katalog tymczasowy','/tmp')]
         for i,(title,path) in enumerate(rows):
             if i==0:rect(x,y,w,72,'selected')
-            png(ROOT/'CanalPL/icons/folder.png',x+12,y+i*72+20,36,32)
+            png(ROOT/'TvSat/icons/folder.png',x+12,y+i*72+20,36,32)
             text(x+64,y+i*72+16,int(w*.6),40,title,30,'white',nowrap=True)
             text(x+int(w*.65),y+i*72+16,int(w*.3),40,path,30,'white',nowrap=True)
     elif name=='Menu':
@@ -100,7 +100,7 @@ def draw_list(name,key,x,y,w,h):
         icons=['information','timermenu','movie_selection','plugin_selection','setup','shutdown']
         for i,row in enumerate(rows):
             if i==0:rect(x,y,w,80,'selected');rect(x,y,4,80,'green')
-            png(ROOT/'CanalPL/mainmenu'/(icons[i]+'.png'),x+16,y+i*80+12,56,56)
+            png(ROOT/'TvSat/mainmenu'/(icons[i]+'.png'),x+16,y+i*80+12,56,56)
             text(x+92,y+i*80+18,w-116,60,row,32,'white',nowrap=True)
     elif name=='BouquetSelector':
         for i,row in enumerate(['Ulubione','CANAL+','Filmy i seriale','Sport','Informacyjne','Dzieci','Dokumentalne','Radio']):
@@ -133,7 +133,7 @@ def draw_list(name,key,x,y,w,h):
 def render(name,target,make_png=False):
     global out
     s=SKIN.find(f"screen[@name='{name}']");ox,oy=map(int,s.get('position').split(','));sw,sh=map(int,s.get('size').split(','))
-    out=['<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">',f'<title>CanalPL — {name} — dane przykładowe</title>','<g font-family="DejaVu Sans, sans-serif">']
+    out=['<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">',f'<title>TvSat — {name} — dane przykładowe</title>','<g font-family="DejaVu Sans, sans-serif">']
     rect(0,0,1920,1080,'#20282c')
     if name=='InfoBar':text(64,350,1792,140,'Miejsce na obraz telewizyjny',42,'#758187','center')
     rect(ox,oy,sw,sh,s.get('backgroundColor'))
@@ -148,7 +148,7 @@ def render(name,target,make_png=False):
             text(x,y+h/2+38,w,60,'Podgląd TV · 16:9',25,'muted','center')
         elif n.get('render')=='Picon':fake_picon(0,x,y,w,h)
         elif n.tag=='ePixmap':png(ROOT/n.get('pixmap'),x,y,w,h)
-        elif key=='menuimage':png(ROOT/'CanalPL/mainmenu/information.png',x,y,w,h)
+        elif key=='menuimage':png(ROOT/'TvSat/mainmenu/information.png',x,y,w,h)
         elif key=='timeline_text':
             for i,t in enumerate(['20:00','20:30','21:00','21:30','22:00','22:30']):text(x+320+i*(w-320)/6,y,(w-320)/6,h,t,26,'muted')
         elif n.get('render')=='Progress':rect(x,y,w,h,'line');rect(x,y,int(w*.5),h,'green')
@@ -156,7 +156,7 @@ def render(name,target,make_png=False):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
-            text(x,y,w,h,value(n,name),size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1',n.get('font','').startswith('CanalStrong;'))
+            text(x,y,w,h,value(n,name),size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1',n.get('font','').startswith('TvSatStrong;'))
     if name=='GraphicalEPG':rect(64+320+360,366,3,560,'green')
     out+=['</g>','</svg>']
     dest=ROOT/'docs'/target;dest.parent.mkdir(exist_ok=True);dest.write_text('\n'.join(out)+'\n')
@@ -189,6 +189,13 @@ def render_png(path):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('--png',action='store_true');args=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--png',action='store_true')
+    p.add_argument('--thumbnail',action='store_true',help='Zapisz TvSat/prev.png dla wyboru skórek OpenATV (wymaga Pillow)')
+    args=p.parse_args()
     for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg')]:
-        render(name,target,args.png)
+        render(name,target,args.png or (args.thumbnail and name=='Menu'))
+    if args.thumbnail:
+        from PIL import Image
+        with Image.open(ROOT/'docs/menu.png') as image:
+            image.convert('RGBA').resize((640,360),Image.Resampling.LANCZOS).save(ROOT/'TvSat/prev.png')
+        print(ROOT/'TvSat/prev.png')

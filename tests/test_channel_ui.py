@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 class ChannelUI(unittest.TestCase):
-    def setUp(self):self.skin=E.parse(ROOT/'CanalPL/skin.xml').getroot()
+    def setUp(self):self.skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
 
     def test_default_and_selected_styles_have_live_preview(self):
         for name in ('ChannelSelection','ChannelSelection_PIG'):
@@ -29,7 +29,7 @@ class ChannelUI(unittest.TestCase):
     def test_eight_roomy_rows_and_high_contrast_selection(self):
         screen=self.skin.find("screen[@name='ChannelSelection']")
         _,height=map(int,screen.find("widget[@name='list']").get('size').split(','))
-        template=E.parse(ROOT/'CanalPL/skinTemplates.xml').getroot().find('template')
+        template=E.parse(ROOT/'TvSat/skinTemplates.xml').getroot().find('template')
         mode=template.find("mode[@name='services']")
         self.assertEqual(height//int(mode.get('itemHeight')),8)
         self.assertEqual(mode.get('foregroundColorSelected'),'white')
@@ -41,9 +41,9 @@ class ChannelUI(unittest.TestCase):
 
     def test_font_is_registered_regular_instead_of_default_bold(self):
         fonts={n.get('name'):n.get('filename') for n in self.skin.findall('fonts/font')}
-        self.assertEqual(fonts['CanalText'],'DejaVuSans.ttf')
+        self.assertEqual(fonts['TvSatText'],'DejaVuSans.ttf')
         listbox=self.skin.find("screen[@name='ChannelSelection']/widget[@name='list']")
-        self.assertTrue(listbox.get('serviceNameFont').startswith('CanalText;'))
+        self.assertTrue(listbox.get('serviceNameFont').startswith('TvSatText;'))
         self.assertGreaterEqual(int(listbox.get('serviceNameFont').split(';')[1]),30)
 
     def test_explicit_no_video_variant_remains_available(self):

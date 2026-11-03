@@ -55,7 +55,7 @@ def check(sources):
         namespace={'StringList':StringList,'gFont':Font,'eListboxPythonMultiContent':Content}
         exec(compile(ast.Module(body=[cls],type_ignores=[]),str(p),'exec'),namespace)
         converter=namespace['TemplatedMultiContent'];count=0
-        for screen in E.parse(ROOT/'CanalPL/skin.xml').getroot().findall('screen'):
+        for screen in E.parse(ROOT/'TvSat/skin.xml').getroot().findall('screen'):
             for xml in screen.findall(".//convert[@type='TemplatedMultiContent']"):
                 errors=io.StringIO()
                 with contextlib.redirect_stdout(errors):
