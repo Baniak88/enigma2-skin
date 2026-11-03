@@ -1,0 +1,20 @@
+name: Validate CanalPL
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check generated skin and assets
+        run: |
+          python3 scripts/generate_skin.py
+          python3 scripts/build_assets.py
+          git diff --exit-code -- CanalPL
+      - name: Validate and test packages
+        run: |
+          python3 scripts/validate.py
+          sh -n install.sh
+          python3 -m unittest discover -s tests -v

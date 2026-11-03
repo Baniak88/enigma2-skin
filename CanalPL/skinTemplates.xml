@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Native template engine of OpenATV 7.5/7.6; choose CanalPL in channel list settings. -->
+<templates>
+  <template name="CanalPL" component="serviceList" fonts="Regular;28,Regular;23,Regular;25">
+    <mode name="services" itemHeight="76" itemWidth="1160" foregroundColor="white" foregroundColorSelected="bg" backgroundColor="bg" backgroundColorSelected="green">
+      <text index="Number" position="10,0" size="70,76" font="2" halign="right" valign="center" />
+      <pixmap index="Picon" position="100,8" size="100,60" alphatest="blend" scaleFlags="scaleCenter" />
+      <text index="ServiceName" position="224,6" size="910,36" font="0" valign="center" />
+      <text index="Title1" position="224,44" size="910,28" font="1" foregroundColor="muted" foregroundColorSelected="bg" />
+    </mode>
+    <mode name="bouquets" itemHeight="76" itemWidth="1160" foregroundColor="white" foregroundColorSelected="bg" backgroundColor="bg" backgroundColorSelected="green">
+      <text index="Number" position="10,0" size="70,76" font="2" halign="right" valign="center" />
+      <text index="ServiceName" position="100,0" size="1034,76" font="0" valign="center" />
+    </mode>
+    <mode name="other" itemHeight="76" itemWidth="1160" foregroundColor="white" foregroundColorSelected="bg" backgroundColor="bg" backgroundColorSelected="green">
+      <text index="EntryName" position="24,0" size="1110,76" font="0" valign="center" />
+    </mode>
+  </template>
+</templates>

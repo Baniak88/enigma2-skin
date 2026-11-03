@@ -16,14 +16,27 @@ if [ -L "$TARGET" ]; then
     echo 'Katalog docelowy jest dowiązaniem. Instalacja przerwana.' >&2
     exit 1
 fi
+PARENT="$ROOT/usr/share/enigma2"
+mkdir -p "$PARENT"
+STAGE="$PARENT/.CanalPL-install-$$"
+if [ -e "$STAGE" ] || [ -L "$STAGE" ]; then
+    echo 'Katalog tymczasowy już istnieje.' >&2
+    exit 1
+fi
+mkdir "$STAGE"
+trap 'rm -rf "$STAGE"' EXIT HUP INT TERM
+cp -R "$SOURCE/CanalPL/." "$STAGE/"
+find "$STAGE" -type d -exec chmod 755 {} \;
+find "$STAGE" -type f -exec chmod 644 {} \;
+BACKUP=
 if [ -e "$TARGET" ]; then
     BACKUP="${TARGET}.backup-$(date +%Y%m%d-%H%M%S)-$$"
-    cp -R "$TARGET" "$BACKUP"
+    mv "$TARGET" "$BACKUP"
     echo "Kopia poprzedniej wersji: $BACKUP"
 fi
-mkdir -p "$TARGET"
-cp "$SOURCE/CanalPL/skin.xml" "$TARGET/skin.xml"
-chmod 755 "$TARGET"
-chmod 644 "$TARGET/skin.xml"
+if ! mv "$STAGE" "$TARGET"; then
+    if [ -n "$BACKUP" ]; then mv "$BACKUP" "$TARGET"; fi
+    exit 1
+fi
 echo "Zainstalowano: $TARGET/skin.xml"
 echo 'Wybierz CanalPL w ustawieniach interfejsu/skórek, następnie uruchom ponownie GUI.'

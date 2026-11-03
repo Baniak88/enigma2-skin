@@ -1,29 +1,52 @@
 #!/usr/bin/env python3
-"""Buduje paczkę do ręcznej instalacji; wymaga wyłącznie Python 3."""
+"""Buduje .tar.gz oraz prawdziwe .ipk (ar + control/data.tar.gz), bez narzędzi SDK."""
+import gzip
 import io
 from pathlib import Path
 import tarfile
 from validate import validate
 
-ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.1.0'
+ROOT=Path(__file__).resolve().parents[1]
+VERSION='0.2.0'
+PACKAGE=f'enigma2-plugin-skins-canalpl_{VERSION}_all.ipk'
+
+
+def tar_gz(files):
+    buffer=io.BytesIO()
+    with tarfile.open(fileobj=buffer,mode='w',format=tarfile.GNU_FORMAT) as archive:
+        for name,data,mode in files:
+            info=tarfile.TarInfo(name);info.size=len(data);info.mode=mode;info.mtime=0
+            archive.addfile(info,io.BytesIO(data))
+    return gzip.compress(buffer.getvalue(),mtime=0)
+
+
+def ar(files):
+    result=bytearray(b'!<arch>\n')
+    for name,data in files:
+        header=f'{name+"/":<16}{0:<12}{0:<6}{0:<6}{"100644":<8}{len(data):<10}`\n'.encode('ascii')
+        assert len(header)==60
+        result+=header+data
+        if len(data)%2:result+=b'\n'
+    return bytes(result)
 
 
 def build():
     validate()
-    target = ROOT / 'dist' / f'CanalPL-{VERSION}.tar.gz'
-    target.parent.mkdir(exist_ok=True)
-    files = ['CanalPL/skin.xml', 'install.sh', 'README.md', 'LICENSE']
-    with tarfile.open(target, 'w:gz') as archive:
-        for name in files:
-            data = (ROOT / name).read_bytes()
-            info = tarfile.TarInfo(name)
-            info.size = len(data)
-            info.mode = 0o755 if name.endswith('.sh') else 0o644
-            info.mtime = 0
-            archive.addfile(info, io.BytesIO(data))
-    print(target)
+    out=ROOT/'dist';out.mkdir(exist_ok=True)
+    skinfiles=sorted(p for p in (ROOT/'CanalPL').rglob('*') if p.is_file())
+    payload=[(str(p.relative_to(ROOT)),p.read_bytes(),0o644) for p in skinfiles]
+    docs=['README.md','LICENSE','docs/COMPATIBILITY.md']
+    manual=payload+[(p,(ROOT/p).read_bytes(),0o644) for p in docs]+[('install.sh',(ROOT/'install.sh').read_bytes(),0o755)]
+    (out/f'CanalPL-{VERSION}.tar.gz').write_bytes(tar_gz(manual))
+    control=(f'Package: enigma2-plugin-skins-canalpl\nVersion: {VERSION}\nArchitecture: all\n'
+             f'Maintainer: CanalPL contributors\nSection: skins\nPriority: optional\nDepends: enigma2\n'
+             f'Installed-Size: {(sum(len(data) for _,data,_ in payload)+1023)//1024}\n'
+             'Description: CanalPL Full HD skin for OpenATV 7.5 and 7.6\n')
+    data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload])
+    controltar=tar_gz([('control',control.encode(),0o644)])
+    (out/PACKAGE).write_bytes(ar([('debian-binary',b'2.0\n'),('control.tar.gz',controltar),('data.tar.gz',data)]))
+    print(out/f'CanalPL-{VERSION}.tar.gz');print(out/PACKAGE)
 
 
-if __name__ == '__main__':
+if __name__=='__main__':
     build()
