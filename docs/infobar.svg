@@ -6,7 +6,7 @@
 <rect x="640" y="0" width="640" height="1080" fill="#7c3c4c" fill-opacity="1.000000"/>
 <rect x="1280" y="0" width="640" height="1080" fill="#47694a" fill-opacity="1.000000"/>
 <text x="960.0" y="342.0" font-size="42" font-weight="normal" fill="#f3f6fa" text-anchor="middle">Przykładowy obraz TV — test przezroczystości</text>
-<rect x="0" y="726" width="1920" height="354" fill="#0c0e10" fill-opacity="0.905882"/>
+<rect x="0" y="726" width="1920" height="354" fill="#0c0e10" fill-opacity="0.850980"/>
 <rect x="64" y="726" width="1792" height="4" fill="#00e676" fill-opacity="1.000000"/>
 <image x="64" y="760" width="220" height="132" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANwAAACECAYAAAD7h0UbAAAAiElEQVR42u3BAQ0AAADCoPdPbQ43oAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg2wDGUwABd6grAAAAAABJRU5ErkJggg=="/>
 <text x="174.0" y="820.0" font-size="27" font-weight="normal" fill="#f3f6fa" text-anchor="middle">C+ PREMIUM</text>

@@ -15,7 +15,7 @@
     <color name="red" value="#00ff6262" />
     <color name="yellow" value="#00f5ce55" />
     <color name="blue" value="#005eacff" />
-    <color name="overlay" value="#180c0e10" />
+    <color name="overlay" value="#260c0e10" />
     <color name="transparent" value="#ff000000" />
   </colors>
   <windowstyle type="skinned" id="0">
