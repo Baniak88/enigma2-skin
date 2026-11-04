@@ -14,7 +14,7 @@
     <color name="red" value="#00ff6262" />
     <color name="yellow" value="#00f5ce55" />
     <color name="blue" value="#005eacff" />
-    <color name="overlay" value="#100c0e10" />
+    <color name="overlay" value="#0021262c" />
     <color name="transparent" value="#ff000000" />
   </colors>
   <windowstyle type="skinned" id="0">
@@ -31,6 +31,7 @@
     <color name="ListboxMarkedAndSelectedForeground" color="bg" />
     <color name="WindowTitleForeground" color="white" />
     <color name="WindowTitleBackground" color="bg" />
+    <configList entryFont="TvSatText;30" valueFont="TvSatText;30" headerFont="TvSatText;30" />
   </windowstyle>
   <fonts>
     <font filename="DejaVuSans.ttf" name="TvSatText" scale="100" />
@@ -202,7 +203,7 @@
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,30" font="TvSatText;22" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <ePixmap position="1216,220" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="ServiceEvent" render="Picon" position="1216,220" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="ServiceEvent" render="Picon" position="1216,220" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget source="ServiceEvent" render="Label" position="1216,384" size="640,48" font="TvSatText;30" noWrap="1" foregroundColor="green" transparent="1">
@@ -245,7 +246,7 @@
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,30" font="TvSatText;22" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <ePixmap position="1216,220" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="ServiceEvent" render="Picon" position="1216,220" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="ServiceEvent" render="Picon" position="1216,220" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget source="ServiceEvent" render="Label" position="1216,384" size="640,48" font="TvSatText;30" noWrap="1" foregroundColor="green" transparent="1">
@@ -364,7 +365,7 @@
     <widget name="list" position="64,300" size="1160,616" NumberOfRows="8" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <widget name="lab1" position="64,300" size="1160,616" font="TvSatText;30" backgroundColor="bg" halign="center" valign="center" zPosition="5" />
     <ePixmap position="1312,280" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="Service" render="Picon" position="1312,280" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="Service" render="Picon" position="1312,280" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget source="Event" render="Label" position="1312,456" size="544,54" font="TvSatText;34" noWrap="1" foregroundColor="white" transparent="1">
@@ -406,7 +407,7 @@
     <widget name="list" position="64,300" size="1160,616" NumberOfRows="8" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <widget name="lab1" position="64,300" size="1160,616" font="TvSatText;30" backgroundColor="bg" halign="center" valign="center" zPosition="5" />
     <ePixmap position="1312,280" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="Service" render="Picon" position="1312,280" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="Service" render="Picon" position="1312,280" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget source="Event" render="Label" position="1312,456" size="544,54" font="TvSatText;34" noWrap="1" foregroundColor="white" transparent="1">
@@ -455,7 +456,7 @@
     <widget name="list" position="64,300" size="1160,616" NumberOfRows="8" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <widget name="lab1" position="64,300" size="1160,616" font="TvSatText;30" backgroundColor="bg" halign="center" valign="center" zPosition="5" />
     <ePixmap position="1312,280" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="Service" render="Picon" position="1312,280" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="Service" render="Picon" position="1312,280" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget source="Event" render="Label" position="1312,456" size="544,54" font="TvSatText;34" noWrap="1" foregroundColor="white" transparent="1">
@@ -617,35 +618,35 @@
     <eLabel position="1408,1012" size="6,24" backgroundColor="blue" />
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1" />
     <ePixmap position="64,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh1" render="Picon" position="64,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh1" render="Picon" position="64,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh1" position="208,240" size="200,54" font="TvSatText;24" transparent="1" />
     <widget name="Active1" position="64,322" size="344,4" backgroundColor="green" />
     <widget name="list1" position="64,344" size="344,434" NumberOfRows="6" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <ePixmap position="424,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh2" render="Picon" position="424,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh2" render="Picon" position="424,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh2" position="568,240" size="200,54" font="TvSatText;24" transparent="1" />
     <widget name="Active2" position="424,322" size="344,4" backgroundColor="green" />
     <widget name="list2" position="424,344" size="344,434" NumberOfRows="6" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <ePixmap position="784,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh3" render="Picon" position="784,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh3" render="Picon" position="784,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh3" position="928,240" size="200,54" font="TvSatText;24" transparent="1" />
     <widget name="Active3" position="784,322" size="344,4" backgroundColor="green" />
     <widget name="list3" position="784,344" size="344,434" NumberOfRows="6" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <ePixmap position="1144,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh4" render="Picon" position="1144,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh4" render="Picon" position="1144,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh4" position="1288,240" size="200,54" font="TvSatText;24" transparent="1" />
     <widget name="Active4" position="1144,322" size="344,4" backgroundColor="green" />
     <widget name="list4" position="1144,344" size="344,434" NumberOfRows="6" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <ePixmap position="1504,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh5" render="Picon" position="1504,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh5" render="Picon" position="1504,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh5" position="1648,240" size="200,54" font="TvSatText;24" transparent="1" />
@@ -679,21 +680,21 @@
     <eLabel position="1408,1012" size="6,24" backgroundColor="blue" />
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1" />
     <ePixmap position="64,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh1" render="Picon" position="64,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh1" render="Picon" position="64,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh1" position="208,240" size="272,54" font="TvSatText;24" transparent="1" />
     <widget name="Active1" position="64,322" size="416,4" backgroundColor="green" />
     <widget name="list1" position="64,344" size="416,434" NumberOfRows="6" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <ePixmap position="496,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh2" render="Picon" position="496,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh2" render="Picon" position="496,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh2" position="640,240" size="272,54" font="TvSatText;24" transparent="1" />
     <widget name="Active2" position="496,322" size="416,4" backgroundColor="green" />
     <widget name="list2" position="496,344" size="416,434" NumberOfRows="6" ServiceFontGraphical="TvSatText;26" EntryFontGraphical="TvSatText;26" ServiceFontInfobar="TvSatText;26" EventFontInfobar="TvSatText;28" EventFontSingle="TvSatText;30" EventFontMulti="TvSatText;29" EventFontVertical="TvSatText;26" TimeFontVertical="TvSatText;23" ServiceForegroundColor="white" ServiceForegroundColorNow="green" ServiceBackgroundColor="panel" ServiceBackgroundColorNow="panel" EntryForegroundColor="white" EntryForegroundColorSelected="white" EntryBackgroundColor="panel" EntryBackgroundColorSelected="selected" EntryBackgroundColorNow="panel" EntryBackgroundColorNowSelected="selected" EntryForegroundColorNow="white" EntryForegroundColorNowSelected="white" EntryBackgroundColorPast="bg" EntryBackgroundColorPastSelected="selected" EntryForegroundColorPast="muted" EntryForegroundColorPastSelected="white" EntryBorderColor="bg" ServiceBorderColor="bg" ServiceBorderWidth="2" EventBorderWidth="2" EventNamePadding="12" ServiceNamePadding="12" RecordForegroundColor="white" RecordForegroundColorSelected="white" RecordBackgroundColor="red" RecordBackgroundColorSelected="red" ZapForegroundColor="white" ZapBackgroundColor="blue" ZapForegroundColorSelected="bg" ZapBackgroundColorSelected="green" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
     <ePixmap position="928,230" size="132,80" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="piconCh3" render="Picon" position="928,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="piconCh3" render="Picon" position="928,230" size="132,80" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget name="currCh3" position="1072,240" size="272,54" font="TvSatText;24" transparent="1" />
@@ -771,10 +772,11 @@
     <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1" />
     <eLabel position="1408,1012" size="6,24" backgroundColor="blue" />
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1" />
-    <widget name="config" position="64,236" size="1160,672" font="TvSatText;30" itemHeight="56" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
-    <eLabel position="1260,236" size="2,672" backgroundColor="line" />
-    <widget name="description" position="1312,246" size="544,530" font="TvSatText;30" foregroundColor="muted" transparent="1" />
-    <widget name="footnote" position="1312,810" size="544,108" font="TvSatText;26" foregroundColor="yellow" transparent="1" />
+    <widget name="config" position="64,236" size="1248,640" font="TvSatText;30" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" valueFont="TvSatText;30" />
+    <eLabel position="1344,236" size="2,640" backgroundColor="line" />
+    <widget name="description" position="1392,246" size="464,550" font="TvSatText;28" foregroundColor="muted" transparent="1" />
+    <widget name="footnote" position="1392,818" size="464,108" font="TvSatText;26" foregroundColor="yellow" transparent="1" />
+    <eLabel text="← →  Zmień wartość     OK  Wybierz     EXIT  Powrót" position="64,916" size="1248,42" font="TvSatText;24" foregroundColor="muted" transparent="1" />
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
   <screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
@@ -1005,7 +1007,7 @@
     </widget>
     <eLabel position="64,126" size="1792,2" backgroundColor="green" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
-    <widget name="config" position="112,236" size="1744,224" font="TvSatText;30" itemHeight="56" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
+    <widget name="config" position="112,236" size="1744,224" font="TvSatText;30" itemHeight="56" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" valueFont="TvSatText;30" />
     <widget name="switchdescription" position="64,484" size="1792,50" font="TvSatText;27" foregroundColor="muted" transparent="1" />
     <widget source="key_red" render="FixedLabel" position="64,244" size="30,40" font="TvSatText;24" text="●" foregroundColor="red" transparent="1">
       <convert type="ConditionalShowHide" />
@@ -1033,38 +1035,38 @@
     </widget>
     <eLabel position="64,126" size="1792,2" backgroundColor="green" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
-    <widget name="config" position="64,236" size="1792,616" font="TvSatText;30" itemHeight="56" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" />
+    <widget name="config" position="64,236" size="1792,616" font="TvSatText;30" itemHeight="56" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" valueFont="TvSatText;30" />
     <widget name="videofps" position="64,890" size="1792,48" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="InfoBar" position="0,726" size="1920,354" flags="wfNoBorder" backgroundColor="overlay">
     <eLabel position="64,0" size="1792,4" backgroundColor="green" />
     <ePixmap position="64,34" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="session.CurrentService" render="Picon" position="64,34" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="session.CurrentService" render="Picon" position="64,34" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="320,28" size="1190,60" font="TvSatText;38" noWrap="1" foregroundColor="white" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="320,30" size="1190,60" font="TvSatText;36" noWrap="1" foregroundColor="white" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="1570,28" size="286,60" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="1570,30" size="286,60" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel text="TERAZ" position="320,110" size="104,40" font="TvSatText;23" foregroundColor="green" transparent="1" />
-    <widget source="session.Event_Now" render="Label" position="440,104" size="140,46" font="TvSatText;28" foregroundColor="white" transparent="1">
+    <eLabel text="TERAZ" position="320,112" size="104,40" font="TvSatText;24" foregroundColor="green" transparent="1" />
+    <widget source="session.Event_Now" render="Label" position="440,108" size="140,44" font="TvSatText;28" foregroundColor="white" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Now" render="Label" position="600,98" size="1256,54" font="TvSatText;34" noWrap="1" foregroundColor="white" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="600,104" size="1256,52" font="TvSatText;32" noWrap="1" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
     <widget source="session.Event_Now" render="Progress" position="320,174" size="1536,6" backgroundColor="line" borderWidth="0" foregroundColor="green">
       <convert type="EventTime">Progress</convert>
     </widget>
-    <eLabel text="POTEM" position="320,214" size="104,40" font="TvSatText;23" foregroundColor="muted" transparent="1" />
-    <widget source="session.Event_Next" render="Label" position="440,208" size="140,44" font="TvSatText;28" foregroundColor="muted" transparent="1">
+    <eLabel text="POTEM" position="320,216" size="104,40" font="TvSatText;24" foregroundColor="muted" transparent="1" />
+    <widget source="session.Event_Next" render="Label" position="440,212" size="140,44" font="TvSatText;28" foregroundColor="muted" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Next" render="Label" position="600,202" size="1256,54" font="TvSatText;30" noWrap="1" foregroundColor="muted" transparent="1">
+    <widget source="session.Event_Next" render="Label" position="600,210" size="1256,50" font="TvSatText;30" noWrap="1" foregroundColor="muted" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
     <widget source="session.RecordState" render="FixedLabel" position="64,290" size="240,38" font="TvSatText;24" text="NAGRYWANIE" foregroundColor="red" transparent="1">
@@ -1078,7 +1080,7 @@
   <screen name="SecondInfoBar" position="0,576" size="1920,504" flags="wfNoBorder" backgroundColor="overlay">
     <eLabel position="64,0" size="1792,4" backgroundColor="green" />
     <ePixmap position="64,34" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="session.CurrentService" render="Picon" position="64,34" size="220,132" alphatest="blend" zPosition="1" backgroundColor="panel" transparent="0">
+    <widget source="session.CurrentService" render="Picon" position="64,34" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
     <widget source="session.CurrentService" render="Label" position="320,34" size="1536,56" font="TvSatText;36" foregroundColor="green" transparent="1">

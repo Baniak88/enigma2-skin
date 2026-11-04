@@ -21,57 +21,41 @@
 <rect x="64" y="220" width="1088" height="88" fill="#1c352b"/>
 <rect x="64" y="220" width="4" height="88" fill="#00e676"/>
 <text x="132" y="272.0" font-size="24" font-weight="normal" fill="#00e676" text-anchor="end">1</text>
-<rect x="152" y="232" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="232" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="263.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">C+ PREMIUM</text>
 <text x="300" y="260.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">CANAL+ PREMIUM</text>
 <text x="300" y="297.0" font-size="25" font-weight="normal" fill="#f2f5f7" text-anchor="start">Wszystko przed nami</text>
 <rect x="72" y="395" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="360.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">2</text>
-<rect x="152" y="320" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="320" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="351.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">C+ FILM</text>
 <text x="300" y="348.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">CANAL+ FILM</text>
 <text x="300" y="385.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Wieczór filmowy</text>
 <rect x="72" y="483" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="448.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">3</text>
-<rect x="152" y="408" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="408" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="439.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">C+ SPORT</text>
 <text x="300" y="436.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">CANAL+ SPORT</text>
 <text x="300" y="473.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Magazyn sportowy</text>
 <rect x="72" y="571" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="536.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">4</text>
-<rect x="152" y="496" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="496" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="527.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">C+ SERIALE</text>
 <text x="300" y="524.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">CANAL+ SERIALE</text>
 <text x="300" y="561.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Nowy rozdział</text>
 <rect x="72" y="659" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="624.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">5</text>
-<rect x="152" y="584" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="584" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="615.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">TVP 1</text>
 <text x="300" y="612.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">TVP 1 HD</text>
 <text x="300" y="649.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Wiadomości dnia</text>
 <rect x="72" y="747" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="712.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">6</text>
-<rect x="152" y="672" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="672" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="703.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">TVP 2</text>
 <text x="300" y="700.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">TVP 2 HD</text>
 <text x="300" y="737.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Na dobre i na złe</text>
 <rect x="72" y="835" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="800.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">7</text>
-<rect x="152" y="760" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="760" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="791.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">TVN</text>
 <text x="300" y="788.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">TVN HD</text>
 <text x="300" y="825.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Fakty</text>
 <rect x="72" y="923" width="1080" height="1" fill="#30363d"/>
 <text x="132" y="888.0" font-size="24" font-weight="normal" fill="#b0bbc5" text-anchor="end">8</text>
-<rect x="152" y="848" width="112" height="64" fill="#191c20"/>
-<rect x="152" y="848" width="112" height="4" fill="#00e676"/>
 <text x="208.0" y="879.0" font-size="15" font-weight="normal" fill="#f2f5f7" text-anchor="middle">POLSAT</text>
 <text x="300" y="876.0" font-size="32" font-weight="normal" fill="#f2f5f7" text-anchor="start">Polsat HD</text>
 <text x="300" y="913.0" font-size="25" font-weight="normal" fill="#b0bbc5" text-anchor="start">Wydarzenia</text>
