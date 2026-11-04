@@ -107,6 +107,8 @@ def extract(directory):
         'ChoiceBox':'ChoiceBoxNew','ChannelContextMenu':'ChannelContextMenu','MessageBox':'MessageBox','MessageBoxSimple':'MessageBox','MessageBoxModal':'MessageBox',
         'IpkgInstaller':'IpkgInstaller','Opkg':'Opkg','Console':'Console','Processing':'ProcessingScreen',
         'PackageAction':'PackageAction','PluginAction':'PackageAction','PackageActionLog':'PackageActionLog','PluginActionLog':'PackageActionLog',
+        'FileCommander':'FileCommander','FileCommanderContextMenu':'FileCommanderContextMenu','FileCommanderData':'FileCommanderData',
+        'FileCommanderFileViewer':'FileCommanderFileViewer','FileCommanderTextEditor':'FileCommanderTextEditor',
         'MovieSelection':'MovieSelection','MovieSelectionSlim':'MovieSelection',
         'TimerOverview':'RecordTimerOverview','RecordTimerOverview':'RecordTimerOverview','TimerEditList':'RecordTimerOverview',
         'PluginBrowserList':'PluginBrowser','PluginBrowserGrid':'PluginBrowser','InfoBar':'InfoBar','SecondInfoBar':'SecondInfoBar',

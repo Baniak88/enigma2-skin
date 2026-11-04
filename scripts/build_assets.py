@@ -30,6 +30,14 @@ def build():
     edge=[(2,2,28,2,WHITE),(2,28,28,2,WHITE),(2,2,2,28,WHITE),(28,2,2,28,WHITE)]
     png(Path('icons/lock_off.png'),32,32,(0,0,0,0),edge)
     png(Path('icons/lock_on.png'),32,32,(0,0,0,0),edge+[(7,7,18,18,GREEN)])
+    # FileList resolves these through the active skin before system fallbacks.
+    folder=[(8,18,48,4,WHITE),(8,50,48,4,WHITE),(8,18,4,36,WHITE),(52,18,4,36,WHITE),(12,10,20,8,GREEN)]
+    for name in ('directory','current','parent'):
+        png(Path('extensions')/(name+'.png'),64,64,(0,0,0,0),folder)
+    png(Path('extensions/storage.png'),64,64,(0,0,0,0),[(8,12,48,4,WHITE),(8,48,48,4,WHITE),(8,12,4,40,WHITE),(52,12,4,40,WHITE),(16,38,8,4,GREEN)])
+    document=[(14,6,36,4,WHITE),(14,54,36,4,WHITE),(14,6,4,52,WHITE),(46,6,4,52,WHITE),(22,20,20,4,GREEN),(22,32,20,4,WHITE)]
+    for name in ('file','ipk','cfg','txt','log'):
+        png(Path('extensions')/(name+'.png'),64,64,(0,0,0,0),document)
     for name,c in [('timeline',PANEL),('timeline-now',GREEN),('state',GREEN)]:
         png(Path('assets')/(name+'.png'),4,4,c)
     for name,c in [('question',GREEN),('info',BLUE),('warning',(245,206,85,255)),('error',RED),('message',WHITE)]:

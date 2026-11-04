@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.4.0
+# OpenATV — zakres zgodności 0.4.1
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 51 ekranów TvSat.
+definicji. Mogą mieć inny układ niż 56 ekranów TvSat.
 
 ## Ważne różnice względem 0.1.0
 
@@ -204,3 +204,26 @@ Opkg zachowuje własne etykiety statusu, liczbę błędów i przełączanie dzie
 Nie zmieniono uruchamianych poleceń ani działania instalacji/odinstalowania.
 TemplatedMultiContent przyjmuje obecnie 13 kombinacji szablonów/stylów na wersję,
 w tym 12-polowe wiersze PackageAction. Test na dekoderze pozostaje wymagany.
+
+## FileCommander 0.4.1
+
+Dodano pięć ekranów: FileCommander, FileCommanderContextMenu, FileCommanderData,
+FileCommanderFileViewer oraz FileCommanderTextEditor — razem 56 definicji.
+Źródłem kontraktów jest FileCommander z przypiętych źródeł OpenATV: plugin.py
+w 7.5/7.6 oraz ui.py w 8.0. Żaden plik wykonywalny wtyczki nie jest zastępowany.
+
+Nagłówki mają 27-polowy natywny format danych i korzystają z indeksów 17 (ścieżka),
+1 (uprawnienia), 11 (rozmiar), 13 (czas modyfikacji). Alias FileList/FileListMulti
+ustawia 28 px i 64 px wysokości; pozycje ikon i tekstu mieszczą się w panelu 864 px.
+Zmiana tych natywnych aliasów obejmuje również inne listy korzystające z FileList.
+
+Testy oryginalnego kodu potwierdzają generowanie wierszy w obu trybach, wybór
+i odznaczanie plików, przełączanie aktywnego panelu oraz rzeczywiste dane nagłówków
+z pliku tymczasowego. Krój andale.ttf jest sprawdzany w Makefile fontów każdej
+przypiętej wersji. Polecenie: `python3 scripts/check_upstream_filecommander.py --download`.
+Warstwa C++ jest zastąpiona, a operacje kopiowania, przenoszenia i usuwania nie są
+uruchamiane przez te próby. TemplatedMultiContent przyjmuje 15 kombinacji na wersję.
+
+Kontrole geometrii sprawdzają osiem pełnych wierszy, równe panele, brak zasłaniania
+list przez status i zachowanie kroju monospace w podglądzie/edytorze. Nadal potrzebny
+jest test na dekoderze. Wtyczki FileCommander spoza OpenATV mogą używać innego API.

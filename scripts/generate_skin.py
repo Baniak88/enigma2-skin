@@ -115,7 +115,8 @@ def build():
     fonts = add(skin, 'fonts')
     add(fonts,'font',filename='DejaVuSans.ttf',name='TvSatText',scale='100')
     add(fonts,'font',filename='LiberationSans-Bold.ttf',name='TvSatStrong',scale='100')
-    for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('ChoiceList',30,72), ('SelectionList',30,72), ('MenuFont',32,64)]:
+    add(fonts,'font',filename='andale.ttf',name='TvSatMono',scale='100')
+    for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('ChoiceList',30,72), ('SelectionList',30,72), ('FileList',28,64), ('FileListMulti',28,64), ('MenuFont',32,64)]:
         add(fonts, 'alias', name=name, font='TvSatText', size=size, height=height)
     parameters=add(skin,'parameters')
     for name,value in {
@@ -125,6 +126,11 @@ def build():
         'ChoicelistDash':'0,16,1792,40',
         'SelectionListDescr':'64,16,1656,40',
         'SelectionListLock':'12,20,32,32',
+        'FileListIcon':'12,16,32,32',
+        'FileListName':'60,12,776,40',
+        'FileListMultiLock':'12,20,24,24',
+        'FileListMultiIcon':'48,16,32,32',
+        'FileListMultiName':'96,12,740,40',
     }.items():
         add(parameters,'parameter',name=name,value=value)
 
@@ -340,6 +346,46 @@ def build():
     s=screen('QuickSubtitlesConfigMenu'); header(s,'USTAWIENIA NAPISÓW')
     widget(s,'config',64,236,1792,616,30,itemHeight='56',**LIST)
     widget(s,'videofps',64,890,1792,48,26,foregroundColor='muted',transparent='1')
+
+    s=screen('FileCommander');header(s,'MENEDŻER PLIKÓW');footer(s)
+    box(s,960,216,2,700)
+    for side,x,title in (('left',64,'LEWY PANEL'),('right',992,'PRAWY PANEL')):
+        label(s,title,x,216,864,32,22,'muted')
+        heading=dict(LIST);heading['backgroundColor']='panel'
+        n=source(s,'head'+side,x,252,864,96,render='Listbox',selection='0',**heading)
+        templated(n,'{"fonts":[gFont("TvSatText",28),gFont("TvSatText",22)],"itemHeight":96,"selectionEnabled":False,"template":['
+            'MultiContentEntryText(pos=(16,0),size=(832,44),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=17),'
+            'MultiContentEntryText(pos=(16,60),size=(176,32),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1,color=0x00c2ccd7),'
+            'MultiContentEntryText(pos=(212,60),size=(156,32),font=1,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=11,color=0x00c2ccd7),'
+            'MultiContentEntryText(pos=(396,60),size=(452,32),font=1,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=13,color=0x00c2ccd7)]}')
+        widget(s,'list'+side,x,368,864,512,28,itemHeight='64',**LIST)
+        widget(s,'sort'+side,x,888,864,28,21,foregroundColor='muted',transparent='1',noWrap='1')
+    widget(s,'quickselect',64,368,864,512,64,halign='center',valign='center',foregroundColor='green',transparent='1',zPosition='5')
+    # Native FileCommander moves QuickSelect to whichever panel has focus.
+    widget(s,'status',64,884,1792,40,25,foregroundColor='white',backgroundColor='panel',valign='center',halign='center',zPosition='6')
+    label(s,'← →  Zmień panel     OK  Otwórz',64,932,864,32,22,'muted')
+    for key,x,w,text in (('menu',1056,256,'MENU  Operacje'),('info',1336,240,'INFO  Zadania'),('help',1600,256,'HELP  Pomoc')):
+        source(s,'key_'+key,x,928,w,36,22,'muted',render='FixedLabel',text=text,conditional='key_'+key,converts=[('ConditionalShowHide',None)])
+
+    s=screen('FileCommanderContextMenu');header(s,'OPERACJE NA PLIKACH');footer(s,())
+    widget(s,'menu',64,236,1792,504,30,itemHeight='72',**LIST)
+    widget(s,'description',64,776,1792,140,28,foregroundColor='muted',transparent='1')
+    label(s,'↑ ↓  Wybierz     OK  Zatwierdź     EXIT  Powrót',64,1000,1420,48,25,'muted')
+    source(s,'key_menu',1600,1000,256,48,25,'muted',conditional='key_menu',converts=[('ConditionalShowHide',None)])
+
+    s=screen('FileCommanderData');header(s,'INFORMACJE O PLIKU');footer(s)
+    widget(s,'data',64,236,1792,680,28,transparent='1',splitPosition='560')
+    label(s,'↑ ↓  Przewiń     EXIT  Powrót',64,930,1792,32,22,'muted')
+
+    for name in ('FileCommanderFileViewer','FileCommanderTextEditor'):
+        s=screen(name);header(s,'PODGLĄD PLIKU' if name.endswith('Viewer') else 'EDYTOR TEKSTU');footer(s)
+        widget(s,'path',64,224,1456,48,26,foregroundColor='muted',transparent='1',noWrap='1')
+        if name.endswith('Editor'):
+            widget(s,'location',1550,224,306,48,24,foregroundColor='muted',transparent='1',halign='right')
+            data=widget(s,'data',64,292,1792,640,26,itemHeight='40',**LIST)
+        else:
+            data=widget(s,'data',64,292,1792,640,26,transparent='1')
+        data.set('font','TvSatMono;26')
 
     s=screen('IpkgInstaller');header(s,'PAKIETY LOKALNE');footer(s)
     label(s,'WYBIERZ PAKIETY DO INSTALACJI',64,216,1792,38,22,'muted')

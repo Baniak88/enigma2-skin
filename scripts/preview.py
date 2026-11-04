@@ -7,6 +7,7 @@ import io
 from pathlib import Path
 import textwrap
 import xml.etree.ElementTree as E
+from build import VERSION
 
 ROOT=Path(__file__).resolve().parents[1]
 SKIN=E.parse(ROOT/'TvSat/skin.xml').getroot()
@@ -25,7 +26,7 @@ def rect(x,y,w,h,fill):
     out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{color(fill)}"/>')
 
 
-def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False,bold=False):
+def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False,bold=False,mono=False):
     lines=[]
     for paragraph in value.replace('\\n','\n').splitlines():
         capacity=max(1,int(w/(size*.57)))
@@ -34,7 +35,8 @@ def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False,bold=False
     anchor={'left':'start','center':'middle','right':'end'}.get(align,'start')
     tx=x+w if anchor=='end' else x+w/2 if anchor=='middle' else x
     for i,line in enumerate(lines[:max(1,int(h/(size*1.25)))]):
-        out.append(f'<text x="{tx}" y="{y+size+i*size*1.25}" font-size="{size}" font-weight="{"bold" if bold else "normal"}" fill="{color(fill)}" text-anchor="{anchor}">{escape(line)}</text>')
+        family=' font-family="monospace"' if mono else ''
+        out.append(f'<text x="{tx}" y="{y+size+i*size*1.25}" font-size="{size}" font-weight="{"bold" if bold else "normal"}" fill="{color(fill)}" text-anchor="{anchor}"{family}>{escape(line)}</text>')
 
 
 def png(path,x,y,w,h):
@@ -51,10 +53,23 @@ def fake_picon(index,x,y,w,h):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
+    if screen=='FileCommander':
+        if key in ('sortleft','sortright'):return 'Sortuj: katalogi wg nazwy ↑ · pliki wg nazwy ↑'
+        if key.startswith('key_'):return {'key_menu':'MENU','key_info':'INFO','key_help':'HELP'}.get(key,'')
+    if screen=='FileCommanderContextMenu':
+        if key=='description':return 'Wybierz operację dla zaznaczonego pliku lub katalogu. Dostępność działań zależy od aktualnego wyboru.'
+        if key=='key_menu':return 'MENU'
+    if screen=='FileCommanderTextEditor':
+        if key=='path':return '/tmp/example.conf'
+        if key=='location':return 'Wiersz 1 / 4'
+        if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz','key_yellow':'Usuń wiersz','key_blue':'Wstaw wiersz'}.get(key,'')
+    if screen=='FileCommanderData':
+        if key=='data':return 'Ścieżka: /tmp/TvSat.ipk\nTyp: pakiet instalacyjny\nRozmiar: 58 kB\nUprawnienia: -rw-r--r--'
+        if key.startswith('key_'):return {'key_red':'Zamknij'}.get(key,'')
     if key.startswith('key_') and node.get('render')=='FixedLabel' and node.get('text')==' ':
         # Determine visibility from the source, but the marker itself has no text.
         return value(E.Element('widget',source=key),screen)
@@ -95,7 +110,26 @@ def value(node,screen):
 
 
 def draw_list(name,key,x,y,w,h):
-    if name=='QuickMenu':
+    if name=='FileCommander':
+        if key.startswith('head'):
+            text(x+16,y,w-32,44,'/',28,'white',nowrap=True)
+            text(x+16,y+60,176,32,'drwxr-xr-x',22,'muted',nowrap=True)
+            text(x+212,y+60,156,32,'4.0 kB',22,'muted','right',nowrap=True)
+            text(x+396,y+60,452,32,'śr 4 lis 2026 13:40',22,'muted','right',nowrap=True)
+        else:
+            for i,title in enumerate(['Back USB: Elements 25A2 (DISK_1)','Internal flash']):
+                if key=='listleft' and i==1:rect(x,y+i*64,w,64,'selected')
+                png(ROOT/'TvSat/extensions/storage.png',x+12,y+i*64+16,32,32)
+                text(x+60,y+i*64+12,776,40,title,28,'white',nowrap=True)
+    elif name=='FileCommanderContextMenu':
+        for i,title in enumerate(['Informacje o pliku','Nowy katalog','Kopiuj','Przenieś','Zmień nazwę','Ustawienia']):
+            if i==0:rect(x,y,w,72,'selected')
+            text(x+64,y+i*72+16,w-136,40,title,30,'white',nowrap=True)
+    elif name=='FileCommanderTextEditor':
+        for i,title in enumerate(['# Przykładowy plik konfiguracyjny','name=TvSat','language=pl','enabled=true']):
+            if i==0:rect(x,y,w,40,'selected')
+            text(x+16,y+i*40+5,w-32,34,title,26,'white',nowrap=True,mono=True)
+    elif name=='QuickMenu':
         if key=='mainlist':
             rows=[('Menedżer oprogramowania','Aktualizacje i kopie zapasowe','setup'),('Softcam','Uruchom / zatrzymaj / wybierz','missing'),('System','Ustawienia systemu','setup'),('Montowanie','Ustawienia montowania','missing'),('Sieć','Połączenie sieciowe','missing'),('Audio / Wideo','Dźwięk i obraz','video_menu'),('Tuner','Konfiguracja i wyszukiwanie','mainmenu'),('Wtyczki','Dostępne rozszerzenia','plugin_selection')]
             for i,(title,desc,icon) in enumerate(rows):
@@ -109,7 +143,7 @@ def draw_list(name,key,x,y,w,h):
                 text(x+20,y+i*76+4,w-40,40,title,30,'white',nowrap=True)
                 text(x+20,y+i*76+44,w-40,28,desc,23,'muted',nowrap=True)
     elif name=='IpkgInstaller':
-        rows=['enigma2-plugin-skins-tvsat_0.4.0_all.ipk','enigma2-plugin-extensions-example_1.0_all.ipk']
+        rows=[f'enigma2-plugin-skins-tvsat_{VERSION}_all.ipk','enigma2-plugin-extensions-example_1.0_all.ipk']
         for i,title in enumerate(rows):
             if i==0:rect(x,y,w,72,'selected')
             png(ROOT/'TvSat/icons'/('lock_on.png' if i==0 else 'lock_off.png'),x+12,y+i*72+20,32,32)
@@ -123,7 +157,7 @@ def draw_list(name,key,x,y,w,h):
             text(x+92,yy+(24 if category else 6),w-260,48 if category else 40,title,32 if category else 30,'white',nowrap=True)
             if not category:
                 text(x+92,yy+48,w-260,32,description,24,'white' if i==1 else 'muted',nowrap=True)
-                text(x+w-390,yy+8,280,36,'0.4.0' if i==1 else '1.0',24,'muted','right',nowrap=True)
+                text(x+w-390,yy+8,280,36,VERSION if i==1 else '1.0',24,'muted','right',nowrap=True)
     elif name=='Setup' and key=='config':
         rows=[('Znacznik kodowania','Żaden'),('Znacznik nagrywania','Czerwony'),('Postęp audycji','Pasek po prawej'),('Wyświetlanie pikon','Włącz'),('Liczba wierszy','8'),('Rozmiar numeru kanału','0'),('Rozmiar nazwy kanału','0'),('Rozmiar informacji o audycji','0'),('Rozmiar informacji o postępie','0'),('Zachowanie przy przełączaniu','Czarny ekran')]
         for i,(title,current) in enumerate(rows):
@@ -183,6 +217,7 @@ def render(name,target,make_png=False):
         x,y=map(int,n.get('position').split(','));w,h=map(int,n.get('size').split(','));x+=ox;y+=oy
         key=n.get('name') or n.get('source','')
         if key in ('lab1','number','bouquetlist') or re_timeline(key):continue
+        if name=='FileCommander' and key in ('status','quickselect'):continue
         if key.startswith('key_') and not value(n,name):continue
         if n.get('backgroundColor') and n.get('backgroundColor')!='transparent' and n.get('transparent')!='1':rect(x,y,w,h,n.get('backgroundColor'))
         if n.get('render')=='FixedLabel' and n.get('text')==' ':continue
@@ -198,11 +233,12 @@ def render(name,target,make_png=False):
         elif n.get('render')=='Progress' or key in ('progress','slider','activityslider'):
             rect(x,y,w,h,n.get('backgroundColor','line'))
             rect(x,y,int(w*(1 if name=='Opkg' and key=='slider' else 0 if name=='Opkg' else .5)),h,'green')
-        elif key in ('menu','list','mainlist','sublist','plugins'):
+        elif key in ('menu','list','mainlist','sublist','plugins','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
-            text(x,y,w,h,value(n,name),size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1',n.get('font','').startswith('TvSatStrong;'))
+            display=n.get('text') if n.get('render')=='FixedLabel' and key.startswith('key_') else value(n,name)
+            text(x,y,w,h,display,size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1',n.get('font','').startswith('TvSatStrong;'),n.get('font','').startswith('TvSatMono;'))
     if name=='GraphicalEPG':rect(64+320+360,366,3,560,'green')
     out+=['</g>','</svg>']
     dest=ROOT/'docs'/target;dest.parent.mkdir(exist_ok=True);dest.write_text('\n'.join(out)+'\n')
@@ -222,7 +258,7 @@ def render_png(path):
         if tag=='rect':
             x,y,w,h=[float(n.get(k)) for k in ('x','y','width','height')];draw.rectangle((x,y,x+w,y+h),fill=n.get('fill'))
         elif tag=='text':
-            font=ImageFont.truetype('DejaVuSans-Bold.ttf' if n.get('font-weight')=='bold' else 'DejaVuSans.ttf',int(n.get('font-size')))
+            font=ImageFont.truetype('DejaVuSansMono.ttf' if n.get('font-family')=='monospace' else 'DejaVuSans-Bold.ttf' if n.get('font-weight')=='bold' else 'DejaVuSans.ttf',int(n.get('font-size')))
             draw.text((float(n.get('x')),float(n.get('y'))),n.text or '',font=font,fill=n.get('fill'),anchor={'start':'ls','middle':'ms','end':'rs'}[n.get('text-anchor')])
         elif tag=='image':
             pic=Image.open(io.BytesIO(base64.b64decode(n.get('href').split(',')[1]))).convert('RGBA')
@@ -238,7 +274,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--png',action='store_true')
     p.add_argument('--thumbnail',action='store_true',help='Zapisz TvSat/prev.png dla wyboru skórek OpenATV (wymaga Pillow)')
     args=p.parse_args()
-    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg')]:
+    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'))
     if args.thumbnail:
         from PIL import Image

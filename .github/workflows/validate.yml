@@ -25,6 +25,7 @@ jobs:
           python3 -m unittest discover -s tests -v
           python3 scripts/check_upstream_fonts.py --download
           python3 scripts/check_upstream_install_ui.py --download
+          python3 scripts/check_upstream_filecommander.py --download
       - uses: actions/upload-artifact@v4
         with:
           name: verified-tvsat

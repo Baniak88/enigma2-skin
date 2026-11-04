@@ -1,13 +1,28 @@
-# TvSat 0.4.0 — skórka Enigma2 dla OpenATV
+# TvSat 0.4.1 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.0 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.1 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## FileCommander 0.4.1 — menedżer plików
+
+- Dwa równe panele z ośmioma pełnymi wierszami, nazwami plików 28 px i czytelnym
+  zaznaczeniem aktywnego panelu. Natywne przełączanie lewo/prawo pozostaje zachowane.
+- Ścieżki, rozmiary, uprawnienia i daty korzystają z uporządkowanych nagłówków
+  zamiast małych żółtych napisów. Font i geometria FileList są ustawione w jego
+  własnych aliasach i parametrach, także dla trybu zaznaczania wielu plików.
+- Menu operacji, informacje o pliku, podgląd zawartości i edytor pasują do TvSat.
+  Podgląd/edytor zachowują krój o stałej szerokości znaków, dostarczany przez OpenATV.
+- Komunikaty operacji nie zasłaniają list. MENU, INFO i HELP mają osobny rząd,
+  a kolorowe funkcje są wyświetlane wtedy, gdy udostępni je menedżer plików.
+
+![Menedżer plików — dane przykładowe](docs/filemanager.svg)
+![Menu operacji na plikach](docs/file-operations.svg)
 
 ## Interfejs 0.4.0 — jaśniejszy pasek i spójna instalacja
 
@@ -129,18 +144,19 @@ Pole TV na wizualizacji jest symboliczne; nie zawiera obrazu z tunera.
 - Lista nagrań, odtwarzacz, pauza/przewijanie i stan timeshiftu.
 - Ustawienia, dźwięk/napisy, wtyczki lista/siatka i podstawowe okna dialogowe.
 - Instalator IPK, stan instalacji, pobieranie/usuwanie pakietów, konsola i logi.
+- FileCommander: dwa panele, menu operacji, informacje, podgląd i edytor plików.
 
-Łącznie 51 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
+Łącznie 56 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
 korzystać z układu systemowego. Pełny zakres, źródła API i lista testów sprzętowych:
 [COMPATIBILITY.md](docs/COMPATIBILITY.md).
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.4.0_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.0_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.4.1_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.1_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.0_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.1_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -155,8 +171,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.4.0.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.0_all.ipk &&
-opkg install /tmp/TvSat-0.4.0.ipk
+wget -O /tmp/TvSat-0.4.1.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.1_all.ipk &&
+opkg install /tmp/TvSat-0.4.1.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -207,12 +223,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.4.0.tar.gz](packages/TvSat-0.4.0.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.4.1.tar.gz](packages/TvSat-0.4.1.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.4.0.tar.gz
+tar -xzf /tmp/TvSat-0.4.1.tar.gz
 sh install.sh
 ```
 
@@ -245,6 +261,7 @@ python3 scripts/build_assets.py
 python3 scripts/validate.py
 python3 scripts/check_upstream_fonts.py --download
 python3 scripts/check_upstream_install_ui.py --download
+python3 scripts/check_upstream_filecommander.py --download
 python3 scripts/preview.py
 python3 scripts/build.py
 python3 -m unittest discover -s tests -v
