@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.4.2
+# OpenATV — zakres zgodności 0.4.3
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 56 ekranów TvSat.
+definicji. Mogą mieć inny układ niż 59 ekranów TvSat.
 
 ## Ważne różnice względem 0.1.0
 
@@ -251,3 +251,19 @@ Długie opisy nadal mają dostęp do pełnego widoku pod INFO; nie gwarantujemy
 zmieszczenia całego EPG w panelu. VERSION jest dołączony do obu archiwów,
 a skrypty końcowe podają faktycznie zainstalowany numer. Przebudowane testy
 sprawdzają wersję w IPK oraz w komunikatach instalacji. Test sprzętowy oczekuje.
+
+## Ustawienia skórki 0.4.3
+
+Dodano SkinSelection oraz jego natywne nazwy rezerwowe setup_Skin i SetupSkin
+(łącznie 59 definicji). Sterownik to Screens/SkinSelection.py z powyższych
+przypiętych commitów. Dziedziczy Setup, ale wymaga też Pixmap `preview`:
+layoutFinished bezwarunkowo odczytuje rozmiar jej instancji. Podgląd ma warstwę 1,
+aby dekoracje utworzone później przez Screen nie zasłoniły miniatury.
+
+`python3 scripts/check_upstream_skinselection.py --download` wykonuje oryginalne
+fragmenty Setup i readSkin, sprawdza pierwszeństwo wszystkich trzech nazw oraz
+oryginalne layoutFinished/loadPreview. Test potwierdza ładowanie TvSat/prev.png,
+wymiary dekodera 608×342 i ukrywanie podglądu po wybraniu opcji czcionki.
+C++ ePicLoad/Pixmap jest zastąpione atrapami; test nie potwierdza renderowania
+na odbiorniku. Nie uruchamia createItems, keySave ani przeładowania GUI.
+Pasek zachowuje ciemny kolor i 40% przezroczystości z 0.4.2.

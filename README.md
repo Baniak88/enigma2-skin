@@ -1,13 +1,31 @@
-# TvSat 0.4.2 — skórka Enigma2 dla OpenATV
+# TvSat 0.4.3 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.2 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.3 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## Poprawki 0.4.3 — ustawienia skórki
+
+Ekran wyboru skórki ma osobny układ Full HD: dziewięć pełnych wierszy,
+jednakowe czcionki nazw i wartości (30 px), miniaturę 16:9 oraz wydzielone
+miejsce na opis i informację o restarcie. Przyciski Anuluj i Zapisz pasują do
+pozostałych ekranów TvSat. Nie zmieniamy ustawień użytkownika.
+
+Definicje `SkinSelection`, `setup_Skin` i `SetupSkin` odpowiadają kolejności
+wyszukiwania w natywnym Setup. Ogólny ekran Setup nie wystarcza, gdy
+OpenATV znajduje wcześniej bardziej szczegółową definicję.
+
+Nowy test wykonuje oryginalną logikę wyboru ekranu oraz ładowanie i ukrywanie
+miniatury z przypiętych źródeł OpenATV 7.5 / 7.6 / 8.0, z zastąpionym C++.
+Pozostaje test na fizycznym dekoderze. Po instalacji sprawdź komunikat
+**Wersja: 0.4.3** i uruchom ponownie GUI.
+
+![Ustawienia skórki — dane przykładowe](docs/skin-selection.svg)
 
 ## Poprawki 0.4.2 — przezroczysty pasek, wtyczki i opis audycji
 
@@ -168,17 +186,17 @@ Pole TV na wizualizacji jest symboliczne; nie zawiera obrazu z tunera.
 - Instalator IPK, stan instalacji, pobieranie/usuwanie pakietów, konsola i logi.
 - FileCommander: dwa panele, menu operacji, informacje, podgląd i edytor plików.
 
-Łącznie 56 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
+Łącznie 59 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
 korzystać z układu systemowego. Pełny zakres, źródła API i lista testów sprzętowych:
 [COMPATIBILITY.md](docs/COMPATIBILITY.md).
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.4.2_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.2_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.4.3_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.3_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.2_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.3_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -193,8 +211,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.4.2.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.2_all.ipk &&
-opkg install /tmp/TvSat-0.4.2.ipk
+wget -O /tmp/TvSat-0.4.3.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.3_all.ipk &&
+opkg install /tmp/TvSat-0.4.3.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -245,12 +263,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.4.2.tar.gz](packages/TvSat-0.4.2.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.4.3.tar.gz](packages/TvSat-0.4.3.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.4.2.tar.gz
+tar -xzf /tmp/TvSat-0.4.3.tar.gz
 sh install.sh
 ```
 
@@ -282,6 +300,7 @@ Test podglądu PNG wymaga Pillow (`python3 -m pip install Pillow==11.3.0`):
 python3 scripts/generate_skin.py
 python3 scripts/build_assets.py
 python3 scripts/validate.py
+python3 scripts/check_upstream_skinselection.py --download
 python3 scripts/check_upstream_fonts.py --download
 python3 scripts/check_upstream_install_ui.py --download
 python3 scripts/check_upstream_filecommander.py --download

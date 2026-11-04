@@ -285,6 +285,21 @@ def build():
     label(s,'← →  Zmień wartość     OK  Wybierz     EXIT  Powrót',64,916,1248,42,24,'muted')
     widget(s,'HelpWindow',64,240,1,1,conditional='HelpWindow',transparent='1')
 
+    # Setup derives its preferred name from the subclass before trying generic
+    # Setup. SkinSelection.layoutFinished also requires a real preview instance.
+    for name in ('SkinSelection','setup_Skin','SetupSkin'):
+        s=screen(name); header(s,'SKÓRKI / INTERFEJS'); footer(s,('red','green'))
+        widget(s,'config',64,236,1120,576,30,itemHeight='64',**LIST)
+        box(s,1216,236,2,716)
+        label(s,'PODGLĄD SKÓRKI',1248,214,608,30,20,'muted')
+        box(s,1248,260,608,342,'panel',zPosition='0')
+        label(s,'Podgląd skórki\nWybierz pozycję Skórka GUI',1280,382,544,100,26,'muted',halign='center',zPosition='0')
+        widget(s,'preview',1248,260,608,342,conditional='preview',alphatest='blend',scale='1',zPosition='1')
+        widget(s,'description',1248,628,608,198,26,foregroundColor='muted',transparent='1')
+        widget(s,'footnote',1248,848,608,104,24,foregroundColor='yellow',transparent='1')
+        label(s,'← →  Zmień wartość     OK  Wybierz\nZielony — zapisz. Restart GUI, jeśli system o niego poprosi.',64,864,1120,88,24,'muted')
+        widget(s,'HelpWindow',64,240,1,1,conditional='HelpWindow',transparent='1')
+
     for name in ('ChoiceBox','ChannelContextMenu'):
         s=screen(name); header(s,'WYBÓR' if name=='ChoiceBox' else 'OPCJE')
         if name=='ChoiceBox':

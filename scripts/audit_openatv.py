@@ -104,6 +104,7 @@ def extract(directory):
         'BouquetSelector':'BouquetSelector','EPGBouquetSelector':'EPGBouquetSelector',
         **{x:'EPGSelection' for x in ['EPGSelection','QuickEPG','EPGSelectionMulti','GraphicalEPG','GraphicalEPGPIG','GraphicalInfoBarEPG','EPGvertical','EPGverticalPIG']},
         'EventView':'EventViewEPGSelect','InfoBarEventView':'EventViewSimple','Setup':'Setup',
+        **{name:'SkinSelection' for name in ('SkinSelection','setup_Skin','SetupSkin')},
         'ChoiceBox':'ChoiceBoxNew','ChannelContextMenu':'ChannelContextMenu','MessageBox':'MessageBox','MessageBoxSimple':'MessageBox','MessageBoxModal':'MessageBox',
         'IpkgInstaller':'IpkgInstaller','Opkg':'Opkg','Console':'Console','Processing':'ProcessingScreen',
         'PackageAction':'PackageAction','PluginAction':'PackageAction','PackageActionLog':'PackageActionLog','PluginActionLog':'PackageActionLog',
@@ -129,6 +130,9 @@ def extract(directory):
             continue
         widgets,required=inherited(cls)
         widgets.update(inherited('Screen')[0])
+        if cls=='SkinSelection':
+            # layoutFinished unconditionally uses preview.instance.size().
+            required.append('preview')
         if cls=='PluginBrowser':
             widgets.update(pluginList='List',pluginGrid='List')  # self[self.layout]
         if cls in ('EPGSelection','EPGSelectionGrid','EPGSelectionInfobarGrid'):

@@ -61,10 +61,15 @@ def fake_picon(index,x,y,w,h):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','SkinSelection':'Ustawienia skórki','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
+    if screen=='SkinSelection':
+        if key=='Title':return 'Ustawienia skórki'
+        if key=='description':return 'Wybierz skórkę graficznego interfejsu użytkownika. Zielony przycisk zapisuje wybór. Domyślnie: TvSat.'
+        if key=='footnote':return '* Zmiana tej opcji może wymagać restartu interfejsu GUI.'
+        if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz'}.get(key,'')
     if screen in ('PluginBrowserGrid','PluginBrowserList'):
         if key=='description':return 'Enhanced Movie Center — konfiguracja i ustawienia odtwarzania nagrań.'
         if key.startswith('key_'):return {'key_red':'Usuń wtyczki','key_green':'Zainstaluj wtyczki','key_yellow':'Aktualizuj wtyczki','key_blue':'Edytuj'}.get(key,'')
@@ -185,8 +190,8 @@ def draw_list(name,key,x,y,w,h):
             if not category:
                 text(x+92,yy+48,w-260,32,description,24,'white' if i==1 else 'muted',nowrap=True)
                 text(x+w-390,yy+8,280,36,VERSION if i==1 else '1.0',24,'muted','right',nowrap=True)
-    elif name=='Setup' and key=='config':
-        rows=[('Znacznik kodowania','Żaden'),('Znacznik nagrywania','Czerwony'),('Postęp audycji','Pasek po prawej'),('Wyświetlanie pikon','Włącz'),('Liczba wierszy','8'),('Rozmiar numeru kanału','0'),('Rozmiar nazwy kanału','0'),('Rozmiar informacji o audycji','0'),('Rozmiar informacji o postępie','0'),('Zachowanie przy przełączaniu','Czarny ekran')]
+    elif name in ('Setup','SkinSelection') and key=='config':
+        rows=[('Skórka GUI *','TvSat'),('Czcionka zapasowa','Fallback Font 1'),('Ekran wyboru kanału','Starszy tryb'),('Automatyczne odświeżanie','Wyłącz'),('Szybkie przeładowanie skórki','Nie')] if name=='SkinSelection' else [('Znacznik kodowania','Żaden'),('Znacznik nagrywania','Czerwony'),('Postęp audycji','Pasek po prawej'),('Wyświetlanie pikon','Włącz'),('Liczba wierszy','8'),('Rozmiar numeru kanału','0'),('Rozmiar nazwy kanału','0'),('Rozmiar informacji o audycji','0'),('Rozmiar informacji o postępie','0'),('Zachowanie przy przełączaniu','Czarny ekran')]
         for i,(title,current) in enumerate(rows):
             if i==0:rect(x,y,w,64,'selected')
             text(x+20,y+i*64+16,w*.60-20,40,title,30,'white',nowrap=True)
@@ -259,12 +264,13 @@ def render(name,target,make_png=False):
         elif n.get('render')=='Picon':fake_picon(0,x,y,w,h)
         elif n.tag=='ePixmap':png(ROOT/n.get('pixmap'),x,y,w,h)
         elif key=='menuimage':png(ROOT/'TvSat/mainmenu/information.png',x,y,w,h)
+        elif key=='preview':png(ROOT/'TvSat/prev.png',x,y,w,h)
         elif key=='timeline_text':
             for i,t in enumerate(['20:00','20:30','21:00','21:30','22:00','22:30']):text(x+320+i*(w-320)/6,y,(w-320)/6,h,t,26,'muted')
         elif n.get('render')=='Progress' or key in ('progress','slider','activityslider'):
             rect(x,y,w,h,n.get('backgroundColor','line'))
             rect(x,y,int(w*(1 if name=='Opkg' and key=='slider' else 0 if name=='Opkg' else .5)),h,'green')
-        elif key in ('menu','list','mainlist','sublist','plugins','pluginGrid','pluginList','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
+        elif key in ('menu','list','config','mainlist','sublist','plugins','pluginGrid','pluginList','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
@@ -313,7 +319,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--png',action='store_true')
     p.add_argument('--thumbnail',action='store_true',help='Zapisz TvSat/prev.png dla wyboru skórek OpenATV (wymaga Pillow)')
     args=p.parse_args()
-    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg'),('PluginBrowserGrid','plugin-grid.svg'),('PluginBrowserList','plugin-list.svg')]:
+    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('SkinSelection','skin-selection.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg'),('PluginBrowserGrid','plugin-grid.svg'),('PluginBrowserList','plugin-list.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'))
     if args.thumbnail:
         from PIL import Image

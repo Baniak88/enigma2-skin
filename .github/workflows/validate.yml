@@ -23,6 +23,7 @@ jobs:
           sh -n install.sh
           sh -n packaging/postinst
           python3 -m unittest discover -s tests -v
+          python3 scripts/check_upstream_skinselection.py --download
           python3 scripts/check_upstream_fonts.py --download
           python3 scripts/check_upstream_install_ui.py --download
           python3 scripts/check_upstream_filecommander.py --download
