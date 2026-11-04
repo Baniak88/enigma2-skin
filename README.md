@@ -1,13 +1,24 @@
-# TvSat 0.4.4 — skórka Enigma2 dla OpenATV
+# TvSat 0.4.5 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.4 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.5 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## Poprawki 0.4.5 — przezroczystość 15%
+
+Pasek kanału, dodatkowy pasek i pasek odtwarzacza mają około **15%
+przezroczystości i 85% krycia** (`#260c0e10`, dokładnie 38/255 = 14,90%).
+To korekta 9% z 0.4.4. Przywrócone pierwotne ciemne kolory, tło pod pikonami,
+czcionki i układy pozostają bez zmian. Menu są nieprzezroczyste.
+
+Po instalacji sprawdź komunikat **Wersja: 0.4.5** i wykonaj restart GUI.
+
+![Pasek z przezroczystością 15% — dane przykładowe](docs/infobar.svg)
 
 ## Poprawki 0.4.4 — powrót do pierwotnego tła
 
@@ -208,11 +219,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.4.4_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.4_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.4.5_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.5_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.4_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.5_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -227,8 +238,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.4.4.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.4_all.ipk &&
-opkg install /tmp/TvSat-0.4.4.ipk
+wget -O /tmp/TvSat-0.4.5.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.5_all.ipk &&
+opkg install /tmp/TvSat-0.4.5.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -279,12 +290,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.4.4.tar.gz](packages/TvSat-0.4.4.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.4.5.tar.gz](packages/TvSat-0.4.5.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.4.4.tar.gz
+tar -xzf /tmp/TvSat-0.4.5.tar.gz
 sh install.sh
 ```
 

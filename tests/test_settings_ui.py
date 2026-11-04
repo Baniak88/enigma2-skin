@@ -28,7 +28,7 @@ class SettingsUI(unittest.TestCase):
             screen=skin.find(f"screen[@name='{name}']")
             surface=colors[screen.get('backgroundColor')].lstrip('#')
             transparency=int(surface[:2],16)/255
-            self.assertAlmostEqual(transparency,24/255)
+            self.assertAlmostEqual(transparency,38/255)
             rgb=[int(surface[i:i+2],16) for i in (2,4,6)]
             background=colors['bg'].lstrip('#')
             self.assertEqual(rgb,[12,14,16])

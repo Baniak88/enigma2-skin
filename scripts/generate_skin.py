@@ -102,8 +102,8 @@ def build():
     for name, value in PALETTE.items():
         add(colors, 'color', name=name, value='#00'+value)
     # Enigma2 ARGB uses inverse alpha: 00 is opaque, ff is transparent.
-    # Original 18 = 24/255 (~9%) transparency, ~91% opacity.
-    add(colors, 'color', name='overlay', value='#180c0e10')
+    # 26 = 38/255 (~15%) transparency, ~85% opacity.
+    add(colors, 'color', name='overlay', value='#260c0e10')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
     add(style, 'title', offset='24,12', font='TvSatText;30')

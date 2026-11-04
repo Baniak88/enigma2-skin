@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.4.4
+# OpenATV — zakres zgodności 0.4.5
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -282,3 +282,11 @@ Te same kolory paneli i linii mają natywne szablony kart wtyczek oraz PNG.
 Test mieszania kolorów SVG/PNG sprawdza wynik także w obszarze pikony,
 a test ustawień kontrast tekstu na białym, czarnym, czerwonym i niebieskim obrazie.
 Zmiana nie ingeruje w Python dekodera, ustawienia użytkownika ani układy.
+
+## Korekta przezroczystości 0.4.5
+
+Nakładka ma kolor #260c0e10. Bajt 0x26 daje 38/255 = 14,90%
+przezroczystości i 85,10% krycia w InfoBar, SecondInfoBar i MoviePlayer.
+Pierwotne kolory tła i paneli z 0.4.4 pozostają bez zmian. Menu pozostają
+nieprzezroczyste. Istniejące testy sprawdzają mieszanie SVG/PNG także pod pikoną
+oraz kontrast napisów na różnych kolorach obrazu telewizyjnego.
