@@ -2,11 +2,11 @@
 <title>TvSat — Processing — dane przykładowe</title>
 <g font-family="DejaVu Sans, sans-serif">
 <rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
-<rect x="464" y="438" width="992" height="204" fill="#252e38" fill-opacity="1.000000"/>
+<rect x="464" y="438" width="992" height="204" fill="#17191c" fill-opacity="1.000000"/>
 <text x="496" y="484.0" font-size="24" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <text x="694" y="483.0" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Trwa operacja</text>
-<rect x="496" y="514" width="928" height="6" fill="#3d4a59" fill-opacity="1.000000"/>
-<rect x="496" y="514" width="928" height="6" fill="#3d4a59" fill-opacity="1.000000"/>
+<rect x="496" y="514" width="928" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="496" y="514" width="928" height="6" fill="#303438" fill-opacity="1.000000"/>
 <rect x="496" y="514" width="464" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <text x="496" y="576.0" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="start">Instalowanie rozszerzeń. Proszę czekać…</text>
 </g>

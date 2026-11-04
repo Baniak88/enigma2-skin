@@ -4,18 +4,18 @@
     <resolution xres="1920" yres="1080" bpp="32" />
   </output>
   <colors>
-    <color name="bg" value="#00171d24" />
-    <color name="panel" value="#00252e38" />
+    <color name="bg" value="#000c0e10" />
+    <color name="panel" value="#0017191c" />
     <color name="selected" value="#0025473a" />
     <color name="white" value="#00f3f6fa" />
     <color name="muted" value="#00c2ccd7" />
     <color name="green" value="#0000e676" />
-    <color name="line" value="#003d4a59" />
+    <color name="line" value="#00303438" />
     <color name="track" value="#00647181" />
     <color name="red" value="#00ff6262" />
     <color name="yellow" value="#00f5ce55" />
     <color name="blue" value="#005eacff" />
-    <color name="overlay" value="#660c0e10" />
+    <color name="overlay" value="#180c0e10" />
     <color name="transparent" value="#ff000000" />
   </colors>
   <windowstyle type="skinned" id="0">
@@ -1555,7 +1555,7 @@
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="pluginGrid" render="Listbox" position="64,232" size="1792,684" listOrientation="grid" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line">
-      <convert type="TemplatedMultiContent">{"template":[MultiContentEntryRectangle(pos=(8,8),size=(432,212),backgroundColor=0x00252e38,backgroundColorSelected=0x0025473a,borderWidth=2,borderColor=0x003d4a59,borderColorSelected=0x0000e676),MultiContentEntryPixmapAlphaBlend(pos=(148,24),size=(152,84),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(24,130),size=(400,76),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)],"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":228,"itemWidth":448}</convert>
+      <convert type="TemplatedMultiContent">{"template":[MultiContentEntryRectangle(pos=(8,8),size=(432,212),backgroundColor=0x0017191c,backgroundColorSelected=0x0025473a,borderWidth=2,borderColor=0x00303438,borderColorSelected=0x0000e676),MultiContentEntryPixmapAlphaBlend(pos=(148,24),size=(152,84),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(24,130),size=(400,76),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)],"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":228,"itemWidth":448}</convert>
     </widget>
     <widget name="quickselect" position="64,232" size="1792,684" font="TvSatText;80" halign="center" valign="center" transparent="1" foregroundColor="green" zPosition="5" />
     <widget name="description" position="64,928" size="1792,36" font="TvSatText;24" foregroundColor="muted" transparent="1" noWrap="1" />
