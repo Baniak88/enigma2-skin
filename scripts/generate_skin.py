@@ -26,6 +26,8 @@ def label(s, text, x, y, w, h, font=28, color='white', family='TvSatText', **kw)
 
 
 def widget(s, name, x, y, w, h, font=None, **kw):
+    if name=='config':
+        kw.setdefault('valueFont', f'TvSatText;{font or 30}')
     return add(s, 'widget', name=name, position=f'{x},{y}', size=f'{w},{h}',
                font=f'TvSatText;{font}' if font else None, **kw)
 
@@ -74,7 +76,7 @@ def picon(s, src, x, y, w=220, h=132):
     add(s,'ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap='TvSat/picon_default.png',
         scale='1',alphatest='blend',zPosition='0')
     return source(s, src, x, y, w, h, render='Picon', converts=[('ServiceName', 'Reference')],
-        alphatest='blend',zPosition='1',backgroundColor='panel',transparent='0')
+        alphatest='blend',zPosition='1',backgroundColor='transparent',transparent='1')
 
 
 def event(s, src, x, y, w, desc=True):
@@ -94,7 +96,7 @@ def build():
     colors = add(skin, 'colors')
     for name, value in PALETTE.items():
         add(colors, 'color', name=name, value='#00'+value)
-    add(colors, 'color', name='overlay', value='#100c0e10')
+    add(colors, 'color', name='overlay', value='#0021262c')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
     add(style, 'title', offset='24,12', font='TvSatText;30')
@@ -103,6 +105,7 @@ def build():
         ListboxMarkedForeground='green', ListboxMarkedAndSelectedBackground='green',
         ListboxMarkedAndSelectedForeground='bg', WindowTitleForeground='white', WindowTitleBackground='bg').items():
         add(style, 'color', name=name, color=color)
+    add(style, 'configList', entryFont='TvSatText;30', valueFont='TvSatText;30', headerFont='TvSatText;30')
     fonts = add(skin, 'fonts')
     add(fonts,'font',filename='DejaVuSans.ttf',name='TvSatText',scale='100')
     add(fonts,'font',filename='LiberationSans-Bold.ttf',name='TvSatStrong',scale='100')
@@ -259,10 +262,11 @@ def build():
         widget(s,'epg_description',64,388,1792,550,32,transparent='1')
 
     s=screen('Setup'); header(s,'USTAWIENIA'); footer(s)
-    widget(s,'config',64,236,1160,672,30,itemHeight='56',**LIST)
-    box(s,1260,236,2,672)
-    widget(s,'description',1312,246,544,530,30,foregroundColor='muted',transparent='1')
-    widget(s,'footnote',1312,810,544,108,26,foregroundColor='yellow',transparent='1')
+    widget(s,'config',64,236,1248,640,30,itemHeight='64',**LIST)
+    box(s,1344,236,2,640)
+    widget(s,'description',1392,246,464,550,28,foregroundColor='muted',transparent='1')
+    widget(s,'footnote',1392,818,464,108,26,foregroundColor='yellow',transparent='1')
+    label(s,'← →  Zmień wartość     OK  Wybierz     EXIT  Powrót',64,916,1248,42,24,'muted')
     widget(s,'HelpWindow',64,240,1,1,conditional='HelpWindow',transparent='1')
 
     for name in ('ChoiceBox','ChannelContextMenu'):
@@ -331,15 +335,15 @@ def build():
 
     s=screen('InfoBar',pos=(0,726),size=(1920,354),bg='overlay')
     box(s,64,0,1792,4,'green'); picon(s,'session.CurrentService',64,34)
-    source(s,'session.CurrentService',320,28,1190,60,38,converts=[('ServiceName','Name')],noWrap='1')
-    source(s,'global.CurrentTime',1570,28,286,60,40,halign='right',converts=[('ClockToText','Default')])
-    label(s,'TERAZ',320,110,104,40,23,'green')
-    source(s,'session.Event_Now',440,104,140,46,28,converts=[('EventTime','StartTime'),('ClockToText','Default')])
-    source(s,'session.Event_Now',600,98,1256,54,34,converts=[('EventName','Name')],noWrap='1')
+    source(s,'session.CurrentService',320,30,1190,60,36,converts=[('ServiceName','Name')],noWrap='1')
+    source(s,'global.CurrentTime',1570,30,286,60,36,halign='right',converts=[('ClockToText','Default')])
+    label(s,'TERAZ',320,112,104,40,24,'green')
+    source(s,'session.Event_Now',440,108,140,44,28,converts=[('EventTime','StartTime'),('ClockToText','Default')])
+    source(s,'session.Event_Now',600,104,1256,52,32,converts=[('EventName','Name')],noWrap='1')
     source(s,'session.Event_Now',320,174,1536,6,render='Progress',color='green',converts=[('EventTime','Progress')],backgroundColor='line',borderWidth='0')
-    label(s,'POTEM',320,214,104,40,23,'muted')
-    source(s,'session.Event_Next',440,208,140,44,28,'muted',converts=[('EventTime','StartTime'),('ClockToText','Default')])
-    source(s,'session.Event_Next',600,202,1256,54,30,'muted',converts=[('EventName','Name')],noWrap='1')
+    label(s,'POTEM',320,216,104,40,24,'muted')
+    source(s,'session.Event_Next',440,212,140,44,28,'muted',converts=[('EventTime','StartTime'),('ClockToText','Default')])
+    source(s,'session.Event_Next',600,210,1256,50,30,'muted',converts=[('EventName','Name')],noWrap='1')
     source(s,'session.RecordState',64,290,240,38,24,'red',render='FixedLabel',text='NAGRYWANIE',converts=[('ConditionalShowHide','Blink')])
     source(s,'session.Event_Now',1556,290,300,38,24,'muted',halign='right',converts=[('EventTime','Remaining'),('RemainingToText','InMinutes')])
 

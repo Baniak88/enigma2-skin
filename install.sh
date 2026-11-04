@@ -25,6 +25,7 @@ if [ -e "$STAGE" ] || [ -L "$STAGE" ]; then
 fi
 mkdir "$STAGE"
 trap 'rm -rf "$STAGE"' EXIT HUP INT TERM
+printf '\n%s\n' 'TvSat: instalowanie plików skórki...'
 cp -R "$SOURCE/TvSat/." "$STAGE/"
 find "$STAGE" -type d -exec chmod 755 {} \;
 find "$STAGE" -type f -exec chmod 644 {} \;
@@ -38,5 +39,9 @@ if ! mv "$STAGE" "$TARGET"; then
     if [ -n "$BACKUP" ]; then mv "$BACKUP" "$TARGET"; fi
     exit 1
 fi
-echo "Zainstalowano: $TARGET/skin.xml"
-echo 'Wybierz TvSat w ustawieniach interfejsu/skórek, następnie uruchom ponownie GUI.'
+printf '\n%s\n' '======================================================'
+printf '%s\n' 'TvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE'
+printf 'Pliki: %s/skin.xml\n' "$TARGET"
+printf '%s\n' 'Wybierz TvSat w menu skórek, jeśli to pierwsza instalacja.'
+printf '%s\n' 'Uruchom ponownie interfejs GUI, aby wczytać zmiany.'
+printf '%s\n\n' '======================================================'

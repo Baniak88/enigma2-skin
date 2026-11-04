@@ -1,13 +1,31 @@
-# TvSat 0.3.2 — skórka Enigma2 dla OpenATV
+# TvSat 0.3.3 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.2 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.3 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## Poprawki 0.3.3 — czcionki, pasek i instalacja
+
+- Nazwy oraz wartości ustawień korzystają z DejaVu Sans Regular 30 px.
+  Ustawiono osobny `valueFont` komponentu ConfigList i domyślne fonty konfiguracji.
+- Lista ustawień ma dziesięć pełnych wierszy po 64 px i szersze miejsce na wartości.
+  Opis po prawej ma font 28 px, a na dole jest podpowiedź nawigacji.
+- Pasek informacji jest lekko jaśniejszy (`#21262c`). Pole pikony i obraz
+  zastępczy są przezroczyste, więc nie tworzą osobnego prostokąta.
+- Instalacja `.ipk` kończy się komunikatem **TvSat — INSTALACJA ZAKOŃCZONA
+  POMYŚLNIE** i przypomnieniem o restarcie GUI. Komunikat drukuje skrypt
+  `postinst` wykonywany przez opkg. Instalator ręczny wyświetla ten sam komunikat.
+  W systemowym instalatorze treść może być widoczna w jego oknie lub logu.
+
+Jeśli sama pikona PNG ma zapisane nieprzezroczyste tło, pozostanie ono częścią
+tego obrazka. Skórka usuwa własne tło; logotypów z Twojej paczki nie zmienia.
+
+![Ustawienia — czytelne nazwy i wartości](docs/setup.svg)
 
 ## TvSat — nowa nazwa i miniaturka (0.3.2)
 
@@ -94,11 +112,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.3.2_all.ipk](packages/enigma2-plugin-skins-tvsat_0.3.2_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.3.3_all.ipk](packages/enigma2-plugin-skins-tvsat_0.3.3_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.3.2_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.3.3_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -113,8 +131,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.3.2.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.3.2_all.ipk &&
-opkg install /tmp/TvSat-0.3.2.ipk
+wget -O /tmp/TvSat-0.3.3.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.3.3_all.ipk &&
+opkg install /tmp/TvSat-0.3.3.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -165,12 +183,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.3.2.tar.gz](packages/TvSat-0.3.2.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.3.3.tar.gz](packages/TvSat-0.3.3.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.3.2.tar.gz
+tar -xzf /tmp/TvSat-0.3.3.tar.gz
 sh install.sh
 ```
 
@@ -201,6 +219,7 @@ Python 3.12+; budowanie i kontrola paczek nie wymagają dodatkowych bibliotek:
 python3 scripts/generate_skin.py
 python3 scripts/build_assets.py
 python3 scripts/validate.py
+python3 scripts/check_upstream_fonts.py --download
 python3 scripts/preview.py
 python3 scripts/build.py
 python3 -m unittest discover -s tests -v
@@ -210,7 +229,10 @@ Pliki wynikowe trafiają do `dist/`. Generowanie podglądów PNG wymaga opcjonal
 Pillow: `python3 scripts/preview.py --png --thumbnail`. Podglądy SVG nie wymagają Pillow.
 Testy sprawdzają strukturę `.ipk`, kompletność plików, instalację i kopię aktualizacji.
 Walidator porównuje widgety z zapisanymi kontraktami oficjalnego kodu OpenATV.
-To kontrole statyczne/integracyjne, a nie test uruchomienia GUI Enigma2.
+GitHub Actions generuje pliki, wykonuje testy i buduje paczki. Po udanym teście
+na głównej gałęzi zapisuje wynikowe pliki skórki, podglądy i paczki w repozytorium.
+Publikacja nie jest wykonywana dla pull requestów. To kontrole
+statyczne/integracyjne, a nie test uruchomienia GUI Enigma2.
 
 Do zgłoszenia problemu dołącz model dekodera, wersję OpenATV, nazwę ekranu i log
 błędu. Pliki i grafiki TvSat: MIT. Nazwa CANAL+ należy do jej właściciela.

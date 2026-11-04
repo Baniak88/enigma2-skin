@@ -44,20 +44,23 @@ def png(path,x,y,w,h):
 
 def fake_picon(index,x,y,w,h):
     # Celowo tekstowa próbka, bez kopiowania prawdziwych logo.
-    rect(x,y,w,h,'panel');rect(x,y,w,4,'green')
+    # Przezroczysta próbka logo dziedziczy tło listy albo paska.
     text(x+4,y+h*.25,w-8,h*.7,SHORT[index],max(15,min(30,int(w/8))),'white','center')
 
 
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia interfejsu'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
     if screen=='QuickMenu':
         if key=='description':return 'Aktualizacje oprogramowania, tworzenie kopii zapasowych i przywracanie ustawień. Wybierz działanie w prawej kolumnie.'
         if key.startswith('key_'):return {'key_red':'Zamknij','key_green':'Info o systemie','key_yellow':'Urządzenia'}.get(key,'')
+    if screen=='Setup':
+        if key=='description':return 'Wybierz sposób oznaczania kanałów kodowanych. Ustawienia po prawej używają tego samego kroju i rozmiaru pisma co nazwy opcji.'
+        if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz','key_yellow':'Domyślne'}.get(key,'')
     if screen=='ChoiceBox' and key=='text':return 'Wybierz nośnik do przeskanowania.'
     if key.startswith('key_'):
         if screen=='ChannelSelection':return {'key_red':'Wszystkie','key_green':'Listy odbioru','key_yellow':'Dostawcy','key_blue':'Bukiety'}.get(key,'')
@@ -88,6 +91,12 @@ def draw_list(name,key,x,y,w,h):
             for i,(title,desc) in enumerate(rows):
                 text(x+20,y+i*76+4,w-40,40,title,30,'white',nowrap=True)
                 text(x+20,y+i*76+44,w-40,28,desc,23,'muted',nowrap=True)
+    elif name=='Setup' and key=='config':
+        rows=[('Znacznik kodowania','Żaden'),('Znacznik nagrywania','Czerwony'),('Postęp audycji','Pasek po prawej'),('Wyświetlanie pikon','Włącz'),('Liczba wierszy','8'),('Rozmiar numeru kanału','0'),('Rozmiar nazwy kanału','0'),('Rozmiar informacji o audycji','0'),('Rozmiar informacji o postępie','0'),('Zachowanie przy przełączaniu','Czarny ekran')]
+        for i,(title,current) in enumerate(rows):
+            if i==0:rect(x,y,w,64,'selected')
+            text(x+20,y+i*64+16,w*.60-20,40,title,30,'white',nowrap=True)
+            text(x+w*.64,y+i*64+16,w*.36-20,40,current,30,'white','right',nowrap=True)
     elif name=='ChoiceBox':
         rows=[('Back USB: Elements 25A2 (DISK_1)','/media/hdd/'),('Internal flash','/'),('Katalog tymczasowy','/tmp')]
         for i,(title,path) in enumerate(rows):
@@ -192,7 +201,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--png',action='store_true')
     p.add_argument('--thumbnail',action='store_true',help='Zapisz TvSat/prev.png dla wyboru skórek OpenATV (wymaga Pillow)')
     args=p.parse_args()
-    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg')]:
+    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'))
     if args.thumbnail:
         from PIL import Image

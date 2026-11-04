@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.3.2
+# OpenATV — zakres zgodności 0.3.3
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -149,3 +149,28 @@ Katalog, nazwa paczki, style listy i nagłówki używają nazwy TvSat. Miniaturk
 menu; natywny `Screens/SkinSelection.py` z OpenATV 8.0 wyszukuje `prev.png`
 w katalogu wybranej skórki. Starsza instalacja CanalPL nie jest usuwana ani
 automatycznie przełączana. Po instalacji wybierz TvSat i jego szablon listy.
+
+## Poprawki 0.3.3 — ustawienia, przezroczyste pikony i potwierdzenie instalacji
+
+Natywny ConfigList pobiera font nazwy i font wartości niezależnie. Dotychczas
+skórka ustawiała jedynie `font`, więc wartości po prawej dziedziczyły mały
+font domyślny. Dodano `valueFont=TvSatText;30` do trzech widżetów config oraz
+domyślne entryFont/valueFont/headerFont w windowstyle/configList. Nazwy i wartości
+mają regularny krój 30 px. Setup zawiera dziesięć pełnych wierszy 64 px.
+`scripts/check_upstream_fonts.py` wykonuje oryginalny setter valueFont
+z przypiętych źródeł 7.5/7.6/8.0 przy zastąpionym C++ i ładowaniu fontów.
+
+InfoBar i SecondInfoBar dziedziczą nieprzezroczyste tło #21262c. Renderer Picon
+ma przezroczyste tło, a picon_default.png zawiera wyłącznie przezroczyste piksele.
+Test regresji sprawdza kanał alfa każdego piksela i atrybuty renderera.
+Nieprzezroczyste tło zapisane w zewnętrznym logo PNG pozostaje częścią tego pliku.
+
+Pakiet ma wykonywalny skrypt control/postinst (0755). Test wydobywa ten skrypt
+z rzeczywistego IPK, sprawdza błąd przy brakującym payloadzie, następnie rozpakowuje
+payload do katalogu testowego i wykonuje hook ze standardowym IPKG_INSTROOT.
+Komunikat sukcesu pojawia się dopiero po obecności plików. Test ręcznej instalacji
+sprawdza również komunikat sukcesu oraz jego brak po błędzie. Nie restartujemy
+GUI ani nie zmieniamy ustawionej skórki automatycznie.
+
+GitHub Actions generuje układy i grafiki, wykonuje testy, buduje paczki oraz
+publikuje zweryfikowane wyniki na main. Fizyczny dekoder nadal wymaga sprawdzenia.

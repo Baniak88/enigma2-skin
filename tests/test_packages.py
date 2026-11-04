@@ -67,6 +67,8 @@ class Packages(unittest.TestCase):
             def install():
                 return subprocess.run(['sh',str(source/'install.sh')],env=env,capture_output=True,text=True)
             first=install();self.assertEqual(first.returncode,0,first.stderr)
+            self.assertIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',first.stdout)
+            self.assertIn('GUI',first.stdout)
             for p in (ROOT/'TvSat').rglob('*'):
                 if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'TvSat')).read_bytes(),p.read_bytes())
             (target/'skin.xml').write_text('old skin')
@@ -78,8 +80,31 @@ class Packages(unittest.TestCase):
             self.assertFalse((target/'user-note').exists())
             import shutil
             shutil.rmtree(target);outside=temp/'outside';outside.mkdir();target.symlink_to(outside,target_is_directory=True)
-            self.assertNotEqual(install().returncode,0)
+            failed=install();self.assertNotEqual(failed.returncode,0)
+            self.assertNotIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',failed.stdout)
             self.assertFalse(list(outside.iterdir()))
+
+    def test_packaged_postinst_reports_success_only_after_files_exist(self):
+        files=read_ar((ROOT/'dist'/PACKAGE).read_bytes())
+        with tempfile.TemporaryDirectory() as temp:
+            temp=Path(temp)
+            with tarfile.open(fileobj=io.BytesIO(files['control.tar.gz'])) as archive:
+                member=archive.getmember('./postinst')
+                self.assertEqual(member.mode,0o755)
+                hook=temp/'postinst';hook.write_bytes(archive.extractfile(member).read())
+            receiver=temp/'receiver';receiver.mkdir()
+            env=dict(os.environ,IPKG_INSTROOT=str(receiver))
+            def run_hook():
+                return subprocess.run(['sh',str(hook),'configure'],env=env,capture_output=True,text=True)
+            missing=run_hook()
+            self.assertNotEqual(missing.returncode,0)
+            self.assertNotIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',missing.stdout)
+            with tarfile.open(fileobj=io.BytesIO(files['data.tar.gz'])) as archive:
+                archive.extractall(receiver,filter='data')
+            success=run_hook()
+            self.assertEqual(success.returncode,0,success.stderr)
+            self.assertIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',success.stdout)
+            self.assertIn('GUI',success.stdout)
 
     def test_reproducible_archives(self):
         before={p.name:p.read_bytes() for p in (ROOT/'dist').glob(f'*{VERSION}*')}

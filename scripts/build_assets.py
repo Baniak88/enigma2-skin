@@ -24,8 +24,8 @@ def png(path,w,h,bg,rects=()):
 
 
 def build():
-    # Neutralne tło: żaden symbol nie może prześwitywać przez przezroczyste logo.
-    png(Path('picon_default.png'),220,132,PANEL)
+    # Przezroczyste pole dziedziczy kolor paska/ekranu, bez osobnej ramki i symbolu.
+    png(Path('picon_default.png'),220,132,(0,0,0,0))
     for name,c in [('timeline',PANEL),('timeline-now',GREEN),('state',GREEN)]:
         png(Path('assets')/(name+'.png'),4,4,c)
     for name,c in [('question',GREEN),('info',BLUE),('warning',(245,206,85,255)),('error',RED),('message',WHITE)]:

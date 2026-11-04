@@ -23,7 +23,7 @@ class PiconLayers(unittest.TestCase):
             row=raw[y*(width*4+1):(y+1)*(width*4+1)]
             self.assertEqual(row[0],0)
             pixels.update(row[x:x+4] for x in range(1,len(row),4))
-        self.assertEqual(len(pixels),1,'Neutral fallback must not contain a colored plus or another glyph')
+        self.assertEqual(pixels,{bytes((0,0,0,0))},'Fallback must be fully transparent on every screen')
 
     def test_original_blank_panel_regression(self):
         # Order in XML did not help: OpenATV creates the eLabel after Picon.
@@ -41,6 +41,8 @@ class PiconLayers(unittest.TestCase):
             check_picon_layers(screen)
             for picon in screen.findall("widget[@render='Picon']"):
                 count+=1
+                self.assertEqual(picon.get('transparent'),'1')
+                self.assertEqual(picon.get('backgroundColor'),'transparent')
                 matching=[n for n in screen.findall('ePixmap')
                     if n.get('position')==picon.get('position') and n.get('size')==picon.get('size')]
                 self.assertTrue(matching,screen.get('name'))

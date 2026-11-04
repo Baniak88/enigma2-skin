@@ -7,7 +7,7 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.3.2'
+VERSION='0.3.3'
 PACKAGE=f'enigma2-plugin-skins-tvsat_{VERSION}_all.ipk'
 
 
@@ -53,7 +53,8 @@ def build():
              f'Installed-Size: {(sum(len(data) for _,data,_ in payload)+1023)//1024}\n'
              'Description: TvSat Full HD skin for OpenATV 7.5, 7.6 and 8.0\n')
     data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload],ipk=True)
-    controltar=tar_gz([('control',control.encode(),0o644)],ipk=True)
+    controltar=tar_gz([('control',control.encode(),0o644),
+        ('postinst',(ROOT/'packaging/postinst').read_bytes(),0o755)],ipk=True)
     (out/PACKAGE).write_bytes(ar([('debian-binary',b'2.0\n'),('control.tar.gz',controltar),('data.tar.gz',data)]))
     print(out/f'TvSat-{VERSION}.tar.gz');print(out/PACKAGE)
 

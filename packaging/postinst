@@ -1,0 +1,17 @@
+#!/bin/sh
+# opkg wykonuje ten skrypt po rozpakowaniu paczki.
+set -eu
+case "${1:-configure}" in
+    configure) ;;
+    *) exit 0 ;;
+esac
+TVSAT_ROOT=${IPKG_INSTROOT:-}
+if [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSat/skin.xml" ]; then
+    printf '%s\n' 'TvSat: instalacja niekompletna — brak pliku skin.xml.' >&2
+    exit 1
+fi
+printf '\n%s\n' '======================================================'
+printf '%s\n' 'TvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE'
+printf '%s\n' 'Wybierz TvSat w menu skórek, jeśli to pierwsza instalacja.'
+printf '%s\n' 'Uruchom ponownie interfejs GUI, aby wczytać zmiany.'
+printf '%s\n\n' '======================================================'
