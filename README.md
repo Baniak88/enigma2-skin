@@ -1,13 +1,35 @@
-# TvSat 0.4.1 — skórka Enigma2 dla OpenATV
+# TvSat 0.4.2 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.1 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.2 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## Poprawki 0.4.2 — przezroczysty pasek, wtyczki i opis audycji
+
+- Pasek wraca do ciemnego koloru i ma **40% przezroczystości**: obraz telewizyjny
+  prześwituje przez jego tło, także pod pikoną. Kolor Enigma2 to `#660c0e10`
+  (60% krycia). InfoBar, SecondInfoBar i pasek odtwarzacza używają tej powierzchni.
+  Pełnoekranowe menu zachowują własne tło.
+- Siatka wtyczek ma **cztery kolumny i trzy pełne wiersze**, większe ikony,
+  spokojne karty i zieloną ramkę zaznaczenia. Dłuższe nazwy mają dwie linie.
+- Pod podglądem kanału jest więcej miejsca na opis audycji (116 px) i odstęp
+  od podpowiedzi INFO. Pełną treść nadal otwiera przycisk INFO.
+- Instalator pokazuje numer wersji. Po aktualizacji w komunikacie powinno być
+  **Wersja: 0.4.2**. Numer jest też w `/usr/share/enigma2/TvSat/VERSION`.
+  Po instalacji wykonaj restart GUI; paczka zawiera poprawki FileCommandera z 0.4.1.
+
+Podgląd przezroczystości używa kolorowego obrazu testowego. Pasy celowo biegną
+również pod paskiem — to ilustracja mieszania obrazu, nie dodatkowa grafika skórki.
+Ikony i nazwy wtyczek na podglądzie są przykładowe; na dekoderze pochodzą z wtyczek.
+
+![Przezroczysty pasek — obraz testowy](docs/infobar.svg)
+![Siatka wtyczek](docs/plugin-grid.svg)
+![Panel audycji](docs/channels.svg)
 
 ## FileCommander 0.4.1 — menedżer plików
 
@@ -152,11 +174,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.4.1_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.1_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.4.2_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.2_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.1_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.2_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -171,8 +193,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.4.1.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.1_all.ipk &&
-opkg install /tmp/TvSat-0.4.1.ipk
+wget -O /tmp/TvSat-0.4.2.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.2_all.ipk &&
+opkg install /tmp/TvSat-0.4.2.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -223,12 +245,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.4.1.tar.gz](packages/TvSat-0.4.1.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.4.2.tar.gz](packages/TvSat-0.4.2.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.4.1.tar.gz
+tar -xzf /tmp/TvSat-0.4.2.tar.gz
 sh install.sh
 ```
 
@@ -253,7 +275,8 @@ W obrazach z innym menedżerem usług zastosuj właściwą procedurę restartu G
 
 ## Rozwój i kontrole
 
-Python 3.12+; budowanie i kontrola paczek nie wymagają dodatkowych bibliotek:
+Python 3.12+. Budowanie i kontrola struktury paczek nie wymagają dodatkowych bibliotek.
+Test podglądu PNG wymaga Pillow (`python3 -m pip install Pillow==11.3.0`):
 
 ```sh
 python3 scripts/generate_skin.py

@@ -100,7 +100,9 @@ def build():
     colors = add(skin, 'colors')
     for name, value in PALETTE.items():
         add(colors, 'color', name=name, value='#00'+value)
-    add(colors, 'color', name='overlay', value='#003b4654')
+    # Enigma2 ARGB uses inverse alpha: 00 is opaque, ff is transparent.
+    # 66 = 40% video showing through a dark 60%-opaque surface.
+    add(colors, 'color', name='overlay', value='#660c0e10')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
     add(style, 'title', offset='24,12', font='TvSatText;30')
@@ -180,13 +182,13 @@ def build():
             # Decoder 0: obraz aktualnie oglądanego kanału, bez drugiego tunera.
             # Brak dekoracji w prostokącie video: przezroczyste okno OSD odsłania obraz.
             source(s,'session.VideoPicture',1216,220,640,360,render='Pig',backgroundColor='transparent',zPosition='2')
-            label(s,'TERAZ OGLĄDASZ',1216,598,640,32,20,'muted')
-            source(s,'session.CurrentService',1216,636,640,42,27,'green',converts=[('ServiceName','Name')],noWrap='1')
-            box(s,1216,698,640,1)
-            source(s,'ServiceEvent',1216,720,640,84,31,converts=[('EventName','Name')])
-            source(s,'ServiceEvent',1216,818,130,38,25,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
-            source(s,'ServiceEvent',1356,818,170,38,25,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
-            source(s,'ServiceEvent',1216,876,640,62,23,'muted',converts=[('EventName','ExtendedDescription')])
+            label(s,'TERAZ OGLĄDASZ',1216,592,640,28,20,'muted')
+            source(s,'session.CurrentService',1216,624,640,38,26,'green',converts=[('ServiceName','Name')],noWrap='1')
+            box(s,1216,678,640,1)
+            source(s,'ServiceEvent',1216,696,640,66,28,converts=[('EventName','Name')])
+            source(s,'ServiceEvent',1216,772,130,32,23,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
+            source(s,'ServiceEvent',1356,772,170,32,23,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
+            source(s,'ServiceEvent',1216,818,640,116,23,'muted',converts=[('EventName','ExtendedDescription')])
             label(s,'INFO — pełny opis',1216,944,640,28,20,'muted')
         else:
             picon(s,'ServiceEvent',1216,220)
@@ -325,13 +327,17 @@ def build():
     for name in ('PluginBrowserList','PluginBrowserGrid'):
         s=screen(name); header(s,'WTYCZKI'); footer(s)
         grid=name.endswith('Grid'); key='pluginGrid' if grid else 'pluginList'
-        n=source(s,key,64,236,1792,600,render='Listbox',listOrientation='grid' if grid else 'vertical',**LIST)
+        y,height=(232,684) if grid else (236,600)
+        n=source(s,key,64,y,1792,height,render='Listbox',listOrientation='grid' if grid else 'vertical',**LIST)
         tpl='[MultiContentEntryPixmapAlphaBlend(pos=(24,12),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(156,4),size=(1580,42),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1),MultiContentEntryText(pos=(156,48),size=(1580,40),font=1,text=2)]'
         if grid:
-            tpl='[MultiContentEntryPixmapAlphaBlend(pos=(124,20),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(12,100),size=(324,80),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)]'
-        templated(n,'{"template":'+tpl+',"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":'+('200,"itemWidth":352}' if grid else '100}'))
-        widget(s,'quickselect',64,236,1792,600,80,halign='center',valign='center',transparent='1',foregroundColor='green',zPosition='5')
-        widget(s,'description',64,860,1792,90,27,foregroundColor='muted',transparent='1')
+            tpl='[MultiContentEntryRectangle(pos=(8,8),size=(432,212),backgroundColor=0x00252e38,backgroundColorSelected=0x0025473a,borderWidth=2,borderColor=0x003d4a59,borderColorSelected=0x0000e676),MultiContentEntryPixmapAlphaBlend(pos=(148,24),size=(152,84),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(24,130),size=(400,76),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)]'
+        templated(n,'{"template":'+tpl+',"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":'+('228,"itemWidth":448}' if grid else '100}'))
+        widget(s,'quickselect',64,y,1792,height,80,halign='center',valign='center',transparent='1',foregroundColor='green',zPosition='5')
+        if grid:
+            widget(s,'description',64,928,1792,36,24,foregroundColor='muted',transparent='1',noWrap='1')
+        else:
+            widget(s,'description',64,860,1792,90,27,foregroundColor='muted',transparent='1')
 
     s=screen('AudioSelection'); header(s,'DŹWIĘK I NAPISY')
     widget(s,'config',112,236,1744,224,30,itemHeight='56',**LIST)

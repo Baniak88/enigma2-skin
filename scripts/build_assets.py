@@ -3,6 +3,7 @@
 from pathlib import Path
 import struct
 import zlib
+from build import VERSION
 
 ROOT=Path(__file__).resolve().parents[1]/'TvSat'
 BG=(23,29,36,255); PANEL=(37,46,56,255); GREEN=(0,230,118,255)
@@ -24,6 +25,7 @@ def png(path,w,h,bg,rects=()):
 
 
 def build():
+    (ROOT/'VERSION').write_text(VERSION+'\n')
     # Przezroczyste pole dziedziczy kolor paska/ekranu, bez osobnej ramki i symbolu.
     png(Path('picon_default.png'),220,132,(0,0,0,0))
     # Checkbox graphics used by the native SelectionList in the IPK installer.

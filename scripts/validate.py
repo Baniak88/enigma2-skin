@@ -14,7 +14,7 @@ SOURCE_TYPES={'StaticText','List','ServiceEvent','Event','Boolean','CurrentServi
 
 def check_template(code):
     tree=ast.parse(code,mode='eval')
-    names={'gFont','MultiContentEntryText','MultiContentEntryPixmapAlphaBlend'}
+    names={'gFont','MultiContentEntryText','MultiContentEntryPixmapAlphaBlend','MultiContentEntryRectangle'}
     for node in ast.walk(tree):
         assert not isinstance(node,(ast.Attribute,ast.Subscript,ast.Lambda,ast.ListComp)), 'Niedozwolony szablon'
         if isinstance(node,ast.Call):
@@ -22,7 +22,7 @@ def check_template(code):
     flags={n.id for n in ast.walk(tree) if isinstance(n,ast.Name) and n.id not in names}
     assert all(n.startswith(('RT_','BT_')) for n in flags)
     ns={n:1<<i for i,n in enumerate(sorted(flags))}
-    ns.update(gFont=lambda *a:a,MultiContentEntryText=lambda **kw:('text',kw),MultiContentEntryPixmapAlphaBlend=lambda **kw:('pixmap',kw))
+    ns.update(gFont=lambda *a:a,MultiContentEntryText=lambda **kw:('text',kw),MultiContentEntryPixmapAlphaBlend=lambda **kw:('pixmap',kw),MultiContentEntryRectangle=lambda **kw:('rect',kw))
     result=eval(compile(tree,'skin-template','eval'),{'__builtins__':{}},ns)
     assert result['fonts']
     templates=result.get('templates',{'default':(result.get('itemHeight'),result.get('template'))})

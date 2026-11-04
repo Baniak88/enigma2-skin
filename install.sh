@@ -41,6 +41,10 @@ if ! mv "$STAGE" "$TARGET"; then
 fi
 printf '\n%s\n' '======================================================'
 printf '%s\n' 'TvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE'
+if [ -r "$TARGET/VERSION" ]; then
+    TVSAT_VERSION=$(cat "$TARGET/VERSION")
+    printf 'Wersja: %s\n' "$TVSAT_VERSION"
+fi
 printf 'Pliki: %s/skin.xml\n' "$TARGET"
 printf '%s\n' 'Wybierz TvSat w menu skórek, jeśli to pierwsza instalacja.'
 printf '%s\n' 'Uruchom ponownie interfejs GUI, aby wczytać zmiany.'

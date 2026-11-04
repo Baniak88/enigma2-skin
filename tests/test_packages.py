@@ -43,10 +43,12 @@ class Packages(unittest.TestCase):
             self.assertTrue(t.getmember('.').isdir())
         self.assertIn('Architecture: all\n',control)
         self.assertIn('Depends: enigma2\n',control)
+        self.assertIn(f'Version: {VERSION}\n',control)
         with tarfile.open(fileobj=io.BytesIO(files['data.tar.gz'])) as t:
             names={m.name.removeprefix('./') for m in t if m.isfile()}
             expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for p in (ROOT/'TvSat').rglob('*') if p.is_file()}
             self.assertEqual(names,expected)
+            self.assertEqual(t.extractfile('./usr/share/enigma2/TvSat/VERSION').read().decode().strip(),VERSION)
             for p in (ROOT/'TvSat').rglob('*'):
                 if p.is_file():
                     name='./usr/share/enigma2/'+str(p.relative_to(ROOT))
@@ -69,6 +71,7 @@ class Packages(unittest.TestCase):
             first=install();self.assertEqual(first.returncode,0,first.stderr)
             self.assertIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',first.stdout)
             self.assertIn('GUI',first.stdout)
+            self.assertIn(f'Wersja: {VERSION}',first.stdout)
             for p in (ROOT/'TvSat').rglob('*'):
                 if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'TvSat')).read_bytes(),p.read_bytes())
             (target/'skin.xml').write_text('old skin')
@@ -105,6 +108,7 @@ class Packages(unittest.TestCase):
             self.assertEqual(success.returncode,0,success.stderr)
             self.assertIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',success.stdout)
             self.assertIn('GUI',success.stdout)
+            self.assertIn(f'Wersja: {VERSION}',success.stdout)
 
     def test_reproducible_archives(self):
         before={p.name:p.read_bytes() for p in (ROOT/'dist').glob(f'*{VERSION}*')}

@@ -51,5 +51,16 @@ class ChannelUI(unittest.TestCase):
         self.assertIsNotNone(screen)
         self.assertIsNone(screen.find("widget[@render='Pig']"))
 
+    def test_selected_event_description_has_room_before_info_hint(self):
+        for name in ('ChannelSelection','ChannelSelection_PIG'):
+            screen=self.skin.find(f"screen[@name='{name}']")
+            description=next(n for n in screen.findall("widget[@source='ServiceEvent']")
+                if n.find("convert[@type='EventName']") is not None and n.find("convert[@type='EventName']").text=='ExtendedDescription')
+            height=int(description.get('size').split(',')[1])
+            self.assertGreaterEqual(height,110)
+            hint=next(n for n in screen.findall('eLabel') if n.get('text')=='INFO — pełny opis')
+            bottom=int(description.get('position').split(',')[1])+height
+            self.assertGreaterEqual(int(hint.get('position').split(',')[1])-bottom,8)
+
 
 if __name__=='__main__':unittest.main()

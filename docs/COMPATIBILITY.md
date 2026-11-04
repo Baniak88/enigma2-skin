@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.4.1
+# OpenATV — zakres zgodności 0.4.2
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -227,3 +227,27 @@ uruchamiane przez te próby. TemplatedMultiContent przyjmuje 15 kombinacji na we
 Kontrole geometrii sprawdzają osiem pełnych wierszy, równe panele, brak zasłaniania
 list przez status i zachowanie kroju monospace w podglądzie/edytorze. Nadal potrzebny
 jest test na dekoderze. Wtyczki FileCommander spoza OpenATV mogą używać innego API.
+
+## Przezroczystość i układy 0.4.2
+
+Zmieniono kolor overlay na #660c0e10. Enigma2 stosuje odwrotne znaczenie kanału
+alfa: 00 oznacza nieprzezroczystość, ff pełną przezroczystość. Tło paska ma 40%
+przezroczystości i 60% krycia; renderery pikon i przezroczysty PNG nie dodają
+oddzielnej powierzchni. Biały tekst zachowuje testowany kontrast co najmniej 4.5:1
+po zmieszaniu nawet z białą klatką testową. Globalna przezroczystość OSD i telewizor
+pozostają ustawieniami użytkownika — nie są zmieniane przez paczkę.
+
+Podgląd SVG zapisuje rzeczywiste fill-opacity, a renderer PNG składa kolory
+z zachowaniem alfa. Test odczytuje piksele wygenerowanego PNG nad różnymi
+kolorami tła oraz w polu pikony; poprzedni podgląd pomijał kanał alfa.
+
+PluginBrowserGrid ma cztery kolumny 448 px i trzy wiersze 228 px. Wewnętrzne
+karty i powiększone ikony zachowują odstępy, opis jest pod siatką. Prostokąt
+karty korzysta z natywnego MultiContentEntryRectangle, a oryginalne konwertery
+trzech wersji nadal przyjmują 15 kombinacji szablonów/stylów z C++ zastąpionym.
+
+Panel wybranej audycji pod PIG ma wyższe pole opisu i osobną podpowiedź INFO.
+Długie opisy nadal mają dostęp do pełnego widoku pod INFO; nie gwarantujemy
+zmieszczenia całego EPG w panelu. VERSION jest dołączony do obu archiwów,
+a skrypty końcowe podają faktycznie zainstalowany numer. Przebudowane testy
+sprawdzają wersję w IPK oraz w komunikatach instalacji. Test sprzętowy oczekuje.

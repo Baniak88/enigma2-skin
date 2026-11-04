@@ -7,7 +7,7 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.4.1'
+VERSION='0.4.2'
 PACKAGE=f'enigma2-plugin-skins-tvsat_{VERSION}_all.ipk'
 
 
@@ -41,6 +41,7 @@ def ar(files):
 
 
 def build():
+    (ROOT/'TvSat/VERSION').write_text(VERSION+'\n')
     validate()
     out=ROOT/'dist';out.mkdir(exist_ok=True)
     skinfiles=sorted(p for p in (ROOT/'TvSat').rglob('*') if p.is_file())

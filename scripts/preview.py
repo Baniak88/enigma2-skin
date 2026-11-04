@@ -8,10 +8,11 @@ from pathlib import Path
 import textwrap
 import xml.etree.ElementTree as E
 from build import VERSION
+from skin_colors import rgba
 
 ROOT=Path(__file__).resolve().parents[1]
 SKIN=E.parse(ROOT/'TvSat/skin.xml').getroot()
-COLORS={c.get('name'):'#'+c.get('value')[-6:] for c in SKIN.findall('colors/color')}
+COLORS={c.get('name'):c.get('value') for c in SKIN.findall('colors/color')}
 CHANNELS=['CANAL+ PREMIUM','CANAL+ FILM','CANAL+ SPORT','CANAL+ SERIALE','TVP 1 HD','TVP 2 HD','TVN HD','Polsat HD']
 SHORT=['C+ PREMIUM','C+ FILM','C+ SPORT','C+ SERIALE','TVP 1','TVP 2','TVN','POLSAT']
 SHOWS=['Wszystko przed nami','Wieczór filmowy','Magazyn sportowy','Nowy rozdział','Wiadomości dnia','Na dobre i na złe','Fakty','Wydarzenia']
@@ -19,11 +20,18 @@ out=[]
 
 
 def color(value):
-    return COLORS.get(value,value if value and value.startswith('#') else COLORS['white'])
+    raw=COLORS.get(value,value if value and value.startswith('#') else COLORS['white'])
+    return '#'+''.join(f'{c:02x}' for c in rgba(raw)[:3])
+
+
+def opacity(value):
+    raw=COLORS.get(value,value if value and value.startswith('#') else COLORS['white'])
+    return rgba(raw)[3]/255
 
 
 def rect(x,y,w,h,fill):
-    out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{color(fill)}"/>')
+    if w<=0 or h<=0:return
+    out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{color(fill)}" fill-opacity="{opacity(fill):.6f}"/>')
 
 
 def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False,bold=False,mono=False):
@@ -53,10 +61,13 @@ def fake_picon(index,x,y,w,h):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
+    if screen in ('PluginBrowserGrid','PluginBrowserList'):
+        if key=='description':return 'Enhanced Movie Center — konfiguracja i ustawienia odtwarzania nagrań.'
+        if key.startswith('key_'):return {'key_red':'Usuń wtyczki','key_green':'Zainstaluj wtyczki','key_yellow':'Aktualizuj wtyczki','key_blue':'Edytuj'}.get(key,'')
     if screen=='FileCommander':
         if key in ('sortleft','sortright'):return 'Sortuj: katalogi wg nazwy ↑ · pliki wg nazwy ↑'
         if key.startswith('key_'):return {'key_menu':'MENU','key_info':'INFO','key_help':'HELP'}.get(key,'')
@@ -110,7 +121,23 @@ def value(node,screen):
 
 
 def draw_list(name,key,x,y,w,h):
-    if name=='FileCommander':
+    if name in ('PluginBrowserGrid','PluginBrowserList'):
+        names=['Enhanced Movie Center (Ustawienia)','Media skaner','Menedżer plików','Odtwarzacz multimedialny','Odtwarzacz zdjęć','Open FM','OpenWebif','s4aUpdater','Ustawienia IMDb','Ustawienia transkodowania']
+        icons=['movie_selection','scan','mainmenu','video_menu','information','audio_menu','network','setup','information','video_menu']
+        for i,(title,icon) in enumerate(zip(names,icons)):
+            if name.endswith('Grid'):
+                xx=x+(i%4)*448;yy=y+(i//4)*228
+                rect(xx+8,yy+8,432,212,'green' if i==0 else 'line')
+                rect(xx+10,yy+10,428,208,'selected' if i==0 else 'panel')
+                png(ROOT/'TvSat/mainmenu'/(icon+'.png'),xx+148,yy+24,152,84)
+                text(xx+24,yy+130,400,76,title,30,'white','center')
+            elif i<6:
+                yy=y+i*100
+                if i==0:rect(x,yy,w,100,'selected')
+                png(ROOT/'TvSat/mainmenu'/(icon+'.png'),x+24,yy+12,100,60)
+                text(x+156,yy+4,w-180,42,title,30,'white',nowrap=True)
+                text(x+156,yy+48,w-180,40,'Przykładowy opis wtyczki',24,'muted',nowrap=True)
+    elif name=='FileCommander':
         if key.startswith('head'):
             text(x+16,y,w-32,44,'/',28,'white',nowrap=True)
             text(x+16,y+60,176,32,'drwxr-xr-x',22,'muted',nowrap=True)
@@ -211,7 +238,11 @@ def render(name,target,make_png=False):
     s=SKIN.find(f"screen[@name='{name}']");ox,oy=map(int,s.get('position').split(','));sw,sh=map(int,s.get('size').split(','))
     out=['<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">',f'<title>TvSat — {name} — dane przykładowe</title>','<g font-family="DejaVu Sans, sans-serif">']
     rect(0,0,1920,1080,'#20282c')
-    if name=='InfoBar':text(64,350,1792,140,'Miejsce na obraz telewizyjny',42,'#758187','center')
+    if name=='InfoBar':
+        # Deliberately synthetic TV backdrop, continued behind the whole bar.
+        for xx,fill in ((0,'#315b78'),(640,'#7c3c4c'),(1280,'#47694a')):
+            rect(xx,0,640,1080,fill)
+        text(64,300,1792,180,'Przykładowy obraz TV — test przezroczystości',42,'white','center')
     rect(ox,oy,sw,sh,s.get('backgroundColor'))
     for n in s:
         x,y=map(int,n.get('position').split(','));w,h=map(int,n.get('size').split(','));x+=ox;y+=oy
@@ -233,7 +264,7 @@ def render(name,target,make_png=False):
         elif n.get('render')=='Progress' or key in ('progress','slider','activityslider'):
             rect(x,y,w,h,n.get('backgroundColor','line'))
             rect(x,y,int(w*(1 if name=='Opkg' and key=='slider' else 0 if name=='Opkg' else .5)),h,'green')
-        elif key in ('menu','list','mainlist','sublist','plugins','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
+        elif key in ('menu','list','mainlist','sublist','plugins','pluginGrid','pluginList','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
@@ -256,7 +287,15 @@ def render_png(path):
     for n in E.parse(path).getroot().iter():
         tag=n.tag.split('}')[-1]
         if tag=='rect':
-            x,y,w,h=[float(n.get(k)) for k in ('x','y','width','height')];draw.rectangle((x,y,x+w,y+h),fill=n.get('fill'))
+            x,y,w,h=[float(n.get(k)) for k in ('x','y','width','height')]
+            alpha=round(float(n.get('fill-opacity','1'))*255)
+            if alpha==255:
+                draw.rectangle((x,y,x+w,y+h),fill=n.get('fill'))
+            elif alpha:
+                layer=Image.new('RGBA',im.size,(0,0,0,0))
+                rgb=tuple(int(n.get('fill')[i:i+2],16) for i in (1,3,5))
+                ImageDraw.Draw(layer).rectangle((x,y,x+w,y+h),fill=rgb+(alpha,))
+                im=Image.alpha_composite(im.convert('RGBA'),layer).convert('RGB');draw=ImageDraw.Draw(im)
         elif tag=='text':
             font=ImageFont.truetype('DejaVuSansMono.ttf' if n.get('font-family')=='monospace' else 'DejaVuSans-Bold.ttf' if n.get('font-weight')=='bold' else 'DejaVuSans.ttf',int(n.get('font-size')))
             draw.text((float(n.get('x')),float(n.get('y'))),n.text or '',font=font,fill=n.get('fill'),anchor={'start':'ls','middle':'ms','end':'rs'}[n.get('text-anchor')])
@@ -274,7 +313,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--png',action='store_true')
     p.add_argument('--thumbnail',action='store_true',help='Zapisz TvSat/prev.png dla wyboru skórek OpenATV (wymaga Pillow)')
     args=p.parse_args()
-    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg')]:
+    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg'),('PluginBrowserGrid','plugin-grid.svg'),('PluginBrowserList','plugin-list.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'))
     if args.thumbnail:
         from PIL import Image

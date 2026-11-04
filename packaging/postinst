@@ -12,6 +12,10 @@ if [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSat/skin.xml" ]; then
 fi
 printf '\n%s\n' '======================================================'
 printf '%s\n' 'TvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE'
+if [ -r "$TVSAT_ROOT/usr/share/enigma2/TvSat/VERSION" ]; then
+    TVSAT_VERSION=$(cat "$TVSAT_ROOT/usr/share/enigma2/TvSat/VERSION")
+    printf 'Wersja: %s\n' "$TVSAT_VERSION"
+fi
 printf '%s\n' 'Wybierz TvSat w menu skórek, jeśli to pierwsza instalacja.'
 printf '%s\n' 'Uruchom ponownie interfejs GUI, aby wczytać zmiany.'
 printf '%s\n\n' '======================================================'

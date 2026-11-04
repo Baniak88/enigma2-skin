@@ -21,25 +21,27 @@ class SettingsUI(unittest.TestCase):
         setup=skin.find("screen[@name='Setup']/widget[@name='config']")
         self.assertEqual(int(setup.get('size').split(',')[1])%int(setup.get('itemHeight')),0)
 
-    def test_infobar_has_one_lighter_opaque_surface(self):
+    def test_infobar_has_one_dark_transparent_surface(self):
         skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
         colors={n.get('name'):n.get('value') for n in skin.findall('colors/color')}
-        for name in ('InfoBar','SecondInfoBar'):
+        for name in ('InfoBar','SecondInfoBar','MoviePlayer'):
             screen=skin.find(f"screen[@name='{name}']")
             surface=colors[screen.get('backgroundColor')].lstrip('#')
-            self.assertEqual(surface[:2],'00')
+            transparency=int(surface[:2],16)/255
+            self.assertGreaterEqual(transparency,0.35)
+            self.assertLessEqual(transparency,0.45)
             rgb=[int(surface[i:i+2],16) for i in (2,4,6)]
             background=colors['bg'].lstrip('#')
-            self.assertGreater(sum(rgb),sum(int(background[i:i+2],16) for i in (2,4,6)))
+            self.assertLess(sum(rgb),sum(int(background[i:i+2],16) for i in (2,4,6)))
             def luminance(value):
                 channels=[int(value[-6:][i:i+2],16)/255 for i in (0,2,4)]
                 linear=[x/12.92 if x<=0.04045 else ((x+0.055)/1.055)**2.4 for x in channels]
                 return sum(a*b for a,b in zip(linear,(0.2126,0.7152,0.0722)))
-            light=luminance(surface)
-            # A material difference from both the main UI and release 0.3.3.
-            self.assertGreater((light+0.05)/(luminance(background)+0.05),1.7)
-            self.assertGreater((light+0.05)/(luminance('21262c')+0.05),1.45)
-            self.assertGreater((luminance(colors['white'])+0.05)/(light+0.05),7)
+            # Even a white TV frame must leave readable white text after mixing.
+            for video in ((0,0,0),(255,255,255),(255,0,0),(0,0,255)):
+                mixed=[round(c*(1-transparency)+v*transparency) for c,v in zip(rgb,video)]
+                mixed_hex=''.join(f'{c:02x}' for c in mixed)
+                self.assertGreater((luminance(colors['white'])+0.05)/(luminance(mixed_hex)+0.05),4.5)
             for icon in screen.findall("widget[@render='Picon']"):
                 self.assertEqual(icon.get('backgroundColor'),'transparent')
                 self.assertEqual(icon.get('transparent'),'1')
