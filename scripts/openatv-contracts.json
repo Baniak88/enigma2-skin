@@ -1,31 +1,37 @@
 {
   "7.5": {
     "source_sha256": {
-      "lib/python/Components/ChoiceList.py": "48e72ab31ab68a28bc8597583f7caf89766b42e3e6a2cbd8d2bf99853643bd33",
-      "lib/python/Components/ConfigList.py": "c950590029201e8745faeab9023758e8c748166be3da7cca5be7c0ce36bcaa9c",
-      "lib/python/Components/Converter/TemplatedMultiContent.py": "344f5c690ff42c70e7e4deb90b74ba5aab3d23cbf9dcbfaec2c1afcb19e28ed5",
-      "lib/python/Components/EpgList.py": "c2a97f51ccdb17fdd9b8fab178a7f05a70b9cd04bf25f02822d86d1dfb69f1f7",
-      "lib/python/Components/MovieList.py": "9e439c0f95ea5e6d8002e3d2d240f338e702fe7eb2d17337323f4f491b9b2055",
-      "lib/python/Components/Renderer/Picon.py": "ed810eae792376d51e0181bc50b20cfd6ddda95d499972c727f359ba1439847f",
-      "lib/python/Components/ServiceList.py": "f22886e633db74e9329540868e2f4e7e935297ae8b45225b30e82bc6981f4306",
-      "lib/python/Components/UsageConfig.py": "e0371cd2128c1063f175e4d41380d17eee7cd2b6fc07613b065dd1966fb28833",
-      "lib/python/Screens/AudioSelection.py": "dfeea3de65f7ad5ae9626e35d3aee5963e3b9987e6fba4ee1d9991d6f9d926f7",
-      "lib/python/Screens/ChannelSelection.py": "aef5ba74aebbe584bc7c31a896fdbaf923cc01c1270a67aa42cd3959badec138",
-      "lib/python/Screens/ChoiceBox.py": "768cddcbe04dbf74663ca90ce65983a95be15a23e549def908e94aa1720f3158",
-      "lib/python/Screens/EpgSelection.py": "10a80bc0c12306259f70df337c6aae375410d832eb51167786a774b0b029f55c",
-      "lib/python/Screens/EventView.py": "9940226e3fd16284deb63ad066f20f43a1c7b49f0a491b74c88763af08cfca8a",
-      "lib/python/Screens/InfoBar.py": "25b9a12c8b498310be3283e2c376ff50cab177e319f09820a7723b70c2e44d95",
-      "lib/python/Screens/InfoBarGenerics.py": "67967c7d31f5c48aaec97ba7cb64474e31beb479f5a01d7051b853949cebd96d",
-      "lib/python/Screens/Menu.py": "10163507c0a667271fc214e1e048cd159c34ebbfbc2d373a3205c3f1b92a9e5a",
-      "lib/python/Screens/MessageBox.py": "422337a80d938188593239d1f34e860976fc2cc39f3a10a7a4b6387b5c72804f",
-      "lib/python/Screens/MovieSelection.py": "44a3fbd16df94a848f2075ece849b5bc56e1c13001e110e6ddba561c4b4e8b42",
-      "lib/python/Screens/PVRState.py": "afc72bebeb59fa46fbacbdacc26a833ef8c2e2a0fda85f1e2c37e99a4c0933b8",
-      "lib/python/Screens/PluginBrowser.py": "fbb4e7c017a209f5d0f976bbc9c357197c072274c5cceda9de96f81292190f29",
-      "lib/python/Screens/QuickMenu.py": "6e6e5326dbebeb4499e2b63240cd457e0ff1700afb71ec5e9ffd2103bd3efebd",
-      "lib/python/Screens/Screen.py": "500b9e47db363a03fa2b139d28645150b670a585a4aa756290f89bf4eb607590",
-      "lib/python/Screens/Setup.py": "6013b45dede613c47ecee93aad885647c17f6a0025c7ad1c2bfb64b54f6f28df",
-      "lib/python/Screens/Timers.py": "b2f9a27edecd5fa74d852081e7a2a8b9e5ac0c783489090f49d491f2164e086c",
-      "lib/python/skin.py": "f0f8f9ab3cb4753f1b5867c3f9204b055b5c09b7c5522d3673465ad0345e0a7e"
+      "lib/python/Components/ChoiceList.py": "8f74f7ab5759cbf44137aef4e165f3de36d49b3565445e843bb9475ff88e9585",
+      "lib/python/Components/ConfigList.py": "a829026936883c5f150502f90bc8ca865a61e29604ea0b997473f179189a6cbd",
+      "lib/python/Components/Converter/ConditionalShowHide.py": "7a69e88891351cca61964a2f322c84174153b0985f4399e58ece4c98be76afd0",
+      "lib/python/Components/Converter/TemplatedMultiContent.py": "6f84b94bc384e6c41cab4036be64d250aa411fb6fbf262b24d9668e17c815d75",
+      "lib/python/Components/EpgList.py": "a7afad35c8b05bdd514372a7c2a4d7e375fc47087ee3b1db616601d72e47d8c1",
+      "lib/python/Components/MovieList.py": "d6e81e0b1c75c177dd864ab06ed9e671ea312678e3603bfa1705a3d8e1eb4cee",
+      "lib/python/Components/Renderer/Picon.py": "ba6e5dcf38baedfff6b9fb95e477226fa1a0f14d06b6eeca62933a31a7db582e",
+      "lib/python/Components/SelectionList.py": "1e50e14fc96c1a9fe5dceabe5a1fe052d8c40284a9be1b357cd35b2412dd48cd",
+      "lib/python/Components/ServiceList.py": "dd078b435b1aaee06958fff5e3c8c85ec886bf22c26090f6d596064c0326f5f7",
+      "lib/python/Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+      "lib/python/Components/UsageConfig.py": "6f3e105b640071fc82f3dcf7ecb0da9433307e7a65cbbed2856dfdf285abf473",
+      "lib/python/Screens/AudioSelection.py": "e534778efa1df2157a10215c4cd9a6e6a17bb49217f9d1d9436a7ff960eff5fb",
+      "lib/python/Screens/ChannelSelection.py": "13ff12aa2c755d3544a5b92674b7b90c8d08bbe514081c331e6d67ebd0c0f526",
+      "lib/python/Screens/ChoiceBox.py": "126577f2b9fbd4c8651d14ba2e32cf0564aa8637702518b3df857eee8d3d3bc5",
+      "lib/python/Screens/Console.py": "d7a8921051b8a56483f1adcd10421b302cf6afeb1326093431a729d398290985",
+      "lib/python/Screens/EpgSelection.py": "e244d6138863058d06a55f089c728de53f1d0b29380caf3d5129b0beebe5e9f9",
+      "lib/python/Screens/EventView.py": "43f910b6c540dca23a9eb770b22e3090faffc8aa83a2c50e687e6b5153a02f11",
+      "lib/python/Screens/InfoBar.py": "8dde398745c719782bfae8fc4d4298d871ff33d5eacae6d7f65419d78701e91d",
+      "lib/python/Screens/InfoBarGenerics.py": "bc6e2b920fc7bd23aba1772e38191cf28d7cb40df768110d616794ceb6edf928",
+      "lib/python/Screens/Menu.py": "1eaf980dc10a7442f76f77edc188a2a7640459c5b4e16885512392c7d0aa2f1a",
+      "lib/python/Screens/MessageBox.py": "19c99b7ee1226c6376d6bfbe7cc506287e2c399a742921b73b06409e12fe5f77",
+      "lib/python/Screens/MovieSelection.py": "8a1c4dfccda8ff656122540e751a349eb0acb312daf1cf406fb7812de21cc207",
+      "lib/python/Screens/Opkg.py": "43508a85949f08d135c476373646d4b5075d6adad1a5d984432d95120f777b3a",
+      "lib/python/Screens/PVRState.py": "cbbabac9ee891a07d864b8219f26353ee95e275cede4d4675617dc4d6d41b6d8",
+      "lib/python/Screens/PluginBrowser.py": "f338d3f1d1309af545cb618a80500f12ffa56e20969ac3cdb2085107e2992197",
+      "lib/python/Screens/Processing.py": "ae3533bbe37398efd235afe4179cdd877bee040f753945e983ef859583e85a00",
+      "lib/python/Screens/QuickMenu.py": "62bc62f39d53d70ad1fad3fbc458b0e8f60d40e68bf3d771b0437a1b5bd99fb0",
+      "lib/python/Screens/Screen.py": "f46eee3da4c34656fceaf6d1a61d303a45f1f5d48be7aa4a82704ca21ca52aa7",
+      "lib/python/Screens/Setup.py": "ebe5001c6bff5d3d509fe1b5b13b9e316224b43081f2dd0880448350cef48e88",
+      "lib/python/Screens/Timers.py": "a0dd11bddf4b71b89dc2528bf7c9855b845be7eba5b0fcb0f6ce01497c999793",
+      "lib/python/skin.py": "190ba49fb6560bcebdcb8f6b9d19c48b8bbcbee336f06fa82ca24ea678b8d404"
     },
     "screens": {
       "Menu": {
@@ -1053,6 +1059,159 @@
           "list",
           "text"
         ]
+      },
+      "MessageBoxModal": {
+        "class": "MessageBox",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "text": "Label",
+          "list": "MenuList",
+          "icon": "MultiPixmap",
+          "actions": "HelpableActionMap"
+        },
+        "required": [
+          "icon",
+          "list",
+          "text"
+        ]
+      },
+      "IpkgInstaller": {
+        "class": "IpkgInstaller",
+        "available": false,
+        "widgets": {},
+        "required": []
+      },
+      "Opkg": {
+        "class": "Opkg",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "slider": "Slider",
+          "activityslider": "Slider",
+          "status": "Label",
+          "package": "Label",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "key_blue": "StaticText",
+          "logactions": "HelpableActionMap",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Console": {
+        "class": "Console",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "text": "ConsoleScrollLabel",
+          "summary_description": "StaticText",
+          "actions": "HelpableActionMap",
+          "hideAction": "HelpableActionMap",
+          "saveAction": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Processing": {
+        "class": "ProcessingScreen",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "progress": "ProgressBar",
+          "description": "Label"
+        },
+        "required": []
+      },
+      "PackageAction": {
+        "class": "PackageAction",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "plugins": "List",
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "actions": "HelpableActionMap",
+          "selectAction": "HelpableActionMap",
+          "performAction": "HelpableActionMap",
+          "logAction": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "quickSelectActions": "HelpableNumberActionMap"
+        },
+        "required": []
+      },
+      "PluginAction": {
+        "class": "PackageAction",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "plugins": "List",
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "actions": "HelpableActionMap",
+          "selectAction": "HelpableActionMap",
+          "performAction": "HelpableActionMap",
+          "logAction": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "quickSelectActions": "HelpableNumberActionMap"
+        },
+        "required": []
+      },
+      "PackageActionLog": {
+        "class": "PackageActionLog",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "PluginActionLog": {
+        "class": "PackageActionLog",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
       },
       "MovieSelection": {
         "class": "MovieSelection",
@@ -1490,28 +1649,35 @@
   },
   "7.6": {
     "source_sha256": {
-      "lib/python/Components/ChoiceList.py": "48e72ab31ab68a28bc8597583f7caf89766b42e3e6a2cbd8d2bf99853643bd33",
-      "lib/python/Components/ConfigList.py": "2db8df2337e4c7db95d965537c3fcd5e6cefa5e9cc55f9cd0745507d80c5209f",
-      "lib/python/Components/Converter/TemplatedMultiContent.py": "6ebf06edc3d90af6754748b0eef71c4fa709c4eb581da6281bfe3eb48d932615",
-      "lib/python/Components/EpgList.py": "7c29764ad836a3fc69f6beae9758ba0eeaf4269c2f837dd5144521085d72280f",
-      "lib/python/Components/Renderer/Picon.py": "3986088d6e96e65921d9fe9c4275d3bc8f6515c5a0465637861138b7b3dea910",
-      "lib/python/Components/ServiceList.py": "e549fef170f818dbed53aa6389d5c69ac99752e368c24b570a2636e0118dac46",
-      "lib/python/Screens/AudioSelection.py": "d9f2a2dffd755227d54c2bf195c3196ea7f3a66816b74b54cf8999aa6669697e",
-      "lib/python/Screens/ChannelSelection.py": "06299f0f9773743299cd2c6db9259f06633c3d3fc9a7dbbfc452b559ce0eb609",
-      "lib/python/Screens/ChoiceBox.py": "768cddcbe04dbf74663ca90ce65983a95be15a23e549def908e94aa1720f3158",
-      "lib/python/Screens/EpgSelection.py": "85c616fef5bfd676102bf160edbfddf8845630216c3727fdee5e6333ccde35f6",
-      "lib/python/Screens/EventView.py": "d088a3da70c92389ef2bdfe07f416e8b2b231daa9947b4b7d4615028ced4f15c",
-      "lib/python/Screens/InfoBar.py": "dd0ffe621bd2435fd3571776cd34650d204a186078b181508535d1452d525238",
-      "lib/python/Screens/InfoBarGenerics.py": "da116af117c579d52b37fafa7632696026240b8a61d966a3ac17e440fe3f5d56",
-      "lib/python/Screens/Menu.py": "7ee07a387aa855a0f2092fcf43cd7b59fe303158f2e1b1d26fe3ed206d12d8bf",
-      "lib/python/Screens/MessageBox.py": "6523e4dc2dfa1eacfba2ba5d9ecb1087b7d639795b30df610ff94b18f6b6f614",
-      "lib/python/Screens/MovieSelection.py": "5db02dafad05c633d4a242d0bb188d5d06172359dc3287f1c5264bb1cef5a180",
-      "lib/python/Screens/PVRState.py": "afc72bebeb59fa46fbacbdacc26a833ef8c2e2a0fda85f1e2c37e99a4c0933b8",
-      "lib/python/Screens/PluginBrowser.py": "7eaac6ae1856f68cdb7122395cc7b826038e4f09ac3e5d08b7d5abe18ed656be",
-      "lib/python/Screens/QuickMenu.py": "a047beda66426cb496934f881f509b2ec2834eab6726d2c11ee119e8f3c9a872",
-      "lib/python/Screens/Screen.py": "e2648d2e41bf3f352929ca4a603407536897fda991f07b6d9bdb7d97f1271fb0",
-      "lib/python/Screens/Setup.py": "87fc0785fd6a4bd6b482e69e6c116d617b44cf3c65131b2b0fd237b0603d7d00",
-      "lib/python/Screens/Timers.py": "ece6a41bd347e921ab0b648664b64aa286f359e795e1a8804556ee2406c19307"
+      "lib/python/Components/ChoiceList.py": "8f74f7ab5759cbf44137aef4e165f3de36d49b3565445e843bb9475ff88e9585",
+      "lib/python/Components/ConfigList.py": "6f1a26d2885ea41d0db7cdde081d2dd1062eb3fcfa79fa61d69b21c6e7138d89",
+      "lib/python/Components/Converter/ConditionalShowHide.py": "7a69e88891351cca61964a2f322c84174153b0985f4399e58ece4c98be76afd0",
+      "lib/python/Components/Converter/TemplatedMultiContent.py": "7639db2a862153504ea61332882eec02fbc2ea1a76b12fec85f4fa353940f5db",
+      "lib/python/Components/EpgList.py": "bba69be96e99ac42885a82bbb34897dadef6e8ce5ecb67a3442b3ef01758f9e2",
+      "lib/python/Components/Renderer/Picon.py": "4611f6f0c24602c2774e824d6b1bf0024a4dade4897434cd91279858e64946d8",
+      "lib/python/Components/SelectionList.py": "1e50e14fc96c1a9fe5dceabe5a1fe052d8c40284a9be1b357cd35b2412dd48cd",
+      "lib/python/Components/ServiceList.py": "1dd299b998ccf6a22989b4927983e55f15954e18742353a6753ff3fb7c0b9727",
+      "lib/python/Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+      "lib/python/Screens/AudioSelection.py": "590bc69e559405e48eb341b95905bef6fc79f0adeec1caa1de37e2feda9ef580",
+      "lib/python/Screens/ChannelSelection.py": "68e7445c340d606fe3823a989d416afffa4be46239677443ed954dd2456775a2",
+      "lib/python/Screens/ChoiceBox.py": "126577f2b9fbd4c8651d14ba2e32cf0564aa8637702518b3df857eee8d3d3bc5",
+      "lib/python/Screens/Console.py": "6f7d873178686255221c6ab5d3a9235215f68974690efd2c1beb84edc8cecffc",
+      "lib/python/Screens/EpgSelection.py": "e54b7603f3e19895152da8905867cc85099c48005a3da6dac72690079f303f40",
+      "lib/python/Screens/EventView.py": "988e97041232a6cd3c5adeef550dfae16edd53582f0be250981c59c7c9a81dbb",
+      "lib/python/Screens/InfoBar.py": "dde295f6619ae4ca31d32a79e7c14d871533aa161d9990ee917b2286521bb6ef",
+      "lib/python/Screens/InfoBarGenerics.py": "fe0475471ca39a8b199edee454491924d1d4015ef4fb77b054ed6d23dbf446f3",
+      "lib/python/Screens/Menu.py": "edb04cb210ba44bdb982d7c4f32dfab9d0cbbca77b76ec97525c2d6374fa0013",
+      "lib/python/Screens/MessageBox.py": "d3e9e7baa7f2be40e17b641c0cc37848217672c79a5f0ce51e39f150991c0758",
+      "lib/python/Screens/MovieSelection.py": "6828d222356be57f8af404fe64f2b50bca5247687dd114cd0c300fbbfff68083",
+      "lib/python/Screens/Opkg.py": "43508a85949f08d135c476373646d4b5075d6adad1a5d984432d95120f777b3a",
+      "lib/python/Screens/PVRState.py": "cbbabac9ee891a07d864b8219f26353ee95e275cede4d4675617dc4d6d41b6d8",
+      "lib/python/Screens/PluginBrowser.py": "aeb0349ee1d96d37149100a2a53bd4c0691c2831b4644805f0d7b2e6acea68c5",
+      "lib/python/Screens/Processing.py": "ae3533bbe37398efd235afe4179cdd877bee040f753945e983ef859583e85a00",
+      "lib/python/Screens/QuickMenu.py": "823cda35801ade43c08136f73e4d305db92346eb700429e3d274fe7352b82974",
+      "lib/python/Screens/Screen.py": "a7637c7b1d61cfb1d7806733ff56271a38865a78a4cbd719fbb8e331df877589",
+      "lib/python/Screens/Setup.py": "349e0dd4986e209884c177e5633d20dfbbc1624d578d689b8cfe011bc2d04bfa",
+      "lib/python/Screens/Timers.py": "056570d0666a4ca52f025638b9ecb05f83c685f5f93b78dd401e380c5bb88e6d",
+      "lib/python/skin.py": "f19073514f99f7d6cb7d8f811d4bf48530e2ca71dfdda45e81cece39748e01f6"
     },
     "screens": {
       "Menu": {
@@ -2548,6 +2714,159 @@
           "text"
         ]
       },
+      "MessageBoxModal": {
+        "class": "MessageBox",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "text": "Label",
+          "list": "MenuList",
+          "icon": "MultiPixmap",
+          "actions": "HelpableActionMap"
+        },
+        "required": [
+          "icon",
+          "list",
+          "text"
+        ]
+      },
+      "IpkgInstaller": {
+        "class": "IpkgInstaller",
+        "available": false,
+        "widgets": {},
+        "required": []
+      },
+      "Opkg": {
+        "class": "Opkg",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "slider": "Slider",
+          "activityslider": "Slider",
+          "status": "Label",
+          "package": "Label",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "key_blue": "StaticText",
+          "logactions": "HelpableActionMap",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Console": {
+        "class": "Console",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "text": "ConsoleScrollLabel",
+          "summary_description": "StaticText",
+          "actions": "HelpableActionMap",
+          "hideAction": "HelpableActionMap",
+          "saveAction": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Processing": {
+        "class": "ProcessingScreen",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "progress": "ProgressBar",
+          "description": "Label"
+        },
+        "required": []
+      },
+      "PackageAction": {
+        "class": "PackageAction",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "plugins": "List",
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "actions": "HelpableActionMap",
+          "selectAction": "HelpableActionMap",
+          "performAction": "HelpableActionMap",
+          "logAction": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "quickSelectActions": "HelpableNumberActionMap"
+        },
+        "required": []
+      },
+      "PluginAction": {
+        "class": "PackageAction",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "plugins": "List",
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "actions": "HelpableActionMap",
+          "selectAction": "HelpableActionMap",
+          "performAction": "HelpableActionMap",
+          "logAction": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "quickSelectActions": "HelpableNumberActionMap"
+        },
+        "required": []
+      },
+      "PackageActionLog": {
+        "class": "PackageActionLog",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "PluginActionLog": {
+        "class": "PackageActionLog",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
       "MovieSelection": {
         "class": "MovieSelection",
         "widgets": {
@@ -2983,30 +3302,37 @@
   },
   "8.0": {
     "source_sha256": {
-      "lib/python/Components/ChoiceList.py": "f964a7c3c81f21e9fb30fe32ca92349d6e131691ff7ebcfd0bb81a08f00661a2",
-      "lib/python/Components/ConfigList.py": "f55b5c3a48827c4a2564837e04c95ad0c179ba8381b583eb842abb2fa5c978e7",
-      "lib/python/Components/Converter/TemplatedMultiContent.py": "f5e145366c2650890e28baf9855942da71e3feaea5e4d46e0e4adaa10c39bc2a",
-      "lib/python/Components/EpgList.py": "28b201cf95b746873717c68e07ba6df8c82159e4c9615ea0d53f95698e828179",
-      "lib/python/Components/MenuList.py": "d1a08e969efb5b565137360ced7ba231592974177fd6df5f30df77cc20ead150",
-      "lib/python/Components/Renderer/Picon.py": "784854d368965cd2ef53c59bfb3b6889e8ec0b3fd80cb82f4ed51d080af08810",
-      "lib/python/Components/Renderer/Pig.py": "e7dbb27f9606400ffe81f1ccfb24cf8a2c7e1d643a6ec4e8b3a71f3fd2f0aff8",
-      "lib/python/Components/ServiceList.py": "ec55abf9c7a22481ed157ca14887f018fbac451195fa1a9f093bf8cff1232a6a",
-      "lib/python/Screens/AudioSelection.py": "3886d34b721b536a0241a8be7f7b422f324729eaad16515c62ba58f7fb9341fb",
-      "lib/python/Screens/ChannelSelection.py": "5129bad4f7639510b8e67ee55e07b9d618fc9b3521231ffedde9a42a268f5c02",
-      "lib/python/Screens/ChoiceBox.py": "07d363eb7a233ae8fa97825ddbf520cca8fda71abc8e94754e53c29dd64492dd",
-      "lib/python/Screens/EpgSelection.py": "b56f492853075b55587eb01954690164b7fe3f2f609d77dcc9e3074ab1a69b86",
-      "lib/python/Screens/EventView.py": "efac3b9bf1ccf65e09cbb1f169fd3d12e3d1526e7c43d57917aa18f5ec1cd587",
-      "lib/python/Screens/InfoBar.py": "ecf5ffa10c49f6f2391040fbb0610c2e2ca9fb95599999f6e70cecca3d294212",
-      "lib/python/Screens/InfoBarGenerics.py": "e32d9b77227eaed9950d5641b8e5c25d5533966de3f23302a4139695c04862b2",
-      "lib/python/Screens/Menu.py": "0f485cdad12f4278d7e648dd493b889aa5b546bc3af81477c82ebb7c2fdcdea0",
-      "lib/python/Screens/MessageBox.py": "d2af0ff54e704669c49a0b0f95713f42ea5823c44fd3bfb5689bed2cb4a88dc5",
-      "lib/python/Screens/MovieSelection.py": "132e90e847f11afafa1e64472a87eba05cdb6c884cdd0083a5bf9e005f14fb75",
-      "lib/python/Screens/PVRState.py": "350cb9075b12993495bbbf3958dca2718fe28328c56ad00070c8418bf9df790b",
-      "lib/python/Screens/PluginBrowser.py": "2d9a0813e7eba8cfc6d63b922fea1f9f87854d2a026f3da6f5508fffe0b140f6",
-      "lib/python/Screens/QuickMenu.py": "b3ba7b75c3941eb79616a6f176f556e85f766d50bf8db0c120ee6ece09309677",
-      "lib/python/Screens/Screen.py": "199e06f550f61fb58c230d4bfadaeef8432d59abbe347691cd7f58359ed8011f",
-      "lib/python/Screens/Setup.py": "cb7db277cb35f7d6a36e17b9211e34dac9b33df7c4f4c183a30c79174c5b169c",
-      "lib/python/Screens/Timers.py": "1b1edf6c9f6a44257be489405680791fe6aa9e235a7e5d5ec13a18d4e5221a44"
+      "lib/python/Components/ChoiceList.py": "36b986655e7da506d5a01b5351d21290fb8190f6923d6028f0b1b5a6edb9ec92",
+      "lib/python/Components/ConfigList.py": "a08941afc424ff0a9f649bbd6eae7ddaac1c10e9736455cc181e49ee901ea2ab",
+      "lib/python/Components/Converter/ConditionalShowHide.py": "34dd484923ed0ab80011cee10a0da12c64185455b2a78a7904970e57dafd0856",
+      "lib/python/Components/Converter/TemplatedMultiContent.py": "dc672cc76888f8a38bad0cbc08eb586d33b66b402c12916261e82bc45392a02f",
+      "lib/python/Components/EpgList.py": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488",
+      "lib/python/Components/MenuList.py": "abe4edfc4aab2b98a25ca722100c26e35d214f0c87a653ef2ed500d30922b106",
+      "lib/python/Components/Renderer/Picon.py": "dbba6d79bef8b787d80c8c5bc96b77089612192c0ebbfb540154d55ee4d277f0",
+      "lib/python/Components/Renderer/Pig.py": "10af68f1bad1ad3425843a949c8b3a64c2ae0b331cf28582867f2bc3837bd3c2",
+      "lib/python/Components/SelectionList.py": "1e50e14fc96c1a9fe5dceabe5a1fe052d8c40284a9be1b357cd35b2412dd48cd",
+      "lib/python/Components/ServiceList.py": "1e7528df6a1fbee383ee084431b333ed909103609cff0fd66c11b96013f322d3",
+      "lib/python/Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+      "lib/python/Screens/AudioSelection.py": "0346ea8bc41a04398f11c85d25233d332c3dbad7d626a6a92aefca68ba60471c",
+      "lib/python/Screens/ChannelSelection.py": "f886a1f8c11208934f3abf09a565c48003adfb80697949bf8a41f59bb738e70c",
+      "lib/python/Screens/ChoiceBox.py": "5728e7328e9ef1fae58af9c84db42e806651411f104b2d8a7809d96d32cd31a1",
+      "lib/python/Screens/Console.py": "55405f3c6de61626b22e79dce7566e91b7ac7e88d508d731185d706ad2a2dcbe",
+      "lib/python/Screens/EpgSelection.py": "8005a94b1339143ac188e134039a8cb6029e474a7838f9294448fcd63c4de191",
+      "lib/python/Screens/EventView.py": "e019a34312920dcbd3a07805a474e530088f4637dd38eb0451c79a33afb729df",
+      "lib/python/Screens/InfoBar.py": "2f1b3805d59259c928f88a3fc6b3820d7835213feaaae343b694c5ed77e87066",
+      "lib/python/Screens/InfoBarGenerics.py": "f438ca1dcce073a6afa7ab5b5e767797cfe9f45674f3d13f00d4b60dc35c7773",
+      "lib/python/Screens/Menu.py": "04756fc1d05922e39c4930a568c7819e417bf467c2f968c94a7266dd6dbfdd82",
+      "lib/python/Screens/MessageBox.py": "6b1b53a4a60a4a5a7057aee89ce5c91170e05ec5eaff1d9cf46a0d2f8220c513",
+      "lib/python/Screens/MovieSelection.py": "821559c83abcaf9c571b5abec79a28bd13944fff7b6de95b401599ac431559d4",
+      "lib/python/Screens/Opkg.py": "7d74e2dd25e7e47a38600e849880d7b74d24b1061c2839ce9d0aa93c2e4183c4",
+      "lib/python/Screens/PVRState.py": "189509f8d5d191563777440559ae63c18aec09775df28b6a47707367a0ca54aa",
+      "lib/python/Screens/PluginBrowser.py": "e58e73e133747395b0e2724e6ab18753f16b9b20276e81f16cca4111653e92c5",
+      "lib/python/Screens/Processing.py": "6c8d631e6f17b5e298f55516a5977c6f70de897035e387d31d79e9d2d9b396c1",
+      "lib/python/Screens/QuickMenu.py": "2fea4c37bac1791f18e6a74f2b5368808d7eff474869c3a777d3bc122b4aa7d0",
+      "lib/python/Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
+      "lib/python/Screens/Setup.py": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af",
+      "lib/python/Screens/Timers.py": "4764a7e7ac1d0703dbb9cd6384976dc859b4064bb6373ca929c0ec799514e4a5",
+      "lib/python/skin.py": "361fa37c1fe66a397287ff174eea2e489eeaf33a68871d42b24fe9193a31e183"
     },
     "screens": {
       "Menu": {
@@ -3795,6 +4121,177 @@
           "list",
           "text"
         ]
+      },
+      "MessageBoxModal": {
+        "class": "MessageBox",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "text": "Label",
+          "list": "MenuList",
+          "icon": "MultiPixmap",
+          "actions": "HelpableActionMap"
+        },
+        "required": [
+          "icon",
+          "list",
+          "text"
+        ]
+      },
+      "IpkgInstaller": {
+        "class": "IpkgInstaller",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "list": "SelectionList",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "introduction": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Opkg": {
+        "class": "Opkg",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "slider": "Slider",
+          "activityslider": "Slider",
+          "status": "Label",
+          "package": "Label",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "key_blue": "StaticText",
+          "logactions": "HelpableActionMap",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Console": {
+        "class": "Console",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "text": "ConsoleScrollLabel",
+          "summary_description": "StaticText",
+          "actions": "HelpableActionMap",
+          "hideAction": "HelpableActionMap",
+          "saveAction": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "Processing": {
+        "class": "ProcessingScreen",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "progress": "ProgressBar",
+          "description": "Label"
+        },
+        "required": []
+      },
+      "PackageAction": {
+        "class": "PackageAction",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "plugins": "List",
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "key_menu": "StaticText",
+          "actions": "HelpableActionMap",
+          "selectAction": "HelpableActionMap",
+          "performAction": "HelpableActionMap",
+          "logAction": "HelpableActionMap",
+          "searchActions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "quickSelectActions": "HelpableNumberActionMap"
+        },
+        "required": []
+      },
+      "PluginAction": {
+        "class": "PackageAction",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "plugins": "List",
+          "quickselect": "Label",
+          "description": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "key_menu": "StaticText",
+          "actions": "HelpableActionMap",
+          "selectAction": "HelpableActionMap",
+          "performAction": "HelpableActionMap",
+          "logAction": "HelpableActionMap",
+          "searchActions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap",
+          "legacyNavigationActions": "HelpableActionMap",
+          "quickSelectActions": "HelpableNumberActionMap"
+        },
+        "required": []
+      },
+      "PackageActionLog": {
+        "class": "PackageActionLog",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
+      },
+      "PluginActionLog": {
+        "class": "PackageActionLog",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "log": "ScrollLabel",
+          "key_red": "StaticText",
+          "actions": "HelpableActionMap"
+        },
+        "required": []
       },
       "MovieSelection": {
         "class": "MovieSelection",

@@ -7,7 +7,7 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.3.3'
+VERSION='0.4.0'
 PACKAGE=f'enigma2-plugin-skins-tvsat_{VERSION}_all.ipk'
 
 

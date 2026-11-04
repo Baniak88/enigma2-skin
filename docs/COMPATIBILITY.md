@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.3.3
+# OpenATV — zakres zgodności 0.4.0
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 42 ekranów TvSat.
+definicji. Mogą mieć inny układ niż 51 ekranów TvSat.
 
 ## Ważne różnice względem 0.1.0
 
@@ -174,3 +174,33 @@ GUI ani nie zmieniamy ustawionej skórki automatycznie.
 
 GitHub Actions generuje układy i grafiki, wykonuje testy, buduje paczki oraz
 publikuje zweryfikowane wyniki na main. Fizyczny dekoder nadal wymaga sprawdzenia.
+
+## Interfejs 0.4.0 — instalacja i wspólna paleta
+
+Dodano IpkgInstaller, Opkg, Console, Processing, PackageAction/PluginAction,
+PackageActionLog/PluginActionLog oraz MessageBoxModal — razem 51 ekranów.
+IpkgInstaller występuje w rdzeniu przypiętego OpenATV 8.0; w kontraktach 7.5/7.6
+jest jawnie oznaczony jako niedostępny. Nie deklarujemy sprawdzenia starszych
+zewnętrznych instalatorów. Audyt AST rozpoznaje także przypisania przez atrybut
+(np. self['list'] = self.selectionList), bez wykonywania kodu systemowego.
+
+Alias SelectionList 30/72 i parametry SelectionListDescr/Lock ustawiają faktyczny
+font, wysokość wiersza i pola zaznaczenia. Oryginalna klasa SelectionList we
+wszystkich trzech wersjach przechodzi próbę zaznaczania pojedynczego pakietu,
+odwracania zaznaczeń i odczytu właściwych ścieżek.
+
+ProcessingScreen.setDescription zmienia rozmiar okna i etykiety. Wszystkie stałe
+elementy umieszczono nad opisem. Próba oryginalnej metody sprawdza krótki i długi
+opis; nie uruchamia prawdziwego renderera C++. W natywnych StaticText oraz
+ConditionalShowHide sprawdzono również ukrywanie obu części pustej funkcji
+klawisza (znacznika i podpisu). Polecenie:
+`python3 scripts/check_upstream_install_ui.py --download`.
+
+Nowy kolor paska #3b4654 ma test zauważalnej różnicy jasności względem wydania
+0.3.3 i głównego tła. Test wymaga również kontrastu białego tekstu co najmniej
+7:1. Są to kontrole palety, nie pomiary jasności telewizora.
+
+Opkg zachowuje własne etykiety statusu, liczbę błędów i przełączanie dziennika.
+Nie zmieniono uruchamianych poleceń ani działania instalacji/odinstalowania.
+TemplatedMultiContent przyjmuje obecnie 13 kombinacji szablonów/stylów na wersję,
+w tym 12-polowe wiersze PackageAction. Test na dekoderze pozostaje wymagany.

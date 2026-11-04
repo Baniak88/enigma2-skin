@@ -65,6 +65,8 @@ def check(sources):
                         # Slot count: OpenATV Menu=8, plugins=4, audio/subtitles=6.
                         if screen.get('name')=='QuickMenu':
                             slots=3 if xml is screen.find("widget[@source='mainlist']/convert") else 2
+                        elif screen.get('name') in ('PackageAction','PluginAction'):
+                            slots=12
                         else:
                             slots=8 if screen.get('name')=='Menu' else 4 if screen.get('name').startswith('Plugin') else 6
                         sample=tuple(range(slots))

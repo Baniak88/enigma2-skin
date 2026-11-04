@@ -93,6 +93,8 @@ def validate():
                 key=n.get('name') or n.get('source')
                 for version,contract in contracts.items():
                     known=contract['screens'][s.get('name')]['widgets']
+                    if contract['screens'][s.get('name')].get('available') is False:
+                        continue
                     if '.' not in key:
                         assert key in known or n.get('conditional')==key,(version,s.get('name'),key,'unknown widget')
                         if n.get('name'):

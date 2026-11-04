@@ -5,8 +5,8 @@ import struct
 import zlib
 
 ROOT=Path(__file__).resolve().parents[1]/'TvSat'
-BG=(12,14,16,255); PANEL=(25,28,32,255); GREEN=(0,230,118,255)
-SELECTED=(28,53,43,255)
+BG=(23,29,36,255); PANEL=(37,46,56,255); GREEN=(0,230,118,255)
+SELECTED=(37,71,58,255)
 WHITE=(245,245,245,255); RED=(255,98,98,255); BLUE=(94,172,255,255)
 
 
@@ -26,6 +26,10 @@ def png(path,w,h,bg,rects=()):
 def build():
     # Przezroczyste pole dziedziczy kolor paska/ekranu, bez osobnej ramki i symbolu.
     png(Path('picon_default.png'),220,132,(0,0,0,0))
+    # Checkbox graphics used by the native SelectionList in the IPK installer.
+    edge=[(2,2,28,2,WHITE),(2,28,28,2,WHITE),(2,2,2,28,WHITE),(28,2,2,28,WHITE)]
+    png(Path('icons/lock_off.png'),32,32,(0,0,0,0),edge)
+    png(Path('icons/lock_on.png'),32,32,(0,0,0,0),edge+[(7,7,18,18,GREEN)])
     for name,c in [('timeline',PANEL),('timeline-now',GREEN),('state',GREEN)]:
         png(Path('assets')/(name+'.png'),4,4,c)
     for name,c in [('question',GREEN),('info',BLUE),('warning',(245,206,85,255)),('error',RED),('message',WHITE)]:

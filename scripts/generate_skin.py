@@ -7,8 +7,8 @@ from pathlib import Path
 import xml.etree.ElementTree as E
 
 ROOT = Path(__file__).resolve().parents[1]
-PALETTE = dict(bg='0c0e10', panel='191c20', selected='1c352b', white='f2f5f7', muted='b0bbc5',
-               green='00e676', line='30363d', red='ff6262', yellow='f5ce55', blue='5eacff')
+PALETTE = dict(bg='171d24', panel='252e38', selected='25473a', white='f3f6fa', muted='c2ccd7',
+               green='00e676', line='3d4a59', track='647181', red='ff6262', yellow='f5ce55', blue='5eacff')
 skin = E.Element('skin')
 
 
@@ -61,13 +61,17 @@ def header(s, section):
 def footer(s, keys=('red', 'green', 'yellow', 'blue')):
     box(s, 64, 974, 1792, 2)
     for i, key in enumerate(keys):
-        x = 64 + i * 448
-        box(s, x, 1012, 6, 24, key)
-        source(s, f'key_{key}', x + 22, 998, 414, 50, 25, noWrap='1', valign='center', conditional=f'key_{key}')
+        x = 64 + ('red','green','yellow','blue').index(key) * 448
+        source(s, f'key_{key}', x, 1012, 6, 24, render='FixedLabel', text=' ',
+               backgroundColor=key, transparent='0', conditional=f'key_{key}', converts=[('ConditionalShowHide',None)])
+        source(s, f'key_{key}', x + 22, 998, 414, 50, 25, noWrap='1', valign='center',
+               conditional=f'key_{key}', converts=[('ConditionalShowHide',None)])
 
 
 LIST = dict(backgroundColor='bg', foregroundColor='white',
-            backgroundColorSelected='selected', foregroundColorSelected='white', scrollbarMode='showOnDemand')
+            backgroundColorSelected='selected', foregroundColorSelected='white', scrollbarMode='showOnDemand',
+            scrollbarWidth='6', scrollbarBorderWidth='0', scrollbarOffset='8',
+            scrollbarForegroundColor='muted', scrollbarBackgroundColor='line')
 
 
 def picon(s, src, x, y, w=220, h=132):
@@ -96,7 +100,7 @@ def build():
     colors = add(skin, 'colors')
     for name, value in PALETTE.items():
         add(colors, 'color', name=name, value='#00'+value)
-    add(colors, 'color', name='overlay', value='#0021262c')
+    add(colors, 'color', name='overlay', value='#003b4654')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
     add(style, 'title', offset='24,12', font='TvSatText;30')
@@ -106,10 +110,12 @@ def build():
         ListboxMarkedAndSelectedForeground='bg', WindowTitleForeground='white', WindowTitleBackground='bg').items():
         add(style, 'color', name=name, color=color)
     add(style, 'configList', entryFont='TvSatText;30', valueFont='TvSatText;30', headerFont='TvSatText;30')
+    add(style, 'label', font='TvSatText;30')
+    add(style, 'listbox', font='TvSatText;30', scrollbarWidth='6', scrollbarBorderWidth='0', scrollbarMode='showOnDemand')
     fonts = add(skin, 'fonts')
     add(fonts,'font',filename='DejaVuSans.ttf',name='TvSatText',scale='100')
     add(fonts,'font',filename='LiberationSans-Bold.ttf',name='TvSatStrong',scale='100')
-    for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('ChoiceList',30,72), ('MenuFont',32,64)]:
+    for name, size, height in [('TextNormal',30,40), ('ChoiceBoxDescription',26,36), ('ChoiceList',30,72), ('SelectionList',30,72), ('MenuFont',32,64)]:
         add(fonts, 'alias', name=name, font='TvSatText', size=size, height=height)
     parameters=add(skin,'parameters')
     for name,value in {
@@ -117,6 +123,8 @@ def build():
         'ChoicelistNameSingle':'24,16,1744,40',
         'ChoicelistIcon':'12,20,36,32',
         'ChoicelistDash':'0,16,1792,40',
+        'SelectionListDescr':'64,16,1656,40',
+        'SelectionListLock':'12,20,32,32',
     }.items():
         add(parameters,'parameter',name=name,value=value)
 
@@ -144,11 +152,11 @@ def build():
     templated(n,'{"fonts":[gFont("TvSatText",30),gFont("TvSatText",22)],"itemHeight":76,"template":['
         'MultiContentEntryPixmapAlphaBlend(pos=(12,14),size=(52,48),png=2,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
         'MultiContentEntryText(pos=(88,4),size=(496,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),'
-        'MultiContentEntryText(pos=(88,44),size=(496,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}')
+        'MultiContentEntryText(pos=(88,44),size=(496,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00c2ccd7,color_sel=0x00f3f6fa)]}')
     n=source(s,'sublist',736,260,1120,608,render='Listbox',**LIST)
     templated(n,'{"fonts":[gFont("TvSatText",30),gFont("TvSatText",23)],"itemHeight":76,"template":['
         'MultiContentEntryText(pos=(20,4),size=(1080,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=0),'
-        'MultiContentEntryText(pos=(20,44),size=(1080,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00b0bbc5,color_sel=0x00f2f5f7)]}')
+        'MultiContentEntryText(pos=(20,44),size=(1080,28),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=1,color=0x00c2ccd7,color_sel=0x00f3f6fa)]}')
     widget(s,'description',64,888,1792,72,25,foregroundColor='muted',transparent='1')
 
     for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio'):
@@ -280,7 +288,7 @@ def build():
             footer(s)
             widget(s,'menu',64,236,1792,648,30,itemHeight='72',**LIST)
 
-    for name in ('MessageBox','MessageBoxSimple'):
+    for name in ('MessageBox','MessageBoxSimple','MessageBoxModal'):
         s=screen(name,pos=(320,200),size=(1280,680))
         box(s,0,0,1280,4,'green')
         source(s,'Title',40,32,1200,58,36)
@@ -333,6 +341,47 @@ def build():
     widget(s,'config',64,236,1792,616,30,itemHeight='56',**LIST)
     widget(s,'videofps',64,890,1792,48,26,foregroundColor='muted',transparent='1')
 
+    s=screen('IpkgInstaller');header(s,'PAKIETY LOKALNE');footer(s)
+    label(s,'WYBIERZ PAKIETY DO INSTALACJI',64,216,1792,38,22,'muted')
+    widget(s,'list',64,276,1792,576,30,itemHeight='72',**LIST)
+    source(s,'introduction',64,884,1792,64,27,'muted')
+
+    s=screen('Opkg');header(s,'INSTALACJA OPROGRAMOWANIA');footer(s,('red','blue'))
+    widget(s,'status',64,236,1792,110,32,foregroundColor='white',transparent='1')
+    widget(s,'package',64,378,1792,86,28,foregroundColor='muted',transparent='1')
+    widget(s,'activityslider',64,506,1792,6,foregroundColor='green',backgroundColor='line',borderWidth='0')
+    widget(s,'slider',64,546,1792,12,foregroundColor='green',backgroundColor='line',borderWidth='0')
+    # Native Opkg toggles status/package/sliders off before showing this log.
+    # Its initially empty, transparent text must not cover the status widgets.
+    widget(s,'log',64,236,1792,680,26,transparent='1')
+    label(s,'Status operacji i wynik pochodzą z instalatora systemowego.',64,930,1792,32,22,'muted')
+
+    for name in ('PackageAction','PluginAction'):
+        s=screen(name);header(s,'WTYCZKI I PAKIETY');footer(s)
+        n=source(s,'plugins',64,236,1792,616,render='Listbox',**LIST)
+        templated(n,'{"fonts":[gFont("TvSatText",32),gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":88,"template":['
+            'MultiContentEntryPixmapAlphaBlend(pos=(12,20),size=(56,48),png=6,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
+            'MultiContentEntryText(pos=(92,0),size=(1608,88),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=2),'
+            'MultiContentEntryText(pos=(92,6),size=(1232,40),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=3),'
+            'MultiContentEntryText(pos=(1360,8),size=(312,36),font=2,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=5),'
+            'MultiContentEntryText(pos=(92,48),size=(1580,32),font=2,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=4,color=0x00c2ccd7,color_sel=0x00f3f6fa),'
+            'MultiContentEntryPixmapAlphaBlend(pos=(1720,20),size=(48,48),png=7,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO)]}')
+        widget(s,'description',64,880,1792,72,27,foregroundColor='muted',transparent='1')
+        widget(s,'quickselect',64,236,1792,616,70,halign='center',valign='center',transparent='1',foregroundColor='green',zPosition='5')
+
+    for name in ('Console','PackageActionLog','PluginActionLog'):
+        s=screen(name);header(s,'DZIENNIK OPERACJI');footer(s,('red','green','yellow') if name=='Console' else ('red',))
+        widget(s,'text' if name=='Console' else 'log',64,236,1792,680,26,transparent='1')
+        label(s,'↑ ↓  Przewiń     EXIT  Powrót',64,930,1792,32,22,'muted')
+
+    # ProcessingScreen resizes the description and dialog at runtime. Keep all
+    # fixed content above the description; no decoration follows the growing text.
+    s=screen('Processing',pos=(464,438),size=(992,204),bg='panel');s.set('zPosition','99')
+    label(s,'TvSat',32,22,180,34,24,family='TvSatStrong')
+    source(s,'Title',230,22,730,34,23,'muted',noWrap='1')
+    widget(s,'progress',32,76,928,6,foregroundColor='green',backgroundColor='line',borderWidth='0')
+    widget(s,'description',32,110,928,48,28,transparent='1')
+
     s=screen('InfoBar',pos=(0,726),size=(1920,354),bg='overlay')
     box(s,64,0,1792,4,'green'); picon(s,'session.CurrentService',64,34)
     source(s,'session.CurrentService',320,30,1190,60,36,converts=[('ServiceName','Name')],noWrap='1')
@@ -340,7 +389,7 @@ def build():
     label(s,'TERAZ',320,112,104,40,24,'green')
     source(s,'session.Event_Now',440,108,140,44,28,converts=[('EventTime','StartTime'),('ClockToText','Default')])
     source(s,'session.Event_Now',600,104,1256,52,32,converts=[('EventName','Name')],noWrap='1')
-    source(s,'session.Event_Now',320,174,1536,6,render='Progress',color='green',converts=[('EventTime','Progress')],backgroundColor='line',borderWidth='0')
+    source(s,'session.Event_Now',320,174,1536,6,render='Progress',color='green',converts=[('EventTime','Progress')],backgroundColor='track',borderWidth='0')
     label(s,'POTEM',320,216,104,40,24,'muted')
     source(s,'session.Event_Next',440,212,140,44,28,'muted',converts=[('EventTime','StartTime'),('ClockToText','Default')])
     source(s,'session.Event_Next',600,210,1256,50,30,'muted',converts=[('EventName','Name')],noWrap='1')
@@ -356,7 +405,7 @@ def build():
     box(s,64,0,1792,4,'green'); label(s,'ODTWARZANIE NAGRANIA',64,30,1792,42,26,'green')
     source(s,'session.CurrentService',64,100,1792,64,38,converts=[('ServiceName','Name')],noWrap='1')
     source(s,'session.CurrentService',64,208,230,48,28,converts=[('ServicePosition','Position')])
-    source(s,'session.CurrentService',330,230,1180,6,render='Progress',color='green',backgroundColor='line',borderWidth='0',converts=[('ServicePosition','Position')])
+    source(s,'session.CurrentService',330,230,1180,6,render='Progress',color='green',backgroundColor='track',borderWidth='0',converts=[('ServicePosition','Position')])
     source(s,'session.CurrentService',1550,208,306,48,28,'muted',halign='right',converts=[('ServicePosition','Remaining,Negate')])
     widget(s,'state',1200,30,400,42,26,foregroundColor='green',transparent='1')
     widget(s,'speed',1640,30,216,42,26,transparent='1',halign='right')

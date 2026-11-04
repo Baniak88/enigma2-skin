@@ -51,9 +51,17 @@ def extract(directory):
         tree=ast.parse(path.read_text(),filename=str(path))
         for cls in [c for c in tree.body if isinstance(c,ast.ClassDef)]:
             entries={}; mandatory=[]
+            attributes={}
+            for node in ast.walk(cls):
+                if isinstance(node,ast.Assign) and callname(node.value):
+                    for target in node.targets:
+                        if isinstance(target,ast.Attribute) and isinstance(target.value,ast.Name) and target.value.id=='self':
+                            attributes[target.attr]=callname(node.value)
             for node in ast.walk(cls):
                 if isinstance(node,ast.Assign):
                     kind=callname(node.value)
+                    if isinstance(node.value,ast.Attribute) and isinstance(node.value.value,ast.Name) and node.value.value.id=='self':
+                        kind=attributes.get(node.value.attr)
                     if kind:
                         for target in node.targets:
                             key=subkey(target)
@@ -96,7 +104,9 @@ def extract(directory):
         'BouquetSelector':'BouquetSelector','EPGBouquetSelector':'EPGBouquetSelector',
         **{x:'EPGSelection' for x in ['EPGSelection','QuickEPG','EPGSelectionMulti','GraphicalEPG','GraphicalEPGPIG','GraphicalInfoBarEPG','EPGvertical','EPGverticalPIG']},
         'EventView':'EventViewEPGSelect','InfoBarEventView':'EventViewSimple','Setup':'Setup',
-        'ChoiceBox':'ChoiceBoxNew','ChannelContextMenu':'ChannelContextMenu','MessageBox':'MessageBox','MessageBoxSimple':'MessageBox',
+        'ChoiceBox':'ChoiceBoxNew','ChannelContextMenu':'ChannelContextMenu','MessageBox':'MessageBox','MessageBoxSimple':'MessageBox','MessageBoxModal':'MessageBox',
+        'IpkgInstaller':'IpkgInstaller','Opkg':'Opkg','Console':'Console','Processing':'ProcessingScreen',
+        'PackageAction':'PackageAction','PluginAction':'PackageAction','PackageActionLog':'PackageActionLog','PluginActionLog':'PackageActionLog',
         'MovieSelection':'MovieSelection','MovieSelectionSlim':'MovieSelection',
         'TimerOverview':'RecordTimerOverview','RecordTimerOverview':'RecordTimerOverview','TimerEditList':'RecordTimerOverview',
         'PluginBrowserList':'PluginBrowser','PluginBrowserGrid':'PluginBrowser','InfoBar':'InfoBar','SecondInfoBar':'SecondInfoBar',
@@ -110,6 +120,11 @@ def extract(directory):
             EPGvertical='EPGSelectionVertical',EPGverticalPIG='EPGSelectionVertical')
     screens={}
     for screen,cls in mapping.items():
+        if cls=='IpkgInstaller' and cls not in classes:
+            # This installer moved into Enigma2 core in OpenATV 8.0. Do not
+            # invent a widget contract for external installers on older images.
+            screens[screen]={'class':cls,'available':False,'widgets':{},'required':[]}
+            continue
         widgets,required=inherited(cls)
         widgets.update(inherited('Screen')[0])
         if cls=='PluginBrowser':
