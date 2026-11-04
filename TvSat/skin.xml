@@ -1109,6 +1109,102 @@
     <eLabel text="← →  Zmień wartość     OK  Wybierz     EXIT  Powrót" position="64,916" size="1248,42" font="TvSatText;24" foregroundColor="muted" transparent="1" />
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
+  <screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="SKÓRKI / INTERFEJS" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget name="config" position="64,236" size="1120,576" font="TvSatText;30" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" valueFont="TvSatText;30" />
+    <eLabel position="1216,236" size="2,716" backgroundColor="line" />
+    <eLabel text="PODGLĄD SKÓRKI" position="1248,214" size="608,30" font="TvSatText;20" foregroundColor="muted" transparent="1" />
+    <eLabel position="1248,260" size="608,342" backgroundColor="panel" zPosition="0" />
+    <eLabel text="Podgląd skórki&#10;Wybierz pozycję Skórka GUI" position="1280,382" size="544,100" font="TvSatText;26" foregroundColor="muted" transparent="1" halign="center" zPosition="0" />
+    <widget name="preview" position="1248,260" size="608,342" conditional="preview" alphatest="blend" scale="1" zPosition="1" />
+    <widget name="description" position="1248,628" size="608,198" font="TvSatText;26" foregroundColor="muted" transparent="1" />
+    <widget name="footnote" position="1248,848" size="608,104" font="TvSatText;24" foregroundColor="yellow" transparent="1" />
+    <eLabel text="← →  Zmień wartość     OK  Wybierz&#10;Zielony — zapisz. Restart GUI, jeśli system o niego poprosi." position="64,864" size="1120,88" font="TvSatText;24" foregroundColor="muted" transparent="1" />
+    <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
+  </screen>
+  <screen name="setup_Skin" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="SKÓRKI / INTERFEJS" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget name="config" position="64,236" size="1120,576" font="TvSatText;30" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" valueFont="TvSatText;30" />
+    <eLabel position="1216,236" size="2,716" backgroundColor="line" />
+    <eLabel text="PODGLĄD SKÓRKI" position="1248,214" size="608,30" font="TvSatText;20" foregroundColor="muted" transparent="1" />
+    <eLabel position="1248,260" size="608,342" backgroundColor="panel" zPosition="0" />
+    <eLabel text="Podgląd skórki&#10;Wybierz pozycję Skórka GUI" position="1280,382" size="544,100" font="TvSatText;26" foregroundColor="muted" transparent="1" halign="center" zPosition="0" />
+    <widget name="preview" position="1248,260" size="608,342" conditional="preview" alphatest="blend" scale="1" zPosition="1" />
+    <widget name="description" position="1248,628" size="608,198" font="TvSatText;26" foregroundColor="muted" transparent="1" />
+    <widget name="footnote" position="1248,848" size="608,104" font="TvSatText;24" foregroundColor="yellow" transparent="1" />
+    <eLabel text="← →  Zmień wartość     OK  Wybierz&#10;Zielony — zapisz. Restart GUI, jeśli system o niego poprosi." position="64,864" size="1120,88" font="TvSatText;24" foregroundColor="muted" transparent="1" />
+    <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
+  </screen>
+  <screen name="SetupSkin" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="SKÓRKI / INTERFEJS" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget name="config" position="64,236" size="1120,576" font="TvSatText;30" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" valueFont="TvSatText;30" />
+    <eLabel position="1216,236" size="2,716" backgroundColor="line" />
+    <eLabel text="PODGLĄD SKÓRKI" position="1248,214" size="608,30" font="TvSatText;20" foregroundColor="muted" transparent="1" />
+    <eLabel position="1248,260" size="608,342" backgroundColor="panel" zPosition="0" />
+    <eLabel text="Podgląd skórki&#10;Wybierz pozycję Skórka GUI" position="1280,382" size="544,100" font="TvSatText;26" foregroundColor="muted" transparent="1" halign="center" zPosition="0" />
+    <widget name="preview" position="1248,260" size="608,342" conditional="preview" alphatest="blend" scale="1" zPosition="1" />
+    <widget name="description" position="1248,628" size="608,198" font="TvSatText;26" foregroundColor="muted" transparent="1" />
+    <widget name="footnote" position="1248,848" size="608,104" font="TvSatText;24" foregroundColor="yellow" transparent="1" />
+    <eLabel text="← →  Zmień wartość     OK  Wybierz&#10;Zielony — zapisz. Restart GUI, jeśli system o niego poprosi." position="64,864" size="1120,88" font="TvSatText;24" foregroundColor="muted" transparent="1" />
+    <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
+  </screen>
   <screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
     <eLabel text="WYBÓR" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />

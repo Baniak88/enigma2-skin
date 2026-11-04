@@ -16,6 +16,27 @@
 <rect x="960" y="1012" width="6" height="24" fill="#f5ce55" fill-opacity="1.000000"/>
 <text x="982" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Domyślne</text>
 <rect x="64" y="236" width="1248" height="640" fill="#171d24" fill-opacity="1.000000"/>
+<rect x="64" y="236" width="1248" height="64" fill="#25473a" fill-opacity="1.000000"/>
+<text x="84" y="282.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Znacznik kodowania</text>
+<text x="1292.0" y="282.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">Żaden</text>
+<text x="84" y="346.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Znacznik nagrywania</text>
+<text x="1292.0" y="346.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">Czerwony</text>
+<text x="84" y="410.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Postęp audycji</text>
+<text x="1292.0" y="410.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">Pasek po prawej</text>
+<text x="84" y="474.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wyświetlanie pikon</text>
+<text x="1292.0" y="474.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">Włącz</text>
+<text x="84" y="538.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Liczba wierszy</text>
+<text x="1292.0" y="538.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">8</text>
+<text x="84" y="602.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Rozmiar numeru kanału</text>
+<text x="1292.0" y="602.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">0</text>
+<text x="84" y="666.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Rozmiar nazwy kanału</text>
+<text x="1292.0" y="666.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">0</text>
+<text x="84" y="730.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Rozmiar informacji o audycji</text>
+<text x="1292.0" y="730.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">0</text>
+<text x="84" y="794.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Rozmiar informacji o postępie</text>
+<text x="1292.0" y="794.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">0</text>
+<text x="84" y="858.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Zachowanie przy przełączaniu</text>
+<text x="1292.0" y="858.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">Czarny ekran</text>
 <rect x="1344" y="236" width="2" height="640" fill="#3d4a59" fill-opacity="1.000000"/>
 <text x="1392" y="274.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wybierz sposób oznaczania</text>
 <text x="1392" y="309.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">kanałów kodowanych.</text>
