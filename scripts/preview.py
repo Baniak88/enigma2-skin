@@ -321,8 +321,10 @@ if __name__=='__main__':
     args=p.parse_args()
     for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('SkinSelection','skin-selection.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg'),('PluginBrowserGrid','plugin-grid.svg'),('PluginBrowserList','plugin-list.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'))
-    if args.thumbnail:
-        from PIL import Image
-        with Image.open(ROOT/'docs/menu.png') as image:
-            image.convert('RGBA').resize((640,360),Image.Resampling.LANCZOS).save(ROOT/'TvSat/prev.png')
-        print(ROOT/'TvSat/prev.png')
+        # Refresh before SkinSelection embeds the thumbnail, so a palette
+        # change is visible there on the first build as well.
+        if args.thumbnail and name=='Menu':
+            from PIL import Image
+            with Image.open(ROOT/'docs/menu.png') as image:
+                image.convert('RGBA').resize((640,360),Image.Resampling.LANCZOS).save(ROOT/'TvSat/prev.png')
+            print(ROOT/'TvSat/prev.png')

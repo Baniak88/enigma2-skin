@@ -7,8 +7,9 @@ from pathlib import Path
 import xml.etree.ElementTree as E
 
 ROOT = Path(__file__).resolve().parents[1]
-PALETTE = dict(bg='171d24', panel='252e38', selected='25473a', white='f3f6fa', muted='c2ccd7',
-               green='00e676', line='3d4a59', track='647181', red='ff6262', yellow='f5ce55', blue='5eacff')
+# Background surfaces restored from the first CanalPL release (9ce5d21).
+PALETTE = dict(bg='0c0e10', panel='17191c', selected='25473a', white='f3f6fa', muted='c2ccd7',
+               green='00e676', line='303438', track='647181', red='ff6262', yellow='f5ce55', blue='5eacff')
 skin = E.Element('skin')
 
 
@@ -101,8 +102,8 @@ def build():
     for name, value in PALETTE.items():
         add(colors, 'color', name=name, value='#00'+value)
     # Enigma2 ARGB uses inverse alpha: 00 is opaque, ff is transparent.
-    # 66 = 40% video showing through a dark 60%-opaque surface.
-    add(colors, 'color', name='overlay', value='#660c0e10')
+    # Original 18 = 24/255 (~9%) transparency, ~91% opacity.
+    add(colors, 'color', name='overlay', value='#180c0e10')
     add(colors, 'color', name='transparent', value='#ff000000')
     style = add(skin, 'windowstyle', type='skinned', id='0')
     add(style, 'title', offset='24,12', font='TvSatText;30')
@@ -346,7 +347,7 @@ def build():
         n=source(s,key,64,y,1792,height,render='Listbox',listOrientation='grid' if grid else 'vertical',**LIST)
         tpl='[MultiContentEntryPixmapAlphaBlend(pos=(24,12),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(156,4),size=(1580,42),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1),MultiContentEntryText(pos=(156,48),size=(1580,40),font=1,text=2)]'
         if grid:
-            tpl='[MultiContentEntryRectangle(pos=(8,8),size=(432,212),backgroundColor=0x00252e38,backgroundColorSelected=0x0025473a,borderWidth=2,borderColor=0x003d4a59,borderColorSelected=0x0000e676),MultiContentEntryPixmapAlphaBlend(pos=(148,24),size=(152,84),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(24,130),size=(400,76),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)]'
+            tpl='[MultiContentEntryRectangle(pos=(8,8),size=(432,212),backgroundColor=0x0017191c,backgroundColorSelected=0x0025473a,borderWidth=2,borderColor=0x00303438,borderColorSelected=0x0000e676),MultiContentEntryPixmapAlphaBlend(pos=(148,24),size=(152,84),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(24,130),size=(400,76),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)]'
         templated(n,'{"template":'+tpl+',"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":'+('228,"itemWidth":448}' if grid else '100}'))
         widget(s,'quickselect',64,y,1792,height,80,halign='center',valign='center',transparent='1',foregroundColor='green',zPosition='5')
         if grid:

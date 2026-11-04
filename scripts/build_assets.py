@@ -6,7 +6,7 @@ import zlib
 from build import VERSION
 
 ROOT=Path(__file__).resolve().parents[1]/'TvSat'
-BG=(23,29,36,255); PANEL=(37,46,56,255); GREEN=(0,230,118,255)
+BG=(12,14,16,255); PANEL=(23,25,28,255); GREEN=(0,230,118,255)
 SELECTED=(37,71,58,255)
 WHITE=(245,245,245,255); RED=(255,98,98,255); BLUE=(94,172,255,255)
 

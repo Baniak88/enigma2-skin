@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.4.3
+# OpenATV — zakres zgodności 0.4.4
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -267,3 +267,18 @@ wymiary dekodera 608×342 i ukrywanie podglądu po wybraniu opcji czcionki.
 C++ ePicLoad/Pixmap jest zastąpione atrapami; test nie potwierdza renderowania
 na odbiorniku. Nie uruchamia createItems, keySave ani przeładowania GUI.
 Pasek zachowuje ciemny kolor i 40% przezroczystości z 0.4.2.
+
+## Powrót do pierwotnych kolorów 0.4.4
+
+Kolory powierzchni pochodzą z CanalPL/skin.xml z pierwszego wydania,
+commit 9ce5d21c37bf031c92dbf4ef6adf2ef461e3dcc9: tło #000c0e10,
+panel #0017191c, linia #00303438 i nakładka #180c0e10.
+Enigma2 traktuje bajt alpha jako przezroczystość: 0x18/255 = 9,41%,
+czyli 90,59% krycia, zamiast 40% w 0.4.2–0.4.3. Zmiana dotyczy InfoBar,
+SecondInfoBar i MoviePlayer; menu pozostają nieprzezroczyste. Pikony zachowują
+przezroczyste tło i nie mają osobnej powierzchni.
+
+Te same kolory paneli i linii mają natywne szablony kart wtyczek oraz PNG.
+Test mieszania kolorów SVG/PNG sprawdza wynik także w obszarze pikony,
+a test ustawień kontrast tekstu na białym, czarnym, czerwonym i niebieskim obrazie.
+Zmiana nie ingeruje w Python dekodera, ustawienia użytkownika ani układy.

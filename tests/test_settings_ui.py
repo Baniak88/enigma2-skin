@@ -28,11 +28,12 @@ class SettingsUI(unittest.TestCase):
             screen=skin.find(f"screen[@name='{name}']")
             surface=colors[screen.get('backgroundColor')].lstrip('#')
             transparency=int(surface[:2],16)/255
-            self.assertGreaterEqual(transparency,0.35)
-            self.assertLessEqual(transparency,0.45)
+            self.assertAlmostEqual(transparency,24/255)
             rgb=[int(surface[i:i+2],16) for i in (2,4,6)]
             background=colors['bg'].lstrip('#')
-            self.assertLess(sum(rgb),sum(int(background[i:i+2],16) for i in (2,4,6)))
+            self.assertEqual(rgb,[12,14,16])
+            self.assertEqual(surface[2:],background[2:])
+            self.assertEqual(colors['panel'],'#0017191c')
             def luminance(value):
                 channels=[int(value[-6:][i:i+2],16)/255 for i in (0,2,4)]
                 linear=[x/12.92 if x<=0.04045 else ((x+0.055)/1.055)**2.4 for x in channels]
