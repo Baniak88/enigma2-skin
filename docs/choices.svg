@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
 <title>TvSat — ChoiceBox — dane przykładowe</title>
 <g font-family="DejaVu Sans, sans-serif">
-<rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
-<rect x="0" y="0" width="1920" height="1080" fill="#171d24"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#171d24" fill-opacity="1.000000"/>
 <text x="64" y="78.0" font-size="40" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <text x="420" y="73.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">WYBÓR</text>
 <text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
-<rect x="64" y="126" width="1792" height="2" fill="#00e676"/>
+<rect x="64" y="126" width="1792" height="2" fill="#00e676" fill-opacity="1.000000"/>
 <text x="64" y="177.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wybór nośnika</text>
 <text x="64" y="246.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wybierz nośnik do przeskanowania.</text>
-<rect x="64" y="304" width="1792" height="576" fill="#171d24"/>
-<rect x="64" y="304" width="1792" height="72" fill="#25473a"/>
+<rect x="64" y="304" width="1792" height="576" fill="#171d24" fill-opacity="1.000000"/>
+<rect x="64" y="304" width="1792" height="72" fill="#25473a" fill-opacity="1.000000"/>
 <image x="76" y="324" width="36" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAMklEQVR42u3OsQ0AMAjAMK7uybwBa1eYKtWRsjtCustTowEAtgMAAAAAAAAAALwL0I81Gq46NLxyyzwAAAAASUVORK5CYII="/>
 <text x="128" y="350.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Back USB: Elements 25A2 (DISK_1)</text>
 <text x="1228" y="350.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">/media/hdd/</text>
@@ -20,7 +20,7 @@
 <image x="76" y="468" width="36" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAMklEQVR42u3OsQ0AMAjAMK7uybwBa1eYKtWRsjtCustTowEAtgMAAAAAAAAAALwL0I81Gq46NLxyyzwAAAAASUVORK5CYII="/>
 <text x="128" y="494.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Katalog tymczasowy</text>
 <text x="1228" y="494.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">/tmp</text>
-<rect x="64" y="974" width="1792" height="2" fill="#3d4a59"/>
+<rect x="64" y="974" width="1792" height="2" fill="#3d4a59" fill-opacity="1.000000"/>
 <text x="64" y="1025.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">↑ ↓  Wybierz     OK  Zatwierdź     EXIT  Powrót</text>
 </g>
 </svg>

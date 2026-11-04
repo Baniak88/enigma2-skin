@@ -15,7 +15,7 @@
     <color name="red" value="#00ff6262" />
     <color name="yellow" value="#00f5ce55" />
     <color name="blue" value="#005eacff" />
-    <color name="overlay" value="#003b4654" />
+    <color name="overlay" value="#660c0e10" />
     <color name="transparent" value="#ff000000" />
   </colors>
   <windowstyle type="skinned" id="0">
@@ -177,23 +177,23 @@
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,30" font="TvSatText;22" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <widget source="session.VideoPicture" render="Pig" position="1216,220" size="640,360" backgroundColor="transparent" zPosition="2" foregroundColor="white" />
-    <eLabel text="TERAZ OGLĄDASZ" position="1216,598" size="640,32" font="TvSatText;20" foregroundColor="muted" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="1216,636" size="640,42" font="TvSatText;27" noWrap="1" foregroundColor="green" transparent="1">
+    <eLabel text="TERAZ OGLĄDASZ" position="1216,592" size="640,28" font="TvSatText;20" foregroundColor="muted" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="1216,624" size="640,38" font="TvSatText;26" noWrap="1" foregroundColor="green" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <eLabel position="1216,698" size="640,1" backgroundColor="line" />
-    <widget source="ServiceEvent" render="Label" position="1216,720" size="640,84" font="TvSatText;31" foregroundColor="white" transparent="1">
+    <eLabel position="1216,678" size="640,1" backgroundColor="line" />
+    <widget source="ServiceEvent" render="Label" position="1216,696" size="640,66" font="TvSatText;28" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1216,818" size="130,38" font="TvSatText;25" foregroundColor="green" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1216,772" size="130,32" font="TvSatText;23" foregroundColor="green" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1356,818" size="170,38" font="TvSatText;25" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1356,772" size="170,32" font="TvSatText;23" foregroundColor="muted" transparent="1">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:– %H:%M</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1216,876" size="640,62" font="TvSatText;23" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1216,818" size="640,116" font="TvSatText;23" foregroundColor="muted" transparent="1">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
     <eLabel text="INFO — pełny opis" position="1216,944" size="640,28" font="TvSatText;20" foregroundColor="muted" transparent="1" />
@@ -235,23 +235,23 @@
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,30" font="TvSatText;22" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <widget source="session.VideoPicture" render="Pig" position="1216,220" size="640,360" backgroundColor="transparent" zPosition="2" foregroundColor="white" />
-    <eLabel text="TERAZ OGLĄDASZ" position="1216,598" size="640,32" font="TvSatText;20" foregroundColor="muted" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="1216,636" size="640,42" font="TvSatText;27" noWrap="1" foregroundColor="green" transparent="1">
+    <eLabel text="TERAZ OGLĄDASZ" position="1216,592" size="640,28" font="TvSatText;20" foregroundColor="muted" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="1216,624" size="640,38" font="TvSatText;26" noWrap="1" foregroundColor="green" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <eLabel position="1216,698" size="640,1" backgroundColor="line" />
-    <widget source="ServiceEvent" render="Label" position="1216,720" size="640,84" font="TvSatText;31" foregroundColor="white" transparent="1">
+    <eLabel position="1216,678" size="640,1" backgroundColor="line" />
+    <widget source="ServiceEvent" render="Label" position="1216,696" size="640,66" font="TvSatText;28" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1216,818" size="130,38" font="TvSatText;25" foregroundColor="green" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1216,772" size="130,32" font="TvSatText;23" foregroundColor="green" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1356,818" size="170,38" font="TvSatText;25" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1356,772" size="170,32" font="TvSatText;23" foregroundColor="muted" transparent="1">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:– %H:%M</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1216,876" size="640,62" font="TvSatText;23" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1216,818" size="640,116" font="TvSatText;23" foregroundColor="muted" transparent="1">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
     <eLabel text="INFO — pełny opis" position="1216,944" size="640,28" font="TvSatText;20" foregroundColor="muted" transparent="1" />
@@ -1458,11 +1458,11 @@
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="pluginGrid" render="Listbox" position="64,236" size="1792,600" listOrientation="grid" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line">
-      <convert type="TemplatedMultiContent">{"template":[MultiContentEntryPixmapAlphaBlend(pos=(124,20),size=(100,60),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(12,100),size=(324,80),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)],"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":200,"itemWidth":352}</convert>
+    <widget source="pluginGrid" render="Listbox" position="64,232" size="1792,684" listOrientation="grid" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line">
+      <convert type="TemplatedMultiContent">{"template":[MultiContentEntryRectangle(pos=(8,8),size=(432,212),backgroundColor=0x00252e38,backgroundColorSelected=0x0025473a,borderWidth=2,borderColor=0x003d4a59,borderColorSelected=0x0000e676),MultiContentEntryPixmapAlphaBlend(pos=(148,24),size=(152,84),png=3,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),MultiContentEntryText(pos=(24,130),size=(400,76),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP,text=1)],"fonts":[gFont("TvSatText",30),gFont("TvSatText",24)],"itemHeight":228,"itemWidth":448}</convert>
     </widget>
-    <widget name="quickselect" position="64,236" size="1792,600" font="TvSatText;80" halign="center" valign="center" transparent="1" foregroundColor="green" zPosition="5" />
-    <widget name="description" position="64,860" size="1792,90" font="TvSatText;27" foregroundColor="muted" transparent="1" />
+    <widget name="quickselect" position="64,232" size="1792,684" font="TvSatText;80" halign="center" valign="center" transparent="1" foregroundColor="green" zPosition="5" />
+    <widget name="description" position="64,928" size="1792,36" font="TvSatText;24" foregroundColor="muted" transparent="1" noWrap="1" />
   </screen>
   <screen name="AudioSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />

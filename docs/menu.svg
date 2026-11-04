@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
 <title>TvSat — Menu — dane przykładowe</title>
 <g font-family="DejaVu Sans, sans-serif">
-<rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
-<rect x="0" y="0" width="1920" height="1080" fill="#171d24"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#171d24" fill-opacity="1.000000"/>
 <text x="64" y="78.0" font-size="40" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <text x="420" y="73.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">MENU</text>
 <text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
-<rect x="64" y="126" width="1792" height="2" fill="#00e676"/>
+<rect x="64" y="126" width="1792" height="2" fill="#00e676" fill-opacity="1.000000"/>
 <text x="64" y="177.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Menu główne</text>
-<rect x="64" y="974" width="1792" height="2" fill="#3d4a59"/>
-<rect x="64" y="1012" width="6" height="24" fill="#ff6262"/>
+<rect x="64" y="974" width="1792" height="2" fill="#3d4a59" fill-opacity="1.000000"/>
+<rect x="64" y="1012" width="6" height="24" fill="#ff6262" fill-opacity="1.000000"/>
 <text x="86" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wyjdź</text>
-<rect x="1408" y="1012" width="6" height="24" fill="#5eacff"/>
+<rect x="1408" y="1012" width="6" height="24" fill="#5eacff" fill-opacity="1.000000"/>
 <text x="1430" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Tryb edycji</text>
-<rect x="64" y="240" width="1080" height="640" fill="#171d24"/>
-<rect x="64" y="240" width="1080" height="80" fill="#25473a"/>
-<rect x="64" y="240" width="4" height="80" fill="#00e676"/>
+<rect x="64" y="240" width="1080" height="640" fill="#171d24" fill-opacity="1.000000"/>
+<rect x="64" y="240" width="1080" height="80" fill="#25473a" fill-opacity="1.000000"/>
+<rect x="64" y="240" width="4" height="80" fill="#00e676" fill-opacity="1.000000"/>
 <image x="80" y="252" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
 <text x="156" y="290.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Informacje</text>
 <image x="80" y="332" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAACS0lEQVR42u3TsQkAIBADQKd2ZDf4+u0V7BTRO8gCCSkFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYIOISPk3HuAg4iAOIg7iIOIgDiIO4iDiIA4iDuIg4iA/H0RD9lWgAu2LAu1rXwViXwViXwViXwViXwViXwViXwViXwUq0L4o0L72VeCk1VzGvjiIgziIAh3EQRToIPZVoIPYV4EOYl8FOoh9Fegg9lWgg9jXQRzEvg7iIA6CAh3EQRToIA6iQAexrwIdxL4KdBD7KtBB7KtAB7GvgziIfR3EQeyLgziIgyjQQRxEgQ5iXwU6iH0V6CD2VaCD2FeBDmJfBTqIfR3EQezrIA7iICjQQRxEgQ7iIAp0EPsq0EHsq0AHsa8CHcS+CnQQ+zqIg9jXQRzEvjiIgziIAh3EQRToIPZVoIPYV4EOYl8F3nyQW2JfB3EQB3EQB3EQB3EQB3EQB3EQB3EQB8FBHMRBFOggDqJA7KtA7KtA7KtA7KtA7KtA7KtABdpXgQq0Lwq0r30ViH0ViH0ViH0ViH0ViH0ViH0ViH0VqED7okD72leB9rWvArGvArGvArGvArGvArGvArGvArGvAhVoXxRoX/sqEPsqEPsqEPsqEPsqEPsqEPsqEPsqUIH2RYH2ta8C7WtfBWJfBWJfBWJfBWJfBWJfBWJfBWJfBSrQvijQvvZVIPY9VKC8HQ9wEHEQBxEHcRBxEAcRB3EQcRAHEQdxEHEQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEEHU+FaUW4dTWIAAAAASUVORK5CYII="/>
@@ -28,7 +28,7 @@
 <text x="156" y="610.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Ustawienia</text>
 <image x="80" y="652" width="56" height="56" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
 <text x="156" y="690.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Czuwanie / restart</text>
-<rect x="1200" y="240" width="2" height="640" fill="#3d4a59"/>
+<rect x="1200" y="240" width="2" height="640" fill="#3d4a59" fill-opacity="1.000000"/>
 <image x="1390" y="248" width="240" height="240" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAB3ElEQVR42u3csQkAMAhFQafOyNnA2rSpbAIB4Q7+AsJrjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC6ZWZP2/UB71aghEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAkEgAkEgAkEgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCASBCASBCASBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRCAIRCAIRCAIRiEAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAhEIAhEIAhEIAIRiEAEIhCBCEQgAhGIQAQiEAAAAAAAAAAAAAAAAAAAAAAAAAAAAGA2z5lbnnsLRCACQSACQSACQSACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhGIQASCQASCQASCQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhCBCEQgAhEIAhEIAhEIAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAEIhAEIhAEIhAEIhCBCEQgAhGIQAQiEIEIRCACEYhABCIQgQhEIAIRiEAQiEAQiEAQiEAEIhCBCAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4c/TMjo2mwR58AAAAASUVORK5CYII="/>
 <text x="1264" y="572.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">Informacje o dekoderze, obrazie</text>
 <text x="1264" y="612.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">OpenATV, tunerach, pamięci i</text>

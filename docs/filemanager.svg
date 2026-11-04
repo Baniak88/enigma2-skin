@@ -1,35 +1,35 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
 <title>TvSat — FileCommander — dane przykładowe</title>
 <g font-family="DejaVu Sans, sans-serif">
-<rect x="0" y="0" width="1920" height="1080" fill="#20282c"/>
-<rect x="0" y="0" width="1920" height="1080" fill="#171d24"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#171d24" fill-opacity="1.000000"/>
 <text x="64" y="78.0" font-size="40" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <text x="420" y="73.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">MENEDŻER PLIKÓW</text>
 <text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
-<rect x="64" y="126" width="1792" height="2" fill="#00e676"/>
+<rect x="64" y="126" width="1792" height="2" fill="#00e676" fill-opacity="1.000000"/>
 <text x="64" y="177.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">File Commander</text>
-<rect x="64" y="974" width="1792" height="2" fill="#3d4a59"/>
-<rect x="960" y="216" width="2" height="700" fill="#3d4a59"/>
+<rect x="64" y="974" width="1792" height="2" fill="#3d4a59" fill-opacity="1.000000"/>
+<rect x="960" y="216" width="2" height="700" fill="#3d4a59" fill-opacity="1.000000"/>
 <text x="64" y="238.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">LEWY PANEL</text>
-<rect x="64" y="252" width="864" height="96" fill="#252e38"/>
+<rect x="64" y="252" width="864" height="96" fill="#252e38" fill-opacity="1.000000"/>
 <text x="80" y="280.0" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="start">/</text>
 <text x="80" y="334.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">drwxr-xr-x</text>
 <text x="432" y="334.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="end">4.0 kB</text>
 <text x="912" y="334.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="end">śr 4 lis 2026 13:40</text>
-<rect x="64" y="368" width="864" height="512" fill="#171d24"/>
+<rect x="64" y="368" width="864" height="512" fill="#171d24" fill-opacity="1.000000"/>
 <image x="76" y="384" width="32" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAaUlEQVR42u3aoREAIAhAUaZ2ZDcg6wKeiYK+f0clvEAiQpIkSZIOZebqPAAAAKgF6HazAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA6cI51nUAAADgCAIAAAAAgEcAfIgAAPAXgCRJkqQn2yQC9uisGC+wAAAAAElFTkSuQmCC"/>
 <text x="124" y="408.0" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="start">Back USB: Elements 25A2 (DISK_1)</text>
-<rect x="64" y="432" width="864" height="64" fill="#25473a"/>
+<rect x="64" y="432" width="864" height="64" fill="#25473a" fill-opacity="1.000000"/>
 <image x="76" y="448" width="32" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAaUlEQVR42u3aoREAIAhAUaZ2ZDcg6wKeiYK+f0clvEAiQpIkSZIOZebqPAAAAKgF6HazAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA6cI51nUAAADgCAIAAAAAgEcAfIgAAPAXgCRJkqQn2yQC9uisGC+wAAAAAElFTkSuQmCC"/>
 <text x="124" y="472.0" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="start">Internal flash</text>
 <text x="64" y="909.0" font-size="21" font-weight="normal" fill="#c2ccd7" text-anchor="start">Sortuj: katalogi wg nazwy ↑ · pliki wg nazwy ↑</text>
 <text x="992" y="238.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">PRAWY PANEL</text>
-<rect x="992" y="252" width="864" height="96" fill="#252e38"/>
+<rect x="992" y="252" width="864" height="96" fill="#252e38" fill-opacity="1.000000"/>
 <text x="1008" y="280.0" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="start">/</text>
 <text x="1008" y="334.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">drwxr-xr-x</text>
 <text x="1360" y="334.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="end">4.0 kB</text>
 <text x="1840" y="334.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="end">śr 4 lis 2026 13:40</text>
-<rect x="992" y="368" width="864" height="512" fill="#171d24"/>
+<rect x="992" y="368" width="864" height="512" fill="#171d24" fill-opacity="1.000000"/>
 <image x="1004" y="384" width="32" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAaUlEQVR42u3aoREAIAhAUaZ2ZDcg6wKeiYK+f0clvEAiQpIkSZIOZebqPAAAAKgF6HazAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA6cI51nUAAADgCAIAAAAAgEcAfIgAAPAXgCRJkqQn2yQC9uisGC+wAAAAAElFTkSuQmCC"/>
 <text x="1052" y="408.0" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="start">Back USB: Elements 25A2 (DISK_1)</text>
 <image x="1004" y="448" width="32" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAaUlEQVR42u3aoREAIAhAUaZ2ZDcg6wKeiYK+f0clvEAiQpIkSZIOZebqPAAAAKgF6HazAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA6cI51nUAAADgCAIAAAAAgEcAfIgAAPAXgCRJkqQn2yQC9uisGC+wAAAAAElFTkSuQmCC"/>
