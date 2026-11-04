@@ -39,10 +39,13 @@
   <fonts>
     <font filename="DejaVuSans.ttf" name="TvSatText" scale="100" />
     <font filename="LiberationSans-Bold.ttf" name="TvSatStrong" scale="100" />
+    <font filename="andale.ttf" name="TvSatMono" scale="100" />
     <alias name="TextNormal" font="TvSatText" size="30" height="40" />
     <alias name="ChoiceBoxDescription" font="TvSatText" size="26" height="36" />
     <alias name="ChoiceList" font="TvSatText" size="30" height="72" />
     <alias name="SelectionList" font="TvSatText" size="30" height="72" />
+    <alias name="FileList" font="TvSatText" size="28" height="64" />
+    <alias name="FileListMulti" font="TvSatText" size="28" height="64" />
     <alias name="MenuFont" font="TvSatText" size="32" height="64" />
   </fonts>
   <parameters>
@@ -52,6 +55,11 @@
     <parameter name="ChoicelistDash" value="0,16,1792,40" />
     <parameter name="SelectionListDescr" value="64,16,1656,40" />
     <parameter name="SelectionListLock" value="12,20,32,32" />
+    <parameter name="FileListIcon" value="12,16,32,32" />
+    <parameter name="FileListName" value="60,12,776,40" />
+    <parameter name="FileListMultiLock" value="12,20,24,24" />
+    <parameter name="FileListMultiIcon" value="48,16,32,32" />
+    <parameter name="FileListMultiName" value="96,12,740,40" />
   </parameters>
   <screen name="Menu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
@@ -1494,6 +1502,190 @@
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
     <widget name="config" position="64,236" size="1792,616" font="TvSatText;30" itemHeight="56" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" valueFont="TvSatText;30" />
     <widget name="videofps" position="64,890" size="1792,48" font="TvSatText;26" foregroundColor="muted" transparent="1" />
+  </screen>
+  <screen name="FileCommander" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="MENEDŻER PLIKÓW" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="FixedLabel" position="960,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="yellow" transparent="0" conditional="key_yellow" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="FixedLabel" position="1408,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <eLabel position="960,216" size="2,700" backgroundColor="line" />
+    <eLabel text="LEWY PANEL" position="64,216" size="864,32" font="TvSatText;22" foregroundColor="muted" transparent="1" />
+    <widget source="headleft" render="Listbox" position="64,252" size="864,96" selection="0" backgroundColor="panel" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line">
+      <convert type="TemplatedMultiContent">{"fonts":[gFont("TvSatText",28),gFont("TvSatText",22)],"itemHeight":96,"selectionEnabled":False,"template":[MultiContentEntryText(pos=(16,0),size=(832,44),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=17),MultiContentEntryText(pos=(16,60),size=(176,32),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1,color=0x00c2ccd7),MultiContentEntryText(pos=(212,60),size=(156,32),font=1,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=11,color=0x00c2ccd7),MultiContentEntryText(pos=(396,60),size=(452,32),font=1,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=13,color=0x00c2ccd7)]}</convert>
+    </widget>
+    <widget name="listleft" position="64,368" size="864,512" font="TvSatText;28" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="sortleft" position="64,888" size="864,28" font="TvSatText;21" foregroundColor="muted" transparent="1" noWrap="1" />
+    <eLabel text="PRAWY PANEL" position="992,216" size="864,32" font="TvSatText;22" foregroundColor="muted" transparent="1" />
+    <widget source="headright" render="Listbox" position="992,252" size="864,96" selection="0" backgroundColor="panel" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line">
+      <convert type="TemplatedMultiContent">{"fonts":[gFont("TvSatText",28),gFont("TvSatText",22)],"itemHeight":96,"selectionEnabled":False,"template":[MultiContentEntryText(pos=(16,0),size=(832,44),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=17),MultiContentEntryText(pos=(16,60),size=(176,32),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER,text=1,color=0x00c2ccd7),MultiContentEntryText(pos=(212,60),size=(156,32),font=1,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=11,color=0x00c2ccd7),MultiContentEntryText(pos=(396,60),size=(452,32),font=1,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=13,color=0x00c2ccd7)]}</convert>
+    </widget>
+    <widget name="listright" position="992,368" size="864,512" font="TvSatText;28" itemHeight="64" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="sortright" position="992,888" size="864,28" font="TvSatText;21" foregroundColor="muted" transparent="1" noWrap="1" />
+    <widget name="quickselect" position="64,368" size="864,512" font="TvSatText;64" halign="center" valign="center" foregroundColor="green" transparent="1" zPosition="5" />
+    <widget name="status" position="64,884" size="1792,40" font="TvSatText;25" foregroundColor="white" backgroundColor="panel" valign="center" halign="center" zPosition="6" />
+    <eLabel text="← →  Zmień panel     OK  Otwórz" position="64,932" size="864,32" font="TvSatText;22" foregroundColor="muted" transparent="1" />
+    <widget source="key_menu" render="FixedLabel" position="1056,928" size="256,36" font="TvSatText;22" text="MENU  Operacje" conditional="key_menu" foregroundColor="muted" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_info" render="FixedLabel" position="1336,928" size="240,36" font="TvSatText;22" text="INFO  Zadania" conditional="key_info" foregroundColor="muted" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_help" render="FixedLabel" position="1600,928" size="256,36" font="TvSatText;22" text="HELP  Pomoc" conditional="key_help" foregroundColor="muted" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+  </screen>
+  <screen name="FileCommanderContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="OPERACJE NA PLIKACH" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget name="menu" position="64,236" size="1792,504" font="TvSatText;30" itemHeight="72" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="description" position="64,776" size="1792,140" font="TvSatText;28" foregroundColor="muted" transparent="1" />
+    <eLabel text="↑ ↓  Wybierz     OK  Zatwierdź     EXIT  Powrót" position="64,1000" size="1420,48" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="key_menu" render="Label" position="1600,1000" size="256,48" font="TvSatText;25" conditional="key_menu" foregroundColor="muted" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+  </screen>
+  <screen name="FileCommanderData" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="INFORMACJE O PLIKU" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="FixedLabel" position="960,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="yellow" transparent="0" conditional="key_yellow" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="FixedLabel" position="1408,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget name="data" position="64,236" size="1792,680" font="TvSatText;28" transparent="1" splitPosition="560" />
+    <eLabel text="↑ ↓  Przewiń     EXIT  Powrót" position="64,930" size="1792,32" font="TvSatText;22" foregroundColor="muted" transparent="1" />
+  </screen>
+  <screen name="FileCommanderFileViewer" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="PODGLĄD PLIKU" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="FixedLabel" position="960,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="yellow" transparent="0" conditional="key_yellow" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="FixedLabel" position="1408,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget name="path" position="64,224" size="1456,48" font="TvSatText;26" foregroundColor="muted" transparent="1" noWrap="1" />
+    <widget name="data" position="64,292" size="1792,640" font="TvSatMono;26" transparent="1" />
+  </screen>
+  <screen name="FileCommanderTextEditor" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
+    <eLabel text="EDYTOR TEKSTU" position="420,48" size="1110,44" font="TvSatText;25" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;36" halign="right" foregroundColor="white" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;27" noWrap="1" foregroundColor="muted" transparent="1" />
+    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_red" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_green" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="FixedLabel" position="960,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="yellow" transparent="0" conditional="key_yellow" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_yellow" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="FixedLabel" position="1408,1012" size="6,24" font="TvSatText;28" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;25" noWrap="1" valign="center" conditional="key_blue" foregroundColor="white" transparent="1">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget name="path" position="64,224" size="1456,48" font="TvSatText;26" foregroundColor="muted" transparent="1" noWrap="1" />
+    <widget name="location" position="1550,224" size="306,48" font="TvSatText;24" foregroundColor="muted" transparent="1" halign="right" />
+    <widget name="data" position="64,292" size="1792,640" font="TvSatMono;26" itemHeight="40" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
   </screen>
   <screen name="IpkgInstaller" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;40" foregroundColor="white" transparent="1" />
