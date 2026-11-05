@@ -1030,7 +1030,8 @@
     </widget>
     <widget source="session.VideoPicture" render="Pig" position="1440,230" size="416,234" backgroundColor="transparent" zPosition="2" foregroundColor="white" />
   </screen>
-  <screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+  <screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" size="1920,1080" pixmap="TvSat/assets/eventview-fade.png" scale="1" alphatest="blend" zPosition="-10" />
     <eLabel position="64,54" size="5,28" backgroundColor="green" />
     <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="INFORMACJE O AUDYCJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
@@ -1069,7 +1070,8 @@
     <widget name="duration" position="1440,298" size="416,44" font="TvSatText;30" foregroundColor="muted" transparent="1" halign="right" />
     <widget name="epg_description" position="64,388" size="1792,550" font="TvSatText;36" transparent="1" />
   </screen>
-  <screen name="InfoBarEventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
+  <screen name="InfoBarEventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" size="1920,1080" pixmap="TvSat/assets/eventview-fade.png" scale="1" alphatest="blend" zPosition="-10" />
     <eLabel position="64,54" size="5,28" backgroundColor="green" />
     <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="INFORMACJE O AUDYCJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
@@ -2170,7 +2172,7 @@
     <widget name="description" position="32,110" size="928,48" font="TvSatText;32" transparent="1" />
   </screen>
   <screen name="InfoBar" position="0,662" size="1920,418" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="308,168" size="128,48" pixmap="TvSat/assets/now-badge.png" scale="1" alphatest="blend" zPosition="-4" />
+    <ePixmap position="348,168" size="128,48" pixmap="TvSat/assets/now-badge.png" scale="1" alphatest="blend" zPosition="-4" />
     <ePixmap position="0,0" size="1920,418" pixmap="TvSat/assets/infobar-fade.png" scale="1" alphatest="blend" zPosition="-10" />
     <ePixmap position="64,56" size="1792,18" pixmap="TvSat/assets/accent-glow.png" scale="1" alphatest="blend" zPosition="-6" />
     <ePixmap position="64,64" size="1792,2" pixmap="TvSat/assets/accent-fade.png" scale="1" alphatest="blend" zPosition="-5" />
@@ -2178,29 +2180,29 @@
     <widget source="session.CurrentService" render="Picon" position="64,98" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="320,94" size="1190,60" font="TvSatStrong;42" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="360,94" size="1150,60" font="TvSatStrong;42" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="1570,94" size="286,60" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel text="TERAZ" position="320,176" size="104,40" font="TvSatText;28" foregroundColor="green" transparent="1" />
-    <widget source="session.Event_Now" render="Label" position="440,172" size="140,44" font="TvSatText;32" foregroundColor="white" transparent="1">
+    <eLabel text="TERAZ" position="360,176" size="104,40" font="TvSatText;28" foregroundColor="green" transparent="1" />
+    <widget source="session.Event_Now" render="Label" position="480,172" size="140,44" font="TvSatText;32" foregroundColor="white" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Now" render="Label" position="600,168" size="1256,52" font="TvSatText;36" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="640,168" size="1216,52" font="TvSatText;36" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="session.Event_Now" render="Progress" position="320,238" size="1536,6" backgroundColor="track" borderWidth="0" foregroundColor="green">
+    <widget source="session.Event_Now" render="Progress" position="360,238" size="1496,6" backgroundColor="track" borderWidth="0" foregroundColor="green">
       <convert type="EventTime">Progress</convert>
     </widget>
-    <eLabel text="POTEM" position="320,280" size="104,40" font="TvSatText;28" foregroundColor="muted" transparent="1" />
-    <widget source="session.Event_Next" render="Label" position="440,276" size="140,44" font="TvSatText;32" foregroundColor="muted" transparent="1">
+    <eLabel text="POTEM" position="360,280" size="104,40" font="TvSatText;28" foregroundColor="muted" transparent="1" />
+    <widget source="session.Event_Next" render="Label" position="480,276" size="140,44" font="TvSatText;32" foregroundColor="muted" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Next" render="Label" position="600,274" size="1256,50" font="TvSatText;34" wrap="ellipsis" foregroundColor="muted" transparent="1">
+    <widget source="session.Event_Next" render="Label" position="640,274" size="1216,50" font="TvSatText;34" wrap="ellipsis" foregroundColor="muted" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
     <widget source="session.RecordState" render="FixedLabel" position="64,354" size="240,38" font="TvSatText;28" text="● REC" foregroundColor="red" transparent="1">
@@ -2209,7 +2211,7 @@
     <widget source="session.Event_Now" render="Label" position="1396,354" size="460,38" font="TvSatText;28" halign="right" foregroundColor="muted" transparent="1">
       <convert type="TvSatEventRemaining" />
     </widget>
-    <eLabel position="304,98" size="1,142" backgroundColor="line" />
+    <eLabel position="320,98" size="1,142" backgroundColor="line" />
   </screen>
   <screen name="SecondInfoBar" position="0,512" size="1920,568" flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" size="1920,568" pixmap="TvSat/assets/secondinfobar-fade.png" scale="1" alphatest="blend" zPosition="-10" />

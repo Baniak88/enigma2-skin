@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+<title>TvSat — InfoBarEventView — dane przykładowe</title>
+<g font-family="DejaVu Sans, sans-serif">
+<rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
+<rect x="0" y="0" width="640" height="1080" fill="#315b78" fill-opacity="1.000000"/>
+<rect x="640" y="0" width="640" height="1080" fill="#7c3c4c" fill-opacity="1.000000"/>
+<rect x="1280" y="0" width="640" height="1080" fill="#47694a" fill-opacity="1.000000"/>
+<rect x="0" y="0" width="1920" height="1080" fill="#000000" fill-opacity="0.000000"/>
+<image x="0" y="0" width="1920" height="1080" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAABCAYAAAA/6bM1AAAA/UlEQVR42u3ZIY/BAQDGYYzdbPbf2WyCTRAEQVAuKIqgKIqiKIqkKIqiKIKiCIogCIJgE2y22+w2uzF8G7/d3tt8BnvD8ymeUCL4DElYIogihg/EkUCAJFJII4MscsijgCJK+EIZFVRRQx0NNNFCGx100UMfAwwxwhgTTDHDHAssscIaG2yxwx4HHPGNE35wxi8uuOKGuzzMzMzMzMzMzMzMzMzM7O38f+BNR3jRGZ51iCed4lHHuNc5bnWQa53kUkc511lOdZhjneZQx9nXeXZ1oG2daFNHWteZVnWoZZ1qScda0LnmdLAZnWxKRxvobOM63JhON/LyvH/v+wSLg1/Qkm3/7gAAAABJRU5ErkJggg=="/>
+<rect x="64" y="54" width="5" height="28" fill="#00e676" fill-opacity="1.000000"/>
+<text x="84" y="78.0" font-size="40" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
+<text x="420" y="73.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">INFORMACJE O AUDYCJI</text>
+<text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
+<image x="64" y="126" width="1792" height="2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABwAAAAACCAYAAABfeMiaAAACU0lEQVR42u3Z4S4WAABG4c+yLEvTNCzL0jRNk7EsS9M0WZalaZomyxhL0zQZy7I0TZNlWZamabIsS9M0TZZlWUzTsCxL0zSN6+isvVdh74/nJs4JBDbrAwjCNgRjO0KwA6HYiTDsQjh2IwJ7EIkoRGMvYrAPsdiPOBxAPA4iAYeQiMNIwhEkIwWpOIo0HEM6jiMDJ5CJk8jCKWTjNHJwBrk4izycQz7OowAXUIiLKMIlFOMySnAFpShDOSpQiauowjVU4zpqcAO1uIk61KMBt9CI22jCHTTjLlpwD624jzY8QDseogOP0InH6MITdOMpevAMvXiOPrxAP15iAK8wiNcYwhsM4y1G8A6jeI8xfMA4PmICnzCJz5jCF0xjBrP4ijl8wzwWsIjvWMIPLOMnVvALq/iNNfzBOv5iA5tmZmZmZmZmZmZmZlvQhlr4utr4mlr5qtr5ilr6str6klr7otr7vFr8nNr8rFr9tNr9lFr+pNr+hFr/uNr/mF7AqN7AiF7BsN7BkF7CoN7CgF5Dv95Dn15Er95Ej15Ft95Fl15Gp95Gh15Hu95Hm15Iq95Ii15Js95Jk15Ko95Kg15Lnd5LrV5Mjd5MtV5Nld5NpV5Oud5OqV5Pid5PsV5Qkd5QoV5Rgd5Rvl5Snt5Srl5Tjt5Ttl5Ult5Upl5Vht5Vul5Wmt5Wql5Xst5Xkl5Yot5Ygl5ZvN5ZnF5arN5ajF5btN5bpF5chN5cuF5dmN5dqF5eiN5esF5f0P/35wHoAegBaGZmZmZmZmZmZmbmAegBuHUG4D+72Hx7zsIBFwAAAABJRU5ErkJggg=="/>
+<text x="64" y="177.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Zapaleńcy. Historia polskiego filmu animowanego</text>
+<rect x="64" y="974" width="1792" height="2" fill="#303438" fill-opacity="1.000000"/>
+<rect x="512" y="1012" width="6" height="24" fill="#00e676" fill-opacity="1.000000"/>
+<text x="534" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Dodaj timer</text>
+<rect x="960" y="1012" width="6" height="24" fill="#f5ce55" fill-opacity="1.000000"/>
+<text x="982" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Pojedynczy EPG</text>
+<rect x="1408" y="1012" width="6" height="24" fill="#5eacff" fill-opacity="1.000000"/>
+<text x="1430" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">EPG wielu kanałów</text>
+<text x="64" y="256.0" font-size="32" font-weight="normal" fill="#00e676" text-anchor="start">CANAL+ FILM HD</text>
+<text x="64" y="324.0" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="start">5 lis, 20:00 — 21:30</text>
+<text x="1856" y="324.0" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">90 min</text>
+<text x="64" y="420.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Zapaleńcy. Historia polskiego filmu animowanego</text>
+<text x="64" y="460.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start"></text>
+<text x="64" y="500.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Dokument pokazuje, jak sztuka animacji odzwierciedla zmieniającą się rzeczywistość społeczną w</text>
+<text x="64" y="540.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Polsce. Film ukazuje ewolucję technik i tematów, które uczyniły polską animację fenomenem</text>
+<text x="64" y="580.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">światowym.</text>
+<text x="64" y="620.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start"></text>
+<text x="64" y="660.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">PL, 2024</text>
+<text x="64" y="700.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Reżyseria: Marcin Giżycki</text>
+<text x="64" y="740.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Występują: Zbigniew Rybczyński</text>
+<text x="64" y="780.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start"></text>
+<text x="64" y="820.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Historia twórców, ich eksperymentów i filmów, które zdobyły uznanie na całym świecie.</text>
+</g>
+</svg>
