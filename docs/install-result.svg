@@ -19,6 +19,6 @@
 <rect x="64" y="546" width="1792" height="12" fill="#303438" fill-opacity="1.000000"/>
 <rect x="64" y="546" width="1792" height="12" fill="#303438" fill-opacity="1.000000"/>
 <rect x="64" y="546" width="1792" height="12" fill="#00e676" fill-opacity="1.000000"/>
-<text x="64" y="952.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">Status operacji i wynik pochodzą z instalatora systemowego.</text>
+<text x="64" y="952.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">Po zakończeniu: czerwony — zamknij, niebieski — dziennik. Błąd: sprawdź szczegóły w dzienniku.</text>
 </g>
 </svg>

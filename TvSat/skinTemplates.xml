@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Native OpenATV template: 8 rows in the 704px list, independent of Legacy row count. -->
 <templates>
-  <template name="TvSat" component="serviceList" fonts="TvSatText;32,TvSatText;25,TvSatText;24">
-    <mode name="services" itemHeight="88" itemWidth="1088" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
-      <rectangle position="0,0" size="4,88" foregroundColor="bg" foregroundColorSelected="green" />
-      <rectangle position="8,87" size="1080,1" foregroundColor="line" foregroundColorSelected="selected" />
-      <text index="Number" position="16,0" size="52,88" font="2" halign="right" valign="center" foregroundColor="muted" foregroundColorSelected="green" />
-      <pixmap index="Picon" position="88,12" size="112,64" alpha="blend" scaleFlags="scaleCenter" />
-      <text index="ServiceName" position="236,8" size="828,40" font="0" valign="center" />
-      <text index="Title1" position="236,52" size="828,30" font="1" foregroundColor="muted" foregroundColorSelected="white" />
+  <template name="TvSat" component="serviceList" fonts="TvSatText;31,TvSatText;26,TvSatText;26">
+    <mode name="services" itemHeight="100" itemWidth="1088" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
+      <rectangle position="0,0" size="4,100" foregroundColor="bg" foregroundColorSelected="green" />
+      <rectangle position="8,99" size="1080,1" foregroundColor="line" foregroundColorSelected="selected" />
+      <text index="Number" position="12,0" size="56,100" font="2" horizontalAlignment="right" verticalAlignment="center" foregroundColor="muted" foregroundColorSelected="white" />
+      <pixmap index="Picon" position="84,22" size="100,56" alpha="blend" scale="scaleCenter" />
+      <text index="ServiceName" position="204,0" size="420,100" font="0" verticalAlignment="center" wrap="ellipsis" />
+      <text index="Title1" position="648,0" size="304,100" font="1" verticalAlignment="center" foregroundColor="muted" foregroundColorSelected="white" wrap="ellipsis" />
+      <progress index="Progress" position="980,46" size="88,8" foregroundColor="green" foregroundColorSelected="green" backgroundColor="line" backgroundColorSelected="line" borderWidth="0" />
     </mode>
-    <mode name="bouquets" itemHeight="88" itemWidth="1088" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
-      <rectangle position="0,0" size="4,88" foregroundColor="bg" foregroundColorSelected="green" />
-      <text index="Number" position="16,0" size="52,88" font="2" halign="right" valign="center" foregroundColor="muted" foregroundColorSelected="green" />
-      <text index="ServiceName" position="104,0" size="960,88" font="0" valign="center" />
+    <mode name="bouquets" itemHeight="100" itemWidth="1088" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
+      <rectangle position="0,0" size="4,100" foregroundColor="bg" foregroundColorSelected="green" />
+      <rectangle position="8,99" size="1080,1" foregroundColor="line" foregroundColorSelected="selected" />
+      <text index="Number" position="12,0" size="56,100" font="2" horizontalAlignment="right" verticalAlignment="center" foregroundColor="muted" foregroundColorSelected="white" />
+      <pixmap index="Picon" position="84,22" size="100,56" alpha="blend" scale="scaleCenter" />
+      <text index="ServiceName" position="204,0" size="420,100" font="0" verticalAlignment="center" wrap="ellipsis" />
+      <text index="Title1" position="648,0" size="304,100" font="1" verticalAlignment="center" foregroundColor="muted" foregroundColorSelected="white" wrap="ellipsis" />
+      <progress index="Progress" position="980,46" size="88,8" foregroundColor="green" foregroundColorSelected="green" backgroundColor="line" backgroundColorSelected="line" borderWidth="0" />
     </mode>
-    <mode name="other" itemHeight="88" itemWidth="1088" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
-      <rectangle position="0,0" size="4,88" foregroundColor="bg" foregroundColorSelected="green" />
-      <text index="EntryName" position="24,0" size="1040,88" font="0" valign="center" />
+    <mode name="other" itemHeight="100" itemWidth="1088" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
+      <rectangle position="0,0" size="4,100" foregroundColor="bg" foregroundColorSelected="green" />
+      <rectangle position="8,99" size="1080,1" foregroundColor="line" foregroundColorSelected="selected" />
+      <text index="EntryName" position="24,0" size="1040,100" font="0" verticalAlignment="center" wrap="ellipsis" />
     </mode>
   </template>
 </templates>
