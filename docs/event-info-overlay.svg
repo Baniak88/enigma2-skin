@@ -6,7 +6,7 @@
 <rect x="640" y="0" width="640" height="1080" fill="#7c3c4c" fill-opacity="1.000000"/>
 <rect x="1280" y="0" width="640" height="1080" fill="#47694a" fill-opacity="1.000000"/>
 <rect x="0" y="0" width="1920" height="1080" fill="#000000" fill-opacity="0.000000"/>
-<image x="0" y="0" width="1920" height="1080" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAABCAYAAAA/6bM1AAABpUlEQVR42u3Z7UaDARyH4V7Wq5VlKSmZTCZJYpJIRiYSiUQikZiIRCKRSGRkIokkkckkSZIlpZTKqtWqs+n+8BtPnUL/D9dRXDnuck/OH7kOeZIPFwqkEEUoRglK4UYZyuFBBbyoRBWqUYNa1KEePjTAj0YE0IRmtKAVbQiiHR3oRBe6EUIPwuhFH/oxgEEMYRgjGMUYxjGBSUQwhWnMYBZzmMcCFrGEZaxgFWuIYh0xbGATW9jGDnaxh30cII5DJHCEY5zgFGc4xwWSuMQVrnGDW9zhHg94xBOekcILXvGGNN7lAxl8ypfDtzHGGGOMMcYYY4wxxhhjjPkXnEeUfaOMLin7Smld06vuKaWLetJNPeiq7nRXN7qsK91WUtd1rvs61YUd68YSurK47mxfl7arW9vWtW3q3mK6uKhublVXt6y7W9Tlzev2ZnV907q/iC5wQjc4pisc0R0O6RIHdIt9usaw7jGki+zSTXboKoO6y1ZdZrNuM6Dr9Os+fbrQOt1oja60Snfq1aV6dKtlutZS3WuxLrbQ8bMunW32b52n++t7fwDSESmQ5uQJIgAAAABJRU5ErkJggg=="/>
+<image x="0" y="0" width="1920" height="1080" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4AAAAABCAYAAAA/6bM1AAAAnElEQVR42u3DRQ4CURBAQQ5ACPc/Ce7u7u4OR2DJmsXr7pn8SioQDIU/rslv9+8vn3568MP4u7E3I6+KL0rPCk+Cj4IPQvcCdwK38A18DV7Bl9AFeA6dQafQCXQMHUGH0AGwD+1Bu9AOtA1tQZvQBrgOrcGr4Aq8DC8JLAosCM0LzgnOKswoTStOGZk0NmF83INjPh11/x5xXff3C64pZwYowtcgAAAAAElFTkSuQmCC"/>
 <rect x="128" y="54" width="5" height="28" fill="#00e676" fill-opacity="1.000000"/>
 <text x="148" y="78.0" font-size="40" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <text x="484" y="73.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">INFORMACJE O AUDYCJI</text>
