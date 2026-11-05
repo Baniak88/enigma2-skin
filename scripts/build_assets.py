@@ -5,6 +5,7 @@ import struct
 import zlib
 import shutil
 from build import VERSION
+from skin_effects import FADE_TOP, BODY_ALPHA, BODY_RGB, BAR_HEIGHTS, fade_alpha
 
 ROOT=Path(__file__).resolve().parents[1]/'TvSat'
 BG=(12,14,16,255); PANEL=(23,25,28,255); GREEN=(0,230,118,255)
@@ -12,8 +13,8 @@ SELECTED=(37,71,58,255)
 WHITE=(245,245,245,255); RED=(255,98,98,255); BLUE=(94,172,255,255)
 
 
-def png(path,w,h,bg,rects=()):
-    pixels=bytearray(bg*(w*h))
+def png(path,w,h,bg,rects=(),pixels=None):
+    pixels=bytearray(bg*(w*h)) if pixels is None else pixels
     for x,y,rw,rh,c in rects:
         for yy in range(max(0,y),min(h,y+rh)):
             for xx in range(max(0,x),min(w,x+rw)):
@@ -29,6 +30,31 @@ def build():
     (ROOT/'VERSION').write_text(VERSION+'\n')
     # Przezroczyste pole dziedziczy kolor paska/ekranu, bez osobnej ramki i symbolu.
     png(Path('picon_default.png'),220,132,(0,0,0,0))
+    # Single-column gradients are stretched natively; no blur shader or timer.
+    for name,height in BAR_HEIGHTS.items():
+        total=height+FADE_TOP
+        pixels=bytearray(c for y in range(total) for c in (*BODY_RGB,fade_alpha(y)))
+        png(Path('assets')/(name.lower()+'-fade.png'),1,total,(0,0,0,0),pixels=pixels)
+    width=1792
+    accent=bytearray()
+    glow=bytearray()
+    for y in range(18):
+        vertical=max(0,1-abs(y-9)/9)**2
+        for x in range(width):
+            envelope=min(1,x/160,(width-1-x)/160)
+            glow.extend((0,230,118,round(42*max(0,envelope)*vertical)))
+    for y in range(2):
+        for x in range(width):
+            envelope=min(1,x/160,(width-1-x)/160)
+            accent.extend((0,230,118,round(230*max(0,envelope))))
+    png(Path('assets/accent-fade.png'),width,2,(0,0,0,0),pixels=accent)
+    png(Path('assets/accent-glow.png'),width,18,(0,0,0,0),pixels=glow)
+    badge=bytearray()
+    for y in range(48):
+        for x in range(128):
+            dx=max(8-x,0,x-119);dy=max(8-y,0,y-39)
+            badge.extend((0,230,118,26 if dx*dx+dy*dy<=64 else 0))
+    png(Path('assets/now-badge.png'),128,48,(0,0,0,0),pixels=badge)
     # Checkbox graphics used by the native SelectionList in the IPK installer.
     edge=[(2,2,28,2,WHITE),(2,28,28,2,WHITE),(2,2,2,28,WHITE),(28,2,2,28,WHITE)]
     png(Path('icons/lock_off.png'),32,32,(0,0,0,0),edge)

@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.5.0
+# OpenATV — zakres zgodności 0.6.0
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -336,3 +336,22 @@ i przywraca je przy błędzie, co sprawdza test z wymuszoną awarią zapisu.
 Oba warianty przechodzą walidację kontraktów i geometrii. Niezbędna jest jeszcze
 próba na fizycznym odbiorniku, szczególnie renderowania fontów, pomiaru opisu,
 przełączania profilu i restartu GUI podczas nagrywania.
+
+## Fade i detale 0.6.0
+
+InfoBar, SecondInfoBar i MoviePlayer mają przezroczyste okno oraz statyczną
+warstwę PNG z zPosition=-10. Gradient alpha rośnie od 0 do 217 na pierwszych
+64 pikselach, następnie pozostaje równy 217 (około 85% krycia). Okno jest wyższe
+o 64 px i zaczyna się o tyle wcześniej; bezwzględne pozycje treści na ekranie
+pozostają zachowane. Wszystkie pola tekstu znajdują się poniżej przejścia fade.
+To gradient tła; animacja pojawiania okna pozostaje po stronie ustawień OpenATV.
+
+Maska ma szerokość jednego piksela i jest rozciągana przez natywny ePixmap.
+Oddzielne niskie warstwy mieszczą zanikający akcent, delikatną poświatę i podkład
+TERAZ. Picon i napisy pozostają nad nimi. Standard i Large używają tych samych
+masek i natywnej obsługi alpha. Nie dodano modułów runtime ani stałego timera.
+
+Testy sprawdzają monotoniczny gradient, 15% przezroczystości pod tekstem i pikoną,
+bezpieczną kolejność warstw oraz kompozycję SVG/PNG na kolorowym obrazie testowym.
+Podgląd PNG składa obrazy przez alpha_composite w RGBA. Test na fizycznym
+odbiorniku jest nadal wymagany, szczególnie poprawności mieszania alpha w OSD.

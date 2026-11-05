@@ -334,7 +334,7 @@ def re_timeline(key):
 
 def render_png(path):
     from PIL import Image,ImageDraw,ImageFont
-    im=Image.new('RGB',(1920,1080));draw=ImageDraw.Draw(im)
+    im=Image.new('RGBA',(1920,1080),(0,0,0,255));draw=ImageDraw.Draw(im)
     for n in E.parse(path).getroot().iter():
         tag=n.tag.split('}')[-1]
         if tag=='rect':
@@ -346,14 +346,14 @@ def render_png(path):
                 layer=Image.new('RGBA',im.size,(0,0,0,0))
                 rgb=tuple(int(n.get('fill')[i:i+2],16) for i in (1,3,5))
                 ImageDraw.Draw(layer).rectangle((x,y,x+w,y+h),fill=rgb+(alpha,))
-                im=Image.alpha_composite(im.convert('RGBA'),layer).convert('RGB');draw=ImageDraw.Draw(im)
+                im=Image.alpha_composite(im,layer);draw=ImageDraw.Draw(im)
         elif tag=='text':
             font=ImageFont.truetype('DejaVuSansMono.ttf' if n.get('font-family')=='monospace' else 'DejaVuSans-Bold.ttf' if n.get('font-weight')=='bold' else 'DejaVuSans.ttf',int(n.get('font-size')))
             draw.text((float(n.get('x')),float(n.get('y'))),n.text or '',font=font,fill=n.get('fill'),anchor={'start':'ls','middle':'ms','end':'rs'}[n.get('text-anchor')])
         elif tag=='image':
             pic=Image.open(io.BytesIO(base64.b64decode(n.get('href').split(',')[1]))).convert('RGBA')
             pic=pic.resize((int(float(n.get('width'))),int(float(n.get('height')))))
-            im.paste(pic,(int(float(n.get('x'))),int(float(n.get('y')))),pic)
+            im.alpha_composite(pic,dest=(int(float(n.get('x'))),int(float(n.get('y')))))
         elif tag=='polygon':
             points=[tuple(map(float,p.split(','))) for p in n.get('points').split()]
             draw.polygon(points,fill=n.get('fill'))

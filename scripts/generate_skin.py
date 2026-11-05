@@ -56,10 +56,11 @@ def screen(name, pos=(0, 0), size=(1920, 1080), bg='bg'):
 
 
 def header(s, section):
-    label(s, 'TvSat', 64, 38, 320, 60, 40, family='TvSatStrong')
+    box(s,64,54,5,28,'green')
+    label(s, 'TvSat', 84, 38, 300, 60, 40, family='TvSatStrong')
     label(s, section, 420, 48, 1110, 44, 25, 'muted')
     source(s, 'global.CurrentTime', 1600, 40, 256, 58, 36, halign='right', converts=[('ClockToText', 'Default')])
-    box(s, 64, 126, 1792, 2, 'green')
+    add(s,'ePixmap',position='64,126',size='1792,2',pixmap='TvSat/assets/accent-fade.png',alphatest='blend',scale='1')
     source(s, 'Title', 64, 150, 1792, 48, 27, 'muted', noWrap='1')
 
 
@@ -522,6 +523,8 @@ def build():
     widget(s,'Volume',28,74,444,8,foregroundColor='green',backgroundColor='line',borderWidth='0')
     s=screen('Mute',pos=(1496,70),size=(360,86))
     box(s,0,0,6,86,'green'); label(s,'WYCISZONO',30,22,300,44,28)
+    from skin_effects import modernize_bars
+    modernize_bars(skin)
     E.indent(skin,space='  ')
     (ROOT/'TvSat/skin.xml').write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n'+E.tostring(skin,encoding='utf-8')+b'\n')
     from ui_profiles import write_variants

@@ -22,11 +22,18 @@ class SettingsUI(unittest.TestCase):
         self.assertEqual(int(setup.get('size').split(',')[1])%int(setup.get('itemHeight')),0)
 
     def test_infobar_has_one_dark_transparent_surface(self):
+        from PIL import Image
         skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
         colors={n.get('name'):n.get('value') for n in skin.findall('colors/color')}
         for name in ('InfoBar','SecondInfoBar','MoviePlayer'):
             screen=skin.find(f"screen[@name='{name}']")
-            surface=colors[screen.get('backgroundColor')].lstrip('#')
+            self.assertEqual(screen.get('backgroundColor'),'transparent')
+            mask=screen.find(f"ePixmap[@pixmap='TvSat/assets/{name.lower()}-fade.png']")
+            self.assertIsNotNone(mask)
+            self.assertLess(int(mask.get('zPosition')),0)
+            with Image.open(ROOT/mask.get('pixmap')) as image:
+                self.assertEqual(image.getpixel((0,64)),(12,14,16,217))
+            surface=colors['overlay'].lstrip('#')
             transparency=int(surface[:2],16)/255
             self.assertAlmostEqual(transparency,38/255)
             rgb=[int(surface[i:i+2],16) for i in (2,4,6)]
