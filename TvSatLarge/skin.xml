@@ -1032,83 +1032,83 @@
   </screen>
   <screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" size="1920,1080" pixmap="TvSat/assets/eventview-fade.png" scale="1" alphatest="blend" zPosition="-10" />
-    <eLabel position="64,54" size="5,28" backgroundColor="green" />
-    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
-    <eLabel text="INFORMACJE O AUDYCJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
+    <eLabel position="128,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="148,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel text="INFORMACJE O AUDYCJI" position="484,48" size="982,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1536,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
-    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
-    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
-    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+    <ePixmap position="128,126" size="1664,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
+    <widget source="Title" render="Label" position="128,150" size="1664,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
+    <eLabel position="128,974" size="1664,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="128,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_red" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_red" render="Label" position="150,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_red" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+    <widget source="key_green" render="FixedLabel" position="544,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_green" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_green" render="Label" position="566,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_green" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="key_yellow" render="FixedLabel" position="960,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="yellow" transparent="0" conditional="key_yellow" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_yellow" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_yellow" render="Label" position="982,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_yellow" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="FixedLabel" position="1408,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
+    <widget source="key_blue" render="FixedLabel" position="1376,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_blue" render="Label" position="1398,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget name="channel" position="64,224" size="1792,54" font="TvSatText;36" foregroundColor="green" transparent="1" />
-    <widget name="datetime" position="64,298" size="1100,44" font="TvSatText;30" foregroundColor="muted" transparent="1" />
-    <widget name="duration" position="1440,298" size="416,44" font="TvSatText;30" foregroundColor="muted" transparent="1" halign="right" />
-    <widget name="epg_description" position="64,388" size="1792,550" font="TvSatText;36" transparent="1" />
+    <widget name="channel" position="128,224" size="1664,54" font="TvSatText;36" foregroundColor="green" transparent="1" />
+    <widget name="datetime" position="128,298" size="1216,44" font="TvSatText;30" foregroundColor="muted" transparent="1" />
+    <widget name="duration" position="1376,298" size="416,44" font="TvSatText;30" foregroundColor="muted" transparent="1" halign="right" />
+    <widget name="epg_description" position="128,388" size="1664,550" font="TvSatText;36" transparent="1" />
   </screen>
   <screen name="InfoBarEventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" size="1920,1080" pixmap="TvSat/assets/eventview-fade.png" scale="1" alphatest="blend" zPosition="-10" />
-    <eLabel position="64,54" size="5,28" backgroundColor="green" />
-    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
-    <eLabel text="INFORMACJE O AUDYCJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
-    <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
+    <eLabel position="128,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="148,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel text="INFORMACJE O AUDYCJI" position="484,48" size="982,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="1536,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
-    <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
-    <eLabel position="64,974" size="1792,2" backgroundColor="line" />
-    <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
+    <ePixmap position="128,126" size="1664,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
+    <widget source="Title" render="Label" position="128,150" size="1664,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
+    <eLabel position="128,974" size="1664,2" backgroundColor="line" />
+    <widget source="key_red" render="FixedLabel" position="128,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_red" render="Label" position="86,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_red" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_red" render="Label" position="150,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_red" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="FixedLabel" position="512,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
+    <widget source="key_green" render="FixedLabel" position="544,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="green" transparent="0" conditional="key_green" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_green" render="Label" position="534,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_green" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_green" render="Label" position="566,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_green" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
     <widget source="key_yellow" render="FixedLabel" position="960,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="yellow" transparent="0" conditional="key_yellow" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_yellow" render="Label" position="982,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_yellow" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_yellow" render="Label" position="982,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_yellow" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="FixedLabel" position="1408,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
+    <widget source="key_blue" render="FixedLabel" position="1376,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="blue" transparent="0" conditional="key_blue" foregroundColor="white">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="key_blue" render="Label" position="1398,998" size="382,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget name="channel" position="64,224" size="1792,54" font="TvSatText;36" foregroundColor="green" transparent="1" />
-    <widget name="datetime" position="64,298" size="1100,44" font="TvSatText;30" foregroundColor="muted" transparent="1" />
-    <widget name="duration" position="1440,298" size="416,44" font="TvSatText;30" foregroundColor="muted" transparent="1" halign="right" />
-    <widget name="epg_description" position="64,388" size="1792,550" font="TvSatText;36" transparent="1" />
+    <widget name="channel" position="128,224" size="1664,54" font="TvSatText;36" foregroundColor="green" transparent="1" />
+    <widget name="datetime" position="128,298" size="1216,44" font="TvSatText;30" foregroundColor="muted" transparent="1" />
+    <widget name="duration" position="1376,298" size="416,44" font="TvSatText;30" foregroundColor="muted" transparent="1" halign="right" />
+    <widget name="epg_description" position="128,388" size="1664,550" font="TvSatText;36" transparent="1" />
   </screen>
   <screen name="Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
     <eLabel position="64,54" size="5,28" backgroundColor="green" />
