@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.6.2
+# OpenATV — zakres zgodności 0.6.3
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -385,3 +385,17 @@ W polu tekstu pozostaje 85% krycia. Wszystkie pozostałe ekrany zachowują swoje
 marginesy. Nie zmieniono źródła ani przewijania opisu. Istniejący test obu wariantów
 sprawdza obustronne granice wszystkich pól tekstowych, symetrię opisu, wyrównanie
 zegara i czasu trwania oraz pełne krycie maski pod tekstem.
+
+## Długi fade informacji o audycji — 0.6.3
+
+Maska EventView / InfoBarEventView ma teraz jeden kierunkowy gradient od x=0
+do x=1824 (95% szerokości FHD). Funkcja smoothstep zmienia alpha od 240 do 184,
+po czym utrzymuje prawą wartość do końca obrazu. To około 94% → 72% krycia.
+Kolor pozostaje #0c0e10. Maska nadal ma 1920×1 pikseli i jest skalowana natywnie.
+Nie dodano animacji, rozmywania obrazu ani nowych modułów runtime.
+
+Marginesy 128 px i wszystkie kontrolki pozostają bez zmian. Test sprawdza
+monotoniczny spadek alpha, stopniową zmianę na dużej części ekranu i minimalny
+kontrast 4,5:1 dla white/muted/green na najjaśniejszym białym obrazie wideo.
+InfoBar, SecondInfoBar i MoviePlayer zachowują poprzednie maski i 15% przezroczystości.
+Potrzebna jest jeszcze ocena efektu na fizycznym dekoderze i telewizorze.

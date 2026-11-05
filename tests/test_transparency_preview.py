@@ -88,16 +88,28 @@ class TransparencyPreview(unittest.TestCase):
                 background=scene.find("ePixmap[@pixmap='TvSat/assets/eventview-fade.png']")
                 self.assertLess(int(background.get('zPosition')),0)
                 with Image.open(ROOT/background.get('pixmap')) as mask:
-                    self.assertEqual(mask.getpixel((0,0))[3],0)
-                    self.assertEqual(mask.getpixel((64,0))[3],108)
-                    self.assertEqual(mask.getpixel((128,0))[3],217)
-                    self.assertEqual(mask.getpixel((1919,0))[3],0)
+                    alpha=[mask.getpixel((x,0))[3] for x in range(mask.width)]
+                    self.assertEqual(alpha[0],240)
+                    self.assertEqual(alpha[-1],184)
+                    self.assertEqual(alpha,sorted(alpha,reverse=True))
+                    samples=[alpha[x] for x in (128,640,1280,1600,1824)]
+                    self.assertTrue(all(a>b for a,b in zip(samples,samples[1:])),samples)
+                    self.assertTrue(all(a==184 for a in alpha[1824:]))
                     for node in scene:
                         if node.get('font'):
                             x=int(node.get('position').split(',')[0]);width=int(node.get('size').split(',')[0])
                             self.assertGreaterEqual(x,128,(folder,name,node.attrib))
                             self.assertLessEqual(x+width,1792,(folder,name,node.attrib))
-                            self.assertTrue(all(mask.getpixel((px,0))[3]==217 for px in range(x,x+width)),(folder,name,node.attrib))
+                            self.assertTrue(all(mask.getpixel((px,0))[3]>=184 for px in range(x,x+width)),(folder,name,node.attrib))
+                    colors={node.get('name'):node.get('value') for node in skin.findall('colors/color')}
+                    def luminance(rgb):
+                        channels=[v/255 for v in rgb]
+                        linear=[v/12.92 if v<=.04045 else ((v+.055)/1.055)**2.4 for v in channels]
+                        return sum(v*w for v,w in zip(linear,(.2126,.7152,.0722)))
+                    backdrop=tuple(round(c*184/255+255*71/255) for c in (12,14,16))
+                    for color_name in ('white','muted','green'):
+                        foreground=rgba(colors[color_name])[:3]
+                        self.assertGreaterEqual((luminance(foreground)+.05)/(luminance(backdrop)+.05),4.5)
                 description=scene.find("widget[@name='epg_description']")
                 self.assertEqual(description.get('transparent'),'1')
                 self.assertIsNone(description.get('source'))

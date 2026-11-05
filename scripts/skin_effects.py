@@ -1,4 +1,4 @@
-"""Static, native PNG effects. Fade stays above every text/control rectangle."""
+"""Native static gradients for bars and programme details."""
 import xml.etree.ElementTree as E
 
 FADE_TOP=64
@@ -6,6 +6,9 @@ BODY_ALPHA=217  # ~85% opacity, retaining the requested ~15% transparency.
 BODY_RGB=(12,14,16)
 BAR_HEIGHTS={'InfoBar':354,'SecondInfoBar':504,'MoviePlayer':294}
 EVENT_MARGIN=128
+EVENT_FADE_END=1824
+EVENT_ALPHA_LEFT=240
+EVENT_ALPHA_RIGHT=184
 
 
 def fade_alpha(y):
@@ -14,7 +17,9 @@ def fade_alpha(y):
 
 
 def event_fade_alpha(x):
-    return fade_alpha(min(x,1919-x)*FADE_TOP/EVENT_MARGIN)
+    t=min(1,max(0,x/EVENT_FADE_END))
+    smooth=t*t*(3-2*t)
+    return round(EVENT_ALPHA_LEFT+(EVENT_ALPHA_RIGHT-EVENT_ALPHA_LEFT)*smooth)
 
 
 def pixmap(parent,path,x,y,w,h,z):
@@ -56,6 +61,6 @@ def modernize_bars(skin):
     for name in ('EventView','InfoBarEventView'):
         scene=skin.find(f"screen[@name='{name}']")
         scene.set('backgroundColor','transparent')
-        # Only the outer margins fade. Every character and scrollable paragraph
-        # retains the same dark 85%-opaque surface as the InfoBar body.
+        # Fade gradually across 95% of the screen. The opacity floor protects
+        # text contrast even when the video behind a paragraph turns white.
         pixmap(scene,'eventview-fade.png',0,0,1920,1080,-10)
