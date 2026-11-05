@@ -89,16 +89,24 @@ class TransparencyPreview(unittest.TestCase):
                 self.assertLess(int(background.get('zPosition')),0)
                 with Image.open(ROOT/background.get('pixmap')) as mask:
                     self.assertEqual(mask.getpixel((0,0))[3],0)
-                    self.assertEqual(mask.getpixel((32,0))[3],108)
+                    self.assertEqual(mask.getpixel((64,0))[3],108)
+                    self.assertEqual(mask.getpixel((128,0))[3],217)
                     self.assertEqual(mask.getpixel((1919,0))[3],0)
                     for node in scene:
                         if node.get('font'):
                             x=int(node.get('position').split(',')[0]);width=int(node.get('size').split(',')[0])
+                            self.assertGreaterEqual(x,128,(folder,name,node.attrib))
+                            self.assertLessEqual(x+width,1792,(folder,name,node.attrib))
                             self.assertTrue(all(mask.getpixel((px,0))[3]==217 for px in range(x,x+width)),(folder,name,node.attrib))
                 description=scene.find("widget[@name='epg_description']")
                 self.assertEqual(description.get('transparent'),'1')
                 self.assertIsNone(description.get('source'))
                 self.assertGreaterEqual(int(description.get('size').split(',')[1]),500)
+                x=int(description.get('position').split(',')[0]);width=int(description.get('size').split(',')[0])
+                self.assertEqual(x,1920-x-width,'Description must have equal left/right margins')
+                self.assertEqual(x,128)
+                for node in scene.findall("widget[@source='global.CurrentTime']")+scene.findall("widget[@name='duration']"):
+                    self.assertEqual(int(node.get('position').split(',')[0])+int(node.get('size').split(',')[0]),1792)
 
 
 if __name__=='__main__':unittest.main()

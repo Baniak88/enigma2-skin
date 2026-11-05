@@ -5,6 +5,7 @@ FADE_TOP=64
 BODY_ALPHA=217  # ~85% opacity, retaining the requested ~15% transparency.
 BODY_RGB=(12,14,16)
 BAR_HEIGHTS={'InfoBar':354,'SecondInfoBar':504,'MoviePlayer':294}
+EVENT_MARGIN=128
 
 
 def fade_alpha(y):
@@ -13,7 +14,7 @@ def fade_alpha(y):
 
 
 def event_fade_alpha(x):
-    return fade_alpha(min(x,1919-x))
+    return fade_alpha(min(x,1919-x)*FADE_TOP/EVENT_MARGIN)
 
 
 def pixmap(parent,path,x,y,w,h,z):

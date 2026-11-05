@@ -42,7 +42,8 @@ class InstallerUI(unittest.TestCase):
                 for widget in (marker,caption):
                     self.assertIsNotNone(widget.find("convert[@type='ConditionalShowHide']"))
                 if key=='key_blue':
-                    self.assertEqual(marker.get('position').split(',')[0],'1408')
+                    expected='1376' if screen.get('name') in ('EventView','InfoBarEventView') else '1408'
+                    self.assertEqual(marker.get('position').split(',')[0],expected)
 
     def test_opkg_status_and_log_remain_native_dynamic_widgets(self):
         screen=self.skin.find("screen[@name='Opkg']")

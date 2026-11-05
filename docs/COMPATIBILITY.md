@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.6.1
+# OpenATV — zakres zgodności 0.6.2
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -372,3 +372,16 @@ nie zmieniono zawartości EPG, przewijania ani akcji klawiszy.
 Obie zmiany dotyczą Standard i Large. Kontrole sprawdzają również, że żadne
 pole tekstowe nie wchodzi w przezroczyste obrzeże maski. Wizualizacje korzystają
 z przykładowego opisu audycji. Potrzebny pozostaje test efektu OSD na odbiorniku.
+
+## Równe marginesy EventView — 0.6.2
+
+EventView i InfoBarEventView używają wspólnego marginesu 128 px. Obszar opisu
+ma x=128, szerokość 1664 px i prawy koniec x=1792. Nagłówek, linie i przyciski
+kolorowe korzystają z tego samego obszaru. Cztery kolumny stopki mają po 416 px;
+zegar i czas trwania kończą się na prawej granicy treści.
+
+Maska fade rośnie do alpha=217 na pierwszych 128 px i jest symetryczna po prawej.
+W polu tekstu pozostaje 85% krycia. Wszystkie pozostałe ekrany zachowują swoje
+marginesy. Nie zmieniono źródła ani przewijania opisu. Istniejący test obu wariantów
+sprawdza obustronne granice wszystkich pól tekstowych, symetrię opisu, wyrównanie
+zegara i czasu trwania oraz pełne krycie maski pod tekstem.

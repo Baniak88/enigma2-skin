@@ -5,6 +5,7 @@
 """
 from pathlib import Path
 import xml.etree.ElementTree as E
+from skin_effects import EVENT_MARGIN
 
 ROOT = Path(__file__).resolve().parents[1]
 # Background surfaces restored from the first CanalPL release (9ce5d21).
@@ -55,22 +56,26 @@ def screen(name, pos=(0, 0), size=(1920, 1080), bg='bg'):
                size=f'{size[0]},{size[1]}', flags='wfNoBorder', backgroundColor=bg)
 
 
-def header(s, section):
-    box(s,64,54,5,28,'green')
-    label(s, 'TvSat', 84, 38, 300, 60, 40, family='TvSatStrong')
-    label(s, section, 420, 48, 1110, 44, 25, 'muted')
-    source(s, 'global.CurrentTime', 1600, 40, 256, 58, 36, halign='right', converts=[('ClockToText', 'Default')])
-    add(s,'ePixmap',position='64,126',size='1792,2',pixmap='TvSat/assets/accent-fade.png',alphatest='blend',scale='1')
-    source(s, 'Title', 64, 150, 1792, 48, 27, 'muted', noWrap='1')
+def header(s, section, margin=64):
+    delta=margin-64
+    width=1920-2*margin
+    box(s,margin,54,5,28,'green')
+    label(s, 'TvSat', margin+20, 38, 300, 60, 40, family='TvSatStrong')
+    label(s, section, 420+delta, 48, 1110-2*delta, 44, 25, 'muted')
+    source(s, 'global.CurrentTime', 1920-margin-256, 40, 256, 58, 36, halign='right', converts=[('ClockToText', 'Default')])
+    add(s,'ePixmap',position=f'{margin},126',size=f'{width},2',pixmap='TvSat/assets/accent-fade.png',alphatest='blend',scale='1')
+    source(s, 'Title', margin, 150, width, 48, 27, 'muted', noWrap='1')
 
 
-def footer(s, keys=('red', 'green', 'yellow', 'blue')):
-    box(s, 64, 974, 1792, 2)
+def footer(s, keys=('red', 'green', 'yellow', 'blue'), margin=64):
+    width=1920-2*margin
+    column=width//4
+    box(s, margin, 974, width, 2)
     for i, key in enumerate(keys):
-        x = 64 + ('red','green','yellow','blue').index(key) * 448
+        x = margin + ('red','green','yellow','blue').index(key) * column
         source(s, f'key_{key}', x, 1012, 6, 24, render='FixedLabel', text=' ',
                backgroundColor=key, transparent='0', conditional=f'key_{key}', converts=[('ConditionalShowHide',None)])
-        source(s, f'key_{key}', x + 22, 998, 414, 50, 25, noWrap='1', valign='center',
+        source(s, f'key_{key}', x + 22, 998, column-34, 50, 25, noWrap='1', valign='center',
                conditional=f'key_{key}', converts=[('ConditionalShowHide',None)])
 
 
@@ -283,11 +288,12 @@ def build():
             source(s,'session.VideoPicture',1440,230,416,234,render='Pig',backgroundColor='transparent',zPosition='2')
 
     for name in ('EventView','InfoBarEventView'):
-        s=screen(name); header(s,'INFORMACJE O AUDYCJI'); footer(s)
-        widget(s,'channel',64,224,1792,54,32,foregroundColor='green',transparent='1')
-        widget(s,'datetime',64,298,1100,44,26,foregroundColor='muted',transparent='1')
-        widget(s,'duration',1440,298,416,44,26,foregroundColor='muted',transparent='1',halign='right')
-        widget(s,'epg_description',64,388,1792,550,32,transparent='1')
+        margin=EVENT_MARGIN; width=1920-2*margin
+        s=screen(name); header(s,'INFORMACJE O AUDYCJI',margin=margin); footer(s,margin=margin)
+        widget(s,'channel',margin,224,width,54,32,foregroundColor='green',transparent='1')
+        widget(s,'datetime',margin,298,width-448,44,26,foregroundColor='muted',transparent='1')
+        widget(s,'duration',1920-margin-416,298,416,44,26,foregroundColor='muted',transparent='1',halign='right')
+        widget(s,'epg_description',margin,388,width,550,32,transparent='1')
 
     s=screen('Setup'); header(s,'USTAWIENIA'); footer(s)
     widget(s,'config',64,236,1248,640,30,itemHeight='64',**LIST)
