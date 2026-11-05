@@ -47,7 +47,8 @@ class TvSatSettings(Screen, ConfigListScreen):
     def restartAnswer(self, answer):
         if answer:
             self.session.open(TryQuitMainloop, QUIT_RESTART)
-        self.close()
+        else:
+            self.close()
 
 
 def main(session, **kwargs):

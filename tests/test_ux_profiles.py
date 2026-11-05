@@ -93,6 +93,19 @@ class Profiles(unittest.TestCase):
         calls=[ast.unparse(n.func) for n in ast.walk(cancel) if isinstance(n,ast.Call)]
         self.assertEqual(calls,['self.close'])
 
+    def test_restart_keeps_settings_dialog_under_native_quit_confirmation(self):
+        tree=ast.parse((ROOT/'runtime/Plugins/Extensions/TvSatSettings/plugin.py').read_text())
+        cls=next(n for n in tree.body if isinstance(n,ast.ClassDef))
+        method=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='restartAnswer')
+        namespace={'TryQuitMainloop':'native-quit','QUIT_RESTART':3}
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'restart-answer','exec'),namespace)
+        events=[]
+        screen=NS(session=NS(open=lambda *args:events.append(('open',args))),close=lambda:events.append(('close',)))
+        namespace['restartAnswer'](screen,True)
+        self.assertEqual(events,[('open',('native-quit',3))])
+        events.clear();namespace['restartAnswer'](screen,False)
+        self.assertEqual(events,[('close',)])
+
 
 class RemainingTime(unittest.TestCase):
     def test_summary_fits_complete_lines_and_keeps_full_source_for_info(self):
