@@ -3,10 +3,11 @@
 <g font-family="DejaVu Sans, sans-serif">
 <rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
 <rect x="0" y="0" width="1920" height="1080" fill="#0c0e10" fill-opacity="1.000000"/>
-<text x="64" y="82.0" font-size="44" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
+<rect x="64" y="54" width="5" height="28" fill="#00e676" fill-opacity="1.000000"/>
+<text x="84" y="82.0" font-size="44" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <text x="420" y="77.0" font-size="29" font-weight="normal" fill="#c2ccd7" text-anchor="start">MENU</text>
 <text x="1856" y="80.0" font-size="40" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
-<rect x="64" y="126" width="1792" height="2" fill="#00e676" fill-opacity="1.000000"/>
+<image x="64" y="126" width="1792" height="2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABwAAAAACCAYAAABfeMiaAAACU0lEQVR42u3Z4S4WAABG4c+yLEvTNCzL0jRNk7EsS9M0WZalaZomyxhL0zQZy7I0TZNlWZamabIsS9M0TZZlWUzTsCxL0zSN6+isvVdh74/nJs4JBDbrAwjCNgRjO0KwA6HYiTDsQjh2IwJ7EIkoRGMvYrAPsdiPOBxAPA4iAYeQiMNIwhEkIwWpOIo0HEM6jiMDJ5CJk8jCKWTjNHJwBrk4izycQz7OowAXUIiLKMIlFOMySnAFpShDOSpQiauowjVU4zpqcAO1uIk61KMBt9CI22jCHTTjLlpwD624jzY8QDseogOP0InH6MITdOMpevAMvXiOPrxAP15iAK8wiNcYwhsM4y1G8A6jeI8xfMA4PmICnzCJz5jCF0xjBrP4ijl8wzwWsIjvWMIPLOMnVvALq/iNNfzBOv5iA5tmZmZmZmZmZmZmZlvQhlr4utr4mlr5qtr5ilr6str6klr7otr7vFr8nNr8rFr9tNr9lFr+pNr+hFr/uNr/mF7AqN7AiF7BsN7BkF7CoN7CgF5Dv95Dn15Er95Ej15Ft95Fl15Gp95Gh15Hu95Hm15Iq95Ii15Js95Jk15Ko95Kg15Lnd5LrV5Mjd5MtV5Nld5NpV5Oud5OqV5Pid5PsV5Qkd5QoV5Rgd5Rvl5Snt5Srl5Tjt5Ttl5Ult5Upl5Vht5Vul5Wmt5Wql5Xst5Xkl5Yot5Ygl5ZvN5ZnF5arN5ajF5btN5bpF5chN5cuF5dmN5dqF5eiN5esF5f0P/35wHoAegBaGZmZmZmZmZmZmbmAegBuHUG4D+72Hx7zsIBFwAAAABJRU5ErkJggg=="/>
 <text x="64" y="181.0" font-size="31" font-weight="normal" fill="#c2ccd7" text-anchor="start">Menu główne</text>
 <rect x="64" y="974" width="1792" height="2" fill="#303438" fill-opacity="1.000000"/>
 <rect x="64" y="1012" width="6" height="39" fill="#ff6262" fill-opacity="1.000000"/>

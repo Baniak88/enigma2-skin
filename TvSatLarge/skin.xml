@@ -63,12 +63,13 @@
     <parameter name="FileListMultiName" value="96,12,740,40" />
   </parameters>
   <screen name="Menu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="MENU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -104,12 +105,13 @@
     <eLabel text="OK  Wybierz     EXIT  Powrót" position="64,906" size="1080,42" font="TvSatText;28" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="QuickMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="SZYBKIE MENU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -142,12 +144,13 @@
     <widget name="description" position="64,888" size="1792,72" font="TvSatText;29" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" base="ChannelSelection" label="TvSat Large — standard z TV">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="TELEWIZJA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -206,12 +209,13 @@
     <eLabel text="INFO — pełny opis" position="1216,944" size="640,29" font="TvSatText;24" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelSelection_PIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" base="ChannelSelection" label="TvSat Large — podgląd TV">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="TELEWIZJA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -270,12 +274,13 @@
     <eLabel text="INFO — pełny opis" position="1216,944" size="640,29" font="TvSatText;24" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelSelection_NoPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg" base="ChannelSelection" label="TvSat Large — bez podglądu">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="TELEWIZJA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -329,12 +334,13 @@
     <eLabel text="INFO — pełny opis audycji" position="1216,878" size="640,44" font="TvSatText;28" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelSelectionRadio" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="RADIO" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -388,12 +394,13 @@
     <eLabel text="INFO — pełny opis audycji" position="1216,878" size="640,44" font="TvSatText;28" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="SimpleChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WYBIERZ KANAŁ / BUKIET" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -423,12 +430,13 @@
     <widget name="list" position="64,236" size="1792,684" serviceNameFont="TvSatText;34" serviceInfoFont="TvSatText;29" serviceNumberFont="TvSatText;30" serviceItemHeight="68" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
   </screen>
   <screen name="SlimChannelSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WYBIERZ KANAŁ / BUKIET" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -458,12 +466,13 @@
     <widget name="list" position="64,236" size="1792,684" serviceNameFont="TvSatText;34" serviceInfoFont="TvSatText;29" serviceNumberFont="TvSatText;30" serviceItemHeight="68" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
   </screen>
   <screen name="BouquetSelector" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WYBÓR BUKIETU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -484,12 +493,13 @@
     <eLabel text="Wybierz bukiet z listy.&#10;&#10;OK — otwórz&#10;EXIT — wróć" position="1312,372" size="544,300" font="TvSatText;34" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="EPGBouquetSelector" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WYBÓR BUKIETU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -510,12 +520,13 @@
     <eLabel text="Wybierz bukiet z listy.&#10;&#10;OK — otwórz&#10;EXIT — wróć" position="1312,372" size="544,300" font="TvSatText;34" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="EPGSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -569,12 +580,13 @@
     <eLabel text="Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania" position="64,936" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="QuickEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -628,12 +640,13 @@
     <eLabel text="Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania" position="64,936" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="EPGSelectionMulti" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -695,12 +708,13 @@
     <eLabel text="Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania" position="64,936" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="GraphicalEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -753,12 +767,13 @@
     <eLabel text="Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania" position="64,936" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="GraphicalEPGPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -812,12 +827,13 @@
     <eLabel text="Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania" position="64,936" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="GraphicalInfoBarEPG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -870,12 +886,13 @@
     <eLabel text="Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania" position="64,936" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="EPGvertical" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV / UKŁAD PIONOWY" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -948,12 +965,13 @@
     </widget>
   </screen>
   <screen name="EPGverticalPIG" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PROGRAM TV / UKŁAD PIONOWY" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1013,12 +1031,13 @@
     <widget source="session.VideoPicture" render="Pig" position="1440,230" size="416,234" backgroundColor="transparent" zPosition="2" foregroundColor="white" />
   </screen>
   <screen name="EventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="INFORMACJE O AUDYCJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1051,12 +1070,13 @@
     <widget name="epg_description" position="64,388" size="1792,550" font="TvSatText;36" transparent="1" />
   </screen>
   <screen name="InfoBarEventView" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="INFORMACJE O AUDYCJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1089,12 +1109,13 @@
     <widget name="epg_description" position="64,388" size="1792,550" font="TvSatText;36" transparent="1" />
   </screen>
   <screen name="Setup" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="USTAWIENIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1129,12 +1150,13 @@
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
   <screen name="TvSatSettings" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WYGLĄD I CZYTELNOŚĆ" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1157,12 +1179,13 @@
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
   <screen name="SkinSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="SKÓRKI / INTERFEJS" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1189,12 +1212,13 @@
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
   <screen name="setup_Skin" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="SKÓRKI / INTERFEJS" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1221,12 +1245,13 @@
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
   <screen name="SetupSkin" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="SKÓRKI / INTERFEJS" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1253,12 +1278,13 @@
     <widget name="HelpWindow" position="64,240" size="1,1" conditional="HelpWindow" transparent="1" />
   </screen>
   <screen name="ChoiceBox" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WYBÓR" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <widget name="text" position="64,216" size="1792,64" font="TvSatText;34" transparent="1" />
     <widget name="list" position="64,304" size="1792,528" font="TvSatText;34" itemHeight="88" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
@@ -1266,12 +1292,13 @@
     <eLabel text="↑ ↓  Wybierz     OK  Zatwierdź     EXIT  Powrót" position="64,1000" size="1792,48" font="TvSatText;29" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ChannelContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="OPCJE" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1322,12 +1349,13 @@
     <widget name="list" position="40,508" size="1200,80" font="TvSatText;34" itemHeight="80" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
   </screen>
   <screen name="MovieSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="NAGRANIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1372,12 +1400,13 @@
     <widget name="movie_off" position="112,916" size="32,32" pixmaps="TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png" alphatest="blend" />
   </screen>
   <screen name="MovieSelectionSlim" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="NAGRANIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1422,12 +1451,13 @@
     <widget name="movie_off" position="112,916" size="32,32" pixmaps="TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png" alphatest="blend" />
   </screen>
   <screen name="TimerOverview" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="ZAPLANOWANE NAGRANIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1458,12 +1488,13 @@
     <widget name="description" position="64,830" size="1792,116" font="TvSatText;32" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="RecordTimerOverview" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="ZAPLANOWANE NAGRANIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1494,12 +1525,13 @@
     <widget name="description" position="64,830" size="1792,116" font="TvSatText;32" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="TimerEditList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="ZAPLANOWANE NAGRANIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1530,12 +1562,13 @@
     <widget name="description" position="64,830" size="1792,116" font="TvSatText;32" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="ConflictTimerOverview" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="KONFLIKT NAGRAŃ" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1567,12 +1600,13 @@
     <widget name="description" position="64,830" size="1792,116" font="TvSatText;32" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="TimerSanityConflict" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="KONFLIKT NAGRAŃ" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1604,12 +1638,13 @@
     <widget name="description" position="64,830" size="1792,116" font="TvSatText;32" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="PluginBrowserList" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WTYCZKI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1643,12 +1678,13 @@
     <widget name="description" position="64,860" size="1792,90" font="TvSatText;31" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="PluginBrowserGrid" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WTYCZKI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1682,12 +1718,13 @@
     <widget name="description" position="64,928" size="1792,36" font="TvSatText;28" foregroundColor="muted" transparent="1" wrap="ellipsis" />
   </screen>
   <screen name="AudioSelection" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="DŹWIĘK I NAPISY" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <widget name="config" position="112,236" size="1744,216" font="TvSatText;34" itemHeight="72" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" valueFont="TvSatText;34" />
     <widget name="switchdescription" position="64,484" size="1792,50" font="TvSatText;31" foregroundColor="muted" transparent="1" />
@@ -1710,23 +1747,25 @@
     <widget name="key_right" position="104,484" size="24,24" pixmap="TvSat/assets/state.png" alphatest="blend" />
   </screen>
   <screen name="QuickSubtitlesConfigMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="USTAWIENIA NAPISÓW" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <widget name="config" position="64,236" size="1792,576" font="TvSatText;34" itemHeight="72" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" valueFont="TvSatText;34" />
     <widget name="videofps" position="64,890" size="1792,48" font="TvSatText;30" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="FileCommander" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="MENEDŻER PLIKÓW" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1780,12 +1819,13 @@
     </widget>
   </screen>
   <screen name="FileCommanderContextMenu" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="OPERACJE NA PLIKACH" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget name="menu" position="64,236" size="1792,440" font="TvSatText;34" itemHeight="88" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
@@ -1796,12 +1836,13 @@
     </widget>
   </screen>
   <screen name="FileCommanderData" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="INFORMACJE O PLIKU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1832,12 +1873,13 @@
     <eLabel text="↑ ↓  Przewiń     EXIT  Powrót" position="64,930" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="FileCommanderFileViewer" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PODGLĄD PLIKU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1868,12 +1910,13 @@
     <widget name="data" position="64,292" size="1792,640" font="TvSatMono;30" transparent="1" />
   </screen>
   <screen name="FileCommanderTextEditor" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="EDYTOR TEKSTU" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1905,12 +1948,13 @@
     <widget name="data" position="64,292" size="1792,624" font="TvSatMono;30" itemHeight="48" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
   </screen>
   <screen name="IpkgInstaller" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="PAKIETY LOKALNE" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1942,12 +1986,13 @@
     <widget source="introduction" render="Label" position="64,884" size="1792,64" font="TvSatText;31" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="Opkg" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="INSTALACJA OPROGRAMOWANIA" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -1970,12 +2015,13 @@
     <eLabel text="Po zakończeniu: czerwony — zamknij, niebieski — dziennik. Błąd: sprawdź szczegóły w dzienniku." position="64,930" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="PackageAction" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WTYCZKI I PAKIETY" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -2009,12 +2055,13 @@
     <widget name="quickselect" position="64,236" size="1792,616" font="TvSatText;74" halign="center" valign="center" transparent="1" foregroundColor="green" zPosition="5" />
   </screen>
   <screen name="PluginAction" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="WTYCZKI I PAKIETY" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -2048,12 +2095,13 @@
     <widget name="quickselect" position="64,236" size="1792,616" font="TvSatText;74" halign="center" valign="center" transparent="1" foregroundColor="green" zPosition="5" />
   </screen>
   <screen name="Console" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="DZIENNIK OPERACJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -2078,12 +2126,13 @@
     <eLabel text="↑ ↓  Przewiń     EXIT  Powrót" position="64,930" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="PackageActionLog" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="DZIENNIK OPERACJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -2096,12 +2145,13 @@
     <eLabel text="↑ ↓  Przewiń     EXIT  Powrót" position="64,930" size="1792,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
   </screen>
   <screen name="PluginActionLog" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="bg">
-    <eLabel text="TvSat" position="64,38" size="320,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
+    <eLabel position="64,54" size="5,28" backgroundColor="green" />
+    <eLabel text="TvSat" position="84,38" size="300,60" font="TvSatStrong;44" foregroundColor="white" transparent="1" />
     <eLabel text="DZIENNIK OPERACJI" position="420,48" size="1110,44" font="TvSatText;29" foregroundColor="muted" transparent="1" />
     <widget source="global.CurrentTime" render="Label" position="1600,40" size="256,58" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel position="64,126" size="1792,2" backgroundColor="green" />
+    <ePixmap position="64,126" size="1792,2" pixmap="TvSat/assets/accent-fade.png" alphatest="blend" scale="1" />
     <widget source="Title" render="Label" position="64,150" size="1792,48" font="TvSatText;31" wrap="ellipsis" foregroundColor="muted" transparent="1" />
     <eLabel position="64,974" size="1792,2" backgroundColor="line" />
     <widget source="key_red" render="FixedLabel" position="64,1012" size="6,39" font="TvSatText;32" text=" " backgroundColor="red" transparent="0" conditional="key_red" foregroundColor="white">
@@ -2119,86 +2169,94 @@
     <widget name="progress" position="32,76" size="928,6" foregroundColor="green" backgroundColor="line" borderWidth="0" />
     <widget name="description" position="32,110" size="928,48" font="TvSatText;32" transparent="1" />
   </screen>
-  <screen name="InfoBar" position="0,726" size="1920,354" flags="wfNoBorder" backgroundColor="overlay">
-    <eLabel position="64,0" size="1792,4" backgroundColor="green" />
-    <ePixmap position="64,34" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="session.CurrentService" render="Picon" position="64,34" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
+  <screen name="InfoBar" position="0,662" size="1920,418" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="308,168" size="128,48" pixmap="TvSat/assets/now-badge.png" scale="1" alphatest="blend" zPosition="-4" />
+    <ePixmap position="0,0" size="1920,418" pixmap="TvSat/assets/infobar-fade.png" scale="1" alphatest="blend" zPosition="-10" />
+    <ePixmap position="64,56" size="1792,18" pixmap="TvSat/assets/accent-glow.png" scale="1" alphatest="blend" zPosition="-6" />
+    <ePixmap position="64,64" size="1792,2" pixmap="TvSat/assets/accent-fade.png" scale="1" alphatest="blend" zPosition="-5" />
+    <ePixmap position="64,98" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
+    <widget source="session.CurrentService" render="Picon" position="64,98" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="320,30" size="1190,60" font="TvSatText;40" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="320,94" size="1190,60" font="TvSatStrong;42" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="1570,30" size="286,60" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="1570,94" size="286,60" font="TvSatText;40" halign="right" foregroundColor="white" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <eLabel text="TERAZ" position="320,112" size="104,40" font="TvSatText;28" foregroundColor="green" transparent="1" />
-    <widget source="session.Event_Now" render="Label" position="440,108" size="140,44" font="TvSatText;32" foregroundColor="white" transparent="1">
+    <eLabel text="TERAZ" position="320,176" size="104,40" font="TvSatText;28" foregroundColor="green" transparent="1" />
+    <widget source="session.Event_Now" render="Label" position="440,172" size="140,44" font="TvSatText;32" foregroundColor="white" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Now" render="Label" position="600,104" size="1256,52" font="TvSatText;36" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="600,168" size="1256,52" font="TvSatText;36" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="session.Event_Now" render="Progress" position="320,174" size="1536,6" backgroundColor="track" borderWidth="0" foregroundColor="green">
+    <widget source="session.Event_Now" render="Progress" position="320,238" size="1536,6" backgroundColor="track" borderWidth="0" foregroundColor="green">
       <convert type="EventTime">Progress</convert>
     </widget>
-    <eLabel text="POTEM" position="320,216" size="104,40" font="TvSatText;28" foregroundColor="muted" transparent="1" />
-    <widget source="session.Event_Next" render="Label" position="440,212" size="140,44" font="TvSatText;32" foregroundColor="muted" transparent="1">
+    <eLabel text="POTEM" position="320,280" size="104,40" font="TvSatText;28" foregroundColor="muted" transparent="1" />
+    <widget source="session.Event_Next" render="Label" position="440,276" size="140,44" font="TvSatText;32" foregroundColor="muted" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Next" render="Label" position="600,210" size="1256,50" font="TvSatText;34" wrap="ellipsis" foregroundColor="muted" transparent="1">
+    <widget source="session.Event_Next" render="Label" position="600,274" size="1256,50" font="TvSatText;34" wrap="ellipsis" foregroundColor="muted" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="session.RecordState" render="FixedLabel" position="64,290" size="240,38" font="TvSatText;28" text="● REC" foregroundColor="red" transparent="1">
+    <widget source="session.RecordState" render="FixedLabel" position="64,354" size="240,38" font="TvSatText;28" text="● REC" foregroundColor="red" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.Event_Now" render="Label" position="1396,290" size="460,38" font="TvSatText;28" halign="right" foregroundColor="muted" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="1396,354" size="460,38" font="TvSatText;28" halign="right" foregroundColor="muted" transparent="1">
       <convert type="TvSatEventRemaining" />
     </widget>
+    <eLabel position="304,98" size="1,142" backgroundColor="line" />
   </screen>
-  <screen name="SecondInfoBar" position="0,576" size="1920,504" flags="wfNoBorder" backgroundColor="overlay">
-    <eLabel position="64,0" size="1792,4" backgroundColor="green" />
-    <ePixmap position="64,34" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
-    <widget source="session.CurrentService" render="Picon" position="64,34" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
+  <screen name="SecondInfoBar" position="0,512" size="1920,568" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" size="1920,568" pixmap="TvSat/assets/secondinfobar-fade.png" scale="1" alphatest="blend" zPosition="-10" />
+    <ePixmap position="64,56" size="1792,18" pixmap="TvSat/assets/accent-glow.png" scale="1" alphatest="blend" zPosition="-6" />
+    <ePixmap position="64,64" size="1792,2" pixmap="TvSat/assets/accent-fade.png" scale="1" alphatest="blend" zPosition="-5" />
+    <ePixmap position="64,98" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
+    <widget source="session.CurrentService" render="Picon" position="64,98" size="220,132" alphatest="blend" zPosition="1" backgroundColor="transparent" transparent="1">
       <convert type="ServiceName">Reference</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="320,34" size="1536,56" font="TvSatText;40" foregroundColor="green" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="320,98" size="1536,56" font="TvSatText;40" foregroundColor="green" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="session.Event_Now" render="Label" position="320,120" size="1536,54" font="TvSatText;38" wrap="ellipsis" foregroundColor="white" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="320,184" size="1536,54" font="TvSatText;38" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="session.Event_Now" render="Label" position="320,186" size="140,42" font="TvSatText;30" foregroundColor="green" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="320,250" size="140,42" font="TvSatText;30" foregroundColor="green" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="session.Event_Now" render="Label" position="464,186" size="160,42" font="TvSatText;30" foregroundColor="muted" transparent="1">
+    <widget source="session.Event_Now" render="Label" position="464,250" size="160,42" font="TvSatText;30" foregroundColor="muted" transparent="1">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:– %H:%M</convert>
     </widget>
-    <widget source="session.Event_Now" render="TvSatSummary" position="320,252" size="1536,186" font="TvSatText;30" foregroundColor="muted" transparent="1">
+    <widget source="session.Event_Now" render="TvSatSummary" position="320,316" size="1536,186" font="TvSatText;30" foregroundColor="muted" transparent="1">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
   </screen>
-  <screen name="MoviePlayer" position="0,786" size="1920,294" flags="wfNoBorder" backgroundColor="overlay">
-    <eLabel position="64,0" size="1792,4" backgroundColor="green" />
-    <eLabel text="ODTWARZANIE NAGRANIA" position="64,30" size="1792,42" font="TvSatText;30" foregroundColor="green" transparent="1" />
-    <widget source="session.CurrentService" render="Label" position="64,100" size="1792,64" font="TvSatText;42" wrap="ellipsis" foregroundColor="white" transparent="1">
+  <screen name="MoviePlayer" position="0,722" size="1920,358" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" size="1920,358" pixmap="TvSat/assets/movieplayer-fade.png" scale="1" alphatest="blend" zPosition="-10" />
+    <ePixmap position="64,56" size="1792,18" pixmap="TvSat/assets/accent-glow.png" scale="1" alphatest="blend" zPosition="-6" />
+    <ePixmap position="64,64" size="1792,2" pixmap="TvSat/assets/accent-fade.png" scale="1" alphatest="blend" zPosition="-5" />
+    <eLabel text="ODTWARZANIE NAGRANIA" position="64,94" size="1792,42" font="TvSatText;30" foregroundColor="green" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="64,164" size="1792,64" font="TvSatText;42" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ServiceName">Name</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="64,208" size="230,48" font="TvSatText;32" foregroundColor="white" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="64,272" size="230,48" font="TvSatText;32" foregroundColor="white" transparent="1">
       <convert type="ServicePosition">Position</convert>
     </widget>
-    <widget source="session.CurrentService" render="Progress" position="330,230" size="1180,6" backgroundColor="track" borderWidth="0" foregroundColor="green">
+    <widget source="session.CurrentService" render="Progress" position="330,294" size="1180,6" backgroundColor="track" borderWidth="0" foregroundColor="green">
       <convert type="ServicePosition">Position</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="1550,208" size="306,48" font="TvSatText;32" halign="right" foregroundColor="muted" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="1550,272" size="306,48" font="TvSatText;32" halign="right" foregroundColor="muted" transparent="1">
       <convert type="ServicePosition">Remaining,Negate</convert>
     </widget>
-    <widget name="state" position="1200,30" size="400,42" font="TvSatText;30" foregroundColor="green" transparent="1" />
-    <widget name="speed" position="1640,30" size="216,42" font="TvSatText;30" transparent="1" halign="right" />
-    <widget name="statusicon" position="0,0" size="1,1" pixmaps="TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png" alphatest="blend" />
+    <widget name="state" position="1200,94" size="400,42" font="TvSatText;30" foregroundColor="green" transparent="1" />
+    <widget name="speed" position="1640,94" size="216,42" font="TvSatText;30" transparent="1" halign="right" />
+    <widget name="statusicon" position="0,64" size="1,1" pixmaps="TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png,TvSat/assets/state.png" alphatest="blend" />
   </screen>
   <screen name="PVRState" position="64,62" size="540,176" flags="wfNoBorder" backgroundColor="bg">
     <widget name="state" position="24,18" size="320,62" font="TvSatText;38" foregroundColor="green" transparent="1" />
