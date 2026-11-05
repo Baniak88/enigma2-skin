@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.4.5
+# OpenATV — zakres zgodności 0.5.0
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 59 ekranów TvSat.
+definicji. Mogą mieć inny układ niż 62 ekrany TvSat.
 
 ## Ważne różnice względem 0.1.0
 
@@ -290,3 +290,49 @@ przezroczystości i 85,10% krycia w InfoBar, SecondInfoBar i MoviePlayer.
 Pierwotne kolory tła i paneli z 0.4.4 pozostają bez zmian. Menu pozostają
 nieprzezroczyste. Istniejące testy sprawdzają mieszanie SVG/PNG także pod pikoną
 oraz kontrast napisów na różnych kolorach obrazu telewizyjnego.
+
+## UI/UX 0.5.0 — Standard, Large i własne moduły
+
+Oba warianty mają po 62 definicje. Nowe: TvSatSettings (pasywna wtyczka pakietu),
+ConflictTimerOverview i TimerSanityConflict (natywny ConflictTimerOverview).
+TvSatLarge ma większe fonty, wyższe wiersze, mniej wpisów i własną miniaturę.
+Ma również kopię ikon, ponieważ natywne komponenty szukają ich względem aktywnej
+skórki. Nazwy fontów bazują na czcionkach dostarczanych przez OpenATV.
+
+Szablony serviceList używają native index Number/ServiceName/Title1/Picon/Progress,
+zapewniają pełny układ w modes services i bouquets. Używają horizontalAlignment,
+verticalAlignment, wrap=ellipsis i scale=scaleCenter — atrybutów prawdziwego
+TemplateParser, nie aliasów zwykłego Label. Nowy test
+`python3 scripts/check_upstream_service_ui.py --download` wykonuje oryginalne
+TemplateParser, parseScale i ServiceListTemplateParser z trzech przypiętych wersji;
+geometry/fonts/colors/C++ są zastąpione atrapami. Sprawdza indeksy, obie listy,
+wyśrodkowanie, wielokropek i flagi skalowania pikon. Nie sprawdza dekodera C++.
+
+Starszy silnik nadpisuje wysokość wiersza na podstawie ustawień. Profil Standard
+stosuje osiem wierszy (natywne minimum dla jednej linii), a Large sześć w dwóch
+liniach. Kolumna nazwy ma 425 px, wartość dozwoloną przez natywne wybory co 25 px.
+Progress type to barright. Zalecany nowszy szablon ma siedem / sześć wierszy.
+Ustawienia EPG itemsperpage=0 pozwalają zadziałać skórkowej liczbie wierszy.
+
+Własne moduły runtime:
+- Plugins/Extensions/TvSatSettings: jedyne wejście WHERE_PLUGINMENU, bez autostartu.
+  Sam import i Anuluj nie modyfikują ustawień. Dopiero Zapisz ustawia profil,
+  zapisuje configfile i proponuje restart GUI. Nie zmienia bukietów ani timerów.
+- Components/Converter/TvSatEventRemaining.py: odpytuje czas co 30 s, liczy
+  pozostałe minuty z rzeczywistego początku i długości audycji, pomija brak EPG,
+  audycje przyszłe i zakończone. Nie używa zależnego od preferencji RemainingToText.
+- Components/Renderer/TvSatSummary.py: mierzy wysokość zawiniętego tekstu przez
+  eLabel.calculateSize, skraca do pełnych słów i wielokropka. Nie zmienia źródła
+  opisu, więc INFO nadal ma pełny tekst. Test pomiaru C++ używa atrapy.
+
+Wyniki instalacji i błędy nadal pochodzą z natywnego Opkg. Odmienne stany pokazano
+na podglądach z przykładowymi danymi. Istniejące akcje OK/EXIT pozostają natywne;
+nie deklarujemy zmiany globalnej mapy klawiszy Enigma2. Timery i konflikty są
+obsługiwane przez OpenATV, z czytelnym układem i różnymi ikonami.
+
+IPK zawiera obie skórki i własne moduły Pythona. Nie nadpisuje modułów systemowych.
+Manualny instalator przygotowuje wszystkie kopie, zachowuje poprzednie pliki
+i przywraca je przy błędzie, co sprawdza test z wymuszoną awarią zapisu.
+Oba warianty przechodzą walidację kontraktów i geometrii. Niezbędna jest jeszcze
+próba na fizycznym odbiorniku, szczególnie renderowania fontów, pomiaru opisu,
+przełączania profilu i restartu GUI podczas nagrywania.

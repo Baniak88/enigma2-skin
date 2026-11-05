@@ -17,6 +17,8 @@ CHANNELS=['CANAL+ PREMIUM','CANAL+ FILM','CANAL+ SPORT','CANAL+ SERIALE','TVP 1 
 SHORT=['C+ PREMIUM','C+ FILM','C+ SPORT','C+ SERIALE','TVP 1','TVP 2','TVN','POLSAT']
 SHOWS=['Wszystko przed nami','Wieczór filmowy','Magazyn sportowy','Nowy rozdział','Wiadomości dnia','Na dobre i na złe','Fakty','Wydarzenia']
 out=[]
+PROFILE='TvSat'
+STATE='success'
 
 
 def color(value):
@@ -42,7 +44,9 @@ def text(x,y,w,h,value,size=28,fill='white',align='left',nowrap=False,bold=False
         if not paragraph:lines.append('')
     anchor={'left':'start','center':'middle','right':'end'}.get(align,'start')
     tx=x+w if anchor=='end' else x+w/2 if anchor=='middle' else x
-    for i,line in enumerate(lines[:max(1,int(h/(size*1.25)))]):
+    limit=max(1,int(h/(size*1.25)))
+    if len(lines)>limit:lines[limit-1]=lines[limit-1].rstrip(' .')+'…'
+    for i,line in enumerate(lines[:limit]):
         family=' font-family="monospace"' if mono else ''
         out.append(f'<text x="{tx}" y="{y+size+i*size*1.25}" font-size="{size}" font-weight="{"bold" if bold else "normal"}" fill="{color(fill)}" text-anchor="{anchor}"{family}>{escape(line)}</text>')
 
@@ -61,10 +65,20 @@ def fake_picon(index,x,y,w,h):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','SkinSelection':'Ustawienia skórki','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','SkinSelection':'Ustawienia skórki','TvSatSettings':'Wybierz rozmiar interfejsu','ConflictTimerOverview':'Konflikt zaplanowanych nagrań','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
+    if screen=='TvSatSettings':
+        if key=='description':return 'Standard: siedem wierszy i oddzielne kolumny kanału oraz audycji.\n\nDuże napisy: większa czcionka, większe odstępy i sześć wierszy.\n\nZapisz dopasuje również listę kanałów i włączy pikony.'
+        if key=='footnote':return 'Po zapisaniu potrzebny jest restart GUI. Anuluj pozostawia ustawienia bez zmian.'
+        if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz'}.get(key,'')
+    if screen in ('ConflictTimerOverview','TimerSanityConflict'):
+        if key=='description':return 'Dwa nagrania korzystają z tego samego tunera w nakładających się godzinach. Wybierz timer i zmień jego czas lub wyłącz go.'
+        if key.startswith('key_'):return {'key_red':'Usuń','key_yellow':'Wyłącz','key_blue':'Ignoruj'}.get(key,'')
+    if screen=='TimeshiftState':
+        if key=='state':return 'Pauza'
+        if key=='eventname':return 'Fakty — oglądanie z opóźnieniem'
     if screen=='SkinSelection':
         if key=='Title':return 'Ustawienia skórki'
         if key=='description':return 'Wybierz skórkę graficznego interfejsu użytkownika. Zielony przycisk zapisuje wybór. Domyślnie: TvSat.'
@@ -94,8 +108,10 @@ def value(node,screen):
         if key.startswith('key_'):return {'key_red':'Zamknij','key_green':'Instaluj','key_blue':'Zaznacz / odznacz'}.get(key,'')
     if screen=='Processing' and key=='description':return 'Instalowanie rozszerzeń. Proszę czekać…'
     if screen=='Opkg':
-        if key=='status':return 'Zakończono — zainstalowano 1 pakiet (0 błędów).'
-        if key=='package' or key=='log':return ''
+        if key=='status':return {'success':'Zakończono — zainstalowano 1 pakiet (0 błędów).','progress':'Instalowanie rozszerzeń… Proszę czekać.','error':'Zakończono z błędem — 1 błąd podczas instalacji.'}[STATE]
+        if key=='package':return 'enigma2-plugin-skins-tvsat' if STATE=='progress' else ''
+        if key=='log':return ''
+        if STATE=='progress' and key.startswith('key_'):return ''
         if key.startswith('key_'):return {'key_red':'Zamknij','key_blue':'Dziennik'}.get(key,'')
     if screen in ('Console','PackageActionLog'):
         if key in ('text','log'):return 'Instalowanie enigma2-plugin-skins-tvsat…\n\nTvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE\nUruchom ponownie interfejs GUI, aby wczytać zmiany.'
@@ -115,7 +131,8 @@ def value(node,screen):
         if screen=='BouquetSelector':return {'key_red':'Anuluj','key_green':'Wybierz'}.get(key,'')
         if screen=='Menu':return {'key_red':'Wyjdź','key_blue':'Tryb edycji'}.get(key,'')
         return {'key_red':'Wyszukaj','key_green':'Dodaj timer','key_yellow':'Szukaj w EPG','key_blue':'AutoTimer'}.get(key,'')
-    if src=='session.RecordState':return ''
+    if src=='session.RecordState':return '● REC' if STATE=='recording' else ''
+    if kind=='TvSatEventRemaining':return 'Do końca: 15 min'
     if kind=='ServiceName':return CHANNELS[0]
     if kind=='EventName':
         if arg=='ExtendedDescription':return 'Wieczór z wielkim kinem. Nieoczekiwane spotkanie zmienia życie bohaterów. Opowieść o odwadze, przyjaźni i wyborach, które zostają z nami na długo.'
@@ -126,7 +143,20 @@ def value(node,screen):
 
 
 def draw_list(name,key,x,y,w,h):
-    if name in ('PluginBrowserGrid','PluginBrowserList'):
+    if name=='TvSatSettings' and key=='config':
+        row=int(SKIN.find("screen[@name='TvSatSettings']/widget[@name='config']").get('itemHeight'))
+        rect(x,y,w,row,'selected')
+        text(x+20,y+24,w*.6,44,'Rozmiar interfejsu',34 if PROFILE=='TvSatLarge' else 30)
+        text(x+w*.64,y+24,w*.34,44,'Duże napisy' if PROFILE=='TvSatLarge' else 'Standard',34 if PROFILE=='TvSatLarge' else 30,'white','right')
+    elif key=='timerlist':
+        for i,(title,time) in enumerate([('Fakty','20:30 — 21:00'),('Film wieczoru','20:45 — 22:30')]):
+            yy=y+i*112
+            rect(x,yy,w,104,'selected' if i==0 else 'panel')
+            png(ROOT/'TvSat/icons/timer_rec.png',x+16,yy+28,44,44)
+            text(x+84,yy+12,w-380,44,title,32,'white',nowrap=True)
+            text(x+84,yy+60,w-380,34,'TVN HD' if i==0 else 'Polsat HD',25,'muted')
+            text(x+w-330,yy+32,302,44,time,28,'white','right')
+    elif name in ('PluginBrowserGrid','PluginBrowserList'):
         names=['Enhanced Movie Center (Ustawienia)','Media skaner','Menedżer plików','Odtwarzacz multimedialny','Odtwarzacz zdjęć','Open FM','OpenWebif','s4aUpdater','Ustawienia IMDb','Ustawienia transkodowania']
         icons=['movie_selection','scan','mainmenu','video_menu','information','audio_menu','network','setup','information','video_menu']
         for i,(title,icon) in enumerate(zip(names,icons)):
@@ -191,7 +221,7 @@ def draw_list(name,key,x,y,w,h):
                 text(x+92,yy+48,w-260,32,description,24,'white' if i==1 else 'muted',nowrap=True)
                 text(x+w-390,yy+8,280,36,VERSION if i==1 else '1.0',24,'muted','right',nowrap=True)
     elif name in ('Setup','SkinSelection') and key=='config':
-        rows=[('Skórka GUI *','TvSat'),('Czcionka zapasowa','Fallback Font 1'),('Ekran wyboru kanału','Starszy tryb'),('Automatyczne odświeżanie','Wyłącz'),('Szybkie przeładowanie skórki','Nie')] if name=='SkinSelection' else [('Znacznik kodowania','Żaden'),('Znacznik nagrywania','Czerwony'),('Postęp audycji','Pasek po prawej'),('Wyświetlanie pikon','Włącz'),('Liczba wierszy','8'),('Rozmiar numeru kanału','0'),('Rozmiar nazwy kanału','0'),('Rozmiar informacji o audycji','0'),('Rozmiar informacji o postępie','0'),('Zachowanie przy przełączaniu','Czarny ekran')]
+        rows=[('Skórka GUI *','TvSat'),('Czcionka zapasowa','Fallback Font 1'),('Ekran wyboru kanału','TvSat'),('Automatyczne odświeżanie','Wyłącz'),('Szybkie przeładowanie skórki','Nie')] if name=='SkinSelection' else [('Znacznik kodowania','Żaden'),('Znacznik nagrywania','Czerwony'),('Postęp audycji','Pasek po prawej'),('Wyświetlanie pikon','Włącz'),('Liczba wierszy','8'),('Rozmiar numeru kanału','0'),('Rozmiar nazwy kanału','0'),('Rozmiar informacji o audycji','0'),('Rozmiar informacji o postępie','0'),('Zachowanie przy przełączaniu','Czarny ekran')]
         for i,(title,current) in enumerate(rows):
             if i==0:rect(x,y,w,64,'selected')
             text(x+20,y+i*64+16,w*.60-20,40,title,30,'white',nowrap=True)
@@ -207,25 +237,35 @@ def draw_list(name,key,x,y,w,h):
         rows=['Informacje','Timery','Nagrania','Wtyczki','Ustawienia','Czuwanie / restart']
         icons=['information','timermenu','movie_selection','plugin_selection','setup','shutdown']
         for i,row in enumerate(rows):
-            if i==0:rect(x,y,w,80,'selected');rect(x,y,4,80,'green')
-            png(ROOT/'TvSat/mainmenu'/(icons[i]+'.png'),x+16,y+i*80+12,56,56)
-            text(x+92,y+i*80+18,w-116,60,row,32,'white',nowrap=True)
+            rh=96 if PROFILE=='TvSatLarge' else 80
+            if i==0:rect(x,y,w,rh,'selected');rect(x,y,4,rh,'green')
+            png(ROOT/'TvSat/mainmenu'/(icons[i]+'.png'),x+16,y+i*rh+12,56,56)
+            text(x+92,y+i*rh+18,w-116,rh-20,row,36 if PROFILE=='TvSatLarge' else 32,'white',nowrap=True)
     elif name=='BouquetSelector':
         for i,row in enumerate(['Ulubione','CANAL+','Filmy i seriale','Sport','Informacyjne','Dzieci','Dokumentalne','Radio']):
             if i==0:rect(x,y,w,80,'selected');rect(x,y,4,80,'green')
             text(x+24,y+i*80+18,w-48,60,row,32,'white',nowrap=True)
     elif name.startswith('ChannelSelection'):
-        for i,(channel,show) in enumerate(zip(CHANNELS,SHOWS)):
-            rh=88
-            if i==0:rect(x,y,w,rh,'selected');rect(x,y,4,rh,'green')
-            else:rect(x+8,y+i*rh+87,w-8,1,'line')
-            text(x+16,y+i*rh+28,52,44,str(i+1),24,'green' if i==0 else 'muted','right')
-            fake_picon(i,x+88,y+i*rh+12,112,64)
-            text(x+236,y+i*rh+8,w-260,40,channel,32,'white',nowrap=True)
-            text(x+236,y+i*rh+52,w-260,32,show,25,'white' if i==0 else 'muted',nowrap=True)
+        template=E.parse(ROOT/PROFILE/'skinTemplates.xml').getroot().find('template')
+        mode=template.find("mode[@name='bouquets']");rh=int(mode.get('itemHeight'))
+        fonts=[int(font.rsplit(';',1)[1]) for font in template.get('fonts').split(',')]
+        for i,(channel,show) in enumerate(zip(CHANNELS[:int(h//rh)],SHOWS)):
+            yy=y+i*rh
+            if i==0:rect(x,yy,w,rh,'selected')
+            for node in mode:
+                xx,dy=map(int,node.get('position').split(','));nw,nh=map(int,node.get('size').split(','))
+                nx,ny=x+xx,yy+dy
+                if node.tag=='rectangle':rect(nx,ny,nw,nh,node.get('foregroundColorSelected') if i==0 else node.get('foregroundColor'))
+                elif node.tag=='pixmap':fake_picon(i,nx,ny,nw,nh)
+                elif node.tag=='progress':
+                    rect(nx,ny,nw,nh,'line');rect(nx,ny,nw*(.7-i*.07),nh,'green')
+                elif node.tag=='text':
+                    v={'Number':str(i+1),'ServiceName':channel,'Title1':show}.get(node.get('index'),'')
+                    font=fonts[int(node.get('font'))]
+                    text(nx,ny+(nh-font*1.25)/2,nw,nh,v,font,node.get('foregroundColorSelected','white') if i==0 else node.get('foregroundColor','white'),node.get('horizontalAlignment','left'),nowrap=True)
     elif name=='GraphicalEPG' and key=='list':
-        service=320;rowh=h/8;area=w-service
-        for i,(channel,show) in enumerate(zip(CHANNELS,SHOWS)):
+        service=320;rows=int(SKIN.find("screen[@name='GraphicalEPG']/widget[@name='list']").get('NumberOfRows'));rowh=h/rows;area=w-service
+        for i,(channel,show) in enumerate(zip(CHANNELS[:rows],SHOWS)):
             yy=y+i*rowh
             rect(x,yy,service-2,rowh-2,'panel')
             fake_picon(i,x+12,yy+8,80,rowh-16)
@@ -233,13 +273,18 @@ def draw_list(name,key,x,y,w,h):
             titles=[show,'Nocna zmiana' if i==0 else 'Kolejna audycja','Program wieczorny']
             for j,show in enumerate(titles):
                 xx=x+service+j*area/3
-                rect(xx,yy,area/3-2,rowh-2,'selected' if i==0 and j==0 else 'panel')
+                rect(xx,yy,area/3-2,rowh-2,'selected' if i==0 and j==0 else 'now' if j==0 else 'panel')
                 if i==0 and j==0:rect(xx,yy,3,rowh-2,'green')
                 text(xx+12,yy+18,area/3-26,rowh-18,show,25,'white',nowrap=True)
+                if (i,j) in ((1,1),(3,2)):
+                    png(ROOT/'TvSat/icons/epgclock.png',xx+area/3-44,yy+rowh-34,28,28)
 
 
-def render(name,target,make_png=False):
-    global out
+def render(name,target,make_png=False,profile='TvSat',state='success'):
+    global out,SKIN,COLORS,PROFILE,STATE
+    PROFILE=profile;STATE=state
+    SKIN=E.parse(ROOT/profile/'skin.xml').getroot()
+    COLORS={c.get('name'):c.get('value') for c in SKIN.findall('colors/color')}
     s=SKIN.find(f"screen[@name='{name}']");ox,oy=map(int,s.get('position').split(','));sw,sh=map(int,s.get('size').split(','))
     out=['<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">',f'<title>TvSat — {name} — dane przykładowe</title>','<g font-family="DejaVu Sans, sans-serif">']
     rect(0,0,1920,1080,'#20282c')
@@ -264,18 +309,18 @@ def render(name,target,make_png=False):
         elif n.get('render')=='Picon':fake_picon(0,x,y,w,h)
         elif n.tag=='ePixmap':png(ROOT/n.get('pixmap'),x,y,w,h)
         elif key=='menuimage':png(ROOT/'TvSat/mainmenu/information.png',x,y,w,h)
-        elif key=='preview':png(ROOT/'TvSat/prev.png',x,y,w,h)
+        elif key=='preview':png(ROOT/PROFILE/'prev.png',x,y,w,h)
         elif key=='timeline_text':
             for i,t in enumerate(['20:00','20:30','21:00','21:30','22:00','22:30']):text(x+320+i*(w-320)/6,y,(w-320)/6,h,t,26,'muted')
         elif n.get('render')=='Progress' or key in ('progress','slider','activityslider'):
             rect(x,y,w,h,n.get('backgroundColor','line'))
             rect(x,y,int(w*(1 if name=='Opkg' and key=='slider' else 0 if name=='Opkg' else .5)),h,'green')
-        elif key in ('menu','list','config','mainlist','sublist','plugins','pluginGrid','pluginList','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
+        elif key in ('menu','list','config','timerlist','mainlist','sublist','plugins','pluginGrid','pluginList','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
             draw_list(name,key,x,y,w,h)
         else:
             size=int(n.get('font','Regular;28').split(';')[-1])
             display=n.get('text') if n.get('render')=='FixedLabel' and key.startswith('key_') else value(n,name)
-            text(x,y,w,h,display,size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1',n.get('font','').startswith('TvSatStrong;'),n.get('font','').startswith('TvSatMono;'))
+            text(x,y,w,h,display,size,n.get('foregroundColor','white'),n.get('halign','left'),n.get('noWrap')=='1' or n.get('wrap')=='ellipsis',n.get('font','').startswith('TvSatStrong;'),n.get('font','').startswith('TvSatMono;'))
     if name=='GraphicalEPG':rect(64+320+360,366,3,560,'green')
     out+=['</g>','</svg>']
     dest=ROOT/'docs'/target;dest.parent.mkdir(exist_ok=True);dest.write_text('\n'.join(out)+'\n')
@@ -328,3 +373,12 @@ if __name__=='__main__':
             with Image.open(ROOT/'docs/menu.png') as image:
                 image.convert('RGBA').resize((640,360),Image.Resampling.LANCZOS).save(ROOT/'TvSat/prev.png')
             print(ROOT/'TvSat/prev.png')
+
+    for name,target,state in [('TvSatSettings','appearance.svg','success'),('ConflictTimerOverview','timer-conflict.svg','success'),('TimeshiftState','timeshift.svg','success'),('Opkg','install-progress.svg','progress'),('Opkg','install-error.svg','error'),('InfoBar','infobar-recording.svg','recording')]:
+        render(name,target,args.png,state=state)
+    for name,target in [('Menu','menu-large.svg'),('ChannelSelection','channels-large.svg'),('InfoBar','infobar-large.svg'),('GraphicalEPG','epg-large.svg'),('TvSatSettings','appearance-large.svg')]:
+        render(name,target,args.png or (args.thumbnail and name=='Menu'),profile='TvSatLarge')
+        if args.thumbnail and name=='Menu':
+            from PIL import Image
+            with Image.open(ROOT/'docs/menu-large.png') as image:
+                image.convert('RGBA').resize((640,360),Image.Resampling.LANCZOS).save(ROOT/'TvSatLarge/prev.png')

@@ -3,6 +3,7 @@
 from pathlib import Path
 import struct
 import zlib
+import shutil
 from build import VERSION
 
 ROOT=Path(__file__).resolve().parents[1]/'TvSat'
@@ -80,7 +81,30 @@ def build():
         else:
             rects=[(42,42,44,44,WHITE),(114,42,44,44,GREEN),(42,114,44,44,GREEN),(114,114,44,44,WHITE)]
         png(Path('mainmenu')/(name+'.png'),200,200,(0,0,0,0),rects)
-    print('Built picon fallback, timelines, EPG textures and system icons')
+    # Recording, scheduled timer, zap and disabled timer must not share a glyph.
+    for name in names:
+        if not name.startswith(('epgclock','timer_')):continue
+        disabled='disabled' in name or name.endswith('_off')
+        recording='rec' in name or 'epgclock' in name and 'zap' not in name and name=='epgclock'
+        c=(150,158,165,255) if disabled else RED if recording else BLUE if 'zap' in name else GREEN
+        rects=[]
+        for y in range(32):
+            for x in range(32):
+                d=(x-15)**2+(y-15)**2
+                if 110<=d<=155:rects.append((x,y,1,1,c))
+                if recording and d<45:rects.append((x,y,1,1,c))
+        if disabled:
+            rects.extend((i,i,2,2,c) for i in range(8,24))
+            rects.extend((31-i,i,2,2,c) for i in range(8,24))
+        elif not recording:rects.extend([(14,7,3,10,WHITE),(14,14,9,3,WHITE)])
+        png(Path('icons')/(name+'.png'),32,32,(0,0,0,0),rects)
+    # Native components also resolve icons relative to the selected skin.
+    large=ROOT.parent/'TvSatLarge';large.mkdir(exist_ok=True)
+    (large/'VERSION').write_text(VERSION+'\n')
+    for path in ROOT.rglob('*.png'):
+        dest=large/path.relative_to(ROOT);dest.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(path,dest)
+    print('Built shared assets, distinct timer icons and Large variant icons')
 
 
 if __name__=='__main__':

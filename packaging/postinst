@@ -6,8 +6,8 @@ case "${1:-configure}" in
     *) exit 0 ;;
 esac
 TVSAT_ROOT=${IPKG_INSTROOT:-}
-if [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSat/skin.xml" ]; then
-    printf '%s\n' 'TvSat: instalacja niekompletna — brak pliku skin.xml.' >&2
+if [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSat/skin.xml" ] || [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSatLarge/skin.xml" ] || [ ! -s "$TVSAT_ROOT/usr/lib/enigma2/python/Components/Converter/TvSatEventRemaining.py" ] || [ ! -s "$TVSAT_ROOT/usr/lib/enigma2/python/Plugins/Extensions/TvSatSettings/plugin.py" ] || [ ! -s "$TVSAT_ROOT/usr/lib/enigma2/python/Components/Renderer/TvSatSummary.py" ]; then
+    printf '%s\n' 'TvSat: instalacja niekompletna — brak plików skórki lub modułów TvSat.' >&2
     exit 1
 fi
 printf '\n%s\n' '======================================================'
@@ -17,5 +17,6 @@ if [ -r "$TVSAT_ROOT/usr/share/enigma2/TvSat/VERSION" ]; then
     printf 'Wersja: %s\n' "$TVSAT_VERSION"
 fi
 printf '%s\n' 'Wybierz TvSat w menu skórek, jeśli to pierwsza instalacja.'
+printf '%s\n' 'Wtyczki → TvSat — wygląd: wybierz Standard lub Duże napisy i zapisz.'
 printf '%s\n' 'Uruchom ponownie interfejs GUI, aby wczytać zmiany.'
 printf '%s\n\n' '======================================================'

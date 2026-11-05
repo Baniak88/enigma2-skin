@@ -1,13 +1,69 @@
-# TvSat 0.4.5 — skórka Enigma2 dla OpenATV
+# TvSat 0.5.0 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.4.5 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.5.0 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## TvSat 0.5.0 — siedem poprawek UI i UX
+
+1. **Lista kanałów:** Standard ma siedem pełnych wierszy i stałe pola numeru,
+   pikony, kanału, audycji oraz postępu. Długie nazwy mają wielokropek. Szablon
+   obejmuje zarówno kanały w bukiecie, jak i tryb wszystkich usług.
+2. **Panel audycji:** nazwa i opis dotyczą zaznaczonego kanału. Podgląd TV pokazuje
+   oglądany kanał. Opis mieści pełne linie i kończy się wielokropkiem, gdy brak
+   miejsca; INFO nadal otwiera pełną treść. Dodano postęp i czas do końca audycji.
+3. **Pasek kanału:** wspólne tło pod pikoną, wyrównane godziny i tytuły, czytelny
+   postęp, rzeczywisty licznik pozostałych minut oraz wskaźnik nagrywania.
+   Timeshift ma wyraźnie nazwane, natywne okno stanu. Zachowano **15% przezroczystości**.
+4. **Pilot:** wspólny kolor zaznaczenia, spójny wygląd przycisków i ukrywanie
+   pustych akcji. Obsługa OK/EXIT pozostaje natywna. Nowy ekran wyglądu ma
+   jednoznaczne Zapisz/Anuluj, a restart następuje dopiero po wyborze widza.
+5. **EPG:** osobne tło aktualnych audycji, linia bieżącego czasu, różne ikony
+   timerów i czytelny ekran konfliktu nagrań. Dane o timerach i konfliktach
+   pochodzą z OpenATV; skórka nie zmienia logiki nagrywania.
+6. **Dwa rozmiary:** TvSat Standard i **TvSatLarge / Duże napisy**. Wariant duży
+   ma większe fonty całego interfejsu, większe odstępy i sześć wierszy kanałów.
+7. **Komunikaty:** osobne widoki trwającej instalacji, wyniku i błędu, czytelne
+   podpowiedzi dziennika, poprawiony dialog konfliktów oraz komunikat sukcesu
+   z numerem wersji. Wynik operacji zawsze pochodzi z instalatora systemowego.
+
+### Jak włączyć nowy układ
+
+Po instalacji zrestartuj GUI, aby załadować nową wtyczkę. Otwórz:
+**Wtyczki → TvSat — wygląd → Standard lub Duże napisy → Zapisz**.
+Następnie potwierdź restart GUI. Zapisanie ustawia również odpowiedni szablon
+listy kanałów i włącza pikony. Anulowanie nie zmienia ustawień.
+Samo wybranie TvSatLarge w systemowym wyborze skórek zmienia wygląd, lecz nie
+zastępuje wcześniejszych preferencji listy kanałów — zalecamy ekran TvSat — wygląd.
+
+Wspieramy również starszy mechanizm listy: Standard ustawia tam osiem wierszy
+(minimum dozwolone przez OpenATV), a Duże napisy sześć wierszy w dwóch liniach.
+Zalecany nowy szablon ma odpowiednio siedem i sześć wierszy, jak na podglądach.
+Nie są zmieniane bukiety, dane kanałów ani timery.
+
+### Wizualizacje 0.5.0
+
+To podglądy generowane ze współrzędnych XML i danych przykładowych, nie zrzuty
+z odbiornika. Pikony są tekstowymi próbkami; na dekoderze używana jest Twoja
+paczka pikonów. Pole TV jest symboliczne. Rendering fontów zależy od Enigma2.
+
+![Lista kanałów — Standard](docs/channels.svg)
+![Lista kanałów — Duże napisy](docs/channels-large.svg)
+![Pasek z nagrywaniem](docs/infobar-recording.svg)
+![EPG i oznaczenia timerów](docs/epg.svg)
+![Konflikt nagrań](docs/timer-conflict.svg)
+![Wybór rozmiaru interfejsu](docs/appearance.svg)
+![Trwa instalacja](docs/install-progress.svg)
+![Błąd instalacji](docs/install-error.svg)
+
+Pakiet zawiera dwie skórki, pasywną wtyczkę ustawień i dwa własne moduły
+wyświetlania. Nie podmienia plików Pythona OpenATV. Instalacja nie uruchamia
+wtyczki i nie zmienia ustawień — profil stosuje dopiero przycisk Zapisz.
 
 ## Poprawki 0.4.5 — przezroczystość 15%
 
@@ -213,17 +269,17 @@ Pole TV na wizualizacji jest symboliczne; nie zawiera obrazu z tunera.
 - Instalator IPK, stan instalacji, pobieranie/usuwanie pakietów, konsola i logi.
 - FileCommander: dwa panele, menu operacji, informacje, podgląd i edytor plików.
 
-Łącznie 59 definicji ekranów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
+Łącznie 62 definicje ekranów w każdym z dwóch wariantów. Specjalistyczne ekrany i zewnętrzne wtyczki mogą
 korzystać z układu systemowego. Pełny zakres, źródła API i lista testów sprzętowych:
 [COMPATIBILITY.md](docs/COMPATIBILITY.md).
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.4.5_all.ipk](packages/enigma2-plugin-skins-tvsat_0.4.5_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.5.0_all.ipk](packages/enigma2-plugin-skins-tvsat_0.5.0_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.4.5_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.5.0_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -238,8 +294,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.4.5.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.4.5_all.ipk &&
-opkg install /tmp/TvSat-0.4.5.ipk
+wget -O /tmp/TvSat-0.5.0.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.5.0_all.ipk &&
+opkg install /tmp/TvSat-0.5.0.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -290,20 +346,21 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.4.5.tar.gz](packages/TvSat-0.4.5.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.5.0.tar.gz](packages/TvSat-0.5.0.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.4.5.tar.gz
+tar -xzf /tmp/TvSat-0.5.0.tar.gz
 sh install.sh
 ```
 
-Instalator kopiuje **cały katalog** TvSat razem z grafikami i szablonem.
-Przy aktualizacji zachowuje istniejący katalog jako `TvSat.backup-...`.
-Nie zmienia ustawień użytkownika. Archiwum `.tar.gz` nie jest paczką `opkg`.
-Przez SFTP także prześlij cały katalog `TvSat` do `/usr/share/enigma2/`;
-samo `skin.xml` nie wystarczy w tej wersji. Nie mieszaj instalacji ręcznej i `opkg`.
+Instalator kopiuje TvSat, TvSatLarge oraz własne moduły z runtime do
+`/usr/lib/enigma2/python/`. Przy aktualizacji zachowuje kopie poprzednich plików.
+Jeśli zapis się nie powiedzie, przywraca już zastąpione pliki. Nie zmienia ustawień
+użytkownika. Archiwum `.tar.gz` nie jest paczką `opkg`. SFTP służy do przesłania
+całego archiwum i uruchomienia install.sh; samo skin.xml ani sam katalog TvSat
+nie wystarczą. Nie mieszaj instalacji ręcznej i opkg.
 
 ## Powrót do poprzedniej skórki
 
@@ -328,6 +385,7 @@ python3 scripts/generate_skin.py
 python3 scripts/build_assets.py
 python3 scripts/validate.py
 python3 scripts/check_upstream_skinselection.py --download
+python3 scripts/check_upstream_service_ui.py --download
 python3 scripts/check_upstream_fonts.py --download
 python3 scripts/check_upstream_install_ui.py --download
 python3 scripts/check_upstream_filecommander.py --download

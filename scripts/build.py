@@ -7,7 +7,7 @@ import tarfile
 from validate import validate
 
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.4.5'
+VERSION='0.5.0'
 PACKAGE=f'enigma2-plugin-skins-tvsat_{VERSION}_all.ipk'
 
 
@@ -42,18 +42,21 @@ def ar(files):
 
 def build():
     (ROOT/'TvSat/VERSION').write_text(VERSION+'\n')
+    (ROOT/'TvSatLarge/VERSION').write_text(VERSION+'\n')
     validate()
+    validate('TvSatLarge')
     out=ROOT/'dist';out.mkdir(exist_ok=True)
-    skinfiles=sorted(p for p in (ROOT/'TvSat').rglob('*') if p.is_file())
+    skinfiles=sorted(p for folder in ('TvSat','TvSatLarge') for p in (ROOT/folder).rglob('*') if p.is_file())
     payload=[(str(p.relative_to(ROOT)),p.read_bytes(),0o644) for p in skinfiles]
+    runtime=sorted(p for p in (ROOT/'runtime').rglob('*.py') if '__pycache__' not in p.parts)
     docs=['README.md','LICENSE','docs/COMPATIBILITY.md']
-    manual=payload+[(p,(ROOT/p).read_bytes(),0o644) for p in docs]+[('install.sh',(ROOT/'install.sh').read_bytes(),0o755)]
+    manual=payload+[(str(p.relative_to(ROOT)),p.read_bytes(),0o644) for p in runtime]+[(p,(ROOT/p).read_bytes(),0o644) for p in docs+['scripts/install_payload.py']]+[('install.sh',(ROOT/'install.sh').read_bytes(),0o755)]
     (out/f'TvSat-{VERSION}.tar.gz').write_bytes(tar_gz(manual))
     control=(f'Package: enigma2-plugin-skins-tvsat\nVersion: {VERSION}\nArchitecture: all\n'
              f'Maintainer: TvSat contributors\nSection: skins\nPriority: optional\nDepends: enigma2\n'
-             f'Installed-Size: {(sum(len(data) for _,data,_ in payload)+1023)//1024}\n'
+             f'Installed-Size: {(sum(len(data) for _,data,_ in payload)+sum(p.stat().st_size for p in runtime)+1023)//1024}\n'
              'Description: TvSat Full HD skin for OpenATV 7.5, 7.6 and 8.0\n')
-    data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload],ipk=True)
+    data=tar_gz([('usr/share/enigma2/'+name,content,mode) for name,content,mode in payload]+[('usr/lib/enigma2/python/'+str(p.relative_to(ROOT/'runtime')),p.read_bytes(),0o644) for p in runtime],ipk=True)
     controltar=tar_gz([('control',control.encode(),0o644),
         ('postinst',(ROOT/'packaging/postinst').read_bytes(),0o755)],ipk=True)
     (out/PACKAGE).write_bytes(ar([('debian-binary',b'2.0\n'),('control.tar.gz',controltar),('data.tar.gz',data)]))

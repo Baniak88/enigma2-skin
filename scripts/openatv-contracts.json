@@ -4,6 +4,7 @@
       "lib/python/Components/ChoiceList.py": "8f74f7ab5759cbf44137aef4e165f3de36d49b3565445e843bb9475ff88e9585",
       "lib/python/Components/ConfigList.py": "a829026936883c5f150502f90bc8ca865a61e29604ea0b997473f179189a6cbd",
       "lib/python/Components/Converter/ConditionalShowHide.py": "7a69e88891351cca61964a2f322c84174153b0985f4399e58ece4c98be76afd0",
+      "lib/python/Components/Converter/RemainingToText.py": "63c5d8dd1f2139c1b83831a46f512a4ef3c565d682c4a5a0e4affd62c35ba213",
       "lib/python/Components/Converter/TemplatedMultiContent.py": "6f84b94bc384e6c41cab4036be64d250aa411fb6fbf262b24d9668e17c815d75",
       "lib/python/Components/EpgList.py": "a7afad35c8b05bdd514372a7c2a4d7e375fc47087ee3b1db616601d72e47d8c1",
       "lib/python/Components/FileList.py": "9d44b088b9b70ee5ea8b76c0f8cd6ac332ea1c3329ba052421809af3f819d64e",
@@ -12,6 +13,7 @@
       "lib/python/Components/SelectionList.py": "1e50e14fc96c1a9fe5dceabe5a1fe052d8c40284a9be1b357cd35b2412dd48cd",
       "lib/python/Components/ServiceList.py": "dd078b435b1aaee06958fff5e3c8c85ec886bf22c26090f6d596064c0326f5f7",
       "lib/python/Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+      "lib/python/Components/TimerList.py": "6bc7f8003b29846d1498e58c77e2eb30bb0814df7d8911112871f5859e6fca59",
       "lib/python/Components/UsageConfig.py": "6f3e105b640071fc82f3dcf7ecb0da9433307e7a65cbbed2856dfdf285abf473",
       "lib/python/Plugins/Extensions/FileCommander/plugin.py": "c612f757ba6c07a1906ff15a307511be145bde0d87ca641039279685833a4231",
       "lib/python/Screens/AudioSelection.py": "e534778efa1df2157a10215c4cd9a6e6a17bb49217f9d1d9436a7ff960eff5fb",
@@ -33,6 +35,7 @@
       "lib/python/Screens/Screen.py": "f46eee3da4c34656fceaf6d1a61d303a45f1f5d48be7aa4a82704ca21ca52aa7",
       "lib/python/Screens/Setup.py": "ebe5001c6bff5d3d509fe1b5b13b9e316224b43081f2dd0880448350cef48e88",
       "lib/python/Screens/SkinSelection.py": "aca0322e691d1d7dac6480338568dc7e964309686e5de218c0c6e5445ec8dfb0",
+      "lib/python/Screens/TimerEdit.py": "da9997d6a8548610a34baf95d3b2818b8e1ecc809d33749fb5ad6bd8e715f25e",
       "lib/python/Screens/Timers.py": "a0dd11bddf4b71b89dc2528bf7c9855b845be7eba5b0fcb0f6ce01497c999793",
       "lib/python/skin.py": "190ba49fb6560bcebdcb8f6b9d19c48b8bbcbee336f06fa82ca24ea678b8d404"
     },
@@ -1589,6 +1592,60 @@
         },
         "required": []
       },
+      "ConflictTimerOverview": {
+        "class": "ConflictTimerOverview",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "description": "Label",
+          "actions": "HelpableActionMap",
+          "deleteActions": "HelpableActionMap",
+          "editActions": "HelpableActionMap",
+          "toggleActions": "HelpableActionMap",
+          "cancelActions": "HelpableActionMap",
+          "key_green": "StaticText",
+          "addActions": "HelpableActionMap",
+          "cleanupActions": "HelpableActionMap",
+          "timerlist": "RecordTimerList",
+          "Event": "Event",
+          "Service": "ServiceEvent"
+        },
+        "required": []
+      },
+      "TimerSanityConflict": {
+        "class": "ConflictTimerOverview",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "description": "Label",
+          "actions": "HelpableActionMap",
+          "deleteActions": "HelpableActionMap",
+          "editActions": "HelpableActionMap",
+          "toggleActions": "HelpableActionMap",
+          "cancelActions": "HelpableActionMap",
+          "key_green": "StaticText",
+          "addActions": "HelpableActionMap",
+          "cleanupActions": "HelpableActionMap",
+          "timerlist": "RecordTimerList",
+          "Event": "Event",
+          "Service": "ServiceEvent"
+        },
+        "required": []
+      },
       "PluginBrowserList": {
         "class": "PluginBrowser",
         "widgets": {
@@ -1871,6 +1928,22 @@
         "class": "C++ Mute",
         "widgets": {},
         "required": []
+      },
+      "TvSatSettings": {
+        "class": "TvSatSettings (bundled plugin)",
+        "widgets": {
+          "Title": "StaticText",
+          "config": "ConfigList",
+          "description": "Label",
+          "footnote": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText"
+        },
+        "required": [
+          "config",
+          "description",
+          "footnote"
+        ]
       }
     }
   },
@@ -1879,6 +1952,7 @@
       "lib/python/Components/ChoiceList.py": "8f74f7ab5759cbf44137aef4e165f3de36d49b3565445e843bb9475ff88e9585",
       "lib/python/Components/ConfigList.py": "6f1a26d2885ea41d0db7cdde081d2dd1062eb3fcfa79fa61d69b21c6e7138d89",
       "lib/python/Components/Converter/ConditionalShowHide.py": "7a69e88891351cca61964a2f322c84174153b0985f4399e58ece4c98be76afd0",
+      "lib/python/Components/Converter/RemainingToText.py": "8ee7a46955b27c50e12a5d4f4e52a76f07f2acacb397de5633ba7ccf22436fec",
       "lib/python/Components/Converter/TemplatedMultiContent.py": "7639db2a862153504ea61332882eec02fbc2ea1a76b12fec85f4fa353940f5db",
       "lib/python/Components/EpgList.py": "bba69be96e99ac42885a82bbb34897dadef6e8ce5ecb67a3442b3ef01758f9e2",
       "lib/python/Components/FileList.py": "9d44b088b9b70ee5ea8b76c0f8cd6ac332ea1c3329ba052421809af3f819d64e",
@@ -1886,6 +1960,7 @@
       "lib/python/Components/SelectionList.py": "1e50e14fc96c1a9fe5dceabe5a1fe052d8c40284a9be1b357cd35b2412dd48cd",
       "lib/python/Components/ServiceList.py": "1dd299b998ccf6a22989b4927983e55f15954e18742353a6753ff3fb7c0b9727",
       "lib/python/Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+      "lib/python/Components/TimerList.py": "6bc7f8003b29846d1498e58c77e2eb30bb0814df7d8911112871f5859e6fca59",
       "lib/python/Plugins/Extensions/FileCommander/plugin.py": "272e323b142810db755cb870167c3c434102ed38812442862dc9e4f1662d9e34",
       "lib/python/Screens/AudioSelection.py": "590bc69e559405e48eb341b95905bef6fc79f0adeec1caa1de37e2feda9ef580",
       "lib/python/Screens/ChannelSelection.py": "68e7445c340d606fe3823a989d416afffa4be46239677443ed954dd2456775a2",
@@ -1906,6 +1981,7 @@
       "lib/python/Screens/Screen.py": "a7637c7b1d61cfb1d7806733ff56271a38865a78a4cbd719fbb8e331df877589",
       "lib/python/Screens/Setup.py": "349e0dd4986e209884c177e5633d20dfbbc1624d578d689b8cfe011bc2d04bfa",
       "lib/python/Screens/SkinSelection.py": "b9c1bce2482c2ef825fe0e2f175635f6147e6ab9c280f51e0b91de867de913fc",
+      "lib/python/Screens/TimerEdit.py": "da9997d6a8548610a34baf95d3b2818b8e1ecc809d33749fb5ad6bd8e715f25e",
       "lib/python/Screens/Timers.py": "056570d0666a4ca52f025638b9ecb05f83c685f5f93b78dd401e380c5bb88e6d",
       "lib/python/skin.py": "f19073514f99f7d6cb7d8f811d4bf48530e2ca71dfdda45e81cece39748e01f6"
     },
@@ -3470,6 +3546,60 @@
         },
         "required": []
       },
+      "ConflictTimerOverview": {
+        "class": "ConflictTimerOverview",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "description": "Label",
+          "actions": "HelpableActionMap",
+          "deleteActions": "HelpableActionMap",
+          "editActions": "HelpableActionMap",
+          "toggleActions": "HelpableActionMap",
+          "cancelActions": "HelpableActionMap",
+          "key_green": "StaticText",
+          "addActions": "HelpableActionMap",
+          "cleanupActions": "HelpableActionMap",
+          "timerlist": "RecordTimerList",
+          "Event": "Event",
+          "Service": "ServiceEvent"
+        },
+        "required": []
+      },
+      "TimerSanityConflict": {
+        "class": "ConflictTimerOverview",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "description": "Label",
+          "actions": "HelpableActionMap",
+          "deleteActions": "HelpableActionMap",
+          "editActions": "HelpableActionMap",
+          "toggleActions": "HelpableActionMap",
+          "cancelActions": "HelpableActionMap",
+          "key_green": "StaticText",
+          "addActions": "HelpableActionMap",
+          "cleanupActions": "HelpableActionMap",
+          "timerlist": "RecordTimerList",
+          "Event": "Event",
+          "Service": "ServiceEvent"
+        },
+        "required": []
+      },
       "PluginBrowserList": {
         "class": "PluginBrowser",
         "widgets": {
@@ -3751,6 +3881,22 @@
         "class": "C++ Mute",
         "widgets": {},
         "required": []
+      },
+      "TvSatSettings": {
+        "class": "TvSatSettings (bundled plugin)",
+        "widgets": {
+          "Title": "StaticText",
+          "config": "ConfigList",
+          "description": "Label",
+          "footnote": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText"
+        },
+        "required": [
+          "config",
+          "description",
+          "footnote"
+        ]
       }
     }
   },
@@ -3759,6 +3905,9 @@
       "lib/python/Components/ChoiceList.py": "36b986655e7da506d5a01b5351d21290fb8190f6923d6028f0b1b5a6edb9ec92",
       "lib/python/Components/ConfigList.py": "a08941afc424ff0a9f649bbd6eae7ddaac1c10e9736455cc181e49ee901ea2ab",
       "lib/python/Components/Converter/ConditionalShowHide.py": "34dd484923ed0ab80011cee10a0da12c64185455b2a78a7904970e57dafd0856",
+      "lib/python/Components/Converter/EventTime.py": "c090db00e58148c7f4eb9a2717c9eaadd5ea3bfddc03219f7d8d85d6d203238e",
+      "lib/python/Components/Converter/RemainingToText.py": "8ee7a46955b27c50e12a5d4f4e52a76f07f2acacb397de5633ba7ccf22436fec",
+      "lib/python/Components/Converter/ServicePosition.py": "9b5787c74dc7ab79bad3977f2dfabf74e0df5a690799740374b0209b23812cd1",
       "lib/python/Components/Converter/TemplatedMultiContent.py": "dc672cc76888f8a38bad0cbc08eb586d33b66b402c12916261e82bc45392a02f",
       "lib/python/Components/EpgList.py": "ebbac918682ea09fd7ed8ec71b5904cbfdc0edeb19916f3d5525191336c76488",
       "lib/python/Components/FileList.py": "311e79c521949e08a9425e77468819ce72d3aa6202da3d62b9b803dca30b78ac",
@@ -3768,6 +3917,9 @@
       "lib/python/Components/SelectionList.py": "1e50e14fc96c1a9fe5dceabe5a1fe052d8c40284a9be1b357cd35b2412dd48cd",
       "lib/python/Components/ServiceList.py": "1e7528df6a1fbee383ee084431b333ed909103609cff0fd66c11b96013f322d3",
       "lib/python/Components/Sources/StaticText.py": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42",
+      "lib/python/Components/TimerList.py": "6bc7f8003b29846d1498e58c77e2eb30bb0814df7d8911112871f5859e6fca59",
+      "lib/python/Components/UsageConfig.py": "b1bc5ed9bf7af7f65f6a69f4c5646f8369aff27fbe907c7cc76831432262a924",
+      "lib/python/Components/config.py": "90c9351f6383e8392129e46490a1990dba381ed6485f09eb54817005d56ba24f",
       "lib/python/Plugins/Extensions/FileCommander/ui.py": "27997bcdeb590df258179dd1338f02247e0e1163e1e3248721c02b505e5202c4",
       "lib/python/Screens/AudioSelection.py": "0346ea8bc41a04398f11c85d25233d332c3dbad7d626a6a92aefca68ba60471c",
       "lib/python/Screens/ChannelSelection.py": "f886a1f8c11208934f3abf09a565c48003adfb80697949bf8a41f59bb738e70c",
@@ -3788,6 +3940,8 @@
       "lib/python/Screens/Screen.py": "1c887a40aae3cc5e0120ae35d0d82fe4fcafac8dd45c72d7cc816fa152f4fcc0",
       "lib/python/Screens/Setup.py": "479d38873aa1fa351511c9ef05f25803a200c125549b26ddf8f45ff6613110af",
       "lib/python/Screens/SkinSelection.py": "1a406e6058bf78240f545d70f20867d6ffe1550572773bdae0799c162beb019f",
+      "lib/python/Screens/TimerEdit.py": "2e0a4bc46e67b0aa09ef609803b745e9e27748b647fc2ca2aa9f3ac030419355",
+      "lib/python/Screens/TimerEntry.py": "729d3e3fefeb64bbde358ddea63cf016020f5312d61c914acbe0c6824c7d1af4",
       "lib/python/Screens/Timers.py": "4764a7e7ac1d0703dbb9cd6384976dc859b4064bb6373ca929c0ec799514e4a5",
       "lib/python/skin.py": "361fa37c1fe66a397287ff174eea2e489eeaf33a68871d42b24fe9193a31e183"
     },
@@ -5126,6 +5280,60 @@
         },
         "required": []
       },
+      "ConflictTimerOverview": {
+        "class": "ConflictTimerOverview",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "description": "Label",
+          "actions": "HelpableActionMap",
+          "deleteActions": "HelpableActionMap",
+          "editActions": "HelpableActionMap",
+          "toggleActions": "HelpableActionMap",
+          "cancelActions": "HelpableActionMap",
+          "key_green": "StaticText",
+          "addActions": "HelpableActionMap",
+          "cleanupActions": "HelpableActionMap",
+          "timerlist": "RecordTimerList",
+          "Event": "Event",
+          "Service": "ServiceEvent"
+        },
+        "required": []
+      },
+      "TimerSanityConflict": {
+        "class": "ConflictTimerOverview",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_info": "StaticText",
+          "key_red": "StaticText",
+          "key_yellow": "StaticText",
+          "key_blue": "StaticText",
+          "description": "Label",
+          "actions": "HelpableActionMap",
+          "deleteActions": "HelpableActionMap",
+          "editActions": "HelpableActionMap",
+          "toggleActions": "HelpableActionMap",
+          "cancelActions": "HelpableActionMap",
+          "key_green": "StaticText",
+          "addActions": "HelpableActionMap",
+          "cleanupActions": "HelpableActionMap",
+          "timerlist": "RecordTimerList",
+          "Event": "Event",
+          "Service": "ServiceEvent"
+        },
+        "required": []
+      },
       "PluginBrowserList": {
         "class": "PluginBrowser",
         "widgets": {
@@ -5411,6 +5619,22 @@
         "class": "C++ Mute",
         "widgets": {},
         "required": []
+      },
+      "TvSatSettings": {
+        "class": "TvSatSettings (bundled plugin)",
+        "widgets": {
+          "Title": "StaticText",
+          "config": "ConfigList",
+          "description": "Label",
+          "footnote": "Label",
+          "key_red": "StaticText",
+          "key_green": "StaticText"
+        },
+        "required": [
+          "config",
+          "description",
+          "footnote"
+        ]
       }
     }
   }

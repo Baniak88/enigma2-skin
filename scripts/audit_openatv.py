@@ -112,6 +112,7 @@ def extract(directory):
         'FileCommanderFileViewer':'FileCommanderFileViewer','FileCommanderTextEditor':'FileCommanderTextEditor',
         'MovieSelection':'MovieSelection','MovieSelectionSlim':'MovieSelection',
         'TimerOverview':'RecordTimerOverview','RecordTimerOverview':'RecordTimerOverview','TimerEditList':'RecordTimerOverview',
+        'ConflictTimerOverview':'ConflictTimerOverview','TimerSanityConflict':'ConflictTimerOverview',
         'PluginBrowserList':'PluginBrowser','PluginBrowserGrid':'PluginBrowser','InfoBar':'InfoBar','SecondInfoBar':'SecondInfoBar',
         'MoviePlayer':'MoviePlayer','PVRState':'PVRState','TimeshiftState':'TimeshiftState','NumberZap':'NumberZap'
         ,'AudioSelection':'AudioSelection','QuickSubtitlesConfigMenu':'QuickSubtitlesConfigMenu'
@@ -141,6 +142,8 @@ def extract(directory):
     # Volume/Mute to core Enigma2 screens (C++), only these fixed widgets.
     screens['Volume']={'class':'C++ Volume','widgets':{'Volume':'ProgressBar'},'required':['Volume']}
     screens['Mute']={'class':'C++ Mute','widgets':{},'required':[]}
+    # Our passive settings plugin owns these controls on every OpenATV version.
+    screens['TvSatSettings']={'class':'TvSatSettings (bundled plugin)','widgets':{'Title':'StaticText','config':'ConfigList','description':'Label','footnote':'Label','key_red':'StaticText','key_green':'StaticText'},'required':['config','description','footnote']}
     return {'source_sha256':fingerprints,'screens':screens}
 
 

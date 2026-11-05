@@ -26,18 +26,21 @@ class ChannelUI(unittest.TestCase):
                 overlaps=x<vx+w and x+nw>vx and y<vy+h and y+nh>vy
                 self.assertFalse(overlaps,(name,n.attrib))
 
-    def test_eight_roomy_rows_and_high_contrast_selection(self):
+    def test_seven_rows_and_separate_channel_and_event_columns(self):
         screen=self.skin.find("screen[@name='ChannelSelection']")
         _,height=map(int,screen.find("widget[@name='list']").get('size').split(','))
         template=E.parse(ROOT/'TvSat/skinTemplates.xml').getroot().find('template')
         mode=template.find("mode[@name='services']")
-        self.assertEqual(height//int(mode.get('itemHeight')),8)
+        self.assertEqual(height//int(mode.get('itemHeight')),7)
         self.assertEqual(mode.get('foregroundColorSelected'),'white')
         self.assertEqual(mode.get('backgroundColorSelected'),'selected')
         stripe=mode.find('rectangle')
         self.assertEqual(stripe.get('foregroundColorSelected'),'green')
         title=mode.find("text[@index='ServiceName']");event=mode.find("text[@index='Title1']")
-        self.assertLess(int(title.get('position').split(',')[1]),int(event.get('position').split(',')[1]))
+        self.assertLessEqual(int(title.get('position').split(',')[0])+int(title.get('size').split(',')[0]),int(event.get('position').split(',')[0]))
+        self.assertEqual(title.get('wrap'),'ellipsis')
+        self.assertEqual(event.get('wrap'),'ellipsis')
+        self.assertIsNotNone(mode.find("progress[@index='Progress']"))
 
     def test_font_is_registered_regular_instead_of_default_bold(self):
         fonts={n.get('name'):n.get('filename') for n in self.skin.findall('fonts/font')}

@@ -46,7 +46,8 @@ class Packages(unittest.TestCase):
         self.assertIn(f'Version: {VERSION}\n',control)
         with tarfile.open(fileobj=io.BytesIO(files['data.tar.gz'])) as t:
             names={m.name.removeprefix('./') for m in t if m.isfile()}
-            expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for p in (ROOT/'TvSat').rglob('*') if p.is_file()}
+            expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for folder in ('TvSat','TvSatLarge') for p in (ROOT/folder).rglob('*') if p.is_file()}
+            expected.update('usr/lib/enigma2/python/'+str(p.relative_to(ROOT/'runtime')) for p in (ROOT/'runtime').rglob('*.py') if '__pycache__' not in p.parts)
             self.assertEqual(names,expected)
             self.assertEqual(t.extractfile('./usr/share/enigma2/TvSat/VERSION').read().decode().strip(),VERSION)
             for p in (ROOT/'TvSat').rglob('*'):
@@ -72,6 +73,9 @@ class Packages(unittest.TestCase):
             self.assertIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',first.stdout)
             self.assertIn('GUI',first.stdout)
             self.assertIn(f'Wersja: {VERSION}',first.stdout)
+            self.assertTrue((target.parent/'TvSatLarge/skin.xml').is_file())
+            self.assertTrue((temp/'receiver/usr/lib/enigma2/python/Components/Converter/TvSatEventRemaining.py').is_file())
+            self.assertTrue((temp/'receiver/usr/lib/enigma2/python/Plugins/Extensions/TvSatSettings/plugin.py').is_file())
             for p in (ROOT/'TvSat').rglob('*'):
                 if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'TvSat')).read_bytes(),p.read_bytes())
             (target/'skin.xml').write_text('old skin')

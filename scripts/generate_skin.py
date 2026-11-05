@@ -8,7 +8,7 @@ import xml.etree.ElementTree as E
 
 ROOT = Path(__file__).resolve().parents[1]
 # Background surfaces restored from the first CanalPL release (9ce5d21).
-PALETTE = dict(bg='0c0e10', panel='17191c', selected='25473a', white='f3f6fa', muted='c2ccd7',
+PALETTE = dict(bg='0c0e10', panel='17191c', selected='25473a', now='183128', white='f3f6fa', muted='c2ccd7',
                green='00e676', line='303438', track='647181', red='ff6262', yellow='f5ce55', blue='5eacff')
 skin = E.Element('skin')
 
@@ -27,6 +27,7 @@ def label(s, text, x, y, w, h, font=28, color='white', family='TvSatText', **kw)
 
 
 def widget(s, name, x, y, w, h, font=None, **kw):
+    if kw.pop('noWrap',None)=='1':kw['wrap']='ellipsis'
     if name=='config':
         kw.setdefault('valueFont', f'TvSatText;{font or 30}')
     return add(s, 'widget', name=name, position=f'{x},{y}', size=f'{w},{h}',
@@ -34,12 +35,15 @@ def widget(s, name, x, y, w, h, font=None, **kw):
 
 
 def source(s, name, x, y, w, h, font=28, color='white', render='Label', converts=(), **kw):
+    if render=='Label' and ('EventName','ExtendedDescription') in converts:
+        render='TvSatSummary'
+    if kw.pop('noWrap',None)=='1':kw['wrap']='ellipsis'
     if render != 'Picon':
         kw.setdefault('foregroundColor', color)
-    if render in ('Label', 'FixedLabel'):
+    if render in ('Label', 'FixedLabel', 'TvSatSummary'):
         kw.setdefault('transparent', '1')
     n = add(s, 'widget', source=name, render=render, position=f'{x},{y}', size=f'{w},{h}',
-            font=f'TvSatText;{font}' if render in ('Label', 'FixedLabel') else None,
+            font=f'TvSatText;{font}' if render in ('Label', 'FixedLabel', 'TvSatSummary') else None,
             **kw)
     for kind, arg in converts:
         add(n, 'convert', type=kind).text = arg
@@ -173,23 +177,28 @@ def build():
         if name != 'ChannelSelectionRadio':
             s.set('base','ChannelSelection')
             s.set('label',{'ChannelSelection':'TvSat — standard z TV','ChannelSelection_PIG':'TvSat — podgląd TV','ChannelSelection_NoPIG':'TvSat — bez podglądu'}[name])
-        widget(s,'list',64,220,1088,704,serviceNameFont='TvSatText;31',serviceInfoFont='TvSatText;25',
-            serviceNumberFont='TvSatText;25',serviceItemHeight='88',foregroundColorEvent='muted',
-            foregroundColorEventSelected='white',colorEventProgressbar='green',colorEventProgressbarSelected='green',**LIST)
+        widget(s,'list',64,220,1088,700,serviceNameFont='TvSatText;31',serviceInfoFont='TvSatText;26',
+            serviceNumberFont='TvSatText;26',serviceItemHeight='100',foregroundColorEvent='muted',
+            fieldMargins='20',itemsDistances='20',listMarginLeft='12',listMarginRight='12',
+            progressBarWidth='96',progressbarHeight='6',progressbarBorderWidth='0',
+            foregroundColorEventSelected='white',colorEventProgressbar='green',colorEventProgressbarSelected='green',
+            colorServiceRecorded='red',colorServiceRecording='red',**LIST)
         label(s,'OK — kanał     INFO — opis     EXIT — powrót',64,936,1088,30,22,'muted')
         box(s,1184,220,2,704)
         video = name in ('ChannelSelection','ChannelSelection_PIG')
         if video:
             # Decoder 0: obraz aktualnie oglądanego kanału, bez drugiego tunera.
             # Brak dekoracji w prostokącie video: przezroczyste okno OSD odsłania obraz.
-            source(s,'session.VideoPicture',1216,220,640,360,render='Pig',backgroundColor='transparent',zPosition='2')
-            label(s,'TERAZ OGLĄDASZ',1216,592,640,28,20,'muted')
-            source(s,'session.CurrentService',1216,624,640,38,26,'green',converts=[('ServiceName','Name')],noWrap='1')
-            box(s,1216,678,640,1)
-            source(s,'ServiceEvent',1216,696,640,66,28,converts=[('EventName','Name')])
-            source(s,'ServiceEvent',1216,772,130,32,23,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
-            source(s,'ServiceEvent',1356,772,170,32,23,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
-            source(s,'ServiceEvent',1216,818,640,116,23,'muted',converts=[('EventName','ExtendedDescription')])
+            source(s,'session.VideoPicture',1248,220,608,342,render='Pig',backgroundColor='transparent',zPosition='2')
+            label(s,'WYBRANY KANAŁ',1216,572,640,28,20,'muted')
+            source(s,'ServiceEvent',1216,606,640,38,26,'green',converts=[('ServiceName','Name')],noWrap='1')
+            box(s,1216,654,640,1)
+            source(s,'ServiceEvent',1216,668,640,70,28,converts=[('EventName','Name')])
+            source(s,'ServiceEvent',1216,750,130,32,23,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
+            source(s,'ServiceEvent',1356,750,170,32,23,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
+            source(s,'ServiceEvent',1536,750,320,32,23,'muted',halign='right',converts=[('TvSatEventRemaining','')])
+            source(s,'ServiceEvent',1216,796,640,4,render='Progress',color='green',backgroundColor='line',borderWidth='0',converts=[('EventTime','Progress')])
+            source(s,'ServiceEvent',1216,812,640,120,24,'muted',converts=[('EventName','ExtendedDescription')])
             label(s,'INFO — pełny opis',1216,944,640,28,20,'muted')
         else:
             picon(s,'ServiceEvent',1216,220)
@@ -212,12 +221,12 @@ def build():
         EventFontInfobar='TvSatText;28',EventFontSingle='TvSatText;30',EventFontMulti='TvSatText;29',EventFontVertical='TvSatText;26',
         TimeFontVertical='TvSatText;23',ServiceForegroundColor='white',ServiceForegroundColorNow='green',ServiceBackgroundColor='panel',
         ServiceBackgroundColorNow='panel',EntryForegroundColor='white',EntryForegroundColorSelected='white',EntryBackgroundColor='panel',
-        EntryBackgroundColorSelected='selected',EntryBackgroundColorNow='panel',EntryBackgroundColorNowSelected='selected',
+        EntryBackgroundColorSelected='selected',EntryBackgroundColorNow='now',EntryBackgroundColorNowSelected='selected',
         EntryForegroundColorNow='white',EntryForegroundColorNowSelected='white',EntryBackgroundColorPast='bg',
         EntryBackgroundColorPastSelected='selected',EntryForegroundColorPast='muted',EntryForegroundColorPastSelected='white',
         EntryBorderColor='bg',ServiceBorderColor='bg',ServiceBorderWidth='2',EventBorderWidth='2',EventNamePadding='12',
-        ServiceNamePadding='12',RecordForegroundColor='white',RecordForegroundColorSelected='white',RecordBackgroundColor='red',
-        RecordBackgroundColorSelected='red',ZapForegroundColor='white',ZapBackgroundColor='blue',ZapForegroundColorSelected='bg',ZapBackgroundColorSelected='green')
+        ServiceNamePadding='12',RecordForegroundColor='bg',RecordForegroundColorSelected='bg',RecordBackgroundColor='red',
+        RecordBackgroundColorSelected='red',ZapForegroundColor='bg',ZapBackgroundColor='blue',ZapForegroundColorSelected='bg',ZapBackgroundColorSelected='green')
     for name in ('EPGSelection','QuickEPG','EPGSelectionMulti','GraphicalEPG','GraphicalEPGPIG','GraphicalInfoBarEPG'):
         s=screen(name); header(s,'PROGRAM TV'); footer(s)
         graph=name.startswith('Graphical')
@@ -252,6 +261,7 @@ def build():
             if multi:
                 widget(s,'bouquetlist',64,300,720,616,30,itemHeight='70',zPosition='4',**LIST)
         widget(s,'number',1660,214,196,48,30,foregroundColor='green',halign='right',transparent='1',zPosition='6',conditional='number')
+        label(s,'Zielona linia — teraz   •   Zegar — timer   •   Czerwony — timer nagrania',64,936,1792,30,22,'muted')
 
     for name in ('EPGvertical','EPGverticalPIG'):
         s=screen(name); header(s,'PROGRAM TV / UKŁAD PIONOWY'); footer(s)
@@ -284,6 +294,14 @@ def build():
     widget(s,'description',1392,246,464,550,28,foregroundColor='muted',transparent='1')
     widget(s,'footnote',1392,818,464,108,26,foregroundColor='yellow',transparent='1')
     label(s,'← →  Zmień wartość     OK  Wybierz     EXIT  Powrót',64,916,1248,42,24,'muted')
+    widget(s,'HelpWindow',64,240,1,1,conditional='HelpWindow',transparent='1')
+
+    s=screen('TvSatSettings');header(s,'WYGLĄD I CZYTELNOŚĆ');footer(s,('red','green'))
+    widget(s,'config',64,236,1120,560,30,itemHeight='80',**LIST)
+    box(s,1216,236,2,688)
+    widget(s,'description',1256,246,600,420,28,foregroundColor='muted',transparent='1')
+    widget(s,'footnote',1256,716,600,172,26,foregroundColor='yellow',transparent='1')
+    label(s,'← →  Zmień wariant     Zielony — zapisz     EXIT — anuluj',64,916,1120,42,24,'muted')
     widget(s,'HelpWindow',64,240,1,1,conditional='HelpWindow',transparent='1')
 
     # Setup derives its preferred name from the subclass before trying generic
@@ -335,9 +353,11 @@ def build():
         for i,key in enumerate(('movie_sort','movie_off')):
             widget(s,key,64+i*48,916,32,32,pixmaps=','.join(['TvSat/assets/state.png']*10),alphatest='blend')
 
-    for name in ('TimerOverview','RecordTimerOverview','TimerEditList'):
-        s=screen(name); header(s,'ZAPLANOWANE NAGRANIA'); footer(s)
-        widget(s,'timerlist',64,236,1792,560,**LIST)
+    for name in ('TimerOverview','RecordTimerOverview','TimerEditList','ConflictTimerOverview','TimerSanityConflict'):
+        conflict='Conflict' in name
+        s=screen(name); header(s,'KONFLIKT NAGRAŃ' if conflict else 'ZAPLANOWANE NAGRANIA'); footer(s)
+        if conflict:label(s,'Nagrania nakładają się. Wybierz timer, aby zmienić czas lub go wyłączyć.',64,214,1792,58,28,'yellow')
+        widget(s,'timerlist',64,292 if conflict else 236,1792,384 if conflict else 512,itemHeight='128',topHeight='44',bottomHeight='36',timerNameFont='TvSatText;32',detailFont='TvSatText;25',statusFont='TvSatText;25',**LIST)
         widget(s,'description',64,830,1792,116,28,foregroundColor='muted',transparent='1')
 
     for name in ('PluginBrowserList','PluginBrowserGrid'):
@@ -422,7 +442,7 @@ def build():
     # Native Opkg toggles status/package/sliders off before showing this log.
     # Its initially empty, transparent text must not cover the status widgets.
     widget(s,'log',64,236,1792,680,26,transparent='1')
-    label(s,'Status operacji i wynik pochodzą z instalatora systemowego.',64,930,1792,32,22,'muted')
+    label(s,'Po zakończeniu: czerwony — zamknij, niebieski — dziennik. Błąd: sprawdź szczegóły w dzienniku.',64,930,1792,32,22,'muted')
 
     for name in ('PackageAction','PluginAction'):
         s=screen(name);header(s,'WTYCZKI I PAKIETY');footer(s)
@@ -461,8 +481,8 @@ def build():
     label(s,'POTEM',320,216,104,40,24,'muted')
     source(s,'session.Event_Next',440,212,140,44,28,'muted',converts=[('EventTime','StartTime'),('ClockToText','Default')])
     source(s,'session.Event_Next',600,210,1256,50,30,'muted',converts=[('EventName','Name')],noWrap='1')
-    source(s,'session.RecordState',64,290,240,38,24,'red',render='FixedLabel',text='NAGRYWANIE',converts=[('ConditionalShowHide','Blink')])
-    source(s,'session.Event_Now',1556,290,300,38,24,'muted',halign='right',converts=[('EventTime','Remaining'),('RemainingToText','InMinutes')])
+    source(s,'session.RecordState',64,290,240,38,24,'red',render='FixedLabel',text='● REC',converts=[('ConditionalShowHide',None)])
+    source(s,'session.Event_Now',1396,290,460,38,24,'muted',halign='right',converts=[('TvSatEventRemaining','')])
 
     s=screen('SecondInfoBar',pos=(0,576),size=(1920,504),bg='overlay')
     box(s,64,0,1792,4,'green'); picon(s,'session.CurrentService',64,34)
@@ -480,14 +500,18 @@ def build():
     widget(s,'statusicon',0,0,1,1,pixmaps=','.join(['TvSat/assets/state.png']*7),alphatest='blend')
 
     for name in ('PVRState','TimeshiftState'):
-        s=screen(name,pos=(64,62),size=(540,176))
+        s=screen(name,pos=(64,62),size=(540,212) if name=='TimeshiftState' else (540,176))
         widget(s,'state',24,18,320,62,34,foregroundColor='green',transparent='1')
         widget(s,'speed',366,18,150,62,30,transparent='1',halign='right')
         widget(s,'statusicon',0,0,1,1,pixmaps=','.join(['TvSat/assets/state.png']*7),alphatest='blend')
         widget(s,'eventname',24,120,492,44,24,foregroundColor='muted',transparent='1')
         if name=='TimeshiftState':
-            widget(s,'PTSSeekBack',24,96,492,6,pixmap='TvSat/assets/timeline.png',scale='1')
-            widget(s,'PTSSeekPointer',24,90,4,18,pixmap='TvSat/assets/timeline-now.png',scale='1',zPosition='2')
+            label(s,'TIMESHIFT',24,10,492,30,22,'muted')
+            s.find("widget[@name='state']").set('position','24,44')
+            s.find("widget[@name='speed']").set('position','366,44')
+            s.find("widget[@name='eventname']").set('position','24,160')
+            widget(s,'PTSSeekBack',24,138,492,6,pixmap='TvSat/assets/timeline.png',scale='1')
+            widget(s,'PTSSeekPointer',24,132,4,18,pixmap='TvSat/assets/timeline-now.png',scale='1',zPosition='2')
 
     s=screen('NumberZap',pos=(1200,70),size=(656,164))
     box(s,0,0,6,164,'green')
@@ -500,6 +524,8 @@ def build():
     box(s,0,0,6,86,'green'); label(s,'WYCISZONO',30,22,300,44,28)
     E.indent(skin,space='  ')
     (ROOT/'TvSat/skin.xml').write_bytes(b'<?xml version="1.0" encoding="UTF-8"?>\n'+E.tostring(skin,encoding='utf-8')+b'\n')
+    from ui_profiles import write_variants
+    write_variants(ROOT,skin)
     print(f'Generated {len(skin.findall("screen"))} OpenATV screens')
 
 
