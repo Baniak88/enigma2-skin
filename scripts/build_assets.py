@@ -5,7 +5,7 @@ import struct
 import zlib
 import shutil
 from build import VERSION
-from skin_effects import FADE_TOP, BODY_ALPHA, BODY_RGB, BAR_HEIGHTS, fade_alpha
+from skin_effects import FADE_TOP, BODY_ALPHA, BODY_RGB, BAR_HEIGHTS, fade_alpha, event_fade_alpha
 
 ROOT=Path(__file__).resolve().parents[1]/'TvSat'
 BG=(12,14,16,255); PANEL=(23,25,28,255); GREEN=(0,230,118,255)
@@ -35,6 +35,8 @@ def build():
         total=height+FADE_TOP
         pixels=bytearray(c for y in range(total) for c in (*BODY_RGB,fade_alpha(y)))
         png(Path('assets')/(name.lower()+'-fade.png'),1,total,(0,0,0,0),pixels=pixels)
+    event_pixels=bytearray(c for x in range(1920) for c in (*BODY_RGB,event_fade_alpha(x)))
+    png(Path('assets/eventview-fade.png'),1920,1,(0,0,0,0),pixels=event_pixels)
     width=1792
     accent=bytearray()
     glow=bytearray()

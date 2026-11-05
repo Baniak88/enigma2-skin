@@ -65,10 +65,16 @@ def fake_picon(index,x,y,w,h):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
-    if src=='Title':return {'Menu':'Menu główne','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','SkinSelection':'Ustawienia skórki','TvSatSettings':'Wybierz rozmiar interfejsu','ConflictTimerOverview':'Konflikt zaplanowanych nagrań','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
+    if src=='Title':return {'Menu':'Menu główne','EventView':'Zapaleńcy. Historia polskiego filmu animowanego','InfoBarEventView':'Zapaleńcy. Historia polskiego filmu animowanego','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','SkinSelection':'Ustawienia skórki','TvSatSettings':'Wybierz rozmiar interfejsu','ConflictTimerOverview':'Konflikt zaplanowanych nagrań','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
     key=src or key
+    if screen in ('EventView','InfoBarEventView'):
+        if key=='channel':return 'CANAL+ FILM HD'
+        if key=='datetime':return '5 lis, 20:00 — 21:30'
+        if key=='duration':return '90 min'
+        if key=='epg_description':return 'Zapaleńcy. Historia polskiego filmu animowanego\n\nDokument pokazuje, jak sztuka animacji odzwierciedla zmieniającą się rzeczywistość społeczną w Polsce. Film ukazuje ewolucję technik i tematów, które uczyniły polską animację fenomenem światowym.\n\nPL, 2024\nReżyseria: Marcin Giżycki\nWystępują: Zbigniew Rybczyński\n\nHistoria twórców, ich eksperymentów i filmów, które zdobyły uznanie na całym świecie.'
+        if key.startswith('key_'):return {'key_green':'Dodaj timer','key_yellow':'Pojedynczy EPG','key_blue':'EPG wielu kanałów'}.get(key,'')
     if screen=='TvSatSettings':
         if key=='description':return 'Standard: siedem wierszy i oddzielne kolumny kanału oraz audycji.\n\nDuże napisy: większa czcionka, większe odstępy i sześć wierszy.\n\nZapisz dopasuje również listę kanałów i włączy pikony.'
         if key=='footnote':return 'Po zapisaniu potrzebny jest restart GUI. Anuluj pozostawia ustawienia bez zmian.'
@@ -288,11 +294,11 @@ def render(name,target,make_png=False,profile='TvSat',state='success'):
     s=SKIN.find(f"screen[@name='{name}']");ox,oy=map(int,s.get('position').split(','));sw,sh=map(int,s.get('size').split(','))
     out=['<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">',f'<title>TvSat — {name} — dane przykładowe</title>','<g font-family="DejaVu Sans, sans-serif">']
     rect(0,0,1920,1080,'#20282c')
-    if name=='InfoBar':
+    if name in ('InfoBar','EventView','InfoBarEventView'):
         # Deliberately synthetic TV backdrop, continued behind the whole bar.
         for xx,fill in ((0,'#315b78'),(640,'#7c3c4c'),(1280,'#47694a')):
             rect(xx,0,640,1080,fill)
-        text(64,300,1792,180,'Przykładowy obraz TV — test przezroczystości',42,'white','center')
+        if name=='InfoBar':text(64,300,1792,180,'Przykładowy obraz TV — test przezroczystości',42,'white','center')
     rect(ox,oy,sw,sh,s.get('backgroundColor'))
     for n in s:
         x,y=map(int,n.get('position').split(','));w,h=map(int,n.get('size').split(','));x+=ox;y+=oy
@@ -364,7 +370,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--png',action='store_true')
     p.add_argument('--thumbnail',action='store_true',help='Zapisz TvSat/prev.png dla wyboru skórek OpenATV (wymaga Pillow)')
     args=p.parse_args()
-    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('SkinSelection','skin-selection.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg'),('PluginBrowserGrid','plugin-grid.svg'),('PluginBrowserList','plugin-list.svg')]:
+    for name,target in [('Menu','menu.svg'),('QuickMenu','quickmenu.svg'),('ChoiceBox','choices.svg'),('ChannelSelection','channels.svg'),('BouquetSelector','bouquets.svg'),('GraphicalEPG','epg.svg'),('InfoBar','infobar.svg'),('Setup','setup.svg'),('EventView','event-info.svg'),('InfoBarEventView','event-info-overlay.svg'),('SkinSelection','skin-selection.svg'),('IpkgInstaller','installer.svg'),('Opkg','install-result.svg'),('PackageAction','packages.svg'),('Processing','processing.svg'),('Console','console.svg'),('FileCommander','filemanager.svg'),('FileCommanderContextMenu','file-operations.svg'),('FileCommanderData','file-info.svg'),('FileCommanderTextEditor','file-editor.svg'),('PluginBrowserGrid','plugin-grid.svg'),('PluginBrowserList','plugin-list.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'))
         # Refresh before SkinSelection embeds the thumbnail, so a palette
         # change is visible there on the first build as well.
@@ -376,7 +382,7 @@ if __name__=='__main__':
 
     for name,target,state in [('TvSatSettings','appearance.svg','success'),('ConflictTimerOverview','timer-conflict.svg','success'),('TimeshiftState','timeshift.svg','success'),('Opkg','install-progress.svg','progress'),('Opkg','install-error.svg','error'),('InfoBar','infobar-recording.svg','recording')]:
         render(name,target,args.png,state=state)
-    for name,target in [('Menu','menu-large.svg'),('ChannelSelection','channels-large.svg'),('InfoBar','infobar-large.svg'),('GraphicalEPG','epg-large.svg'),('TvSatSettings','appearance-large.svg')]:
+    for name,target in [('Menu','menu-large.svg'),('ChannelSelection','channels-large.svg'),('InfoBar','infobar-large.svg'),('GraphicalEPG','epg-large.svg'),('TvSatSettings','appearance-large.svg'),('EventView','event-info-large.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'),profile='TvSatLarge')
         if args.thumbnail and name=='Menu':
             from PIL import Image

@@ -12,6 +12,10 @@ def fade_alpha(y):
     return round(BODY_ALPHA*t*t*(3-2*t))
 
 
+def event_fade_alpha(x):
+    return fade_alpha(min(x,1919-x))
+
+
 def pixmap(parent,path,x,y,w,h,z):
     node=E.Element('ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap=f'TvSat/assets/{path}',scale='1',alphatest='blend',zPosition=str(z))
     parent.insert(0,node)
@@ -36,7 +40,21 @@ def modernize_bars(skin):
         pixmap(scene,'accent-glow.png',64,FADE_TOP-8,1792,18,-6)
         pixmap(scene,f'{name.lower()}-fade.png',0,0,1920,height+FADE_TOP,-10)
         if name=='InfoBar':
-            pixmap(scene,'now-badge.png',308,FADE_TOP+104,128,48,-4)
-            E.SubElement(scene,'eLabel',position=f'304,{FADE_TOP+34}',size='1,142',backgroundColor='line')
+            # Shift the whole text grid, including the badge/progress origins;
+            # keeping only the name away from the separator left TERAZ crowded.
+            for node in scene:
+                x,y=map(int,node.get('position').split(','))
+                if x in (320,440,600):
+                    node.set('position',f'{x+40},{y}')
+                    w,h=map(int,node.get('size').split(','))
+                    if w>1000:node.set('size',f'{w-40},{h}')
+            pixmap(scene,'now-badge.png',348,FADE_TOP+104,128,48,-4)
+            E.SubElement(scene,'eLabel',position=f'320,{FADE_TOP+34}',size='1,142',backgroundColor='line')
             for widget in scene.findall("widget[@source='session.CurrentService']"):
                 if widget.get('render')=='Label':widget.set('font','TvSatStrong;38')
+    for name in ('EventView','InfoBarEventView'):
+        scene=skin.find(f"screen[@name='{name}']")
+        scene.set('backgroundColor','transparent')
+        # Only the outer margins fade. Every character and scrollable paragraph
+        # retains the same dark 85%-opaque surface as the InfoBar body.
+        pixmap(scene,'eventview-fade.png',0,0,1920,1080,-10)

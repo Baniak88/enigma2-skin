@@ -62,5 +62,43 @@ class TransparencyPreview(unittest.TestCase):
                 for logo in scene.findall("widget[@render='Picon']"):
                     self.assertGreater(int(logo.get('zPosition')),int(background.get('zPosition')))
 
+    def test_separator_has_room_for_logo_name_and_now_badge_in_both_profiles(self):
+        for folder in ('TvSat','TvSatLarge'):
+            scene=E.parse(ROOT/folder/'skin.xml').getroot().find("screen[@name='InfoBar']")
+            logo=scene.find("widget[@render='Picon']")
+            separator=next(node for node in scene.findall('eLabel') if node.get('backgroundColor')=='line')
+            name=scene.find("widget[@source='session.CurrentService'][@render='Label']")
+            badge=scene.find("ePixmap[@pixmap='TvSat/assets/now-badge.png']")
+            line_x=int(separator.get('position').split(',')[0])
+            logo_right=int(logo.get('position').split(',')[0])+int(logo.get('size').split(',')[0])
+            self.assertGreaterEqual(line_x-logo_right,32)
+            self.assertGreaterEqual(int(name.get('position').split(',')[0])-line_x-1,32)
+            self.assertGreaterEqual(int(badge.get('position').split(',')[0])-line_x-1,24)
+            progress=scene.find("widget[@render='Progress']")
+            self.assertEqual(int(progress.get('position').split(',')[0]),int(name.get('position').split(',')[0]))
+            self.assertEqual(sum(int(node.split(',')[0]) for node in (progress.get('position'),progress.get('size'))),1856)
+
+    def test_event_view_fade_protects_all_text_and_keeps_description_scrollable(self):
+        from PIL import Image
+        for folder in ('TvSat','TvSatLarge'):
+            skin=E.parse(ROOT/folder/'skin.xml').getroot()
+            for name in ('EventView','InfoBarEventView'):
+                scene=skin.find(f"screen[@name='{name}']")
+                self.assertEqual(scene.get('backgroundColor'),'transparent')
+                background=scene.find("ePixmap[@pixmap='TvSat/assets/eventview-fade.png']")
+                self.assertLess(int(background.get('zPosition')),0)
+                with Image.open(ROOT/background.get('pixmap')) as mask:
+                    self.assertEqual(mask.getpixel((0,0))[3],0)
+                    self.assertEqual(mask.getpixel((32,0))[3],108)
+                    self.assertEqual(mask.getpixel((1919,0))[3],0)
+                    for node in scene:
+                        if node.get('font'):
+                            x=int(node.get('position').split(',')[0]);width=int(node.get('size').split(',')[0])
+                            self.assertTrue(all(mask.getpixel((px,0))[3]==217 for px in range(x,x+width)),(folder,name,node.attrib))
+                description=scene.find("widget[@name='epg_description']")
+                self.assertEqual(description.get('transparent'),'1')
+                self.assertIsNone(description.get('source'))
+                self.assertGreaterEqual(int(description.get('size').split(',')[1]),500)
+
 
 if __name__=='__main__':unittest.main()

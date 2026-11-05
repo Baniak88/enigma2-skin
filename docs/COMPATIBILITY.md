@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.6.0
+# OpenATV — zakres zgodności 0.6.1
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -355,3 +355,20 @@ Testy sprawdzają monotoniczny gradient, 15% przezroczystości pod tekstem i pik
 bezpieczną kolejność warstw oraz kompozycję SVG/PNG na kolorowym obrazie testowym.
 Podgląd PNG składa obrazy przez alpha_composite w RGBA. Test na fizycznym
 odbiorniku jest nadal wymagany, szczególnie poprawności mieszania alpha w OSD.
+
+## Margines pikon i fade EventView — 0.6.1
+
+W InfoBar przesunięto całą siatkę tekstu o 40 px w prawo i dopasowano szerokości,
+aby zachować prawy margines. Separator ma x=320, koniec pola pikony x=284,
+początek nazwy x=360, a początek podkładu TERAZ x=348. Testy obejmują odstępy
+po obu stronach linii, podkład TERAZ i wspólne wyrównanie postępu z nazwą.
+
+EventView i InfoBarEventView mają przezroczyste okno oraz ePixmap z zPosition=-10.
+Maska 1920×1 jest skalowana natywnie na pełny ekran. Na bocznych 64 px alpha
+rośnie od 0 do 217; cały obszar napisów ma alpha=217, czyli około 85% krycia.
+Kolor pozostaje #0c0e10. Native epg_description pozostaje GUI ScrollLabel;
+nie zmieniono zawartości EPG, przewijania ani akcji klawiszy.
+
+Obie zmiany dotyczą Standard i Large. Kontrole sprawdzają również, że żadne
+pole tekstowe nie wchodzi w przezroczyste obrzeże maski. Wizualizacje korzystają
+z przykładowego opisu audycji. Potrzebny pozostaje test efektu OSD na odbiorniku.
