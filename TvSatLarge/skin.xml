@@ -177,7 +177,7 @@
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="20" itemsDistances="20" listMarginLeft="12" listMarginRight="12" progressBarWidth="96" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="28" itemsDistances="28" listMarginLeft="12" listMarginRight="20" selectionPixmap="TvSat/assets/channel-selected.png" selectionZoom="0" progressBarWidth="88" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorEventProgressbarBorder="line" colorEventProgressbarBorderSelected="line" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <widget source="session.VideoPicture" render="Pig" position="1248,220" size="608,342" backgroundColor="transparent" zPosition="2" foregroundColor="white" />
@@ -186,24 +186,24 @@
       <convert type="ServiceName">Name</convert>
     </widget>
     <eLabel position="1216,654" size="640,1" backgroundColor="line" />
-    <widget source="ServiceEvent" render="Label" position="1216,668" size="640,70" font="TvSatText;32" foregroundColor="white" transparent="1">
+    <widget source="ServiceEvent" render="TvSatSummary" position="1216,668" size="640,88" font="TvSatText;34" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1216,750" size="130,33" font="TvSatText;27" foregroundColor="green" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1216,764" size="130,36" font="TvSatText;29" foregroundColor="green" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1356,750" size="170,33" font="TvSatText;27" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1356,764" size="170,36" font="TvSatText;29" foregroundColor="muted" transparent="1">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:– %H:%M</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1536,750" size="320,33" font="TvSatText;27" halign="right" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1536,764" size="320,36" font="TvSatText;27" halign="right" foregroundColor="muted" transparent="1">
       <convert type="TvSatEventRemaining" />
     </widget>
-    <widget source="ServiceEvent" render="Progress" position="1216,796" size="640,4" backgroundColor="line" borderWidth="0" foregroundColor="green">
+    <widget source="ServiceEvent" render="Progress" position="1216,812" size="640,4" backgroundColor="line" borderWidth="0" foregroundColor="green">
       <convert type="EventTime">Progress</convert>
     </widget>
-    <widget source="ServiceEvent" render="TvSatSummary" position="1216,812" size="640,120" font="TvSatText;28" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="TvSatSummary" position="1216,826" size="640,110" font="TvSatText;29" foregroundColor="muted" transparent="1">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
     <eLabel text="INFO — pełny opis" position="1216,944" size="640,29" font="TvSatText;24" foregroundColor="muted" transparent="1" />
@@ -242,7 +242,7 @@
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="20" itemsDistances="20" listMarginLeft="12" listMarginRight="12" progressBarWidth="96" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="28" itemsDistances="28" listMarginLeft="12" listMarginRight="20" selectionPixmap="TvSat/assets/channel-selected.png" selectionZoom="0" progressBarWidth="88" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorEventProgressbarBorder="line" colorEventProgressbarBorderSelected="line" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <widget source="session.VideoPicture" render="Pig" position="1248,220" size="608,342" backgroundColor="transparent" zPosition="2" foregroundColor="white" />
@@ -251,24 +251,24 @@
       <convert type="ServiceName">Name</convert>
     </widget>
     <eLabel position="1216,654" size="640,1" backgroundColor="line" />
-    <widget source="ServiceEvent" render="Label" position="1216,668" size="640,70" font="TvSatText;32" foregroundColor="white" transparent="1">
+    <widget source="ServiceEvent" render="TvSatSummary" position="1216,668" size="640,88" font="TvSatText;34" foregroundColor="white" transparent="1">
       <convert type="EventName">Name</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1216,750" size="130,33" font="TvSatText;27" foregroundColor="green" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1216,764" size="130,36" font="TvSatText;29" foregroundColor="green" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1356,750" size="170,33" font="TvSatText;27" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1356,764" size="170,36" font="TvSatText;29" foregroundColor="muted" transparent="1">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:– %H:%M</convert>
     </widget>
-    <widget source="ServiceEvent" render="Label" position="1536,750" size="320,33" font="TvSatText;27" halign="right" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="Label" position="1536,764" size="320,36" font="TvSatText;27" halign="right" foregroundColor="muted" transparent="1">
       <convert type="TvSatEventRemaining" />
     </widget>
-    <widget source="ServiceEvent" render="Progress" position="1216,796" size="640,4" backgroundColor="line" borderWidth="0" foregroundColor="green">
+    <widget source="ServiceEvent" render="Progress" position="1216,812" size="640,4" backgroundColor="line" borderWidth="0" foregroundColor="green">
       <convert type="EventTime">Progress</convert>
     </widget>
-    <widget source="ServiceEvent" render="TvSatSummary" position="1216,812" size="640,120" font="TvSatText;28" foregroundColor="muted" transparent="1">
+    <widget source="ServiceEvent" render="TvSatSummary" position="1216,826" size="640,110" font="TvSatText;29" foregroundColor="muted" transparent="1">
       <convert type="EventName">ExtendedDescription</convert>
     </widget>
     <eLabel text="INFO — pełny opis" position="1216,944" size="640,29" font="TvSatText;24" foregroundColor="muted" transparent="1" />
@@ -307,7 +307,7 @@
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="20" itemsDistances="20" listMarginLeft="12" listMarginRight="12" progressBarWidth="96" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="28" itemsDistances="28" listMarginLeft="12" listMarginRight="20" selectionPixmap="TvSat/assets/channel-selected.png" selectionZoom="0" progressBarWidth="88" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorEventProgressbarBorder="line" colorEventProgressbarBorderSelected="line" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <ePixmap position="1216,220" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />
@@ -367,7 +367,7 @@
     <widget source="key_blue" render="Label" position="1430,998" size="414,50" font="TvSatText;29" valign="center" conditional="key_blue" wrap="ellipsis" foregroundColor="white" transparent="1">
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="20" itemsDistances="20" listMarginLeft="12" listMarginRight="12" progressBarWidth="96" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
+    <widget name="list" position="64,220" size="1088,696" serviceNameFont="TvSatText;35" serviceInfoFont="TvSatText;30" serviceNumberFont="TvSatText;30" serviceItemHeight="116" foregroundColorEvent="muted" fieldMargins="28" itemsDistances="28" listMarginLeft="12" listMarginRight="20" selectionPixmap="TvSat/assets/channel-selected.png" selectionZoom="0" progressBarWidth="88" progressbarHeight="6" progressbarBorderWidth="0" foregroundColorEventSelected="white" colorEventProgressbar="green" colorEventProgressbarSelected="green" colorEventProgressbarBorder="line" colorEventProgressbarBorderSelected="line" colorServiceRecorded="red" colorServiceRecording="red" backgroundColor="bg" foregroundColor="white" backgroundColorSelected="selected" foregroundColorSelected="white" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="0" scrollbarOffset="8" scrollbarForegroundColor="muted" scrollbarBackgroundColor="line" />
     <eLabel text="OK — kanał     INFO — opis     EXIT — powrót" position="64,936" size="1088,32" font="TvSatText;26" foregroundColor="muted" transparent="1" />
     <eLabel position="1184,220" size="2,704" backgroundColor="line" />
     <ePixmap position="1216,220" size="220,132" pixmap="TvSat/picon_default.png" scale="1" alphatest="blend" zPosition="0" />

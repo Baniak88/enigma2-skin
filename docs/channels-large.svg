@@ -22,52 +22,53 @@
 <rect x="64" y="220" width="1088" height="116" fill="#25473a" fill-opacity="1.000000"/>
 <rect x="64" y="220" width="4" height="116" fill="#00e676" fill-opacity="1.000000"/>
 <rect x="72" y="335" width="1080" height="1" fill="#25473a" fill-opacity="1.000000"/>
-<text x="132" y="289.25" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">1</text>
-<text x="198.0" y="279.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">C+ PREMIUM</text>
-<text x="268" y="267.25" font-size="38" font-weight="normal" fill="#f3f6fa" text-anchor="start">CANAL+ PREMIUM</text>
-<text x="268" y="319.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wszystko przed nami</text>
-<rect x="1044" y="304" width="88" height="8" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="304" width="61.599999999999994" height="8" fill="#00e676" fill-opacity="1.000000"/>
+<text x="132" y="288.5" font-size="28" font-weight="normal" fill="#f3f6fa" text-anchor="end">15</text>
+<text x="198.0" y="279.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">SUPER</text>
+<text x="198.0" y="297.75" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">POLSAT</text>
+<text x="268" y="265.5" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">Super Polsat HD</text>
+<text x="268" y="315.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="start">Hell&#x27;s Kitchen — Piekielna kuchnia (odc. 4)</text>
+<rect x="1044" y="302" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1044" y="302" width="61.599999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <rect x="64" y="336" width="4" height="116" fill="#0c0e10" fill-opacity="1.000000"/>
 <rect x="72" y="451" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="405.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="end">2</text>
-<text x="198.0" y="395.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">C+ FILM</text>
-<text x="268" y="383.25" font-size="38" font-weight="normal" fill="#f3f6fa" text-anchor="start">CANAL+ FILM</text>
-<text x="268" y="435.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wieczór filmowy</text>
-<rect x="1044" y="420" width="88" height="8" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="420" width="55.43999999999999" height="8" fill="#00e676" fill-opacity="1.000000"/>
+<text x="132" y="404.5" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="end">16</text>
+<text x="198.0" y="395.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">RODZINA</text>
+<text x="268" y="381.5" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat Rodzina HD</text>
+<text x="268" y="431.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="start">Dzikie psy 1 (odc. 2)</text>
+<rect x="1044" y="418" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1044" y="418" width="55.43999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <rect x="64" y="452" width="4" height="116" fill="#0c0e10" fill-opacity="1.000000"/>
 <rect x="72" y="567" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="521.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="end">3</text>
-<text x="198.0" y="511.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">C+ SPORT</text>
-<text x="268" y="499.25" font-size="38" font-weight="normal" fill="#f3f6fa" text-anchor="start">CANAL+ SPORT</text>
-<text x="268" y="551.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">Magazyn sportowy</text>
-<rect x="1044" y="536" width="88" height="8" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="536" width="49.279999999999994" height="8" fill="#00e676" fill-opacity="1.000000"/>
+<text x="132" y="520.5" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="end">17</text>
+<text x="198.0" y="511.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TV6</text>
+<text x="268" y="497.5" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">TV6 HD</text>
+<text x="268" y="547.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="start">Policjantki i policjanci 22 (odc. 45)</text>
+<rect x="1044" y="534" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1044" y="534" width="49.279999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <rect x="64" y="568" width="4" height="116" fill="#0c0e10" fill-opacity="1.000000"/>
 <rect x="72" y="683" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="637.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="end">4</text>
-<text x="198.0" y="627.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">C+ SERIALE</text>
-<text x="268" y="615.25" font-size="38" font-weight="normal" fill="#f3f6fa" text-anchor="start">CANAL+ SERIALE</text>
-<text x="268" y="667.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">Nowy rozdział</text>
-<rect x="1044" y="652" width="88" height="8" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="652" width="43.12" height="8" fill="#00e676" fill-opacity="1.000000"/>
+<text x="132" y="636.5" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="end">18</text>
+<text x="198.0" y="627.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVP 3</text>
+<text x="268" y="613.5" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">TVP 3</text>
+<text x="268" y="663.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="start">Program informacyjny</text>
+<rect x="1044" y="650" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1044" y="650" width="43.12" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <rect x="64" y="684" width="4" height="116" fill="#0c0e10" fill-opacity="1.000000"/>
 <rect x="72" y="799" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="753.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="end">5</text>
-<text x="198.0" y="743.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVP 1</text>
-<text x="268" y="731.25" font-size="38" font-weight="normal" fill="#f3f6fa" text-anchor="start">TVP 1 HD</text>
-<text x="268" y="783.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wiadomości dnia</text>
-<rect x="1044" y="768" width="88" height="8" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="768" width="36.959999999999994" height="8" fill="#00e676" fill-opacity="1.000000"/>
+<text x="132" y="752.5" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="end">19</text>
+<text x="198.0" y="743.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">POLITYKA</text>
+<text x="268" y="729.5" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat News Polityka HD</text>
+<text x="268" y="779.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="start">Debata polityczna — wydanie specjalne</text>
+<rect x="1044" y="766" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1044" y="766" width="36.959999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <rect x="64" y="800" width="4" height="116" fill="#0c0e10" fill-opacity="1.000000"/>
 <rect x="72" y="915" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="869.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="end">6</text>
-<text x="198.0" y="859.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVP 2</text>
-<text x="268" y="847.25" font-size="38" font-weight="normal" fill="#f3f6fa" text-anchor="start">TVP 2 HD</text>
-<text x="268" y="899.0" font-size="32" font-weight="normal" fill="#c2ccd7" text-anchor="start">Na dobre i na złe</text>
-<rect x="1044" y="884" width="88" height="8" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="884" width="30.799999999999994" height="8" fill="#00e676" fill-opacity="1.000000"/>
+<text x="132" y="868.5" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="end">20</text>
+<text x="198.0" y="859.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">PARAMOUNT</text>
+<text x="268" y="845.5" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">Paramount Network Polska</text>
+<text x="268" y="895.25" font-size="30" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wojownicze Żółwie Ninja: Zmutowany chaos</text>
+<rect x="1044" y="882" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1044" y="882" width="30.799999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
 <text x="64" y="962.0" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="start">OK — kanał     INFO — opis     EXIT — powrót</text>
 <rect x="1184" y="220" width="2" height="704" fill="#303438" fill-opacity="1.000000"/>
 <rect x="1248" y="220" width="608" height="342" fill="#12232e" fill-opacity="1.000000"/>
@@ -75,18 +76,19 @@
 <polygon points="1530.0,353.0 1530.0,409.0 1578.0,381.0" fill="#00e676"/>
 <text x="1552.0" y="454.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="middle">Podgląd TV · 16:9</text>
 <text x="1216" y="596.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="start">WYBRANY KANAŁ</text>
-<text x="1216" y="636.0" font-size="30" font-weight="normal" fill="#00e676" text-anchor="start">CANAL+ PREMIUM</text>
+<text x="1216" y="636.0" font-size="30" font-weight="normal" fill="#00e676" text-anchor="start">Super Polsat HD</text>
 <rect x="1216" y="654" width="640" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="1216" y="700.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wszystko przed nami</text>
-<text x="1216" y="777.0" font-size="27" font-weight="normal" fill="#00e676" text-anchor="start">20:00</text>
-<text x="1356" y="777.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">– 21:30</text>
-<text x="1856" y="777.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="end">Do końca: 15 min</text>
-<rect x="1216" y="796" width="640" height="4" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1216" y="796" width="640" height="4" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1216" y="796" width="320" height="4" fill="#00e676" fill-opacity="1.000000"/>
-<text x="1216" y="840.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wieczór z wielkim kinem. Nieoczekiwane</text>
-<text x="1216" y="875.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">spotkanie zmienia życie bohaterów.</text>
-<text x="1216" y="910.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Opowieść o odwadze, przyjaźni i…</text>
+<text x="1216" y="702.0" font-size="34" font-weight="normal" fill="#f3f6fa" text-anchor="start">Hell&#x27;s Kitchen — Piekielna</text>
+<text x="1216" y="744.5" font-size="34" font-weight="normal" fill="#f3f6fa" text-anchor="start">kuchnia (odc. 4)</text>
+<text x="1216" y="793.0" font-size="29" font-weight="normal" fill="#00e676" text-anchor="start">20:00</text>
+<text x="1356" y="793.0" font-size="29" font-weight="normal" fill="#c2ccd7" text-anchor="start">– 21:30</text>
+<text x="1856" y="791.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="end">Do końca: 15 min</text>
+<rect x="1216" y="812" width="640" height="4" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1216" y="812" width="640" height="4" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1216" y="812" width="320" height="4" fill="#00e676" fill-opacity="1.000000"/>
+<text x="1216" y="855.0" font-size="29" font-weight="normal" fill="#c2ccd7" text-anchor="start">Uczestnicy programu mierzą się z</text>
+<text x="1216" y="891.25" font-size="29" font-weight="normal" fill="#c2ccd7" text-anchor="start">wymagającymi zadaniami w kuchni. O</text>
+<text x="1216" y="927.5" font-size="29" font-weight="normal" fill="#c2ccd7" text-anchor="start">zwycięstwie zdecydują umiejętności,…</text>
 <text x="1216" y="968.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="start">INFO — pełny opis</text>
 </g>
 </svg>

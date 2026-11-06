@@ -19,14 +19,16 @@
 <text x="84" y="290.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Rozmiar interfejsu</text>
 <text x="1161.6000000000001" y="290.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="end">Standard</text>
 <rect x="1216" y="236" width="2" height="688" fill="#303438" fill-opacity="1.000000"/>
-<text x="1256" y="274.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Standard: siedem wierszy i oddzielne</text>
-<text x="1256" y="309.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">kolumny kanału oraz audycji.</text>
+<text x="1256" y="274.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Standard: siedem pozycji. Nazwa</text>
+<text x="1256" y="309.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">kanału u góry, audycja pod spodem.</text>
 <text x="1256" y="344.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start"></text>
-<text x="1256" y="379.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Duże napisy: większa czcionka,</text>
-<text x="1256" y="414.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">większe odstępy i sześć wierszy.</text>
-<text x="1256" y="449.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start"></text>
-<text x="1256" y="484.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Zapisz dopasuje również listę kanałów</text>
-<text x="1256" y="519.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">i włączy pikony.</text>
+<text x="1256" y="379.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Duże napisy: większa czcionka i sześć</text>
+<text x="1256" y="414.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">pozycji, także z dwiema liniami</text>
+<text x="1256" y="449.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">tekstu.</text>
+<text x="1256" y="484.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start"></text>
+<text x="1256" y="519.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">Naciśnij ZIELONY — Zapisz również po</text>
+<text x="1256" y="554.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">aktualizacji, jeśli kanał i audycja</text>
+<text x="1256" y="589.0" font-size="28" font-weight="normal" fill="#c2ccd7" text-anchor="start">nadal są w jednym wierszu.</text>
 <text x="1256" y="742.0" font-size="26" font-weight="normal" fill="#f5ce55" text-anchor="start">Po zapisaniu potrzebny jest restart GUI.</text>
 <text x="1256" y="774.5" font-size="26" font-weight="normal" fill="#f5ce55" text-anchor="start">Anuluj pozostawia ustawienia bez zmian.</text>
 <text x="64" y="940.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="start">← →  Zmień wariant     Zielony — zapisz     EXIT — anuluj</text>
