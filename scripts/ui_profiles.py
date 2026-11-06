@@ -13,25 +13,38 @@ def write_xml(path,root):
 def service_templates(large=False):
     root=E.Element('templates')
     name='TvSatLarge' if large else 'TvSat'
-    height=116 if large else 100
-    template=E.SubElement(root,'template',name=name,component='serviceList',fonts='TvSatStrong;36,TvSatText;30,TvSatText;28' if large else 'TvSatStrong;32,TvSatText;27,TvSatText;26')
+    height=76
+    template=E.SubElement(root,'template',name=name,component='serviceList',fonts='TvSatStrong;30,TvSatText;25,TvSatText;26' if large else 'TvSatStrong;28,TvSatText;23,TvSatText;24')
     def item(mode,tag,**attrs):
         return E.SubElement(mode,tag,{k:str(v) for k,v in attrs.items()})
     for kind in ('services','bouquets','other'):
-        mode=E.SubElement(template,'mode',name=kind,itemHeight=str(height),itemWidth='1088',foregroundColor='white',foregroundColorSelected='white',backgroundColor='bg',backgroundColorSelected='selected')
+        mode=E.SubElement(template,'mode',name=kind,itemHeight=str(height),itemWidth='1136',foregroundColor='white',foregroundColorSelected='white',backgroundColor='bg',backgroundColorSelected='selected')
         item(mode,'rectangle',position='0,0',size=f'4,{height}',foregroundColor='bg',foregroundColorSelected='green')
-        item(mode,'rectangle',position=f'8,{height-1}',size='1080,1',foregroundColor='line',foregroundColorSelected='selected')
+        item(mode,'rectangle',position=f'8,{height-1}',size='1128,1',foregroundColor='line',foregroundColorSelected='selected')
         if kind=='other':
-            item(mode,'text',index='EntryName',position='24,0',size=f'1040,{height}',font='0',verticalAlignment='center',wrap='ellipsis')
+            for index in ('FolderImage','MarkerImage'):
+                item(mode,'pixmap',index=index,position='16,22',size='32,32',alpha='blend',scale='scaleCenter')
+            item(mode,'text',index='EntryName',position='64,0',size=f'1048,{height}',font='0',verticalAlignment='center',wrap='ellipsis')
             continue
-        item(mode,'text',index='Number',position='12,0',size=f'56,{height}',font='2',horizontalAlignment='right',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='white')
-        item(mode,'pixmap',index='Picon',position=f'84,{(height-56)//2}',size='100,56',alpha='blend',scale='scaleCenter')
+        item(mode,'text',index='Number',position='4,0',size=f'52,{height}',font='2',horizontalAlignment='right',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='white')
+        item(mode,'pixmap',index='Picon',position='72,11',size='96,54',alpha='blend',scale='scaleCenter')
         # Both sizes use two distinct text lines. Channel names can use the full
         # upper line; programme titles end before the separate progress slot.
-        item(mode,'text',index='ServiceName',position='204,8',size='860,48' if large else '860,40',font='0',verticalAlignment='center',wrap='ellipsis')
-        item(mode,'text',index='Title1',position='204,64' if large else '204,54',size='748,40' if large else '748,36',font='1',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='muted',wrap='ellipsis')
-        item(mode,'progress',index='Progress',position='980,82' if large else '980,68',size='88,6',foregroundColor='green',foregroundColorSelected='green',backgroundColor='line',backgroundColorSelected='line',borderWidth='0')
+        item(mode,'text',index='ServiceName',position='184,2',size='928,36',font='0',verticalAlignment='center',wrap='ellipsis')
+        item(mode,'text',index='Title1',position='184,40',size='800,32',font='1',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='muted',wrap='ellipsis')
+        item(mode,'progress',index='Progress',position='1016,54',size='96,6',foregroundColor='green',foregroundColorSelected='green',backgroundColor='line',backgroundColorSelected='line',borderWidth='0')
     return root
+
+
+def history_template(large=False):
+    return ('{"fonts":[gFont("TvSatStrong",%d),gFont("TvSatText",%d),gFont("TvSatText",%d)],"itemHeight":112,"itemWidth":664,"template":[' % ((32,25,22) if large else (30,24,21))+
+        'MultiContentEntryRectangle(pos=(0,0),size=(3,112),backgroundColor=0x000c0e10,backgroundColorSelected=0x0000e676),'
+        'MultiContentEntryRectangle(pos=(8,111),size=(648,1),backgroundColor=0x00303438,backgroundColorSelected=0x0025473a),'
+        'MultiContentEntryText(pos=(4,0),size=(16,112),font=2,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER,text=1,color=0x0000e676,color_sel=0x0000e676),'
+        'MultiContentEntryPixmapAlphaBlend(pos=(24,30),size=(88,50),png=6,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
+        'MultiContentEntryText(pos=(128,4),size=(512,40),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=2),'
+        'MultiContentEntryText(pos=(128,46),size=(512,32),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=3,color=0x00c2ccd7,color_sel=0x00c2ccd7),'
+        'MultiContentEntryText(pos=(128,80),size=(512,28),font=2,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=5,color=0x00c2ccd7,color_sel=0x00c2ccd7)]}')
 
 
 def bigger_height(value):
@@ -59,7 +72,10 @@ def enlarge_template(code):
 
 def large_skin(skin):
     large=deepcopy(skin)
+    history_screens=[large.find(f"screen[@name='{name}']") for name in ('HistoryZap','HistoryZapSelector')]
+    history_nodes={id(n) for scene in history_screens for n in scene.iter()}
     for node in large.iter():
+        if id(node) in history_nodes:continue
         for key,value in list(node.attrib.items()):
             if key.lower().endswith('font') and ';' in value:
                 family,size=value.rsplit(';',1)
@@ -87,7 +103,21 @@ def large_skin(skin):
         screen=large.find(f"screen[@name='{name}']")
         if screen.get('label'):screen.set('label',screen.get('label').replace('TvSat','TvSat Large'))
         widget=screen.find("widget[@name='list']")
-        widget.set('size','1088,696');widget.set('serviceItemHeight','116')
+        widget.set('size','1136,760');widget.set('serviceItemHeight','76')
+        widget.set('serviceNameFont','TvSatText;30');widget.set('serviceInfoFont','TvSatText;25')
+    for name in ('SimpleChannelSelection','SlimChannelSelection'):
+        widget=large.find(f"screen[@name='{name}']/widget[@name='list']")
+        widget.set('size','1840,760');widget.set('serviceItemHeight','76')
+        widget.set('serviceNameFont','TvSatText;30');widget.set('serviceInfoFont','TvSatText;25')
+    for name in ('BouquetSelector','EPGBouquetSelector'):
+        widget=large.find(f"screen[@name='{name}']/widget[@name='menu']")
+        widget.set('itemHeight','76');widget.set('size','1136,760')
+    for scene in history_screens:
+        scene.find("widget[@source='menu']/convert").text=history_template(True)
+        for node in scene:
+            if node.get('font'):
+                family,size=node.get('font').rsplit(';',1)
+                node.set('font',f'{family};{int(size)+2}')
     # Keep short labels tall enough for the enlarged baseline/descenders.
     for scene in large.findall('screen'):
         screen_height=int(scene.get('size').split(',')[1])

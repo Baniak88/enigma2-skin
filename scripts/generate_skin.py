@@ -79,6 +79,16 @@ def footer(s, keys=('red', 'green', 'yellow', 'blue'), margin=64):
                conditional=f'key_{key}', converts=[('ConditionalShowHide',None)])
 
 
+def compact_header(s,section):
+    box(s,40,32,4,26,'green')
+    label(s,'TvSat',60,20,220,48,36,family='TvSatStrong')
+    add(s,'ePixmap',position='304,30',size='28,28',pixmap='TvSat/assets/line-tv.png',alphatest='blend',scale='1')
+    label(s,section,348,28,1100,40,24,'muted')
+    source(s,'global.CurrentTime',1624,20,256,48,32,halign='right',converts=[('ClockToText','Default')])
+    add(s,'ePixmap',position='40,88',size='1840,2',pixmap='TvSat/assets/accent-fade.png',alphatest='blend',scale='1')
+    source(s,'Title',40,112,1840,40,25,'muted',noWrap='1')
+
+
 LIST = dict(backgroundColor='bg', foregroundColor='white',
             backgroundColorSelected='selected', foregroundColorSelected='white', scrollbarMode='showOnDemand',
             scrollbarWidth='6', scrollbarBorderWidth='0', scrollbarOffset='8',
@@ -179,69 +189,65 @@ def build():
     widget(s,'description',64,888,1792,72,25,foregroundColor='muted',transparent='1')
 
     for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio'):
-        s = screen(name); header(s, 'TELEWIZJA' if name != 'ChannelSelectionRadio' else 'RADIO'); footer(s)
+        s = screen(name); compact_header(s, 'TELEWIZJA' if name != 'ChannelSelectionRadio' else 'RADIO'); footer(s,margin=40)
         if name != 'ChannelSelectionRadio':
             s.set('base','ChannelSelection')
-            s.set('label',{'ChannelSelection':'TvSat — standard z TV','ChannelSelection_PIG':'TvSat — podgląd TV','ChannelSelection_NoPIG':'TvSat — bez podglądu'}[name])
-        widget(s,'list',64,220,1088,700,serviceNameFont='TvSatText;31',serviceInfoFont='TvSatText;26',
-            serviceNumberFont='TvSatText;26',serviceItemHeight='100',foregroundColorEvent='muted',
-            fieldMargins='28',itemsDistances='28',listMarginLeft='12',listMarginRight='20',
+            s.set('label',{'ChannelSelection':'TvSat — 10 kanałów z TV','ChannelSelection_PIG':'TvSat — podgląd TV','ChannelSelection_NoPIG':'TvSat — bez podglądu'}[name])
+        widget(s,'list',40,168,1136,760,serviceNameFont='TvSatText;28',serviceInfoFont='TvSatText;23',
+            serviceNumberFont='TvSatText;24',serviceItemHeight='76',foregroundColorEvent='muted',
+            fieldMargins='16',itemsDistances='16',listMarginLeft='8',listMarginRight='16',
             selectionPixmap='TvSat/assets/channel-selected.png',selectionZoom='0',
-            progressBarWidth='88',progressbarHeight='6',progressbarBorderWidth='0',
-            foregroundColorEventSelected='white',colorEventProgressbar='green',colorEventProgressbarSelected='green',
+            progressBarWidth='96',progressbarHeight='6',progressbarBorderWidth='0',
+            foregroundColorEventSelected='muted',colorEventProgressbar='green',colorEventProgressbarSelected='green',
             colorEventProgressbarBorder='line',colorEventProgressbarBorderSelected='line',
             colorServiceRecorded='red',colorServiceRecording='red',**LIST)
-        label(s,'OK — kanał     INFO — opis     EXIT — powrót',64,936,1088,30,22,'muted')
-        box(s,1184,220,2,704)
+        label(s,'OK — kanał     INFO — opis     EXIT — powrót',40,940,1136,28,21,'muted')
+        box(s,1200,168,2,760)
         video = name in ('ChannelSelection','ChannelSelection_PIG')
         if video:
-            # Decoder 0: obraz aktualnie oglądanego kanału, bez drugiego tunera.
-            # Brak dekoracji w prostokącie video: przezroczyste okno OSD odsłania obraz.
-            source(s,'session.VideoPicture',1248,220,608,342,render='Pig',backgroundColor='transparent',zPosition='2')
-            label(s,'WYBRANY KANAŁ',1216,572,640,28,20,'muted')
-            source(s,'ServiceEvent',1216,606,640,38,26,'green',converts=[('ServiceName','Name')],noWrap='1')
-            box(s,1216,654,640,1)
-            source(s,'ServiceEvent',1216,668,640,88,30,render='TvSatSummary',converts=[('EventName','Name')])
-            source(s,'ServiceEvent',1216,764,130,36,25,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
-            source(s,'ServiceEvent',1356,764,170,36,25,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
-            source(s,'ServiceEvent',1536,764,320,36,23,'muted',halign='right',converts=[('TvSatEventRemaining','')])
-            source(s,'ServiceEvent',1216,812,640,4,render='Progress',color='green',backgroundColor='line',borderWidth='0',converts=[('EventTime','Progress')])
-            source(s,'ServiceEvent',1216,826,640,110,25,'muted',converts=[('EventName','ExtendedDescription')])
-            label(s,'INFO — pełny opis',1216,944,640,28,20,'muted')
+            source(s,'session.VideoPicture',1272,168,608,342,render='Pig',backgroundColor='transparent',zPosition='2')
+            label(s,'ZAZNACZONA POZYCJA',1232,526,648,28,20,'muted')
+            source(s,'ServiceEvent',1232,558,648,38,26,'green',converts=[('ServiceName','Name')],noWrap='1')
+            box(s,1232,606,648,1)
+            source(s,'ServiceEvent',1232,620,648,88,30,render='TvSatSummary',converts=[('EventName','Name')])
+            source(s,'ServiceEvent',1232,724,130,36,25,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
+            source(s,'ServiceEvent',1372,724,170,36,25,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
+            source(s,'ServiceEvent',1552,724,328,36,23,'muted',halign='right',converts=[('TvSatEventRemaining','')])
+            source(s,'ServiceEvent',1232,774,648,4,render='Progress',color='green',backgroundColor='line',borderWidth='0',converts=[('EventTime','Progress')])
+            source(s,'ServiceEvent',1232,790,648,128,25,'muted',converts=[('EventName','ExtendedDescription')])
+            label(s,'INFO — pełny opis',1232,940,648,28,20,'muted')
         else:
-            picon(s,'ServiceEvent',1216,220)
-            source(s,'ServiceEvent',1216,384,640,48,30,'green',converts=[('ServiceName','Name')],noWrap='1')
-            event(s,'ServiceEvent',1216,464,640)
-            label(s,'INFO — pełny opis audycji',1216,878,640,44,24,'muted')
+            picon(s,'ServiceEvent',1232,168)
+            source(s,'ServiceEvent',1232,352,648,48,30,'green',converts=[('ServiceName','Name')],noWrap='1')
+            event(s,'ServiceEvent',1232,432,648)
+            label(s,'INFO — pełny opis audycji',1232,878,648,44,24,'muted')
 
+    from ui_profiles import history_template
     for name in ('HistoryZap','HistoryZapSelector'):
-        s=screen(name);header(s,'HISTORIA KANAŁÓW');footer(s,('red','green'))
-        # Native history rows have eight fields, including the service reference
-        # at index 7. Only the display template changes; selection stays native.
-        title=s.find("widget[@source='Title']");s.remove(title)
-        label(s,'Wybierz kanał, do którego chcesz wrócić.',64,150,1792,48,27,'muted')
-        n=source(s,'menu',64,220,1792,700,render='Listbox',selectionPixmap='TvSat/assets/history-selected.png',selectionZoom='0',**LIST)
-        templated(n,'{"fonts":[gFont("TvSatStrong",32),gFont("TvSatText",29),gFont("TvSatText",27)],"itemHeight":140,"itemWidth":1792,"template":['
-            'MultiContentEntryRectangle(pos=(0,0),size=(4,140),backgroundColor=0x000c0e10,backgroundColorSelected=0x0000e676),'
-            'MultiContentEntryRectangle(pos=(8,139),size=(1784,1),backgroundColor=0x00303438,backgroundColorSelected=0x0025473a),'
-            'MultiContentEntryText(pos=(16,0),size=(32,140),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER,text=1,color=0x0000e676,color_sel=0x0000e676),'
-            'MultiContentEntryPixmapAlphaBlend(pos=(72,30),size=(144,80),png=6,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
-            'MultiContentEntryText(pos=(248,14),size=(1000,44),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=2),'
-            'MultiContentEntryText(pos=(1280,14),size=(488,44),font=2,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=5,color=0x00c2ccd7,color_sel=0x00c2ccd7),'
-            'MultiContentEntryText(pos=(248,70),size=(1520,48),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=3,color=0x00c2ccd7,color_sel=0x00c2ccd7)]}')
-        label(s,'↑ ↓ — wybierz kanał     OK — przełącz     EXIT — powrót',64,936,1192,30,22,'muted')
-        label(s,'» Oglądany kanał',1280,936,576,30,22,'green',halign='right')
+        s=screen(name,pos=(40,80),size=(704,920),bg='overlay')
+        add(s,'ePixmap',position='24,28',size='28,28',pixmap='TvSat/assets/line-history.png',alphatest='blend',scale='1')
+        label(s,'OSTATNIE KANAŁY',68,22,612,44,28,family='TvSatStrong')
+        box(s,20,84,664,2,'green')
+        label(s,'» Oglądany kanał',24,100,656,28,20,'muted')
+        n=source(s,'menu',20,144,664,672,render='Listbox',selectionPixmap='TvSat/assets/history-selected.png',selectionZoom='0',**LIST)
+        templated(n,history_template())
+        for key,x in (('red',24),('green',352)):
+            source(s,f'key_{key}',x,836,4,18,render='FixedLabel',text=' ',backgroundColor=key,transparent='0',
+                conditional=f'key_{key}',converts=[('ConditionalShowHide',None)])
+            source(s,f'key_{key}',x+16,826,296,36,22,noWrap='1',valign='center',conditional=f'key_{key}',converts=[('ConditionalShowHide',None)])
+        label(s,'↑ ↓ — wybierz     OK — przełącz',24,876,656,28,22,'muted')
 
     for name in ('SimpleChannelSelection','SlimChannelSelection'):
-        s=screen(name); header(s,'WYBIERZ KANAŁ / BUKIET'); footer(s)
-        widget(s,'list',64,236,1792,684,serviceNameFont='TvSatText;30',serviceInfoFont='TvSatText;25',serviceNumberFont='TvSatText;26',serviceItemHeight='68',**LIST)
+        s=screen(name); compact_header(s,'WYBIERZ KANAŁ / BUKIET'); footer(s,margin=40)
+        widget(s,'list',40,168,1840,760,serviceNameFont='TvSatText;28',serviceInfoFont='TvSatText;23',serviceNumberFont='TvSatText;24',serviceItemHeight='76',**LIST)
 
     for name in ('BouquetSelector','EPGBouquetSelector'):
-        s=screen(name); header(s,'WYBÓR BUKIETU'); footer(s,('red','green'))
-        widget(s,'menu',64,240,1120,640,32,itemHeight='80',**LIST)
-        box(s,1248,240,2,640)
-        label(s,'TWOJE KANAŁY',1312,260,544,70,38,'green')
-        label(s,'Wybierz bukiet z listy.\n\nOK — otwórz\nEXIT — wróć',1312,372,544,300,30,'muted')
+        s=screen(name); compact_header(s,'WYBÓR BUKIETU'); footer(s,('red','green'),margin=40)
+        widget(s,'menu',40,168,1136,760,30,itemHeight='76',**LIST)
+        box(s,1200,168,2,760)
+        add(s,'ePixmap',position='1264,196',size='40,40',pixmap='TvSat/assets/line-bouquet.png',alphatest='blend',scale='1')
+        label(s,'TWOJE KANAŁY',1324,190,556,56,32,'green')
+        label(s,'Wybierz bukiet z listy.\n\nOK — otwórz\nEXIT — wróć',1264,288,616,300,28,'muted')
 
     epg_attrs=dict(ServiceFontGraphical='TvSatText;26',EntryFontGraphical='TvSatText;26',ServiceFontInfobar='TvSatText;26',
         EventFontInfobar='TvSatText;28',EventFontSingle='TvSatText;30',EventFontMulti='TvSatText;29',EventFontVertical='TvSatText;26',

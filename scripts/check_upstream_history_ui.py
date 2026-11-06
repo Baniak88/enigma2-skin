@@ -107,7 +107,9 @@ def probe(version, history_source, template_source, helper_source):
             matched=next(name for name in dialog.skinName if skin.find(f"screen[@name='{name}']") is not None)
             assert matched==('HistoryZap' if version=='8.0' else 'HistoryZapSelector')
             for name in ('HistoryZap','HistoryZapSelector'):
-                code=skin.find(f"screen[@name='{name}']/widget[@source='menu']/convert").text
+                menu_widget=skin.find(f"screen[@name='{name}']/widget[@source='menu']")
+                width,height=map(int,menu_widget.get('size').split(','))
+                code=menu_widget.find('convert').text
                 output=io.StringIO()
                 with redirect_stdout(output):
                     instance=converter(code);instance.source=self_menu;instance.changed((0,))
@@ -118,7 +120,7 @@ def probe(version, history_source, template_source, helper_source):
                 assert next(item['png'] for item in items if 'png' in item)==6
                 for item in items:
                     x,y=item['pos'];w,h=item['size']
-                    assert 0<=x and x+w<=1792 and 0<=y and y+h<=instance.content.height
+                    assert 0<=x and x+w<=width and 0<=y and y+h<=instance.content.height
         for index,row in enumerate(self_menu.list):
             self_menu.setIndex(index);dialog.keySelect();assert dialog.result==row[7]
         dialog.keyCancel();assert dialog.result is None

@@ -16,18 +16,23 @@ COLORS={c.get('name'):c.get('value') for c in SKIN.findall('colors/color')}
 CHANNELS=['CANAL+ PREMIUM','CANAL+ FILM','CANAL+ SPORT','CANAL+ SERIALE','TVP 1 HD','TVP 2 HD','TVN HD','Polsat HD']
 SHORT=['C+ PREMIUM','C+ FILM','C+ SPORT','C+ SERIALE','TVP 1','TVP 2','TVN','POLSAT']
 SHOWS=['Wszystko przed nami','Wieczór filmowy','Magazyn sportowy','Nowy rozdział','Wiadomości dnia','Na dobre i na złe','Fakty','Wydarzenia']
-CHANNEL_ROWS=[('Super Polsat HD',"Hell's Kitchen — Piekielna kuchnia (odc. 4)",'SUPER POLSAT'),
-    ('Polsat Rodzina HD','Dzikie psy 1 (odc. 2)','RODZINA'),
-    ('TV6 HD','Policjantki i policjanci 22 (odc. 45)','TV6'),
-    ('TVP 3','Program informacyjny','TVP 3'),
-    ('Polsat News Polityka HD','Debata polityczna — wydanie specjalne','POLITYKA'),
-    ('Paramount Network Polska','Wojownicze Żółwie Ninja: Zmutowany chaos','PARAMOUNT'),
-    ('Polsat News 2 HD','Wydarzenia 12:50','NEWS 2')]
+CHANNEL_ROWS=[('TVP 1 HD','Akacjowa 38','TVP 1'),
+    ('TVP 2 HD','Jeden z dziesięciu 157 (odc. 3)','TVP 2'),
+    ('TVN HD','Detektywi 7 (odc. 50)','TVN'),
+    ('Polsat HD','Wydarzenia','POLSAT'),
+    ('TV PULS HD','Lombard. Życie pod zastaw 19 (odc. 49)','PULS'),
+    ('Puls 2 HD','Pingwiny z Madagaskaru 1 (odc. 20)','PULS 2'),
+    ('TVN 7 HD','Sędzia Anna Maria Wesołowska','TVN 7'),
+    ('TV4 HD','Policjantki i policjanci','TV4'),
+    ('TV6 HD','Policjanci z sąsiedztwa','TV6'),
+    ('Polsat News Polityka HD','Debata polityczna — wydanie specjalne','POLITYKA')]
+BOUQUETS=['Polskie','Polsat Box','Canal+','Canal+ (stary układ)','Telewizja na kartę','Polskie FTA','Filmy i seriale','Sport','Informacyjne','Dzieci']
 HISTORY_ROWS=[('', '»', 'CANAL+ SERIALE HD', 'ABBA. Wbrew wszystkim', 'Opis audycji', '16:35 – 17:30 (+16 min)', 'C+ SERIALE', 'ref1'),
     ('', '', 'Polsat Film HD', 'Dywizjon 303. Historia prawdziwa', 'Opis audycji', '15:45 – 17:50 (+36 min)', 'POLSAT FILM', 'ref2'),
     ('', '', 'TVN Fabuła', 'Książę w Nowym Jorku', 'Opis audycji', '16:40 – 19:00 (+106 min)', 'TVN FABUŁA', 'ref3'),
     ('', '', 'Comedy Central HD', 'Przyjaciele 8: Ten, w którym Rachel ma dziecko (odc. 24)', 'Opis audycji', '16:55 – 17:25 (+11 min)', 'COMEDY', 'ref4'),
-    ('', '', 'TVN HD', 'Detektywi (odc. 380)', 'Opis audycji', '16:55 – 18:00 (+46 min)', 'TVN', 'ref5')]
+    ('', '', 'TVN HD', 'Detektywi (odc. 380)', 'Opis audycji', '16:55 – 18:00 (+46 min)', 'TVN', 'ref5'),
+    ('', '', 'Polsat News HD', 'Wydarzenia — wydanie specjalne', 'Opis audycji', '17:00 – 18:00 (+46 min)', 'NEWS', 'ref6')]
 out=[]
 PROFILE='TvSat'
 STATE='success'
@@ -77,6 +82,7 @@ def fake_picon(index,x,y,w,h,title=None):
 def value(node,screen):
     src=node.get('source','');key=node.get('name','');conv=node.find('convert')
     kind=conv.get('type') if conv is not None else '';arg=conv.text if conv is not None else ''
+    if src=='Title' and screen.startswith('ChannelSelection') and STATE=='bouquets':return 'TV — Użytkownik — Listy kanałów'
     if src=='Title':return {'Menu':'Menu główne','EventView':'Zapaleńcy. Historia polskiego filmu animowanego','InfoBarEventView':'Zapaleńcy. Historia polskiego filmu animowanego','QuickMenu':'Szybki dostęp do ustawień','ChoiceBox':'Wybór nośnika','ChannelSelection':'Ulubione — telewizja','BouquetSelector':'Wybierz bukiet','GraphicalEPG':'Ulubione — wtorek, 3 listopada','Setup':'Ustawienia listy kanałów','SkinSelection':'Ustawienia skórki','TvSatSettings':'Wybierz rozmiar interfejsu','ConflictTimerOverview':'Konflikt zaplanowanych nagrań','IpkgInstaller':'Instalacja rozszerzeń z /tmp','Opkg':'Instalacja pakietów','PackageAction':'Pobierz wtyczki','Processing':'Trwa operacja','Console':'Wynik polecenia','PackageActionLog':'Dziennik instalacji','FileCommander':'File Commander','FileCommanderContextMenu':'Operacje na plikach','FileCommanderData':'Informacje o pliku','FileCommanderTextEditor':'Edytor tekstu','PluginBrowserGrid':'Wtyczki','PluginBrowserList':'Wtyczki'}.get(screen,'')
     if src=='global.CurrentTime':return '20:45'
     if src=='description':return 'Informacje o dekoderze, obrazie OpenATV, tunerach, pamięci i połączeniu sieciowym.'
@@ -88,7 +94,7 @@ def value(node,screen):
         if key=='epg_description':return 'Zapaleńcy. Historia polskiego filmu animowanego\n\nDokument pokazuje, jak sztuka animacji odzwierciedla zmieniającą się rzeczywistość społeczną w Polsce. Film ukazuje ewolucję technik i tematów, które uczyniły polską animację fenomenem światowym.\n\nPL, 2024\nReżyseria: Marcin Giżycki\nWystępują: Zbigniew Rybczyński\n\nHistoria twórców, ich eksperymentów i filmów, które zdobyły uznanie na całym świecie.'
         if key.startswith('key_'):return {'key_green':'Dodaj timer','key_yellow':'Pojedynczy EPG','key_blue':'EPG wielu kanałów'}.get(key,'')
     if screen=='TvSatSettings':
-        if key=='description':return 'Standard: siedem pozycji. Nazwa kanału u góry, audycja pod spodem.\n\nDuże napisy: większa czcionka i sześć pozycji, także z dwiema liniami tekstu.\n\nNaciśnij ZIELONY — Zapisz również po aktualizacji, jeśli kanał i audycja nadal są w jednym wierszu.'
+        if key=='description':return 'Standard: 10 pozycji. Nazwa kanału u góry, audycja pod spodem.\n\nDuże napisy: także 10 pozycji, z nieco większą czcionką.\n\nNaciśnij ZIELONY — Zapisz również po aktualizacji, aby ustawić 10 pozycji również w starszym trybie listy.'
         if key=='footnote':return 'Po zapisaniu potrzebny jest restart GUI. Anuluj pozostawia ustawienia bez zmian.'
         if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz'}.get(key,'')
     if screen in ('HistoryZap','HistoryZapSelector'):
@@ -152,10 +158,12 @@ def value(node,screen):
         if screen=='Menu':return {'key_red':'Wyjdź','key_blue':'Tryb edycji'}.get(key,'')
         return {'key_red':'Wyszukaj','key_green':'Dodaj timer','key_yellow':'Szukaj w EPG','key_blue':'AutoTimer'}.get(key,'')
     if src=='session.RecordState':return '● REC' if STATE=='recording' else ''
+    if screen.startswith('ChannelSelection') and STATE=='bouquets' and kind in ('EventTime','TvSatEventRemaining'):return ''
     if kind=='TvSatEventRemaining':return 'Do końca: 15 min'
-    if kind=='ServiceName':return CHANNEL_ROWS[0][0] if screen.startswith('ChannelSelection') else CHANNELS[0]
+    if kind=='ServiceName':return (BOUQUETS[0] if STATE=='bouquets' else CHANNEL_ROWS[0][0]) if screen.startswith('ChannelSelection') else CHANNELS[0]
     if kind=='EventName':
         if screen.startswith('ChannelSelection'):
+            if STATE=='bouquets':return ''
             return 'Uczestnicy programu mierzą się z wymagającymi zadaniami w kuchni. O zwycięstwie zdecydują umiejętności, współpraca i opanowanie.' if arg=='ExtendedDescription' else CHANNEL_ROWS[0][1]
         if arg=='ExtendedDescription':return 'Wieczór z wielkim kinem. Nieoczekiwane spotkanie zmienia życie bohaterów. Opowieść o odwadze, przyjaźni i wyborach, które zostają z nami na długo.'
         return 'Nocna zmiana' if src.endswith('Next') else SHOWS[0]
@@ -272,7 +280,7 @@ def draw_list(name,key,x,y,w,h):
                 elif kind=='text':
                     field=entry['text'];family,font=template['fonts'][entry['font']]
                     text(nx,ny+(nh-font*1.25)/2,nw,nh,row[field],font,fill,
-                        'right' if field==5 else 'center' if field==1 else 'left',nowrap=True,bold=family=='TvSatStrong')
+                        'center' if field==1 else 'left',nowrap=True,bold=family=='TvSatStrong')
     elif name=='Menu':
         rows=['Informacje','Timery','Nagrania','Wtyczki','Ustawienia','Czuwanie / restart']
         icons=['information','timermenu','movie_selection','plugin_selection','setup','shutdown']
@@ -282,25 +290,31 @@ def draw_list(name,key,x,y,w,h):
             png(ROOT/'TvSat/mainmenu'/(icons[i]+'.png'),x+16,y+i*rh+12,56,56)
             text(x+92,y+i*rh+18,w-116,rh-20,row,36 if PROFILE=='TvSatLarge' else 32,'white',nowrap=True)
     elif name=='BouquetSelector':
-        for i,row in enumerate(['Ulubione','CANAL+','Filmy i seriale','Sport','Informacyjne','Dzieci','Dokumentalne','Radio']):
-            if i==0:rect(x,y,w,80,'selected');rect(x,y,4,80,'green')
-            text(x+24,y+i*80+18,w-48,60,row,32,'white',nowrap=True)
+        widget=SKIN.find("screen[@name='BouquetSelector']/widget[@name='menu']")
+        rh=int(widget.get('itemHeight'));font=int(widget.get('font').split(';')[1])
+        for i,row in enumerate(BOUQUETS[:int(h//rh)]):
+            if i==0:rect(x,y,w,rh,'selected');rect(x,y,4,rh,'green')
+            text(x+16,y+i*rh+(rh-font*1.25)/2,w-32,rh,row,font,'white',nowrap=True)
     elif name.startswith('ChannelSelection'):
         template=E.parse(ROOT/PROFILE/'skinTemplates.xml').getroot().find('template')
-        mode=template.find("mode[@name='bouquets']");rh=int(mode.get('itemHeight'))
+        mode=template.find("mode[@name='other']" if STATE=='bouquets' else "mode[@name='bouquets']");rh=int(mode.get('itemHeight'))
         fonts=[font.rsplit(';',1) for font in template.get('fonts').split(',')]
-        for i,(channel,show,logo) in enumerate(CHANNEL_ROWS[:int(h//rh)]):
+        sample=[(name,'','') for name in BOUQUETS] if STATE=='bouquets' else CHANNEL_ROWS
+        for i,(channel,show,logo) in enumerate(sample[:int(h//rh)]):
             yy=y+i*rh
             if i==0:rect(x,yy,w,rh,'selected')
             for node in mode:
                 xx,dy=map(int,node.get('position').split(','));nw,nh=map(int,node.get('size').split(','))
                 nx,ny=x+xx,yy+dy
                 if node.tag=='rectangle':rect(nx,ny,nw,nh,node.get('foregroundColorSelected') if i==0 else node.get('foregroundColor'))
-                elif node.tag=='pixmap':fake_picon(i,nx,ny,nw,nh,logo)
+                elif node.tag=='pixmap':
+                    if STATE=='bouquets':
+                        if node.get('index')=='FolderImage':png(ROOT/PROFILE/'icons/folder.png',nx,ny,nw,nh)
+                    else:fake_picon(i,nx,ny,nw,nh,logo)
                 elif node.tag=='progress':
                     rect(nx,ny,nw,nh,'line');rect(nx,ny,nw*(.7-i*.07),nh,'green')
                 elif node.tag=='text':
-                    v={'Number':str(i+15),'ServiceName':channel,'Title1':show}.get(node.get('index'),'')
+                    v={'Number':str(i+1),'ServiceName':channel,'EntryName':channel,'Title1':show}.get(node.get('index'),'')
                     family,size=fonts[int(node.get('font'))];font=int(size)
                     text(nx,ny+(nh-font*1.25)/2,nw,nh,v,font,node.get('foregroundColorSelected',node.get('foregroundColor','white')) if i==0 else node.get('foregroundColor','white'),node.get('horizontalAlignment','left'),nowrap=True,bold=family=='TvSatStrong')
     elif name=='GraphicalEPG' and key=='list':
@@ -328,10 +342,11 @@ def render(name,target,make_png=False,profile='TvSat',state='success'):
     s=SKIN.find(f"screen[@name='{name}']");ox,oy=map(int,s.get('position').split(','));sw,sh=map(int,s.get('size').split(','))
     out=['<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">',f'<title>TvSat — {name} — dane przykładowe</title>','<g font-family="DejaVu Sans, sans-serif">']
     rect(0,0,1920,1080,'#20282c')
-    if name in ('InfoBar','EventView','InfoBarEventView'):
+    if name in ('InfoBar','EventView','InfoBarEventView','HistoryZap','HistoryZapSelector'):
         # Deliberately synthetic TV backdrop, continued behind the whole bar.
         for xx,fill in ((0,'#315b78'),(640,'#7c3c4c'),(1280,'#47694a')):
             rect(xx,0,640,1080,fill)
+        if name in ('HistoryZap','HistoryZapSelector'):text(880,460,880,120,'Obraz TV',48,'white','center')
         if name=='InfoBar':text(64,300,1792,180,'Przykładowy obraz TV — test przezroczystości',42,'white','center')
     rect(ox,oy,sw,sh,s.get('backgroundColor'))
     for n in s:
@@ -354,7 +369,7 @@ def render(name,target,make_png=False,profile='TvSat',state='success'):
             for i,t in enumerate(['20:00','20:30','21:00','21:30','22:00','22:30']):text(x+320+i*(w-320)/6,y,(w-320)/6,h,t,26,'muted')
         elif n.get('render')=='Progress' or key in ('progress','slider','activityslider'):
             rect(x,y,w,h,n.get('backgroundColor','line'))
-            rect(x,y,int(w*(1 if name=='Opkg' and key=='slider' else 0 if name=='Opkg' else .5)),h,'green')
+            rect(x,y,int(w*(0 if name.startswith('ChannelSelection') and STATE=='bouquets' else 1 if name=='Opkg' and key=='slider' else 0 if name=='Opkg' else .5)),h,'green')
         elif key in ('menu','list','config','timerlist','mainlist','sublist','plugins','pluginGrid','pluginList','listleft','listright','headleft','headright') or (name=='FileCommanderTextEditor' and key=='data'):
             draw_list(name,key,x,y,w,h)
         else:
@@ -416,6 +431,8 @@ if __name__=='__main__':
 
     for name,target,state in [('TvSatSettings','appearance.svg','success'),('ConflictTimerOverview','timer-conflict.svg','success'),('TimeshiftState','timeshift.svg','success'),('Opkg','install-progress.svg','progress'),('Opkg','install-error.svg','error'),('InfoBar','infobar-recording.svg','recording')]:
         render(name,target,args.png,state=state)
+    render('ChannelSelection','channel-bouquets.svg',args.png,state='bouquets')
+    render('ChannelSelection','channel-bouquets-large.svg',args.png,profile='TvSatLarge',state='bouquets')
     render('HistoryZap','history.svg',args.png)
     render('HistoryZap','history-large.svg',args.png,profile='TvSatLarge')
     for name,target in [('Menu','menu-large.svg'),('ChannelSelection','channels-large.svg'),('InfoBar','infobar-large.svg'),('GraphicalEPG','epg-large.svg'),('TvSatSettings','appearance-large.svg'),('EventView','event-info-large.svg')]:

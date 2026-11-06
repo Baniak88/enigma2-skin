@@ -1,7 +1,7 @@
 """Explicit profile changes used only after the viewer presses Save."""
 PROFILES = {
-    'standard': {'skin': 'TvSat/skin.xml', 'template': 'TvSat', 'rows': 7, 'two_lines': True},
-    'large': {'skin': 'TvSatLarge/skin.xml', 'template': 'TvSatLarge', 'rows': 6, 'two_lines': True},
+    'standard': {'skin': 'TvSat/skin.xml', 'template': 'TvSat', 'rows': 10, 'two_lines': True},
+    'large': {'skin': 'TvSatLarge/skin.xml', 'template': 'TvSatLarge', 'rows': 10, 'two_lines': True},
 }
 
 
@@ -24,7 +24,7 @@ def apply_profile(config, name):
     change(config.skin, 'primary_skin', profile['skin'])
     usage = getattr(config, 'usage', None)
     for key, value in {
-        'serviceitems_per_page': 8,
+        'serviceitems_per_page': 10,
         'serviceitems_per_page_twolines': profile['rows'],
         'servicelist_twolines': profile['two_lines'],
         'servicelist_column': 425,

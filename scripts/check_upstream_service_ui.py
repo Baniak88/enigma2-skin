@@ -45,7 +45,7 @@ def probe(version,skin_source,list_source):
         ns['getcomponentTemplate']=lambda component,name:template
         instance=ns['ServiceListTemplateParser']()
         instance.l=NS(setFont=lambda *args:None)
-        instance.listHeight=700;instance.listWidth=1088
+        instance.listHeight=760;instance.listWidth=1136
         errors=io.StringIO()
         with redirect_stdout(errors):instance.readTemplate(directory)
         assert not errors.getvalue(),errors.getvalue()
@@ -56,11 +56,14 @@ def probe(version,skin_source,list_source):
             assert by_index[101]['_flags'] & 128 and by_index[101]['_flags'] & 16
             assert by_index[2]['pixmapFlags']>0,'Picons must scale while keeping aspect ratio'
             assert by_index[50]['type']=='progress'
+        folder_items=instance.templateDataOtherFolder
+        assert any(item.get('index')==8 for item in folder_items),folder_items
+        assert instance.templateDefaultsOther.get('itemHeight')=='76'
         # Legacy mode ignores serviceItemHeight and derives row size from the
         # saved usage settings. Check the fallback with the actual native method.
         skin=E.parse(ROOT/directory/'skin.xml').getroot()
         width,height=map(int,skin.find("screen[@name='ChannelSelection']/widget[@name='list']").get('size').split(','))
-        rows=6 if directory=='TvSatLarge' else 7
+        rows=10
         ns['config'].usage.serviceitems_per_page=field(14)
         ns['config'].usage.serviceitems_per_page_twolines=field(rows)
         ns['config'].usage.servicelist_twolines=field(True)

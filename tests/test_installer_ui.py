@@ -43,6 +43,8 @@ class InstallerUI(unittest.TestCase):
                     self.assertIsNotNone(widget.find("convert[@type='ConditionalShowHide']"))
                 if key=='key_blue':
                     expected='1376' if screen.get('name') in ('EventView','InfoBarEventView') else '1408'
+                    if screen.get('name') in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio','SimpleChannelSelection','SlimChannelSelection'):
+                        expected='1420'
                     self.assertEqual(marker.get('position').split(',')[0],expected)
 
     def test_opkg_status_and_log_remain_native_dynamic_widgets(self):

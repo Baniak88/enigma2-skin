@@ -4,6 +4,7 @@ from pathlib import Path
 import struct
 import zlib
 import shutil
+import math
 from build import VERSION
 from skin_effects import FADE_TOP, BODY_ALPHA, BODY_RGB, BAR_HEIGHTS, fade_alpha, event_fade_alpha
 
@@ -26,14 +27,28 @@ def png(path,w,h,bg,rects=(),pixels=None):
     path=ROOT/path; path.parent.mkdir(parents=True,exist_ok=True); path.write_bytes(data)
 
 
+def line_icon(path,lines,accent=()):
+    pixels=bytearray(32*32*4)
+    for segments,color in ((lines,(194,204,215,255)),(accent,GREEN)):
+        for points in segments:
+            for (ax,ay),(bx,by) in zip(points,points[1:]):
+                dx,dy=bx-ax,by-ay
+                for y in range(32):
+                    for x in range(32):
+                        t=max(0,min(1,((x-ax)*dx+(y-ay)*dy)/(dx*dx+dy*dy or 1)))
+                        if (x-ax-t*dx)**2+(y-ay-t*dy)**2<=1:
+                            pixels[(y*32+x)*4:(y*32+x+1)*4]=bytes(color)
+    png(Path(path),32,32,(0,0,0,0),pixels=pixels)
+
+
 def build():
     (ROOT/'VERSION').write_text(VERSION+'\n')
     # Przezroczyste pole dziedziczy kolor paska/ekranu, bez osobnej ramki i symbolu.
     png(Path('picon_default.png'),220,132,(0,0,0,0))
     # Explicit opaque selection prevents a glossy fallback from the base skin.
     # Native list rows clip the pixmap to their 100/116px item height.
-    png(Path('assets/channel-selected.png'),1088,116,SELECTED)
-    png(Path('assets/history-selected.png'),1792,168,SELECTED)
+    png(Path('assets/channel-selected.png'),1136,76,SELECTED)
+    png(Path('assets/history-selected.png'),664,112,SELECTED)
     # Single-column gradients are stretched natively; no blur shader or timer.
     for name,height in BAR_HEIGHTS.items():
         total=height+FADE_TOP
@@ -130,6 +145,14 @@ def build():
             rects.extend((31-i,i,2,2,c) for i in range(8,24))
         elif not recording:rects.extend([(14,7,3,10,WHITE),(14,14,9,3,WHITE)])
         png(Path('icons')/(name+'.png'),32,32,(0,0,0,0),rects)
+    folder=[[(4,10),(12,10),(15,13),(28,13),(28,26),(4,26),(4,10)]]
+    list_lines=[[(9,18),(23,18)],[(9,22),(19,22)]]
+    line_icon('assets/line-tv.png', [[(4,7),(28,7),(28,24),(4,24),(4,7)],[(16,24),(16,28)],[(10,28),(22,28)]], [[(23,20),(25,20)]])
+    line_icon('assets/line-bouquet.png',folder+list_lines)
+    arc=[(16+11*math.cos(t*math.pi/180),16+11*math.sin(t*math.pi/180)) for t in range(-130,191,10)]
+    line_icon('assets/line-history.png',[arc,[(16,10),(16,16),(21,19)]],[[(4,10),(4,5),(9,5)]])
+    line_icon('icons/folder.png',folder+list_lines)
+    line_icon('icons/marker.png',[[(8,4),(24,4),(24,28),(16,22),(8,28),(8,4)]])
     # Native components also resolve icons relative to the selected skin.
     large=ROOT.parent/'TvSatLarge';large.mkdir(exist_ok=True)
     (large/'VERSION').write_text(VERSION+'\n')

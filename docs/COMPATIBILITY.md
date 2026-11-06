@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.6.5
+# OpenATV — zakres zgodności 0.6.6
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -451,3 +451,32 @@ wybór każdej referencji, Anuluj i oba rozmiary/aliasy skórki. C++ i usługi t
 są zastąpione; ocena wyglądu na fizycznym dekoderze pozostaje do wykonania.
 Natywny kod i ustawienia odbiornika nie są zmieniane. Do wczytania nowych nazw
 ekranów potrzebny jest restart GUI.
+
+## Gęstsze listy i boczna historia — 0.6.6
+
+Wszystkie tryby serviceList (services, bouquets, other) mają 76 px wysokości.
+Obszar listy 1136×760 na x=40/y=168 mieści dokładnie 10 pozycji. Profile Standard
+oraz Duże napisy zachowują tę samą liczbę. Nazwa kanału ma 28/30 px, audycja
+23/25 px i własną linię, numer 24/26 px. Przy 76 px pozostają pełne dwie linie
+z minimalnym odstępem 2 px. Audycja kończy się 32 px przed paskiem postępu.
+Ustawienia serviceitems_per_page oraz serviceitems_per_page_twolines zapisują
+10, ponieważ starszy silnik nadpisuje serviceItemHeight konfiguracją.
+
+Inny tryb listy (foldery/bukiety) wyświetla natywne FolderImage/MarkerImage
+zastąpione ikonami konturowymi z katalogu aktywnej skórki. Oddzielne
+BouquetSelector/EPGBouquetSelector także mają 10×76 px. Nagłówek i stopka tej
+grupy ekranów mają 40 px marginesu. Podgląd Pig ma nadal 608×342, przesunięty
+na x=1272/y=168. Pozostałe ekrany zachowują dotychczasowy rozmiar pisma.
+
+HistoryZap oraz HistoryZapSelector mają pozycję 40,80 i rozmiar 704×920.
+Menu zajmuje 664×672, czyli 6×112 px. Oba profile używają tego samego obszaru,
+Duże napisy ma większą czcionkę bez skalowania całego panelu. Nazwa, audycja
+i godziny są w trzech osobnych liniach. Referencja (7), indeks pikony (6),
+marker (1) i natywne przyciski nie zmieniają znaczenia. Tło panelu używa overlay;
+poza jego obszarem nie ma widgetów, które zasłaniałyby wideo.
+
+Testy oryginalnych parserów OpenATV 7.5/7.6/8.0 obejmują także otherFolder i jego
+indeks FolderImage, rozmiar starszej listy 10×76 oraz zmniejszone szablony historii.
+Nowe ikony mają przezroczyste tło, kontury w kolorze muted i zielony akcent.
+Testy geometrii sprawdzają zmieszczenie obu linii w większej czcionce i odstępy
+od pikon oraz pasków postępu. Nadal nie zastępują testu na fizycznym dekoderze.

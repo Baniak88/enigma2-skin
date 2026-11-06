@@ -1,13 +1,39 @@
-# TvSat 0.6.5 — skórka Enigma2 dla OpenATV
+# TvSat 0.6.6 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.5 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.6 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## TvSat 0.6.6 — po 10 pozycji i boczna historia
+
+Lista kanałów oraz lista bukietów mieszczą teraz **po 10 pozycji na stronę**,
+w Standard i Duże napisy. Margines boczny zmniejszono do 40 px, nagłówek jest
+niższy, a każdy wiersz zajmuje 76 px. Kanał i audycja zachowują oddzielne linie,
+wielokropek i osobne miejsce na postęp. Podgląd TV nadal działa po prawej.
+Także osobne selektory bukietów mają miejsce na 10 pozycji.
+
+Dodano minimalistyczne ikony konturowe: telewizor, folder/listę i historię.
+Natywne foldery bukietów i znaczniki korzystają z dopasowanych ikon skórki.
+Nagłówek prawego panelu „Zaznaczona pozycja” pasuje do kanału oraz bukietu.
+
+Historia poprzednich kanałów jest teraz **panelem po lewej stronie**, zajmującym
+około 37% szerokości ekranu. Reszta obrazu TV pozostaje widoczna. Panel mieści
+6 pozycji z pikoną, kanałem, skróconym tytułem i godzinami. Zachowano natywną
+kolejność historii, znacznik oglądanego kanału i działanie OK/Anuluj.
+
+**Po aktualizacji:** restart GUI, następnie **Wtyczki → TvSat — wygląd → Standard
+lub Duże napisy → zielony Zapisz** i ponowny restart GUI. Zapis ustawia 10 pozycji
+również w starszym trybie listy. Jeśli bukietów jest mniej niż 10, wyświetlona
+zostaje ich faktyczna liczba; skórka nie tworzy nowych bukietów.
+
+![10 kanałów — dane przykładowe](docs/channels-large.svg)
+![10 bukietów — dane przykładowe](docs/channel-bouquets-large.svg)
+![Boczna historia — dane przykładowe](docs/history-large.svg)
 
 ## TvSat 0.6.5 — historia poprzednich kanałów
 
@@ -381,11 +407,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.6.5_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.5_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.6.6_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.6_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.5_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.6_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -400,8 +426,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.6.5.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.5_all.ipk &&
-opkg install /tmp/TvSat-0.6.5.ipk
+wget -O /tmp/TvSat-0.6.6.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.6_all.ipk &&
+opkg install /tmp/TvSat-0.6.6.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -452,12 +478,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.6.5.tar.gz](packages/TvSat-0.6.5.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.6.6.tar.gz](packages/TvSat-0.6.6.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.6.5.tar.gz
+tar -xzf /tmp/TvSat-0.6.6.tar.gz
 sh install.sh
 ```
 

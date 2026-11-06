@@ -38,21 +38,21 @@ class Profiles(unittest.TestCase):
             self.assertEqual(config.skin.primary_skin.value,profile['skin'])
             self.assertEqual(selection.widgetStyle.value,profile['template'])
             self.assertTrue(selection.showPicon.value)
-            self.assertEqual(usage.serviceitems_per_page.value,8)  # Native minimum for one-line legacy.
+            self.assertEqual(usage.serviceitems_per_page.value,10)
             self.assertEqual(usage.serviceitems_per_page_twolines.value,profile['rows'])
             self.assertTrue(usage.servicelist_twolines.value)
             self.assertIn(int(usage.servicelist_column.value),range(100,1325,25))
             self.assertEqual(usage.show_event_progress_in_servicelist.value,'barright')
             self.assertEqual(config.skin.primary_skin.saved,1)
 
-    def test_large_has_larger_fonts_fewer_rows_and_complete_layout_contracts(self):
+    def test_large_has_larger_fonts_ten_rows_and_complete_layout_contracts(self):
         validate('TvSatLarge')
         skins=[E.parse(ROOT/folder/'skin.xml').getroot() for folder in ('TvSat','TvSatLarge')]
         for name in ('InfoBar','Setup','TvSatSettings'):
             normal=skins[0].find(f"screen[@name='{name}']");large=skins[1].find(f"screen[@name='{name}']")
             for a,b in zip(normal,large):
                 if a.get('font'):self.assertGreater(int(b.get('font').split(';')[1]),int(a.get('font').split(';')[1]))
-        for folder,rows in (('TvSat',7),('TvSatLarge',6)):
+        for folder,rows in (('TvSat',10),('TvSatLarge',10)):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             height=int(skin.find("screen[@name='ChannelSelection']/widget[@name='list']").get('size').split(',')[1])
             template=E.parse(ROOT/folder/'skinTemplates.xml').getroot().find('template')

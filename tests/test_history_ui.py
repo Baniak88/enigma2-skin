@@ -9,15 +9,16 @@ from validate import check_template
 
 
 class HistoryUI(unittest.TestCase):
-    def test_both_native_aliases_have_a_full_size_history_list(self):
-        for folder,rows in (('TvSat',5),('TvSatLarge',4)):
+    def test_both_native_aliases_use_a_narrow_left_panel(self):
+        for folder,rows in (('TvSat',6),('TvSatLarge',6)):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             codes=[]
             for name in ('HistoryZap','HistoryZapSelector'):
                 screen=skin.find(f"screen[@name='{name}']")
                 self.assertIsNotNone(screen,name)
-                self.assertEqual(screen.get('size'),'1920,1080')
-                self.assertEqual(screen.get('backgroundColor'),'bg')
+                self.assertEqual(screen.get('size'),'704,920')
+                self.assertEqual(screen.get('position'),'40,80')
+                self.assertEqual(screen.get('backgroundColor'),'overlay')
                 menu=screen.find("widget[@source='menu'][@render='Listbox']")
                 code=menu.find('convert').text;codes.append(code)
                 template=check_template(code)
@@ -39,11 +40,11 @@ class HistoryUI(unittest.TestCase):
             self.assertEqual(picon['png'],6)
             channel,event,times=texts[2],texts[3],texts[5]
             self.assertTrue(template['fonts'][channel['font']][0]=='TvSatStrong')
-            self.assertGreaterEqual(channel['pos'][0]-(picon['pos'][0]+picon['size'][0]),24)
-            self.assertGreaterEqual(event['pos'][1]-(channel['pos'][1]+channel['size'][1]),10)
-            self.assertGreaterEqual(times['pos'][0]-(channel['pos'][0]+channel['size'][0]),24)
+            self.assertGreaterEqual(channel['pos'][0]-(picon['pos'][0]+picon['size'][0]),16)
+            self.assertGreaterEqual(event['pos'][1]-(channel['pos'][1]+channel['size'][1]),2)
+            self.assertGreaterEqual(times['pos'][1]-(event['pos'][1]+event['size'][1]),2)
             for kind,kw in items:
-                self.assertLessEqual(kw['pos'][0]+kw['size'][0],1792)
+                self.assertLessEqual(kw['pos'][0]+kw['size'][0],664)
             for key in (2,3,5):
                 self.assertIn('RT_ELLIPSIS',node.text)
                 self.assertGreaterEqual(texts[key]['size'][1],template['fonts'][texts[key]['font']][1]*1.2)
