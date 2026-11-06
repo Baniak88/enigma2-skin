@@ -3,100 +3,123 @@
 <g font-family="DejaVu Sans, sans-serif">
 <rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
 <rect x="0" y="0" width="1920" height="1080" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="64" y="54" width="5" height="28" fill="#00e676" fill-opacity="1.000000"/>
-<text x="84" y="78.0" font-size="40" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
-<text x="420" y="73.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">TELEWIZJA</text>
-<text x="1856" y="76.0" font-size="36" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
-<image x="64" y="126" width="1792" height="2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABwAAAAACCAYAAABfeMiaAAACU0lEQVR42u3Z4S4WAABG4c+yLEvTNCzL0jRNk7EsS9M0WZalaZomyxhL0zQZy7I0TZNlWZamabIsS9M0TZZlWUzTsCxL0zSN6+isvVdh74/nJs4JBDbrAwjCNgRjO0KwA6HYiTDsQjh2IwJ7EIkoRGMvYrAPsdiPOBxAPA4iAYeQiMNIwhEkIwWpOIo0HEM6jiMDJ5CJk8jCKWTjNHJwBrk4izycQz7OowAXUIiLKMIlFOMySnAFpShDOSpQiauowjVU4zpqcAO1uIk61KMBt9CI22jCHTTjLlpwD624jzY8QDseogOP0InH6MITdOMpevAMvXiOPrxAP15iAK8wiNcYwhsM4y1G8A6jeI8xfMA4PmICnzCJz5jCF0xjBrP4ijl8wzwWsIjvWMIPLOMnVvALq/iNNfzBOv5iA5tmZmZmZmZmZmZmZlvQhlr4utr4mlr5qtr5ilr6str6klr7otr7vFr8nNr8rFr9tNr9lFr+pNr+hFr/uNr/mF7AqN7AiF7BsN7BkF7CoN7CgF5Dv95Dn15Er95Ej15Ft95Fl15Gp95Gh15Hu95Hm15Iq95Ii15Js95Jk15Ko95Kg15Lnd5LrV5Mjd5MtV5Nld5NpV5Oud5OqV5Pid5PsV5Qkd5QoV5Rgd5Rvl5Snt5Srl5Tjt5Ttl5Ult5Upl5Vht5Vul5Wmt5Wql5Xst5Xkl5Yot5Ygl5ZvN5ZnF5arN5ajF5btN5bpF5chN5cuF5dmN5dqF5eiN5esF5f0P/35wHoAegBaGZmZmZmZmZmZmbmAegBuHUG4D+72Hx7zsIBFwAAAABJRU5ErkJggg=="/>
-<text x="64" y="177.0" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Ulubione — telewizja</text>
-<rect x="64" y="974" width="1792" height="2" fill="#303438" fill-opacity="1.000000"/>
-<rect x="64" y="1012" width="6" height="24" fill="#ff6262" fill-opacity="1.000000"/>
-<text x="86" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wszystkie</text>
-<rect x="512" y="1012" width="6" height="24" fill="#00e676" fill-opacity="1.000000"/>
-<text x="534" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Listy odbioru</text>
+<rect x="40" y="32" width="4" height="26" fill="#00e676" fill-opacity="1.000000"/>
+<text x="60" y="56.0" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
+<image x="304" y="30" width="28" height="28" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAVklEQVR42mNgGAWjYBSggUNnrv+nNR5Qy/E6YlA5gNbRO+qAUQeMOmDUASPEAc/K/sMx3R2AbDkUj7AQoDQNjMz2wIA3yagepwPdWB0ULeXhEQLDGgAAOevjz80aHbcAAAAASUVORK5CYII="/>
+<text x="348" y="52.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="start">TELEWIZJA</text>
+<text x="1880" y="52.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>
+<image x="40" y="88" width="1840" height="2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABwAAAAACCAYAAABfeMiaAAACU0lEQVR42u3Z4S4WAABG4c+yLEvTNCzL0jRNk7EsS9M0WZalaZomyxhL0zQZy7I0TZNlWZamabIsS9M0TZZlWUzTsCxL0zSN6+isvVdh74/nJs4JBDbrAwjCNgRjO0KwA6HYiTDsQjh2IwJ7EIkoRGMvYrAPsdiPOBxAPA4iAYeQiMNIwhEkIwWpOIo0HEM6jiMDJ5CJk8jCKWTjNHJwBrk4izycQz7OowAXUIiLKMIlFOMySnAFpShDOSpQiauowjVU4zpqcAO1uIk61KMBt9CI22jCHTTjLlpwD624jzY8QDseogOP0InH6MITdOMpevAMvXiOPrxAP15iAK8wiNcYwhsM4y1G8A6jeI8xfMA4PmICnzCJz5jCF0xjBrP4ijl8wzwWsIjvWMIPLOMnVvALq/iNNfzBOv5iA5tmZmZmZmZmZmZmZlvQhlr4utr4mlr5qtr5ilr6str6klr7otr7vFr8nNr8rFr9tNr9lFr+pNr+hFr/uNr/mF7AqN7AiF7BsN7BkF7CoN7CgF5Dv95Dn15Er95Ej15Ft95Fl15Gp95Gh15Hu95Hm15Iq95Ii15Js95Jk15Ko95Kg15Lnd5LrV5Mjd5MtV5Nld5NpV5Oud5OqV5Pid5PsV5Qkd5QoV5Rgd5Rvl5Snt5Srl5Tjt5Ttl5Ult5Upl5Vht5Vul5Wmt5Wql5Xst5Xkl5Yot5Ygl5ZvN5ZnF5arN5ajF5btN5bpF5chN5cuF5dmN5dqF5eiN5esF5f0P/35wHoAegBaGZmZmZmZmZmZmbmAegBuHUG4D+72Hx7zsIBFwAAAABJRU5ErkJggg=="/>
+<text x="40" y="137.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">Ulubione — telewizja</text>
+<rect x="40" y="974" width="1840" height="2" fill="#303438" fill-opacity="1.000000"/>
+<rect x="40" y="1012" width="6" height="24" fill="#ff6262" fill-opacity="1.000000"/>
+<text x="62" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Wszystkie</text>
+<rect x="500" y="1012" width="6" height="24" fill="#00e676" fill-opacity="1.000000"/>
+<text x="522" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Listy odbioru</text>
 <rect x="960" y="1012" width="6" height="24" fill="#f5ce55" fill-opacity="1.000000"/>
 <text x="982" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Dostawcy</text>
-<rect x="1408" y="1012" width="6" height="24" fill="#5eacff" fill-opacity="1.000000"/>
-<text x="1430" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Bukiety</text>
-<rect x="64" y="220" width="1088" height="700" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="64" y="220" width="1088" height="100" fill="#25473a" fill-opacity="1.000000"/>
-<rect x="64" y="220" width="4" height="100" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="72" y="319" width="1080" height="1" fill="#25473a" fill-opacity="1.000000"/>
-<text x="132" y="279.75" font-size="26" font-weight="normal" fill="#f3f6fa" text-anchor="end">15</text>
-<text x="198.0" y="271.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">SUPER</text>
-<text x="198.0" y="289.75" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">POLSAT</text>
-<text x="268" y="260.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">Super Polsat HD</text>
-<text x="268" y="302.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Hell&#x27;s Kitchen — Piekielna kuchnia (odc. 4)</text>
-<rect x="1044" y="288" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="288" width="61.599999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="64" y="320" width="4" height="100" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="72" y="419" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="379.75" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">16</text>
-<text x="198.0" y="371.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">RODZINA</text>
-<text x="268" y="360.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat Rodzina HD</text>
-<text x="268" y="402.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Dzikie psy 1 (odc. 2)</text>
-<rect x="1044" y="388" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="388" width="55.43999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="64" y="420" width="4" height="100" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="72" y="519" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="479.75" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">17</text>
-<text x="198.0" y="471.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TV6</text>
-<text x="268" y="460.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">TV6 HD</text>
-<text x="268" y="502.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Policjantki i policjanci 22 (odc. 45)</text>
-<rect x="1044" y="488" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="488" width="49.279999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="64" y="520" width="4" height="100" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="72" y="619" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="579.75" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">18</text>
-<text x="198.0" y="571.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVP 3</text>
-<text x="268" y="560.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">TVP 3</text>
-<text x="268" y="602.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Program informacyjny</text>
-<rect x="1044" y="588" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="588" width="43.12" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="64" y="620" width="4" height="100" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="72" y="719" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="679.75" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">19</text>
-<text x="198.0" y="671.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">POLITYKA</text>
-<text x="268" y="660.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat News Polityka HD</text>
-<text x="268" y="702.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Debata polityczna — wydanie specjalne</text>
-<rect x="1044" y="688" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="688" width="36.959999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="64" y="720" width="4" height="100" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="72" y="819" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="779.75" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">20</text>
-<text x="198.0" y="771.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">PARAMOUNT</text>
-<text x="268" y="760.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">Paramount Network Polska</text>
-<text x="268" y="802.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wojownicze Żółwie Ninja: Zmutowany chaos</text>
-<rect x="1044" y="788" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="788" width="30.799999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<rect x="64" y="820" width="4" height="100" fill="#0c0e10" fill-opacity="1.000000"/>
-<rect x="72" y="919" width="1080" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="132" y="879.75" font-size="26" font-weight="normal" fill="#c2ccd7" text-anchor="end">21</text>
-<text x="198.0" y="871.0" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">NEWS 2</text>
-<text x="268" y="860.0" font-size="32" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat News 2 HD</text>
-<text x="268" y="902.125" font-size="27" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wydarzenia 12:50</text>
-<rect x="1044" y="888" width="88" height="6" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1044" y="888" width="24.639999999999993" height="6" fill="#00e676" fill-opacity="1.000000"/>
-<text x="64" y="958.0" font-size="22" font-weight="normal" fill="#c2ccd7" text-anchor="start">OK — kanał     INFO — opis     EXIT — powrót</text>
-<rect x="1184" y="220" width="2" height="704" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1248" y="220" width="608" height="342" fill="#12232e" fill-opacity="1.000000"/>
-<rect x="1250" y="222" width="604" height="2" fill="#303438" fill-opacity="1.000000"/>
-<polygon points="1530.0,353.0 1530.0,409.0 1578.0,381.0" fill="#00e676"/>
-<text x="1552.0" y="454.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="middle">Podgląd TV · 16:9</text>
-<text x="1216" y="592.0" font-size="20" font-weight="normal" fill="#c2ccd7" text-anchor="start">WYBRANY KANAŁ</text>
-<text x="1216" y="632.0" font-size="26" font-weight="normal" fill="#00e676" text-anchor="start">Super Polsat HD</text>
-<rect x="1216" y="654" width="640" height="1" fill="#303438" fill-opacity="1.000000"/>
-<text x="1216" y="698.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Hell&#x27;s Kitchen — Piekielna kuchnia</text>
-<text x="1216" y="735.5" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">(odc. 4)</text>
-<text x="1216" y="789.0" font-size="25" font-weight="normal" fill="#00e676" text-anchor="start">20:00</text>
-<text x="1356" y="789.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">– 21:30</text>
-<text x="1856" y="787.0" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="end">Do końca: 15 min</text>
-<rect x="1216" y="812" width="640" height="4" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1216" y="812" width="640" height="4" fill="#303438" fill-opacity="1.000000"/>
-<rect x="1216" y="812" width="320" height="4" fill="#00e676" fill-opacity="1.000000"/>
-<text x="1216" y="851.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">Uczestnicy programu mierzą się z</text>
-<text x="1216" y="882.25" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">wymagającymi zadaniami w kuchni. O</text>
-<text x="1216" y="913.5" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">zwycięstwie zdecydują umiejętności,…</text>
-<text x="1216" y="964.0" font-size="20" font-weight="normal" fill="#c2ccd7" text-anchor="start">INFO — pełny opis</text>
+<rect x="1420" y="1012" width="6" height="24" fill="#5eacff" fill-opacity="1.000000"/>
+<text x="1442" y="1023.0" font-size="25" font-weight="normal" fill="#f3f6fa" text-anchor="start">Bukiety</text>
+<rect x="40" y="168" width="1136" height="760" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="40" y="168" width="1136" height="76" fill="#25473a" fill-opacity="1.000000"/>
+<rect x="40" y="168" width="4" height="76" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="48" y="243" width="1128" height="1" fill="#25473a" fill-opacity="1.000000"/>
+<text x="96" y="215.0" font-size="24" font-weight="normal" fill="#f3f6fa" text-anchor="end">1</text>
+<text x="160.0" y="207.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVP 1</text>
+<text x="224" y="198.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TVP 1 HD</text>
+<text x="224" y="232.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Akacjowa 38</text>
+<rect x="1056" y="222" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="222" width="67.19999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="244" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="319" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="291.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">2</text>
+<text x="160.0" y="283.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVP 2</text>
+<text x="224" y="274.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TVP 2 HD</text>
+<text x="224" y="308.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Jeden z dziesięciu 157 (odc. 3)</text>
+<rect x="1056" y="298" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="298" width="60.47999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="320" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="395" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="367.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">3</text>
+<text x="160.0" y="359.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVN</text>
+<text x="224" y="350.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TVN HD</text>
+<text x="224" y="384.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Detektywi 7 (odc. 50)</text>
+<rect x="1056" y="374" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="374" width="53.75999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="396" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="471" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="443.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">4</text>
+<text x="160.0" y="435.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">POLSAT</text>
+<text x="224" y="426.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat HD</text>
+<text x="224" y="460.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Wydarzenia</text>
+<rect x="1056" y="450" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="450" width="47.03999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="472" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="547" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="519.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">5</text>
+<text x="160.0" y="511.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">PULS</text>
+<text x="224" y="502.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TV PULS HD</text>
+<text x="224" y="536.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Lombard. Życie pod zastaw 19 (odc. 49)</text>
+<rect x="1056" y="526" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="526" width="40.31999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="548" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="623" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="595.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">6</text>
+<text x="160.0" y="587.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">PULS 2</text>
+<text x="224" y="578.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">Puls 2 HD</text>
+<text x="224" y="612.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Pingwiny z Madagaskaru 1 (odc. 20)</text>
+<rect x="1056" y="602" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="602" width="33.599999999999994" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="624" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="699" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="671.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">7</text>
+<text x="160.0" y="663.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TVN 7</text>
+<text x="224" y="654.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TVN 7 HD</text>
+<text x="224" y="688.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Sędzia Anna Maria Wesołowska</text>
+<rect x="1056" y="678" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="678" width="26.879999999999992" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="700" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="775" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="747.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">8</text>
+<text x="160.0" y="739.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TV4</text>
+<text x="224" y="730.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TV4 HD</text>
+<text x="224" y="764.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Policjantki i policjanci</text>
+<rect x="1056" y="754" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="754" width="20.15999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="776" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="851" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="823.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">9</text>
+<text x="160.0" y="815.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">TV6</text>
+<text x="224" y="806.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">TV6 HD</text>
+<text x="224" y="840.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Policjanci z sąsiedztwa</text>
+<rect x="1056" y="830" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="830" width="13.43999999999999" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<rect x="40" y="852" width="4" height="76" fill="#0c0e10" fill-opacity="1.000000"/>
+<rect x="48" y="927" width="1128" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="96" y="899.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="end">10</text>
+<text x="160.0" y="891.5" font-size="15" font-weight="normal" fill="#f3f6fa" text-anchor="middle">POLITYKA</text>
+<text x="224" y="882.5" font-size="28" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsat News Polityka HD</text>
+<text x="224" y="916.625" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="start">Debata polityczna — wydanie specjalne</text>
+<rect x="1056" y="906" width="96" height="6" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1056" y="906" width="6.719999999999985" height="6" fill="#00e676" fill-opacity="1.000000"/>
+<text x="40" y="961.0" font-size="21" font-weight="normal" fill="#c2ccd7" text-anchor="start">OK — kanał     INFO — opis     EXIT — powrót</text>
+<rect x="1200" y="168" width="2" height="760" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1272" y="168" width="608" height="342" fill="#12232e" fill-opacity="1.000000"/>
+<rect x="1274" y="170" width="604" height="2" fill="#303438" fill-opacity="1.000000"/>
+<polygon points="1554.0,301.0 1554.0,357.0 1602.0,329.0" fill="#00e676"/>
+<text x="1576.0" y="402.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="middle">Podgląd TV · 16:9</text>
+<text x="1232" y="546.0" font-size="20" font-weight="normal" fill="#c2ccd7" text-anchor="start">ZAZNACZONA POZYCJA</text>
+<text x="1232" y="584.0" font-size="26" font-weight="normal" fill="#00e676" text-anchor="start">TVP 1 HD</text>
+<rect x="1232" y="606" width="648" height="1" fill="#303438" fill-opacity="1.000000"/>
+<text x="1232" y="650.0" font-size="30" font-weight="normal" fill="#f3f6fa" text-anchor="start">Akacjowa 38</text>
+<text x="1232" y="749.0" font-size="25" font-weight="normal" fill="#00e676" text-anchor="start">20:00</text>
+<text x="1372" y="749.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">– 21:30</text>
+<text x="1880" y="747.0" font-size="23" font-weight="normal" fill="#c2ccd7" text-anchor="end">Do końca: 15 min</text>
+<rect x="1232" y="774" width="648" height="4" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1232" y="774" width="648" height="4" fill="#303438" fill-opacity="1.000000"/>
+<rect x="1232" y="774" width="324" height="4" fill="#00e676" fill-opacity="1.000000"/>
+<text x="1232" y="815.0" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">Uczestnicy programu mierzą się z wymagającymi</text>
+<text x="1232" y="846.25" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">zadaniami w kuchni. O zwycięstwie zdecydują</text>
+<text x="1232" y="877.5" font-size="25" font-weight="normal" fill="#c2ccd7" text-anchor="start">umiejętności, współpraca i opanowanie.</text>
+<text x="1232" y="960.0" font-size="20" font-weight="normal" fill="#c2ccd7" text-anchor="start">INFO — pełny opis</text>
 </g>
 </svg>
