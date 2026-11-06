@@ -101,6 +101,7 @@ def extract(directory):
     mapping={
         'Menu':'Menu','QuickMenu':'QuickMenu','ChannelSelection':'ChannelSelection','ChannelSelection_PIG':'ChannelSelection','ChannelSelection_NoPIG':'ChannelSelection',
         'ChannelSelectionRadio':'ChannelSelectionRadio','SimpleChannelSelection':'SimpleChannelSelection','SlimChannelSelection':'SimpleChannelSelection',
+        'HistoryZap':'HistoryZapSelector','HistoryZapSelector':'HistoryZapSelector',
         'BouquetSelector':'BouquetSelector','EPGBouquetSelector':'EPGBouquetSelector',
         **{x:'EPGSelection' for x in ['EPGSelection','QuickEPG','EPGSelectionMulti','GraphicalEPG','GraphicalEPGPIG','GraphicalInfoBarEPG','EPGvertical','EPGverticalPIG']},
         'EventView':'EventViewEPGSelect','InfoBarEventView':'EventViewSimple','Setup':'Setup',
@@ -134,6 +135,8 @@ def extract(directory):
         if cls=='SkinSelection':
             # layoutFinished unconditionally uses preview.instance.size().
             required.append('preview')
+        if cls=='HistoryZapSelector':
+            required.append('menu')
         if cls=='PluginBrowser':
             widgets.update(pluginList='List',pluginGrid='List')  # self[self.layout]
         if cls in ('EPGSelection','EPGSelectionGrid','EPGSelectionInfobarGrid'):

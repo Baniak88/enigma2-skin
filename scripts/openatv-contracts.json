@@ -1944,6 +1944,42 @@
           "description",
           "footnote"
         ]
+      },
+      "HistoryZap": {
+        "class": "HistoryZapSelector",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "menu": "List",
+          "actions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap"
+        },
+        "required": [
+          "menu"
+        ]
+      },
+      "HistoryZapSelector": {
+        "class": "HistoryZapSelector",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "ActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "menu": "List",
+          "actions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap"
+        },
+        "required": [
+          "menu"
+        ]
       }
     }
   },
@@ -3897,6 +3933,42 @@
           "description",
           "footnote"
         ]
+      },
+      "HistoryZap": {
+        "class": "HistoryZapSelector",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "menu": "List",
+          "actions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap"
+        },
+        "required": [
+          "menu"
+        ]
+      },
+      "HistoryZapSelector": {
+        "class": "HistoryZapSelector",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Pixmap",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "menu": "List",
+          "actions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap"
+        },
+        "required": [
+          "menu"
+        ]
       }
     }
   },
@@ -5634,6 +5706,42 @@
           "config",
           "description",
           "footnote"
+        ]
+      },
+      "HistoryZap": {
+        "class": "HistoryZapSelector",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "menu": "List",
+          "actions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap"
+        },
+        "required": [
+          "menu"
+        ]
+      },
+      "HistoryZapSelector": {
+        "class": "HistoryZapSelector",
+        "widgets": {
+          "ScreenPath": "StaticText",
+          "Title": "StaticText",
+          "Image": "Label",
+          "helpActions": "HelpableActionMap",
+          "key_help": "StaticText",
+          "key_red": "StaticText",
+          "key_green": "StaticText",
+          "menu": "List",
+          "actions": "HelpableActionMap",
+          "navigationActions": "HelpableActionMap"
+        },
+        "required": [
+          "menu"
         ]
       }
     }

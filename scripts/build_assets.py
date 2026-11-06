@@ -33,6 +33,7 @@ def build():
     # Explicit opaque selection prevents a glossy fallback from the base skin.
     # Native list rows clip the pixmap to their 100/116px item height.
     png(Path('assets/channel-selected.png'),1088,116,SELECTED)
+    png(Path('assets/history-selected.png'),1792,168,SELECTED)
     # Single-column gradients are stretched natively; no blur shader or timer.
     for name,height in BAR_HEIGHTS.items():
         total=height+FADE_TOP

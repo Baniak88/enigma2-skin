@@ -46,7 +46,9 @@ def enlarge_template(code):
             elif node.func.id.startswith('MultiContentEntry'):
                 for kw in node.keywords:
                     if kw.arg=='pos':kw.value.elts[1].value=round(kw.value.elts[1].value*1.2)
-                    elif kw.arg=='size':kw.value.elts[1].value=bigger_height(kw.value.elts[1].value)
+                    elif kw.arg=='size':
+                        height=kw.value.elts[1].value
+                        kw.value.elts[1].value=max(1,round(height*1.2)) if height<=4 else bigger_height(height)
         if isinstance(node,ast.Dict):
             for key,val in zip(node.keys,node.values):
                 if isinstance(key,ast.Constant) and key.value=='itemHeight':val.value=bigger_height(val.value)

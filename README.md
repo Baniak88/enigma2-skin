@@ -1,13 +1,32 @@
-# TvSat 0.6.4 — skórka Enigma2 dla OpenATV
+# TvSat 0.6.5 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.4 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.5 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## TvSat 0.6.5 — historia poprzednich kanałów
+
+Okno powrotu do poprzedniego kanału ma teraz pełny układ TvSat, zastępujący
+mały widok z nachodzącymi na siebie tekstami. Obsługiwane są obie natywne nazwy:
+HistoryZap oraz HistoryZapSelector.
+
+- Standard pokazuje pięć dużych pozycji, Duże napisy cztery.
+- Każda pozycja ma osobne pola pikony, nazwy kanału, godzin i tytułu audycji.
+- Długi tytuł kończy się wielokropkiem. Pełne opisy nie są wciskane do wierszy.
+- Ciemne tło i zielone zaznaczenie są spójne z listą kanałów.
+- Znak » wskazuje aktualnie oglądany kanał. OK przełącza, EXIT/anuluj wraca.
+
+Pozostawiono natywną kolejność historii i działanie pilota. Po instalacji
+wystarczy **restart GUI**; nowy ekran historii nie wymaga ponownego zapisywania
+profilu wyglądu. Zmiana obejmuje Standard i Duże napisy.
+
+![Historia kanałów — dane przykładowe](docs/history.svg)
+![Historia kanałów — Duże napisy, dane przykładowe](docs/history-large.svg)
 
 ## TvSat 0.6.4 — czytelna lista kanałów
 
@@ -362,11 +381,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.6.4_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.4_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.6.5_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.5_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.4_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.5_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -381,8 +400,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.6.4.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.4_all.ipk &&
-opkg install /tmp/TvSat-0.6.4.ipk
+wget -O /tmp/TvSat-0.6.5.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.5_all.ipk &&
+opkg install /tmp/TvSat-0.6.5.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -433,12 +452,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.6.4.tar.gz](packages/TvSat-0.6.4.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.6.5.tar.gz](packages/TvSat-0.6.5.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.6.4.tar.gz
+tar -xzf /tmp/TvSat-0.6.5.tar.gz
 sh install.sh
 ```
 

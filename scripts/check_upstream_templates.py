@@ -69,6 +69,8 @@ def check(sources):
                             slots=12
                         elif screen.get('name')=='FileCommander':
                             slots=27
+                        elif screen.get('name') in ('HistoryZap','HistoryZapSelector'):
+                            slots=8
                         else:
                             slots=8 if screen.get('name')=='Menu' else 4 if screen.get('name').startswith('Plugin') else 6
                         sample=tuple(range(slots))

@@ -214,6 +214,24 @@ def build():
             event(s,'ServiceEvent',1216,464,640)
             label(s,'INFO — pełny opis audycji',1216,878,640,44,24,'muted')
 
+    for name in ('HistoryZap','HistoryZapSelector'):
+        s=screen(name);header(s,'HISTORIA KANAŁÓW');footer(s,('red','green'))
+        # Native history rows have eight fields, including the service reference
+        # at index 7. Only the display template changes; selection stays native.
+        title=s.find("widget[@source='Title']");s.remove(title)
+        label(s,'Wybierz kanał, do którego chcesz wrócić.',64,150,1792,48,27,'muted')
+        n=source(s,'menu',64,220,1792,700,render='Listbox',selectionPixmap='TvSat/assets/history-selected.png',selectionZoom='0',**LIST)
+        templated(n,'{"fonts":[gFont("TvSatStrong",32),gFont("TvSatText",29),gFont("TvSatText",27)],"itemHeight":140,"itemWidth":1792,"template":['
+            'MultiContentEntryRectangle(pos=(0,0),size=(4,140),backgroundColor=0x000c0e10,backgroundColorSelected=0x0000e676),'
+            'MultiContentEntryRectangle(pos=(8,139),size=(1784,1),backgroundColor=0x00303438,backgroundColorSelected=0x0025473a),'
+            'MultiContentEntryText(pos=(16,0),size=(32,140),font=0,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER,text=1,color=0x0000e676,color_sel=0x0000e676),'
+            'MultiContentEntryPixmapAlphaBlend(pos=(72,30),size=(144,80),png=6,flags=BT_SCALE|BT_KEEP_ASPECT_RATIO),'
+            'MultiContentEntryText(pos=(248,14),size=(1000,44),font=0,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=2),'
+            'MultiContentEntryText(pos=(1280,14),size=(488,44),font=2,flags=RT_HALIGN_RIGHT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=5,color=0x00c2ccd7,color_sel=0x00c2ccd7),'
+            'MultiContentEntryText(pos=(248,70),size=(1520,48),font=1,flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_ELLIPSIS,text=3,color=0x00c2ccd7,color_sel=0x00c2ccd7)]}')
+        label(s,'↑ ↓ — wybierz kanał     OK — przełącz     EXIT — powrót',64,936,1192,30,22,'muted')
+        label(s,'» Oglądany kanał',1280,936,576,30,22,'green',halign='right')
+
     for name in ('SimpleChannelSelection','SlimChannelSelection'):
         s=screen(name); header(s,'WYBIERZ KANAŁ / BUKIET'); footer(s)
         widget(s,'list',64,236,1792,684,serviceNameFont='TvSatText;30',serviceInfoFont='TvSatText;25',serviceNumberFont='TvSatText;26',serviceItemHeight='68',**LIST)

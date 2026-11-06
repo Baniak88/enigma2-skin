@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.6.4
+# OpenATV — zakres zgodności 0.6.5
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -425,3 +425,29 @@ który mierzy linie natywnie. Godziny zaczynają się 8 px niżej; skrót opisu 
 110 px i 8 px przerwy przed podpowiedzią INFO. Pełne źródło EPG jest zachowane.
 Podglądy zawierają długie nazwy z raportowanego przykładu. Testy automatyczne
 nie zastępują oceny wizualnej na fizycznym dekoderze.
+
+## Historia kanałów — 0.6.5
+
+Nowe ekrany HistoryZap i HistoryZapSelector mają 1920×1080 i natywny List/menu
+z TemplatedMultiContent. OpenATV 8.0 szuka najpierw HistoryZap, starsze badane
+wersje używają nazwy klasy HistoryZapSelector. Kontrakty widgetów dodano z AST
+tych samych przypiętych źródeł ChannelSelection.py/Screen.py co dotychczas.
+Mapowanie jest także częścią audit_openatv.py.
+
+Natywny wiersz ma osiem pól. Szablon wyświetla marker (1), nazwę kanału (2),
+tytuł audycji (3), godziny/czas (5) i pikonę (6); zachowuje referencję kanału (7)
+wykorzystywaną przez keySelect. Opis (4) jest celowo pominięty w układzie.
+W Standard mieści się 5×140 px, w Duże napisy 4×168 px. Pikona ma 144×80 lub
+144×96 px z zachowaniem proporcji. Między pikoną a nazwą jest 32 px odstępu,
+między nazwą a godzinami również 32 px. Nazwa i tytuł są w osobnych liniach.
+Trzy pola tekstowe używają RT_ELLIPSIS. Jawna grafika zaznaczenia ma ciemne,
+jednolite tło. Przy powiększaniu szablonu linie 1 px pozostają cienkie i mieszczą
+się w dolnej krawędzi wiersza.
+
+check_upstream_history_ui uruchamia oryginalną klasę HistoryZapSelector oraz
+TemplatedMultiContent z OpenATV 7.5/7.6/8.0. Sprawdza oba porządki historii,
+indeks początkowego zaznaczenia, dane z brakującym EPG/pikoną, pustą historię,
+wybór każdej referencji, Anuluj i oba rozmiary/aliasy skórki. C++ i usługi tunera
+są zastąpione; ocena wyglądu na fizycznym dekoderze pozostaje do wykonania.
+Natywny kod i ustawienia odbiornika nie są zmieniane. Do wczytania nowych nazw
+ekranów potrzebny jest restart GUI.

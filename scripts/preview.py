@@ -23,6 +23,11 @@ CHANNEL_ROWS=[('Super Polsat HD',"Hell's Kitchen — Piekielna kuchnia (odc. 4)"
     ('Polsat News Polityka HD','Debata polityczna — wydanie specjalne','POLITYKA'),
     ('Paramount Network Polska','Wojownicze Żółwie Ninja: Zmutowany chaos','PARAMOUNT'),
     ('Polsat News 2 HD','Wydarzenia 12:50','NEWS 2')]
+HISTORY_ROWS=[('', '»', 'CANAL+ SERIALE HD', 'ABBA. Wbrew wszystkim', 'Opis audycji', '16:35 – 17:30 (+16 min)', 'C+ SERIALE', 'ref1'),
+    ('', '', 'Polsat Film HD', 'Dywizjon 303. Historia prawdziwa', 'Opis audycji', '15:45 – 17:50 (+36 min)', 'POLSAT FILM', 'ref2'),
+    ('', '', 'TVN Fabuła', 'Książę w Nowym Jorku', 'Opis audycji', '16:40 – 19:00 (+106 min)', 'TVN FABUŁA', 'ref3'),
+    ('', '', 'Comedy Central HD', 'Przyjaciele 8: Ten, w którym Rachel ma dziecko (odc. 24)', 'Opis audycji', '16:55 – 17:25 (+11 min)', 'COMEDY', 'ref4'),
+    ('', '', 'TVN HD', 'Detektywi (odc. 380)', 'Opis audycji', '16:55 – 18:00 (+46 min)', 'TVN', 'ref5')]
 out=[]
 PROFILE='TvSat'
 STATE='success'
@@ -86,6 +91,8 @@ def value(node,screen):
         if key=='description':return 'Standard: siedem pozycji. Nazwa kanału u góry, audycja pod spodem.\n\nDuże napisy: większa czcionka i sześć pozycji, także z dwiema liniami tekstu.\n\nNaciśnij ZIELONY — Zapisz również po aktualizacji, jeśli kanał i audycja nadal są w jednym wierszu.'
         if key=='footnote':return 'Po zapisaniu potrzebny jest restart GUI. Anuluj pozostawia ustawienia bez zmian.'
         if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz'}.get(key,'')
+    if screen in ('HistoryZap','HistoryZapSelector'):
+        if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Wybierz'}.get(key,'')
     if screen in ('ConflictTimerOverview','TimerSanityConflict'):
         if key=='description':return 'Dwa nagrania korzystają z tego samego tunera w nakładających się godzinach. Wybierz timer i zmień jego czas lub wyłącz go.'
         if key.startswith('key_'):return {'key_red':'Usuń','key_yellow':'Wyłącz','key_blue':'Ignoruj'}.get(key,'')
@@ -248,6 +255,24 @@ def draw_list(name,key,x,y,w,h):
             png(ROOT/'TvSat/icons/folder.png',x+12,y+i*72+20,36,32)
             text(x+64,y+i*72+16,int(w*.6),40,title,30,'white',nowrap=True)
             text(x+int(w*.65),y+i*72+16,int(w*.3),40,path,30,'white',nowrap=True)
+    elif name in ('HistoryZap','HistoryZapSelector'):
+        from validate import check_template
+        node=SKIN.find(f"screen[@name='{name}']/widget[@source='menu']/convert")
+        template=check_template(node.text);rh=template['itemHeight']
+        for i,row in enumerate(HISTORY_ROWS[:int(h//rh)]):
+            yy=y+i*rh;selected=i==2
+            if selected:rect(x,yy,w,rh,'selected')
+            for kind,entry in template['template']:
+                xx,dy=entry['pos'];nw,nh=entry['size'];nx,ny=x+xx,yy+dy
+                fill=entry.get('color_sel' if selected else 'color')
+                if kind=='rect':fill=entry.get('backgroundColorSelected' if selected else 'backgroundColor')
+                fill=f'#{fill:08x}' if fill is not None else 'white'
+                if kind=='rect':rect(nx,ny,nw,nh,fill)
+                elif kind=='pixmap':fake_picon(i,nx,ny,nw,nh,row[6])
+                elif kind=='text':
+                    field=entry['text'];family,font=template['fonts'][entry['font']]
+                    text(nx,ny+(nh-font*1.25)/2,nw,nh,row[field],font,fill,
+                        'right' if field==5 else 'center' if field==1 else 'left',nowrap=True,bold=family=='TvSatStrong')
     elif name=='Menu':
         rows=['Informacje','Timery','Nagrania','Wtyczki','Ustawienia','Czuwanie / restart']
         icons=['information','timermenu','movie_selection','plugin_selection','setup','shutdown']
@@ -391,6 +416,8 @@ if __name__=='__main__':
 
     for name,target,state in [('TvSatSettings','appearance.svg','success'),('ConflictTimerOverview','timer-conflict.svg','success'),('TimeshiftState','timeshift.svg','success'),('Opkg','install-progress.svg','progress'),('Opkg','install-error.svg','error'),('InfoBar','infobar-recording.svg','recording')]:
         render(name,target,args.png,state=state)
+    render('HistoryZap','history.svg',args.png)
+    render('HistoryZap','history-large.svg',args.png,profile='TvSatLarge')
     for name,target in [('Menu','menu-large.svg'),('ChannelSelection','channels-large.svg'),('InfoBar','infobar-large.svg'),('GraphicalEPG','epg-large.svg'),('TvSatSettings','appearance-large.svg'),('EventView','event-info-large.svg')]:
         render(name,target,args.png or (args.thumbnail and name=='Menu'),profile='TvSatLarge')
         if args.thumbnail and name=='Menu':
