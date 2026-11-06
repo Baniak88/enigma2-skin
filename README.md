@@ -1,13 +1,35 @@
-# TvSat 0.6.3 — skórka Enigma2 dla OpenATV
+# TvSat 0.6.4 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.3 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.4 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
+
+## TvSat 0.6.4 — czytelna lista kanałów
+
+Nazwa kanału i tytuł audycji mają teraz **osobne linie w obu rozmiarach**.
+Standard pokazuje siedem pozycji, Duże napisy sześć. Nazwa kanału jest mocniejszą
+czcionką i korzysta z całej górnej linii; tytuł pod spodem jest spokojniejszy,
+szary. Długie teksty kończą się wielokropkiem przed osobnym polem postępu.
+Zaznaczenie ma jednolite ciemnozielone tło zamiast odziedziczonego gradientu.
+
+Panel po prawej mieści dwie pełne linie tytułu. Tytuł i skrót opisu są mierzone
+natywnie i kończone wielokropkiem, gdy zabraknie miejsca. INFO nadal otwiera
+pełne informacje o audycji. Pozostałe ekrany i fade pozostają bez zmian.
+
+**Zastosowanie po aktualizacji:** zrestartuj GUI, otwórz **Wtyczki → TvSat — wygląd**,
+wybierz Standard lub Duże napisy, naciśnij **zielony Zapisz** i zaakceptuj ponowny
+restart GUI. To konieczne, jeśli nadal działa starsza lista 14 pozycji z kanałem
+i audycją w jednym wierszu. Samo zainstalowanie IPK zachowuje dotychczasowe
+ustawienia. Zapis ustawia także dwie linie oraz 7/6 pozycji dla natywnego trybu
+Legacy, używanego m.in. przez radio. Nie zmienia bukietów ani timerów.
+
+![Czytelna lista — Standard, dane przykładowe](docs/channels.svg)
+![Czytelna lista — Duże napisy, dane przykładowe](docs/channels-large.svg)
 
 ## TvSat 0.6.3 — długie przejście fade
 
@@ -340,11 +362,11 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-tvsat_0.6.3_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.3_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.6.4_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.4_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.3_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.4_all.ipk
 ```
 
 Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
@@ -359,8 +381,8 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/TvSat-0.6.3.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.3_all.ipk &&
-opkg install /tmp/TvSat-0.6.3.ipk
+wget -O /tmp/TvSat-0.6.4.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.4_all.ipk &&
+opkg install /tmp/TvSat-0.6.4.ipk
 ```
 
 Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
@@ -411,12 +433,12 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [TvSat-0.6.3.tar.gz](packages/TvSat-0.6.3.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.6.4.tar.gz](packages/TvSat-0.6.4.tar.gz), prześlij do `/tmp`:
 
 ```sh
 mkdir -p /tmp/tvsat-install
 cd /tmp/tvsat-install
-tar -xzf /tmp/TvSat-0.6.3.tar.gz
+tar -xzf /tmp/TvSat-0.6.4.tar.gz
 sh install.sh
 ```
 

@@ -1,4 +1,4 @@
-# OpenATV — zakres zgodności 0.6.3
+# OpenATV — zakres zgodności 0.6.4
 
 Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
@@ -399,3 +399,29 @@ monotoniczny spadek alpha, stopniową zmianę na dużej części ekranu i minima
 kontrast 4,5:1 dla white/muted/green na najjaśniejszym białym obrazie wideo.
 InfoBar, SecondInfoBar i MoviePlayer zachowują poprzednie maski i 15% przezroczystości.
 Potrzebna jest jeszcze ocena efektu na fizycznym dekoderze i telewizorze.
+
+## Czytelność wyboru kanału — 0.6.4
+
+Oba szablony serviceList mają dwie niezależne linie: ServiceName na x=204,
+szerokość 860 px; Title1 pod spodem, szerokość 748 px. Pole postępu zaczyna się
+na x=980, czyli 28 px za końcem tekstu audycji. Wszystkie pola tekstowe używają
+natywnego wrap=ellipsis. Nazwa kanału ma TvSatStrong 32/36 px, audycja TvSatText
+27/30 px; kolor opisu muted pozostaje także na zaznaczeniu.
+
+Jawny selectionPixmap ma jednolity kolor #25473a, 1088×116 px, i jest przycinany
+przez natywną listę do wysokości wiersza. Wyłącza odziedziczony wygląd zaznaczenia
+z bazowej skórki. Kolor tła listy pozostaje #0c0e10.
+
+apply_profile ustawia servicelist_twolines=True również dla Standard. Native
+ServiceListLegacy nadpisuje serviceItemHeight liczbą pozycji z konfiguracji,
+więc zapis ustawia serviceitems_per_page_twolines na 7/6. Procedura wtyczki nadal
+nie działa przy starcie i nie zmienia ustawień podczas instalacji ani Anuluj.
+Nowy układ wymaga Zapisz w TvSat — wygląd i restartu GUI, jeśli działa Legacy.
+check_upstream_service_ui wykonuje oryginalny setItemsPerPage z 7.5, 7.6 i 8.0,
+weryfikując 100/116 px oraz pełne 7/6 pozycji (wywołania C++ zastąpione).
+
+Panel PIG zachowuje podgląd 608×342. Tytuł ma 88 px i renderer TvSatSummary,
+który mierzy linie natywnie. Godziny zaczynają się 8 px niżej; skrót opisu ma
+110 px i 8 px przerwy przed podpowiedzią INFO. Pełne źródło EPG jest zachowane.
+Podglądy zawierają długie nazwy z raportowanego przykładu. Testy automatyczne
+nie zastępują oceny wizualnej na fizycznym dekoderze.

@@ -185,9 +185,11 @@ def build():
             s.set('label',{'ChannelSelection':'TvSat — standard z TV','ChannelSelection_PIG':'TvSat — podgląd TV','ChannelSelection_NoPIG':'TvSat — bez podglądu'}[name])
         widget(s,'list',64,220,1088,700,serviceNameFont='TvSatText;31',serviceInfoFont='TvSatText;26',
             serviceNumberFont='TvSatText;26',serviceItemHeight='100',foregroundColorEvent='muted',
-            fieldMargins='20',itemsDistances='20',listMarginLeft='12',listMarginRight='12',
-            progressBarWidth='96',progressbarHeight='6',progressbarBorderWidth='0',
+            fieldMargins='28',itemsDistances='28',listMarginLeft='12',listMarginRight='20',
+            selectionPixmap='TvSat/assets/channel-selected.png',selectionZoom='0',
+            progressBarWidth='88',progressbarHeight='6',progressbarBorderWidth='0',
             foregroundColorEventSelected='white',colorEventProgressbar='green',colorEventProgressbarSelected='green',
+            colorEventProgressbarBorder='line',colorEventProgressbarBorderSelected='line',
             colorServiceRecorded='red',colorServiceRecording='red',**LIST)
         label(s,'OK — kanał     INFO — opis     EXIT — powrót',64,936,1088,30,22,'muted')
         box(s,1184,220,2,704)
@@ -199,12 +201,12 @@ def build():
             label(s,'WYBRANY KANAŁ',1216,572,640,28,20,'muted')
             source(s,'ServiceEvent',1216,606,640,38,26,'green',converts=[('ServiceName','Name')],noWrap='1')
             box(s,1216,654,640,1)
-            source(s,'ServiceEvent',1216,668,640,70,28,converts=[('EventName','Name')])
-            source(s,'ServiceEvent',1216,750,130,32,23,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
-            source(s,'ServiceEvent',1356,750,170,32,23,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
-            source(s,'ServiceEvent',1536,750,320,32,23,'muted',halign='right',converts=[('TvSatEventRemaining','')])
-            source(s,'ServiceEvent',1216,796,640,4,render='Progress',color='green',backgroundColor='line',borderWidth='0',converts=[('EventTime','Progress')])
-            source(s,'ServiceEvent',1216,812,640,120,24,'muted',converts=[('EventName','ExtendedDescription')])
+            source(s,'ServiceEvent',1216,668,640,88,30,render='TvSatSummary',converts=[('EventName','Name')])
+            source(s,'ServiceEvent',1216,764,130,36,25,'green',converts=[('EventTime','StartTime'),('ClockToText','Default')])
+            source(s,'ServiceEvent',1356,764,170,36,25,'muted',converts=[('EventTime','EndTime'),('ClockToText','Format:– %H:%M')])
+            source(s,'ServiceEvent',1536,764,320,36,23,'muted',halign='right',converts=[('TvSatEventRemaining','')])
+            source(s,'ServiceEvent',1216,812,640,4,render='Progress',color='green',backgroundColor='line',borderWidth='0',converts=[('EventTime','Progress')])
+            source(s,'ServiceEvent',1216,826,640,110,25,'muted',converts=[('EventName','ExtendedDescription')])
             label(s,'INFO — pełny opis',1216,944,640,28,20,'muted')
         else:
             picon(s,'ServiceEvent',1216,220)

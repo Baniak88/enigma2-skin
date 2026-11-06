@@ -32,7 +32,7 @@ class TvSatSettings(Screen, ConfigListScreen):
         self.onLayoutFinish.append(self.selectionChanged)
 
     def selectionChanged(self):
-        self['description'].setText('Standard: siedem wierszy i oddzielne kolumny kanału oraz audycji.\n\nDuże napisy: większa czcionka, większe odstępy i sześć wierszy.\n\nZapisz dopasuje również listę kanałów i włączy pikony. Dotyczy wyłącznie wyglądu; lista kanałów i timery pozostają bez zmian.')
+        self['description'].setText('Standard: siedem pozycji. Nazwa kanału u góry, audycja pod spodem.\n\nDuże napisy: większa czcionka i sześć pozycji, także z dwiema liniami tekstu.\n\nNaciśnij ZIELONY — Zapisz również po aktualizacji, jeśli kanał i audycja nadal są w jednym wierszu. Włączy to czytelny układ i pikony. Lista kanałów i timery pozostają bez zmian.')
 
     def keyCancel(self):
         self.close()

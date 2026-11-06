@@ -14,7 +14,7 @@ def service_templates(large=False):
     root=E.Element('templates')
     name='TvSatLarge' if large else 'TvSat'
     height=116 if large else 100
-    template=E.SubElement(root,'template',name=name,component='serviceList',fonts='TvSatText;38,TvSatText;32,TvSatText;30' if large else 'TvSatText;31,TvSatText;26,TvSatText;26')
+    template=E.SubElement(root,'template',name=name,component='serviceList',fonts='TvSatStrong;36,TvSatText;30,TvSatText;28' if large else 'TvSatStrong;32,TvSatText;27,TvSatText;26')
     def item(mode,tag,**attrs):
         return E.SubElement(mode,tag,{k:str(v) for k,v in attrs.items()})
     for kind in ('services','bouquets','other'):
@@ -26,9 +26,11 @@ def service_templates(large=False):
             continue
         item(mode,'text',index='Number',position='12,0',size=f'56,{height}',font='2',horizontalAlignment='right',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='white')
         item(mode,'pixmap',index='Picon',position=f'84,{(height-56)//2}',size='100,56',alpha='blend',scale='scaleCenter')
-        item(mode,'text',index='ServiceName',position='204,8' if large else '204,0',size='860,50' if large else f'420,{height}',font='0',verticalAlignment='center',wrap='ellipsis')
-        item(mode,'text',index='Title1',position='204,66' if large else '648,0',size='748,42' if large else f'304,{height}',font='1',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='white',wrap='ellipsis')
-        item(mode,'progress',index='Progress',position='980,84' if large else '980,46',size='88,8',foregroundColor='green',foregroundColorSelected='green',backgroundColor='line',backgroundColorSelected='line',borderWidth='0')
+        # Both sizes use two distinct text lines. Channel names can use the full
+        # upper line; programme titles end before the separate progress slot.
+        item(mode,'text',index='ServiceName',position='204,8',size='860,48' if large else '860,40',font='0',verticalAlignment='center',wrap='ellipsis')
+        item(mode,'text',index='Title1',position='204,64' if large else '204,54',size='748,40' if large else '748,36',font='1',verticalAlignment='center',foregroundColor='muted',foregroundColorSelected='muted',wrap='ellipsis')
+        item(mode,'progress',index='Progress',position='980,82' if large else '980,68',size='88,6',foregroundColor='green',foregroundColorSelected='green',backgroundColor='line',backgroundColorSelected='line',borderWidth='0')
     return root
 
 

@@ -40,6 +40,7 @@ class Profiles(unittest.TestCase):
             self.assertTrue(selection.showPicon.value)
             self.assertEqual(usage.serviceitems_per_page.value,8)  # Native minimum for one-line legacy.
             self.assertEqual(usage.serviceitems_per_page_twolines.value,profile['rows'])
+            self.assertTrue(usage.servicelist_twolines.value)
             self.assertIn(int(usage.servicelist_column.value),range(100,1325,25))
             self.assertEqual(usage.show_event_progress_in_servicelist.value,'barright')
             self.assertEqual(config.skin.primary_skin.saved,1)

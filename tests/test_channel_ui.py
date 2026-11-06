@@ -26,21 +26,53 @@ class ChannelUI(unittest.TestCase):
                 overlaps=x<vx+w and x+nw>vx and y<vy+h and y+nh>vy
                 self.assertFalse(overlaps,(name,n.attrib))
 
-    def test_seven_rows_and_separate_channel_and_event_columns(self):
-        screen=self.skin.find("screen[@name='ChannelSelection']")
-        _,height=map(int,screen.find("widget[@name='list']").get('size').split(','))
-        template=E.parse(ROOT/'TvSat/skinTemplates.xml').getroot().find('template')
-        mode=template.find("mode[@name='services']")
-        self.assertEqual(height//int(mode.get('itemHeight')),7)
-        self.assertEqual(mode.get('foregroundColorSelected'),'white')
-        self.assertEqual(mode.get('backgroundColorSelected'),'selected')
-        stripe=mode.find('rectangle')
-        self.assertEqual(stripe.get('foregroundColorSelected'),'green')
-        title=mode.find("text[@index='ServiceName']");event=mode.find("text[@index='Title1']")
-        self.assertLessEqual(int(title.get('position').split(',')[0])+int(title.get('size').split(',')[0]),int(event.get('position').split(',')[0]))
-        self.assertEqual(title.get('wrap'),'ellipsis')
-        self.assertEqual(event.get('wrap'),'ellipsis')
-        self.assertIsNotNone(mode.find("progress[@index='Progress']"))
+    def test_channel_and_event_have_separate_lines_with_room_for_long_names(self):
+        for folder,rows in (('TvSat',7),('TvSatLarge',6)):
+            skin=E.parse(ROOT/folder/'skin.xml').getroot()
+            screen=skin.find("screen[@name='ChannelSelection']")
+            _,height=map(int,screen.find("widget[@name='list']").get('size').split(','))
+            template=E.parse(ROOT/folder/'skinTemplates.xml').getroot().find('template')
+            fonts=template.get('fonts').split(',')
+            self.assertTrue(fonts[0].startswith('TvSatStrong;'))
+            for kind in ('services','bouquets'):
+                mode=template.find(f"mode[@name='{kind}']")
+                self.assertEqual(height//int(mode.get('itemHeight')),rows)
+                self.assertEqual(mode.get('backgroundColorSelected'),'selected')
+                self.assertEqual(mode.find('rectangle').get('foregroundColorSelected'),'green')
+                channel=mode.find("text[@index='ServiceName']");event=mode.find("text[@index='Title1']")
+                cx,cy=map(int,channel.get('position').split(','));cw,ch=map(int,channel.get('size').split(','))
+                ex,ey=map(int,event.get('position').split(','));ew,eh=map(int,event.get('size').split(','))
+                px,py=map(int,mode.find("progress[@index='Progress']").get('position').split(','))
+                self.assertEqual(cx,ex)
+                self.assertGreaterEqual(cw,860)
+                self.assertGreaterEqual(ew,748)
+                self.assertGreaterEqual(ey-(cy+ch),6)
+                self.assertGreaterEqual(px-(ex+ew),24)
+                self.assertTrue(ey<=py<ey+eh)
+                self.assertEqual(channel.get('wrap'),'ellipsis')
+                self.assertEqual(event.get('wrap'),'ellipsis')
+                self.assertEqual(event.get('foregroundColorSelected'),'muted')
+
+    def test_selection_is_an_explicit_dark_surface_instead_of_system_gradient(self):
+        from PIL import Image
+        for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio'):
+            node=self.skin.find(f"screen[@name='{name}']/widget[@name='list']")
+            with Image.open(ROOT/node.get('selectionPixmap')) as image:
+                self.assertEqual(image.size,(1088,116))
+                self.assertEqual(image.getextrema(),((37,37),(71,71),(58,58),(255,255)))
+
+    def test_sidebar_title_is_measured_and_does_not_collide_with_time_or_description(self):
+        for folder in ('TvSat','TvSatLarge'):
+            skin=E.parse(ROOT/folder/'skin.xml').getroot()
+            for name in ('ChannelSelection','ChannelSelection_PIG'):
+                screen=skin.find(f"screen[@name='{name}']")
+                title=next(n for n in screen.findall("widget[@source='ServiceEvent']") if n.find("convert[@type='EventName']") is not None and n.find("convert[@type='EventName']").text=='Name')
+                self.assertEqual(title.get('render'),'TvSatSummary')
+                bottom=int(title.get('position').split(',')[1])+int(title.get('size').split(',')[1])
+                starts=[n for n in screen.findall("widget[@source='ServiceEvent']") if n.find("convert[@type='EventTime']") is not None and n.find("convert[@type='EventTime']").text=='StartTime']
+                self.assertGreaterEqual(int(starts[0].get('position').split(',')[1])-bottom,8)
+                hint=next(n for n in screen.findall('eLabel') if n.get('text')=='INFO — pełny opis')
+                self.assertLessEqual(int(hint.get('position').split(',')[1])+int(hint.get('size').split(',')[1]),974)
 
     def test_font_is_registered_regular_instead_of_default_bold(self):
         fonts={n.get('name'):n.get('filename') for n in self.skin.findall('fonts/font')}

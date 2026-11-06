@@ -16,6 +16,13 @@ COLORS={c.get('name'):c.get('value') for c in SKIN.findall('colors/color')}
 CHANNELS=['CANAL+ PREMIUM','CANAL+ FILM','CANAL+ SPORT','CANAL+ SERIALE','TVP 1 HD','TVP 2 HD','TVN HD','Polsat HD']
 SHORT=['C+ PREMIUM','C+ FILM','C+ SPORT','C+ SERIALE','TVP 1','TVP 2','TVN','POLSAT']
 SHOWS=['Wszystko przed nami','Wieczór filmowy','Magazyn sportowy','Nowy rozdział','Wiadomości dnia','Na dobre i na złe','Fakty','Wydarzenia']
+CHANNEL_ROWS=[('Super Polsat HD',"Hell's Kitchen — Piekielna kuchnia (odc. 4)",'SUPER POLSAT'),
+    ('Polsat Rodzina HD','Dzikie psy 1 (odc. 2)','RODZINA'),
+    ('TV6 HD','Policjantki i policjanci 22 (odc. 45)','TV6'),
+    ('TVP 3','Program informacyjny','TVP 3'),
+    ('Polsat News Polityka HD','Debata polityczna — wydanie specjalne','POLITYKA'),
+    ('Paramount Network Polska','Wojownicze Żółwie Ninja: Zmutowany chaos','PARAMOUNT'),
+    ('Polsat News 2 HD','Wydarzenia 12:50','NEWS 2')]
 out=[]
 PROFILE='TvSat'
 STATE='success'
@@ -56,10 +63,10 @@ def png(path,x,y,w,h):
     out.append(f'<image x="{x}" y="{y}" width="{w}" height="{h}" href="data:image/png;base64,{encoded}"/>')
 
 
-def fake_picon(index,x,y,w,h):
+def fake_picon(index,x,y,w,h,title=None):
     # Celowo tekstowa próbka, bez kopiowania prawdziwych logo.
     # Przezroczysta próbka logo dziedziczy tło listy albo paska.
-    text(x+4,y+h*.25,w-8,h*.7,SHORT[index],max(15,min(30,int(w/8))),'white','center')
+    text(x+4,y+h*.25,w-8,h*.7,title or SHORT[index],max(15,min(30,int(w/8))),'white','center')
 
 
 def value(node,screen):
@@ -76,7 +83,7 @@ def value(node,screen):
         if key=='epg_description':return 'Zapaleńcy. Historia polskiego filmu animowanego\n\nDokument pokazuje, jak sztuka animacji odzwierciedla zmieniającą się rzeczywistość społeczną w Polsce. Film ukazuje ewolucję technik i tematów, które uczyniły polską animację fenomenem światowym.\n\nPL, 2024\nReżyseria: Marcin Giżycki\nWystępują: Zbigniew Rybczyński\n\nHistoria twórców, ich eksperymentów i filmów, które zdobyły uznanie na całym świecie.'
         if key.startswith('key_'):return {'key_green':'Dodaj timer','key_yellow':'Pojedynczy EPG','key_blue':'EPG wielu kanałów'}.get(key,'')
     if screen=='TvSatSettings':
-        if key=='description':return 'Standard: siedem wierszy i oddzielne kolumny kanału oraz audycji.\n\nDuże napisy: większa czcionka, większe odstępy i sześć wierszy.\n\nZapisz dopasuje również listę kanałów i włączy pikony.'
+        if key=='description':return 'Standard: siedem pozycji. Nazwa kanału u góry, audycja pod spodem.\n\nDuże napisy: większa czcionka i sześć pozycji, także z dwiema liniami tekstu.\n\nNaciśnij ZIELONY — Zapisz również po aktualizacji, jeśli kanał i audycja nadal są w jednym wierszu.'
         if key=='footnote':return 'Po zapisaniu potrzebny jest restart GUI. Anuluj pozostawia ustawienia bez zmian.'
         if key.startswith('key_'):return {'key_red':'Anuluj','key_green':'Zapisz'}.get(key,'')
     if screen in ('ConflictTimerOverview','TimerSanityConflict'):
@@ -139,8 +146,10 @@ def value(node,screen):
         return {'key_red':'Wyszukaj','key_green':'Dodaj timer','key_yellow':'Szukaj w EPG','key_blue':'AutoTimer'}.get(key,'')
     if src=='session.RecordState':return '● REC' if STATE=='recording' else ''
     if kind=='TvSatEventRemaining':return 'Do końca: 15 min'
-    if kind=='ServiceName':return CHANNELS[0]
+    if kind=='ServiceName':return CHANNEL_ROWS[0][0] if screen.startswith('ChannelSelection') else CHANNELS[0]
     if kind=='EventName':
+        if screen.startswith('ChannelSelection'):
+            return 'Uczestnicy programu mierzą się z wymagającymi zadaniami w kuchni. O zwycięstwie zdecydują umiejętności, współpraca i opanowanie.' if arg=='ExtendedDescription' else CHANNEL_ROWS[0][1]
         if arg=='ExtendedDescription':return 'Wieczór z wielkim kinem. Nieoczekiwane spotkanie zmienia życie bohaterów. Opowieść o odwadze, przyjaźni i wyborach, które zostają z nami na długo.'
         return 'Nocna zmiana' if src.endswith('Next') else SHOWS[0]
     if kind=='EventTime':
@@ -254,21 +263,21 @@ def draw_list(name,key,x,y,w,h):
     elif name.startswith('ChannelSelection'):
         template=E.parse(ROOT/PROFILE/'skinTemplates.xml').getroot().find('template')
         mode=template.find("mode[@name='bouquets']");rh=int(mode.get('itemHeight'))
-        fonts=[int(font.rsplit(';',1)[1]) for font in template.get('fonts').split(',')]
-        for i,(channel,show) in enumerate(zip(CHANNELS[:int(h//rh)],SHOWS)):
+        fonts=[font.rsplit(';',1) for font in template.get('fonts').split(',')]
+        for i,(channel,show,logo) in enumerate(CHANNEL_ROWS[:int(h//rh)]):
             yy=y+i*rh
             if i==0:rect(x,yy,w,rh,'selected')
             for node in mode:
                 xx,dy=map(int,node.get('position').split(','));nw,nh=map(int,node.get('size').split(','))
                 nx,ny=x+xx,yy+dy
                 if node.tag=='rectangle':rect(nx,ny,nw,nh,node.get('foregroundColorSelected') if i==0 else node.get('foregroundColor'))
-                elif node.tag=='pixmap':fake_picon(i,nx,ny,nw,nh)
+                elif node.tag=='pixmap':fake_picon(i,nx,ny,nw,nh,logo)
                 elif node.tag=='progress':
                     rect(nx,ny,nw,nh,'line');rect(nx,ny,nw*(.7-i*.07),nh,'green')
                 elif node.tag=='text':
-                    v={'Number':str(i+1),'ServiceName':channel,'Title1':show}.get(node.get('index'),'')
-                    font=fonts[int(node.get('font'))]
-                    text(nx,ny+(nh-font*1.25)/2,nw,nh,v,font,node.get('foregroundColorSelected','white') if i==0 else node.get('foregroundColor','white'),node.get('horizontalAlignment','left'),nowrap=True)
+                    v={'Number':str(i+15),'ServiceName':channel,'Title1':show}.get(node.get('index'),'')
+                    family,size=fonts[int(node.get('font'))];font=int(size)
+                    text(nx,ny+(nh-font*1.25)/2,nw,nh,v,font,node.get('foregroundColorSelected',node.get('foregroundColor','white')) if i==0 else node.get('foregroundColor','white'),node.get('horizontalAlignment','left'),nowrap=True,bold=family=='TvSatStrong')
     elif name=='GraphicalEPG' and key=='list':
         service=320;rows=int(SKIN.find("screen[@name='GraphicalEPG']/widget[@name='list']").get('NumberOfRows'));rowh=h/rows;area=w-service
         for i,(channel,show) in enumerate(zip(CHANNELS[:rows],SHOWS)):

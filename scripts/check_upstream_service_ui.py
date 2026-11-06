@@ -56,7 +56,23 @@ def probe(version,skin_source,list_source):
             assert by_index[101]['_flags'] & 128 and by_index[101]['_flags'] & 16
             assert by_index[2]['pixmapFlags']>0,'Picons must scale while keeping aspect ratio'
             assert by_index[50]['type']=='progress'
-    print(f'OpenATV {version}: original Standard/Large service templates: modes, EPG indices, ellipsis, centering and picon scaling pass (C++ stubbed).')
+        # Legacy mode ignores serviceItemHeight and derives row size from the
+        # saved usage settings. Check the fallback with the actual native method.
+        skin=E.parse(ROOT/directory/'skin.xml').getroot()
+        width,height=map(int,skin.find("screen[@name='ChannelSelection']/widget[@name='list']").get('size').split(','))
+        rows=6 if directory=='TvSatLarge' else 7
+        ns['config'].usage.serviceitems_per_page=field(14)
+        ns['config'].usage.serviceitems_per_page_twolines=field(rows)
+        ns['config'].usage.servicelist_twolines=field(True)
+        ns['eSize']=lambda w,h:(w,h)
+        legacy=definition(list_source,'ServiceListLegacy')
+        method=next(n for n in legacy.body if isinstance(n,ast.FunctionDef) and n.name=='setItemsPerPage')
+        exec(compile(ast.Module(body=[method],type_ignores=[]),'native-legacy-row-size','exec'),ns)
+        sizes=[];item_heights=[]
+        instance=NS(listHeight=height,listWidth=width,l=NS(setItemHeight=item_heights.append),instance=NS(resize=sizes.append))
+        ns['setItemsPerPage'](instance)
+        assert item_heights==[height//rows] and sizes==[(width,height)],(directory,item_heights,sizes)
+    print(f'OpenATV {version}: original Standard/Large service templates and legacy row sizing pass: modes, EPG indices, ellipsis, centering and picon scaling (C++ stubbed).')
 
 
 def main():
