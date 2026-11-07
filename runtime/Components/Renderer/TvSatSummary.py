@@ -2,7 +2,7 @@
 from Components.Renderer.Label import Label
 
 
-class PolsqSummary(Label):
+class TvSatSummary(Label):
     def applySkin(self, desktop, parent):
         result = Label.applySkin(self, desktop, parent)
         self.changed((self.CHANGED_DEFAULT,))

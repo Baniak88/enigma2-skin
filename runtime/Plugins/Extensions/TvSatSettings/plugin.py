@@ -11,17 +11,17 @@ from Screens.Standby import QUIT_RESTART, TryQuitMainloop
 from .profiles import apply_profile
 
 
-class PolsqSettings(Screen, ConfigListScreen):
+class TvSatSettings(Screen, ConfigListScreen):
     """Changing a temporary choice does nothing until Save is selected."""
     def __init__(self, session):
         Screen.__init__(self, session)
-        self.skinName = ['PolsqSettings', 'Setup']
-        self.setTitle('Polsq — wygląd i czytelność')
+        self.skinName = ['TvSatSettings', 'Setup']
+        self.setTitle('TvSat — wygląd i czytelność')
         self['key_red'] = StaticText('Anuluj')
         self['key_green'] = StaticText('Zapisz')
         self['description'] = Label()
         self['footnote'] = Label('Po zapisaniu potrzebny jest restart GUI. Anuluj pozostawia ustawienia bez zmian.')
-        current = 'large' if config.skin.primary_skin.value.startswith('PolsqLarge/') else 'standard'
+        current = 'large' if config.skin.primary_skin.value.startswith('TvSatLarge/') else 'standard'
         self.profile = NoSave(ConfigSelection(default=current, choices=[('standard', 'Standard'), ('large', 'Duże napisy')]))
         ConfigListScreen.__init__(self, [getConfigListEntry('Rozmiar interfejsu', self.profile)], session=session)
         self['config'].onSelectionChanged.append(self.selectionChanged)
@@ -41,7 +41,7 @@ class PolsqSettings(Screen, ConfigListScreen):
         apply_profile(config, self.profile.value)
         configfile.save()
         self.session.openWithCallback(self.restartAnswer, MessageBox,
-            'Zapisano wygląd Polsq. Uruchomić ponownie interfejs GUI, aby zastosować zmiany?',
+            'Zapisano wygląd TvSat. Uruchomić ponownie interfejs GUI, aby zastosować zmiany?',
             type=MessageBox.TYPE_YESNO, default=False)
 
     def restartAnswer(self, answer):
@@ -52,8 +52,8 @@ class PolsqSettings(Screen, ConfigListScreen):
 
 
 def main(session, **kwargs):
-    session.open(PolsqSettings)
+    session.open(TvSatSettings)
 
 
 def Plugins(**kwargs):
-    return [PluginDescriptor(name='Polsq — wygląd', description='Standard lub duże napisy, czytelna lista kanałów i pikony', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]
+    return [PluginDescriptor(name='TvSat — wygląd', description='Standard lub duże napisy, czytelna lista kanałów i pikony', where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)]

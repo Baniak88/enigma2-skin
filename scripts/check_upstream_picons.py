@@ -27,12 +27,12 @@ class Pixmap:
 
 
 def check(sources):
-    fallback=ROOT/'Polsq/picon_default.png'
+    fallback=ROOT/'TvSat/picon_default.png'
     for version in ('7.5','7.6','8.0'):
         path=sources/version/'lib/python/Components/Renderer/Picon.py'
         cls=next(n for n in ast.parse(path.read_text()).body if isinstance(n,ast.ClassDef) and n.name=='Picon')
         with tempfile.TemporaryDirectory() as tmp:
-            logo=Path(tmp)/'tvnhd.png';logo.write_bytes((ROOT/'Polsq/icons/folder.png').read_bytes())
+            logo=Path(tmp)/'tvnhd.png';logo.write_bytes((ROOT/'TvSat/icons/folder.png').read_bytes())
             settings=SimpleNamespace(usage=SimpleNamespace(showpicon=SimpleNamespace(value=True)))
             found=[str(logo)]
             ns=dict(Renderer=Renderer,ePixmap=Pixmap,exists=exists,getmtime=getmtime,getsize=getsize,join=join,

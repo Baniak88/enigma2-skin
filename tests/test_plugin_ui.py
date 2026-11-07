@@ -9,7 +9,7 @@ from validate import check_template
 
 
 class PluginUI(unittest.TestCase):
-    def setUp(self):self.screen=E.parse(ROOT/'Polsq/skin.xml').getroot().find("screen[@name='PluginBrowserGrid']")
+    def setUp(self):self.screen=E.parse(ROOT/'TvSat/skin.xml').getroot().find("screen[@name='PluginBrowserGrid']")
 
     def test_four_columns_and_three_complete_rows(self):
         grid=self.screen.find("widget[@source='pluginGrid']")

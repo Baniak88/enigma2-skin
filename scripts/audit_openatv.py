@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Odczytuje AST źródeł OpenATV, bez importowania/wykonywania ich kodu.
 
-Użycie: python3 scripts/audit_openatv.py /tmp/polsq-openatv --write
+Użycie: python3 scripts/audit_openatv.py /tmp/tvsat-openatv --write
 Wymaga checkoutów 7.5, 7.6 i 8.0 w podkatalogach argumentu.
 Zapisany kontrakt pozwala ponawiać kontrolę bez sieci i bez odbiornika.
 """
@@ -146,7 +146,7 @@ def extract(directory):
     screens['Volume']={'class':'C++ Volume','widgets':{'Volume':'ProgressBar'},'required':['Volume']}
     screens['Mute']={'class':'C++ Mute','widgets':{},'required':[]}
     # Our passive settings plugin owns these controls on every OpenATV version.
-    screens['PolsqSettings']={'class':'PolsqSettings (bundled plugin)','widgets':{'Title':'StaticText','config':'ConfigList','description':'Label','footnote':'Label','key_red':'StaticText','key_green':'StaticText'},'required':['config','description','footnote']}
+    screens['TvSatSettings']={'class':'TvSatSettings (bundled plugin)','widgets':{'Title':'StaticText','config':'ConfigList','description':'Label','footnote':'Label','key_red':'StaticText','key_green':'StaticText'},'required':['config','description','footnote']}
     return {'source_sha256':fingerprints,'screens':screens}
 
 

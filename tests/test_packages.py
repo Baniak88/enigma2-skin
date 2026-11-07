@@ -46,11 +46,11 @@ class Packages(unittest.TestCase):
         self.assertIn(f'Version: {VERSION}\n',control)
         with tarfile.open(fileobj=io.BytesIO(files['data.tar.gz'])) as t:
             names={m.name.removeprefix('./') for m in t if m.isfile()}
-            expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for folder in ('Polsq','PolsqLarge') for p in (ROOT/folder).rglob('*') if p.is_file()}
+            expected={'usr/share/enigma2/'+str(p.relative_to(ROOT)) for folder in ('TvSat','TvSatLarge') for p in (ROOT/folder).rglob('*') if p.is_file()}
             expected.update('usr/lib/enigma2/python/'+str(p.relative_to(ROOT/'runtime')) for p in (ROOT/'runtime').rglob('*.py') if '__pycache__' not in p.parts)
             self.assertEqual(names,expected)
-            self.assertEqual(t.extractfile('./usr/share/enigma2/Polsq/VERSION').read().decode().strip(),VERSION)
-            for p in (ROOT/'Polsq').rglob('*'):
+            self.assertEqual(t.extractfile('./usr/share/enigma2/TvSat/VERSION').read().decode().strip(),VERSION)
+            for p in (ROOT/'TvSat').rglob('*'):
                 if p.is_file():
                     name='./usr/share/enigma2/'+str(p.relative_to(ROOT))
                     self.assertEqual(t.extractfile(name).read(),p.read_bytes())
@@ -60,28 +60,28 @@ class Packages(unittest.TestCase):
     def test_manual_install_backup_and_symlink_refusal(self):
         with tempfile.TemporaryDirectory() as temp:
             temp=Path(temp);source=temp/'package'
-            with tarfile.open(ROOT/'dist'/f'Polsq-{VERSION}.tar.gz') as t:
+            with tarfile.open(ROOT/'dist'/f'TvSat-{VERSION}.tar.gz') as t:
                 for m in t:
                     self.assertFalse(Path(m.name).is_absolute())
                     self.assertNotIn('..',Path(m.name).parts)
                 t.extractall(source,filter='data')
             env=dict(os.environ,DESTDIR=str(temp/'receiver'))
-            target=temp/'receiver/usr/share/enigma2/Polsq'
+            target=temp/'receiver/usr/share/enigma2/TvSat'
             def install():
                 return subprocess.run(['sh',str(source/'install.sh')],env=env,capture_output=True,text=True)
             first=install();self.assertEqual(first.returncode,0,first.stderr)
             self.assertIn('INSTALACJA ZAKOŃCZONA POMYŚLNIE',first.stdout)
             self.assertIn('GUI',first.stdout)
             self.assertIn(f'Wersja: {VERSION}',first.stdout)
-            self.assertTrue((target.parent/'PolsqLarge/skin.xml').is_file())
-            self.assertTrue((temp/'receiver/usr/lib/enigma2/python/Components/Converter/PolsqEventRemaining.py').is_file())
-            self.assertTrue((temp/'receiver/usr/lib/enigma2/python/Plugins/Extensions/PolsqSettings/plugin.py').is_file())
-            for p in (ROOT/'Polsq').rglob('*'):
-                if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'Polsq')).read_bytes(),p.read_bytes())
+            self.assertTrue((target.parent/'TvSatLarge/skin.xml').is_file())
+            self.assertTrue((temp/'receiver/usr/lib/enigma2/python/Components/Converter/TvSatEventRemaining.py').is_file())
+            self.assertTrue((temp/'receiver/usr/lib/enigma2/python/Plugins/Extensions/TvSatSettings/plugin.py').is_file())
+            for p in (ROOT/'TvSat').rglob('*'):
+                if p.is_file():self.assertEqual((target/p.relative_to(ROOT/'TvSat')).read_bytes(),p.read_bytes())
             (target/'skin.xml').write_text('old skin')
             (target/'user-note').write_text('keep in backup')
             second=install();self.assertEqual(second.returncode,0,second.stderr)
-            backups=list(target.parent.glob('Polsq.backup-*'));self.assertEqual(len(backups),1)
+            backups=list(target.parent.glob('TvSat.backup-*'));self.assertEqual(len(backups),1)
             self.assertEqual((backups[0]/'skin.xml').read_text(),'old skin')
             self.assertEqual((backups[0]/'user-note').read_text(),'keep in backup')
             self.assertFalse((target/'user-note').exists())

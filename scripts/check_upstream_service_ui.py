@@ -26,7 +26,7 @@ def definition(source,name):
 
 
 def probe(version,skin_source,list_source):
-    colors={n.get('name'):int(n.get('value').lstrip('#'),16) for n in E.parse(ROOT/'Polsq/skin.xml').getroot().findall('colors/color')}
+    colors={n.get('name'):int(n.get('value').lstrip('#'),16) for n in E.parse(ROOT/'TvSat/skin.xml').getroot().findall('colors/color')}
     def parse_color(value):
         result=colors[value] if value in colors else int(value.lstrip('#'),16)
         return NS(argb=lambda:result)
@@ -40,7 +40,7 @@ def probe(version,skin_source,list_source):
     exec(compile(ast.Module(body=nodes,type_ignores=[]),'native-service-template','exec'),ns)
     field=lambda value:NS(value=value)
     ns['config']=NS(channelSelection=NS(recordIndicatorMode=field(1),showPicon=field(True),piconRatio=field(180),showNumber=field(True),showServiceTypeIcon=field(False),showCryptoIcon=field(False)),usage=NS(numberMode=field(2),servicelist_column=field('-1')))
-    for directory in ('Polsq','PolsqLarge'):
+    for directory in ('TvSat','TvSatLarge'):
         template=E.parse(ROOT/directory/'skinTemplates.xml').getroot().find('template')
         ns['getcomponentTemplate']=lambda component,name:template
         instance=ns['ServiceListTemplateParser']()

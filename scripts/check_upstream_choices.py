@@ -20,7 +20,7 @@ class MenuList:
 
 
 def check(sources):
-    skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
+    skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
     f=skin.find("fonts/alias[@name='ChoiceList']")
     fonts={'ChoiceList':(f.get('font'),int(f.get('size')),int(f.get('height')))}
     parameters={p.get('name'):list(map(int,p.get('value').split(','))) for p in skin.findall('parameters/parameter')}
@@ -35,8 +35,8 @@ def check(sources):
         entry=ns['ChoiceEntryComponent']('1',['Back USB: Elements 25A2 (DISK_1)  /media/hdd/'])
         text=entry[1]
         assert text[1:5]==(64,16,1712,40)
-        choice=ns['ChoiceList']([entry]);assert choice.l.font==('PolsqText',30) and choice.getItemHeight()==72
-        print(f'OpenATV {version}: native device-choice row uses PolsqText 30 and 72px height (C++ stubbed).')
+        choice=ns['ChoiceList']([entry]);assert choice.l.font==('TvSatText',30) and choice.getItemHeight()==72
+        print(f'OpenATV {version}: native device-choice row uses TvSatText 30 and 72px height (C++ stubbed).')
 
 
 if __name__=='__main__':check(Path(sys.argv[1]))

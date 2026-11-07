@@ -101,7 +101,7 @@ def probe(version, history_source, template_source, helper_source):
         assert marked[4]==event.getShortDescription() and marked[5] and marked[6]==('picon','pierwszy')
         missing=next(row for row in self_menu.list if row[7]=='bez-epg')
         assert missing[3:7]==('','','','')
-        for folder in ('Polsq','PolsqLarge'):
+        for folder in ('TvSat','TvSatLarge'):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             # Names follow native priority in 8.0; 7.5/7.6 use the class name.
             matched=next(name for name in dialog.skinName if skin.find(f"screen[@name='{name}']") is not None)

@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class InstallerUI(unittest.TestCase):
     def setUp(self):
-        self.skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
+        self.skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
 
     def test_native_installer_and_operation_screens_are_present(self):
         for name in ('IpkgInstaller','Opkg','PackageAction','PluginAction','PackageActionLog','PluginActionLog','Console'):

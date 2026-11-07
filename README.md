@@ -1,19 +1,15 @@
-# Polsq 0.3.0 — skórka Enigma2 dla OpenATV
-
-Polsq 0.3.0 to nowa nazwa skórki opartej na TvSat 0.6.6. Instaluje się jako
-oddzielny pakiet i katalog; dotychczasowa TvSat pozostaje na dekoderze.
-Po instalacji wybierz Polsq w menu skórek i zrestartuj GUI.
+# TvSat 0.6.6 — skórka Enigma2 dla OpenATV
 
 Ciemny interfejs Full HD 1920×1080 inspirowany polskim CANAL+: białe napisy,
 zielone zaznaczenie, duże menu, pikony, bukiety i program TV. Projekt niezależny,
 bez oficjalnych logotypów i grafik operatora.
 
-**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.3.0 zastępuje
+**Baza: natywne ekrany i komponenty OpenATV 7.5 / 7.6 / 8.0.** Wersja 0.6.6 zastępuje
 wstępną bazę OpenPLi z 0.1.0. Sprawdzono kontrakty widgetów trzech wersji OpenATV,
 układy, grafiki, menu, paczki i instalator. **Test na fizycznym dekoderze jest
 jeszcze wymagany** — nie deklarujemy potwierdzonej zgodności sprzętowej.
 
-## Polsq 0.3.0 — po 10 pozycji i boczna historia
+## TvSat 0.6.6 — po 10 pozycji i boczna historia
 
 Lista kanałów oraz lista bukietów mieszczą teraz **po 10 pozycji na stronę**,
 w Standard i Duże napisy. Margines boczny zmniejszono do 40 px, nagłówek jest
@@ -30,7 +26,7 @@ około 37% szerokości ekranu. Reszta obrazu TV pozostaje widoczna. Panel mieśc
 6 pozycji z pikoną, kanałem, skróconym tytułem i godzinami. Zachowano natywną
 kolejność historii, znacznik oglądanego kanału i działanie OK/Anuluj.
 
-**Po aktualizacji:** restart GUI, następnie **Wtyczki → Polsq — wygląd → Standard
+**Po aktualizacji:** restart GUI, następnie **Wtyczki → TvSat — wygląd → Standard
 lub Duże napisy → zielony Zapisz** i ponowny restart GUI. Zapis ustawia 10 pozycji
 również w starszym trybie listy. Jeśli bukietów jest mniej niż 10, wyświetlona
 zostaje ich faktyczna liczba; skórka nie tworzy nowych bukietów.
@@ -39,9 +35,9 @@ zostaje ich faktyczna liczba; skórka nie tworzy nowych bukietów.
 ![10 bukietów — dane przykładowe](docs/channel-bouquets-large.svg)
 ![Boczna historia — dane przykładowe](docs/history-large.svg)
 
-## Polsq 0.6.5 — historia poprzednich kanałów
+## TvSat 0.6.5 — historia poprzednich kanałów
 
-Okno powrotu do poprzedniego kanału ma teraz pełny układ Polsq, zastępujący
+Okno powrotu do poprzedniego kanału ma teraz pełny układ TvSat, zastępujący
 mały widok z nachodzącymi na siebie tekstami. Obsługiwane są obie natywne nazwy:
 HistoryZap oraz HistoryZapSelector.
 
@@ -58,7 +54,7 @@ profilu wyglądu. Zmiana obejmuje Standard i Duże napisy.
 ![Historia kanałów — dane przykładowe](docs/history.svg)
 ![Historia kanałów — Duże napisy, dane przykładowe](docs/history-large.svg)
 
-## Polsq 0.6.4 — czytelna lista kanałów
+## TvSat 0.6.4 — czytelna lista kanałów
 
 Nazwa kanału i tytuł audycji mają teraz **osobne linie w obu rozmiarach**.
 Standard pokazuje siedem pozycji, Duże napisy sześć. Nazwa kanału jest mocniejszą
@@ -70,7 +66,7 @@ Panel po prawej mieści dwie pełne linie tytułu. Tytuł i skrót opisu są mie
 natywnie i kończone wielokropkiem, gdy zabraknie miejsca. INFO nadal otwiera
 pełne informacje o audycji. Pozostałe ekrany i fade pozostają bez zmian.
 
-**Zastosowanie po aktualizacji:** zrestartuj GUI, otwórz **Wtyczki → Polsq — wygląd**,
+**Zastosowanie po aktualizacji:** zrestartuj GUI, otwórz **Wtyczki → TvSat — wygląd**,
 wybierz Standard lub Duże napisy, naciśnij **zielony Zapisz** i zaakceptuj ponowny
 restart GUI. To konieczne, jeśli nadal działa starsza lista 14 pozycji z kanałem
 i audycją w jednym wierszu. Samo zainstalowanie IPK zachowuje dotychczasowe
@@ -80,7 +76,7 @@ Legacy, używanego m.in. przez radio. Nie zmienia bukietów ani timerów.
 ![Czytelna lista — Standard, dane przykładowe](docs/channels.svg)
 ![Czytelna lista — Duże napisy, dane przykładowe](docs/channels-large.svg)
 
-## Polsq 0.6.3 — długie przejście fade
+## TvSat 0.6.3 — długie przejście fade
 
 W Informacjach o audycji fade przechodzi teraz łagodnie **od lewej do prawej
 przez około 95% szerokości ekranu**. Zamiast krótkich, symetrycznych przejść
@@ -97,7 +93,7 @@ rozmiary interfejsu; pasek kanału zachowuje swoje 15% przezroczystości.
 
 Po aktualizacji wykonaj restart GUI.
 
-## Polsq 0.6.2 — równe marginesy informacji o audycji
+## TvSat 0.6.2 — równe marginesy informacji o audycji
 
 Ekrany Informacje o audycji mają teraz **po 128 px marginesu z lewej i prawej**
 (zamiast 64 px), zarówno w Standard, jak i Duże napisy. Do jednej siatki dopasowano
@@ -110,7 +106,7 @@ Po aktualizacji wykonaj restart GUI.
 ![Informacje o audycji — równe marginesy](docs/event-info.svg)
 ![Informacje o audycji — duże napisy](docs/event-info-large.svg)
 
-## Polsq 0.6.1 — margines przy pikonie i fade opisu audycji
+## TvSat 0.6.1 — margines przy pikonie i fade opisu audycji
 
 Zwiększono odstęp po obu stronach pionowej linii w pasku kanału. Od pikony
 pozostaje 36 px, od początku nazwy kanału około 40 px. Podświetlenie TERAZ ma
@@ -125,7 +121,7 @@ Zmiana dotyczy Standard oraz Duże napisy. Po aktualizacji wykonaj restart GUI.
 ![Informacje o audycji — fade](docs/event-info.svg)
 ![Informacje o audycji — duże napisy](docs/event-info-large.svg)
 
-## Polsq 0.6.0 — Fade i nowocześniejsze detale
+## TvSat 0.6.0 — Fade i nowocześniejsze detale
 
 Pasek informacji płynnie łączy się z obrazem telewizyjnym: jego górna krawędź
 ma **64 px przejścia fade**, od przezroczystości do ciemnego tła. W całym obszarze
@@ -145,7 +141,7 @@ pętli animacji ani rozmywania obrazu na żywo. Po aktualizacji wykonaj restart 
 ![Nowy pasek Fade — dane przykładowe](docs/infobar-recording.svg)
 ![Nowocześniejszy nagłówek menu](docs/menu.svg)
 
-## Polsq 0.5.0 — siedem poprawek UI i UX
+## TvSat 0.5.0 — siedem poprawek UI i UX
 
 1. **Lista kanałów:** Standard ma siedem pełnych wierszy i stałe pola numeru,
    pikony, kanału, audycji oraz postępu. Długie nazwy mają wielokropek. Szablon
@@ -162,7 +158,7 @@ pętli animacji ani rozmywania obrazu na żywo. Po aktualizacji wykonaj restart 
 5. **EPG:** osobne tło aktualnych audycji, linia bieżącego czasu, różne ikony
    timerów i czytelny ekran konfliktu nagrań. Dane o timerach i konfliktach
    pochodzą z OpenATV; skórka nie zmienia logiki nagrywania.
-6. **Dwa rozmiary:** Polsq Standard i **PolsqLarge / Duże napisy**. Wariant duży
+6. **Dwa rozmiary:** TvSat Standard i **TvSatLarge / Duże napisy**. Wariant duży
    ma większe fonty całego interfejsu, większe odstępy i sześć wierszy kanałów.
 7. **Komunikaty:** osobne widoki trwającej instalacji, wyniku i błędu, czytelne
    podpowiedzi dziennika, poprawiony dialog konfliktów oraz komunikat sukcesu
@@ -171,11 +167,11 @@ pętli animacji ani rozmywania obrazu na żywo. Po aktualizacji wykonaj restart 
 ### Jak włączyć nowy układ
 
 Po instalacji zrestartuj GUI, aby załadować nową wtyczkę. Otwórz:
-**Wtyczki → Polsq — wygląd → Standard lub Duże napisy → Zapisz**.
+**Wtyczki → TvSat — wygląd → Standard lub Duże napisy → Zapisz**.
 Następnie potwierdź restart GUI. Zapisanie ustawia również odpowiedni szablon
 listy kanałów i włącza pikony. Anulowanie nie zmienia ustawień.
-Samo wybranie PolsqLarge w systemowym wyborze skórek zmienia wygląd, lecz nie
-zastępuje wcześniejszych preferencji listy kanałów — zalecamy ekran Polsq — wygląd.
+Samo wybranie TvSatLarge w systemowym wyborze skórek zmienia wygląd, lecz nie
+zastępuje wcześniejszych preferencji listy kanałów — zalecamy ekran TvSat — wygląd.
 
 Wspieramy również starszy mechanizm listy: Standard ustawia tam osiem wierszy
 (minimum dozwolone przez OpenATV), a Duże napisy sześć wierszy w dwóch liniach.
@@ -233,7 +229,7 @@ Po instalacji sprawdź komunikat **Wersja: 0.4.4** i wykonaj restart GUI.
 Ekran wyboru skórki ma osobny układ Full HD: dziewięć pełnych wierszy,
 jednakowe czcionki nazw i wartości (30 px), miniaturę 16:9 oraz wydzielone
 miejsce na opis i informację o restarcie. Przyciski Anuluj i Zapisz pasują do
-pozostałych ekranów Polsq. Nie zmieniamy ustawień użytkownika.
+pozostałych ekranów TvSat. Nie zmieniamy ustawień użytkownika.
 
 Definicje `SkinSelection`, `setup_Skin` i `SetupSkin` odpowiadają kolejności
 wyszukiwania w natywnym Setup. Ogólny ekran Setup nie wystarcza, gdy
@@ -257,7 +253,7 @@ Pozostaje test na fizycznym dekoderze. Po instalacji sprawdź komunikat
 - Pod podglądem kanału jest więcej miejsca na opis audycji (116 px) i odstęp
   od podpowiedzi INFO. Pełną treść nadal otwiera przycisk INFO.
 - Instalator pokazuje numer wersji. Po aktualizacji w komunikacie powinno być
-  **Wersja: 0.4.2**. Numer jest też w `/usr/share/enigma2/Polsq/VERSION`.
+  **Wersja: 0.4.2**. Numer jest też w `/usr/share/enigma2/TvSat/VERSION`.
   Po instalacji wykonaj restart GUI; paczka zawiera poprawki FileCommandera z 0.4.1.
 
 Podgląd przezroczystości używa kolorowego obrazu testowego. Pasy celowo biegną
@@ -275,7 +271,7 @@ Ikony i nazwy wtyczek na podglądzie są przykładowe; na dekoderze pochodzą z 
 - Ścieżki, rozmiary, uprawnienia i daty korzystają z uporządkowanych nagłówków
   zamiast małych żółtych napisów. Font i geometria FileList są ustawione w jego
   własnych aliasach i parametrach, także dla trybu zaznaczania wielu plików.
-- Menu operacji, informacje o pliku, podgląd zawartości i edytor pasują do Polsq.
+- Menu operacji, informacje o pliku, podgląd zawartości i edytor pasują do TvSat.
   Podgląd/edytor zachowują krój o stałej szerokości znaków, dostarczany przez OpenATV.
 - Komunikaty operacji nie zasłaniają list. MENU, INFO i HELP mają osobny rząd,
   a kolorowe funkcje są wyświetlane wtedy, gdy udostępni je menedżer plików.
@@ -314,7 +310,7 @@ Podglądy mają przykładowe dane; nie są zdjęciami z tunera:
   Opis po prawej ma font 28 px, a na dole jest podpowiedź nawigacji.
 - Pasek informacji jest lekko jaśniejszy (`#21262c`). Pole pikony i obraz
   zastępczy są przezroczyste, więc nie tworzą osobnego prostokąta.
-- Instalacja `.ipk` kończy się komunikatem **Polsq — INSTALACJA ZAKOŃCZONA
+- Instalacja `.ipk` kończy się komunikatem **TvSat — INSTALACJA ZAKOŃCZONA
   POMYŚLNIE** i przypomnieniem o restarcie GUI. Komunikat drukuje skrypt
   `postinst` wykonywany przez opkg. Instalator ręczny wyświetla ten sam komunikat.
   W systemowym instalatorze treść może być widoczna w jego oknie lub logu.
@@ -324,19 +320,19 @@ tego obrazka. Skórka usuwa własne tło; logotypów z Twojej paczki nie zmienia
 
 ![Ustawienia — czytelne nazwy i wartości](docs/setup.svg)
 
-## Polsq — nowa nazwa i miniaturka (0.3.2)
+## TvSat — nowa nazwa i miniaturka (0.3.2)
 
-Skórka, nagłówki, style ekranu i szablon listy mają nazwę **Polsq**.
-Miniaturka `Polsq/prev.png` jest wyświetlana przez natywny wybór skórek OpenATV.
+Skórka, nagłówki, style ekranu i szablon listy mają nazwę **TvSat**.
+Miniaturka `TvSat/prev.png` jest wyświetlana przez natywny wybór skórek OpenATV.
 Przedstawia układ menu z przykładowymi danymi, bez obrazu z tunera.
 
-![Miniaturka Polsq](Polsq/prev.png)
+![Miniaturka TvSat](TvSat/prev.png)
 
-Polsq instaluje się do osobnego katalogu `/usr/share/enigma2/Polsq` i używa paczki
-`enigma2-plugin-skins-polsq`. Wcześniej zainstalowana skórka CanalPL pozostaje
-na dekoderze. Po instalacji wybierz **Polsq** w wyborze skórek i zrestartuj GUI.
-W ustawieniach listy kanałów wybierz ponownie styl **Polsq — podgląd TV**
-i szablon **Polsq**, jeśli poprzednio były ustawione warianty CanalPL.
+TvSat instaluje się do osobnego katalogu `/usr/share/enigma2/TvSat` i używa paczki
+`enigma2-plugin-skins-tvsat`. Wcześniej zainstalowana skórka CanalPL pozostaje
+na dekoderze. Po instalacji wybierz **TvSat** w wyborze skórek i zrestartuj GUI.
+W ustawieniach listy kanałów wybierz ponownie styl **TvSat — podgląd TV**
+i szablon **TvSat**, jeśli poprzednio były ustawione warianty CanalPL.
 
 ## Układ listy kanałów — 0.3.0
 
@@ -344,15 +340,15 @@ i szablon **Polsq**, jeśli poprzednio były ustawione warianty CanalPL.
   czyli 16:9. Natywny renderer `Pig` pokazuje aktualnie odtwarzany kanał.
 - Opis zaznaczonej audycji znajduje się pod podglądem. Nie trzeba zasłaniać go
   pełnym tekstem; klawisz INFO otwiera pełny opis.
-- Czcionka interfejsu to DejaVu Sans Regular (`PolsqText`), z osobnym krojem
+- Czcionka interfejsu to DejaVu Sans Regular (`TvSatText`), z osobnym krojem
   dla mocniejszych nagłówków. Oba pliki fontów dostarcza OpenATV.
 - Zaznaczenie jest ciemnozielone z białym tekstem i zielonym paskiem w szablonie
-  Polsq. Nazwa kanału i tytuł audycji są w oddzielnych liniach.
-- Dostępny jest także wariant **Polsq — bez podglądu**.
+  TvSat. Nazwa kanału i tytuł audycji są w oddzielnych liniach.
+- Dostępny jest także wariant **TvSat — bez podglądu**.
 
 **Aby uzyskać osiem wierszy jak na podglądzie:** w ustawieniach listy kanałów
-wybierz styl ekranu **Polsq — podgląd TV** (lub **Polsq — standard z TV**)
-i szablon listy **Polsq**. Włącz pikony listy i zatwierdź zmiany.
+wybierz styl ekranu **TvSat — podgląd TV** (lub **TvSat — standard z TV**)
+i szablon listy **TvSat**. Włącz pikony listy i zatwierdź zmiany.
 W liście kanałów menu ustawień otwierasz klawiszem MENU; nazwy pozycji zależą
 od tłumaczenia OpenATV. Po aktualizacji skórki wykonaj restart GUI.
 
@@ -370,7 +366,7 @@ pozostawia pełny panel informacji.
 
 - Usunięto plus z `picon_default.png`. Pod przezroczystymi fragmentami logotypów
   znajduje się neutralne tło, które nie zawiera znaku ani innej grafiki.
-- Niebieski przycisk otwiera natywny **QuickMenu**. Ekran ma teraz układ Polsq:
+- Niebieski przycisk otwiera natywny **QuickMenu**. Ekran ma teraz układ TvSat:
   pełny nagłówek, dwie czytelne kolumny, regularne fonty i wspólny pasek przycisków.
 - Powiększono wiersze i faktyczny font komponentu ChoiceList, z którego korzysta
   m.in. wybór nośnika do skanowania. To osobne ustawienie od fontu okna dialogowego.
@@ -411,14 +407,14 @@ korzystać z układu systemowego. Pełny zakres, źródła API i lista testów s
 
 ## Instalacja `.ipk` — OpenATV
 
-Pobierz [enigma2-plugin-skins-polsq_0.3.0_all.ipk](packages/enigma2-plugin-skins-polsq_0.3.0_all.ipk)
+Pobierz [enigma2-plugin-skins-tvsat_0.6.6_all.ipk](packages/enigma2-plugin-skins-tvsat_0.6.6_all.ipk)
 przyciskiem pobierania pliku na GitHubie. Prześlij go przez SFTP do `/tmp` dekodera:
 
 ```sh
-opkg install /tmp/enigma2-plugin-skins-polsq_0.3.0_all.ipk
+opkg install /tmp/enigma2-plugin-skins-tvsat_0.6.6_all.ipk
 ```
 
-Następnie wybierz **Polsq** w ustawieniach interfejsu / wyborze skórki i zatwierdź
+Następnie wybierz **TvSat** w ustawieniach interfejsu / wyborze skórki i zatwierdź
 restart GUI. Dokładne nazwy menu zależą od tłumaczenia i wydania OpenATV.
 Pakiet nie przełącza skórki ani nie restartuje dekodera automatycznie.
 Aktualizacjami i usuwaniem wersji `.ipk` zarządza `opkg`.
@@ -430,11 +426,11 @@ OpenATV 8.0 używa `opkg`. Paczka jest zgodna z formatem tego menedżera.
 Instalacja paczki z GitHuba:
 
 ```sh
-wget -O /tmp/Polsq-0.3.0.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-polsq_0.3.0_all.ipk &&
-opkg install /tmp/Polsq-0.3.0.ipk
+wget -O /tmp/TvSat-0.6.6.ipk https://raw.githubusercontent.com/Baniak88/enigma2-skin/main/packages/enigma2-plugin-skins-tvsat_0.6.6_all.ipk &&
+opkg install /tmp/TvSat-0.6.6.ipk
 ```
 
-Jeśli instalacja pakietu nie powiodła się i Polsq nie widnieje jako zainstalowana
+Jeśli instalacja pakietu nie powiodła się i TvSat nie widnieje jako zainstalowana
 paczka w `opkg`, można użyć instalacji ręcznej opisanej niżej. Pobiera ona komplet
 plików i omija obsługę `.ipk`. Nie potwierdza to działania GUI na danym sprzęcie.
 Nie uruchamiaj aktualizacji całego systemu ani opcji wymuszających zależności,
@@ -458,8 +454,8 @@ Jeżeli logo kanału nie zostanie znalezione, pozostaje neutralne pole bez symbo
    `/usr/share/enigma2/picon/`, `/media/usb/picon/`, `/media/hdd/picon/`.
    OpenATV wykrywa katalogi `picon` na zamontowanych nośnikach.
 2. Włącz wyświetlanie pikonów w ustawieniach interfejsu i listy kanałów.
-3. W ustawieniach listy kanałów wybierz styl ekranu **Polsq — podgląd TV** i szablon
-   listy **Polsq**, następnie włącz pikony. Są to natywne ustawienia OpenATV.
+3. W ustawieniach listy kanałów wybierz styl ekranu **TvSat — podgląd TV** i szablon
+   listy **TvSat**, następnie włącz pikony. Są to natywne ustawienia OpenATV.
    Po zmianie skórki ustawienia mogą wymagać ponownego wybrania.
 4. Jeśli używasz trybu Legacy, włącz jego oddzielne ustawienie pikonów listy.
 
@@ -482,20 +478,20 @@ danych EPG — pochodzą one z kanału lub skonfigurowanego przez użytkownika �
 
 ## Alternatywna instalacja `.tar.gz` lub SFTP
 
-Pobierz [Polsq-0.3.0.tar.gz](packages/Polsq-0.3.0.tar.gz), prześlij do `/tmp`:
+Pobierz [TvSat-0.6.6.tar.gz](packages/TvSat-0.6.6.tar.gz), prześlij do `/tmp`:
 
 ```sh
-mkdir -p /tmp/polsq-install
-cd /tmp/polsq-install
-tar -xzf /tmp/Polsq-0.3.0.tar.gz
+mkdir -p /tmp/tvsat-install
+cd /tmp/tvsat-install
+tar -xzf /tmp/TvSat-0.6.6.tar.gz
 sh install.sh
 ```
 
-Instalator kopiuje Polsq, PolsqLarge oraz własne moduły z runtime do
+Instalator kopiuje TvSat, TvSatLarge oraz własne moduły z runtime do
 `/usr/lib/enigma2/python/`. Przy aktualizacji zachowuje kopie poprzednich plików.
 Jeśli zapis się nie powiedzie, przywraca już zastąpione pliki. Nie zmienia ustawień
 użytkownika. Archiwum `.tar.gz` nie jest paczką `opkg`. SFTP służy do przesłania
-całego archiwum i uruchomienia install.sh; samo skin.xml ani sam katalog Polsq
+całego archiwum i uruchomienia install.sh; samo skin.xml ani sam katalog TvSat
 nie wystarczą. Nie mieszaj instalacji ręcznej i opkg.
 
 ## Powrót do poprzedniej skórki
@@ -505,7 +501,7 @@ zaloguj się przez SSH, zatrzymaj je (`init 4` w obrazach z runlevel), zachowaj
 kopię `/etc/enigma2/settings` i usuń z niego wyłącznie wiersz:
 
 ```text
-config.skin.primary_skin=Polsq/skin.xml
+config.skin.primary_skin=TvSat/skin.xml
 ```
 
 Uruchom GUI (`init 3` w obrazach z runlevel). Zostanie wybrana skórka domyślna.
@@ -540,4 +536,4 @@ Publikacja nie jest wykonywana dla pull requestów. To kontrole
 statyczne/integracyjne, a nie test uruchomienia GUI Enigma2.
 
 Do zgłoszenia problemu dołącz model dekodera, wersję OpenATV, nazwę ekranu i log
-błędu. Pliki i grafiki Polsq: MIT. Nazwa CANAL+ należy do jej właściciela.
+błędu. Pliki i grafiki TvSat: MIT. Nazwa CANAL+ należy do jej właściciela.

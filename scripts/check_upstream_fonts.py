@@ -14,7 +14,7 @@ PINS={'7.5':'29c41504a2bdecd764d54373109e3c692810b189',
 
 
 def probe(version,source):
-    skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
+    skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
     registered={node.get('name') for node in skin.findall('fonts/font')}
     values=[node.get('valueFont') for node in skin.findall(".//widget[@name='config']")]
     defaults=skin.find('windowstyle/configList')
@@ -35,10 +35,10 @@ def probe(version,source):
     for value in values:
         ns['valueFont'](instance,value)
     assert len(recorded)==len(values)
-    assert all(font[0]=='PolsqText' and font[1]==30 and font[2]==scale for font in recorded)
+    assert all(font[0]=='TvSatText' and font[1]==30 and font[2]==scale for font in recorded)
     for name in ('entryFont','valueFont','headerFont'):
         assert name in defaults.attrib and f'configList.attrib.get("{name}"' in source
-    print(f'OpenATV {version}: native valueFont setter accepts 30px PolsqText for every config widget (C++/font loading stubbed).')
+    print(f'OpenATV {version}: native valueFont setter accepts 30px TvSatText for every config widget (C++/font loading stubbed).')
 
 
 def main():

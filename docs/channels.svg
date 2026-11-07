@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
-<title>Polsq — ChannelSelection — dane przykładowe</title>
+<title>TvSat — ChannelSelection — dane przykładowe</title>
 <g font-family="DejaVu Sans, sans-serif">
 <rect x="0" y="0" width="1920" height="1080" fill="#20282c" fill-opacity="1.000000"/>
 <rect x="0" y="0" width="1920" height="1080" fill="#0c0e10" fill-opacity="1.000000"/>
 <rect x="40" y="32" width="4" height="26" fill="#00e676" fill-opacity="1.000000"/>
-<text x="60" y="56.0" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">Polsq</text>
+<text x="60" y="56.0" font-size="36" font-weight="bold" fill="#f3f6fa" text-anchor="start">TvSat</text>
 <image x="304" y="30" width="28" height="28" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAVklEQVR42mNgGAWjYBSggUNnrv+nNR5Qy/E6YlA5gNbRO+qAUQeMOmDUASPEAc/K/sMx3R2AbDkUj7AQoDQNjMz2wIA3yagepwPdWB0ULeXhEQLDGgAAOevjz80aHbcAAAAASUVORK5CYII="/>
 <text x="348" y="52.0" font-size="24" font-weight="normal" fill="#c2ccd7" text-anchor="start">TELEWIZJA</text>
 <text x="1880" y="52.0" font-size="32" font-weight="normal" fill="#f3f6fa" text-anchor="end">20:45</text>

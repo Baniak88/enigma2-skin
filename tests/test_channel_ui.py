@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 class ChannelUI(unittest.TestCase):
-    def setUp(self):self.skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
+    def setUp(self):self.skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
 
     def test_default_and_selected_styles_have_live_preview(self):
         for name in ('ChannelSelection','ChannelSelection_PIG'):
@@ -27,13 +27,13 @@ class ChannelUI(unittest.TestCase):
                 self.assertFalse(overlaps,(name,n.attrib))
 
     def test_channel_and_event_have_separate_lines_with_room_for_long_names(self):
-        for folder,rows in (('Polsq',10),('PolsqLarge',10)):
+        for folder,rows in (('TvSat',10),('TvSatLarge',10)):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             screen=skin.find("screen[@name='ChannelSelection']")
             _,height=map(int,screen.find("widget[@name='list']").get('size').split(','))
             template=E.parse(ROOT/folder/'skinTemplates.xml').getroot().find('template')
             fonts=template.get('fonts').split(',')
-            self.assertTrue(fonts[0].startswith('PolsqStrong;'))
+            self.assertTrue(fonts[0].startswith('TvSatStrong;'))
             for kind in ('services','bouquets'):
                 mode=template.find(f"mode[@name='{kind}']")
                 self.assertEqual(height//int(mode.get('itemHeight')),rows)
@@ -70,12 +70,12 @@ class ChannelUI(unittest.TestCase):
                 self.assertEqual(image.getextrema(),((37,37),(71,71),(58,58),(255,255)))
 
     def test_sidebar_title_is_measured_and_does_not_collide_with_time_or_description(self):
-        for folder in ('Polsq','PolsqLarge'):
+        for folder in ('TvSat','TvSatLarge'):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             for name in ('ChannelSelection','ChannelSelection_PIG'):
                 screen=skin.find(f"screen[@name='{name}']")
                 title=next(n for n in screen.findall("widget[@source='ServiceEvent']") if n.find("convert[@type='EventName']") is not None and n.find("convert[@type='EventName']").text=='Name')
-                self.assertEqual(title.get('render'),'PolsqSummary')
+                self.assertEqual(title.get('render'),'TvSatSummary')
                 bottom=int(title.get('position').split(',')[1])+int(title.get('size').split(',')[1])
                 starts=[n for n in screen.findall("widget[@source='ServiceEvent']") if n.find("convert[@type='EventTime']") is not None and n.find("convert[@type='EventTime']").text=='StartTime']
                 self.assertGreaterEqual(int(starts[0].get('position').split(',')[1])-bottom,8)
@@ -84,9 +84,9 @@ class ChannelUI(unittest.TestCase):
 
     def test_font_is_registered_regular_instead_of_default_bold(self):
         fonts={n.get('name'):n.get('filename') for n in self.skin.findall('fonts/font')}
-        self.assertEqual(fonts['PolsqText'],'DejaVuSans.ttf')
+        self.assertEqual(fonts['TvSatText'],'DejaVuSans.ttf')
         listbox=self.skin.find("screen[@name='ChannelSelection']/widget[@name='list']")
-        self.assertTrue(listbox.get('serviceNameFont').startswith('PolsqText;'))
+        self.assertTrue(listbox.get('serviceNameFont').startswith('TvSatText;'))
         self.assertGreaterEqual(int(listbox.get('serviceNameFont').split(';')[1]),28)
 
     def test_explicit_no_video_variant_remains_available(self):
@@ -95,7 +95,7 @@ class ChannelUI(unittest.TestCase):
         self.assertIsNone(screen.find("widget[@render='Pig']"))
 
     def test_bouquet_selectors_use_ten_compact_rows_in_both_profiles(self):
-        for folder in ('Polsq','PolsqLarge'):
+        for folder in ('TvSat','TvSatLarge'):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             for name in ('BouquetSelector','EPGBouquetSelector'):
                 menu=skin.find(f"screen[@name='{name}']/widget[@name='menu']")
@@ -112,7 +112,7 @@ class ChannelUI(unittest.TestCase):
         paths=['assets/line-tv.png','assets/line-history.png','assets/line-bouquet.png','icons/folder.png','icons/marker.png']
         images=[]
         for name in paths:
-            with Image.open(ROOT/'Polsq'/name) as image:
+            with Image.open(ROOT/'TvSat'/name) as image:
                 self.assertEqual(image.size,(32,32))
                 pixels=list(image.getdata())
                 visible=[p for p in pixels if p[3]]

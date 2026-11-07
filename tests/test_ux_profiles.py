@@ -15,7 +15,7 @@ from install_payload import install
 
 
 def load_profiles():
-    spec=importlib.util.spec_from_file_location('polsq_profiles',ROOT/'runtime/Plugins/Extensions/PolsqSettings/profiles.py')
+    spec=importlib.util.spec_from_file_location('tvsat_profiles',ROOT/'runtime/Plugins/Extensions/TvSatSettings/profiles.py')
     module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     return module
 
@@ -46,13 +46,13 @@ class Profiles(unittest.TestCase):
             self.assertEqual(config.skin.primary_skin.saved,1)
 
     def test_large_has_larger_fonts_ten_rows_and_complete_layout_contracts(self):
-        validate('PolsqLarge')
-        skins=[E.parse(ROOT/folder/'skin.xml').getroot() for folder in ('Polsq','PolsqLarge')]
-        for name in ('InfoBar','Setup','PolsqSettings'):
+        validate('TvSatLarge')
+        skins=[E.parse(ROOT/folder/'skin.xml').getroot() for folder in ('TvSat','TvSatLarge')]
+        for name in ('InfoBar','Setup','TvSatSettings'):
             normal=skins[0].find(f"screen[@name='{name}']");large=skins[1].find(f"screen[@name='{name}']")
             for a,b in zip(normal,large):
                 if a.get('font'):self.assertGreater(int(b.get('font').split(';')[1]),int(a.get('font').split(';')[1]))
-        for folder,rows in (('Polsq',10),('PolsqLarge',10)):
+        for folder,rows in (('TvSat',10),('TvSatLarge',10)):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             height=int(skin.find("screen[@name='ChannelSelection']/widget[@name='list']").get('size').split(',')[1])
             template=E.parse(ROOT/folder/'skinTemplates.xml').getroot().find('template')
@@ -63,29 +63,29 @@ class Profiles(unittest.TestCase):
                 self.assertIsNotNone(mode.find("progress[@index='Progress']"))
 
     def test_timer_and_epg_states_are_distinguishable(self):
-        skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
+        skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
         epg=skin.find("screen[@name='GraphicalEPG']/widget[@name='list']")
         self.assertNotEqual(epg.get('EntryBackgroundColorNow'),epg.get('EntryBackgroundColor'))
         self.assertIsNotNone(skin.find("screen[@name='ConflictTimerOverview']/widget[@name='timerlist']"))
-        self.assertNotEqual((ROOT/'Polsq/icons/epgclock.png').read_bytes(),(ROOT/'Polsq/icons/epgclock_disabled.png').read_bytes())
-        self.assertNotEqual((ROOT/'Polsq/icons/epgclock.png').read_bytes(),(ROOT/'Polsq/icons/epgclock_zap.png').read_bytes())
+        self.assertNotEqual((ROOT/'TvSat/icons/epgclock.png').read_bytes(),(ROOT/'TvSat/icons/epgclock_disabled.png').read_bytes())
+        self.assertNotEqual((ROOT/'TvSat/icons/epgclock.png').read_bytes(),(ROOT/'TvSat/icons/epgclock_zap.png').read_bytes())
 
     def test_manual_installer_rolls_back_every_replaced_unit_after_failure(self):
         with tempfile.TemporaryDirectory() as temp:
             destination=Path(temp)
             install(ROOT,destination)
-            targets=[destination/'usr/share/enigma2/Polsq/VERSION',destination/'usr/share/enigma2/PolsqLarge/VERSION',destination/'usr/lib/enigma2/python/Plugins/Extensions/PolsqSettings/plugin.py']
+            targets=[destination/'usr/share/enigma2/TvSat/VERSION',destination/'usr/share/enigma2/TvSatLarge/VERSION',destination/'usr/lib/enigma2/python/Plugins/Extensions/TvSatSettings/plugin.py']
             for target in targets:target.write_text('previous')
             rename=Path.rename
             def fail_late(path,target):
-                if path.name=='PolsqEventRemaining.py' and path.parent.name.startswith('.Polsq-stage-'):raise OSError('injected write failure')
+                if path.name=='TvSatEventRemaining.py' and path.parent.name.startswith('.TvSat-stage-'):raise OSError('injected write failure')
                 return rename(path,target)
             with patch.object(Path,'rename',fail_late):
                 with self.assertRaises(OSError):install(ROOT,destination)
             self.assertTrue(all(target.read_text()=='previous' for target in targets))
 
     def test_settings_plugin_has_no_autostart_and_cancel_does_not_apply(self):
-        tree=ast.parse((ROOT/'runtime/Plugins/Extensions/PolsqSettings/plugin.py').read_text())
+        tree=ast.parse((ROOT/'runtime/Plugins/Extensions/TvSatSettings/plugin.py').read_text())
         descriptor=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='Plugins')
         places=[n.attr for n in ast.walk(descriptor) if isinstance(n,ast.Attribute) and n.attr.startswith('WHERE_')]
         self.assertEqual(places,['WHERE_PLUGINMENU'])
@@ -95,7 +95,7 @@ class Profiles(unittest.TestCase):
         self.assertEqual(calls,['self.close'])
 
     def test_restart_keeps_settings_dialog_under_native_quit_confirmation(self):
-        tree=ast.parse((ROOT/'runtime/Plugins/Extensions/PolsqSettings/plugin.py').read_text())
+        tree=ast.parse((ROOT/'runtime/Plugins/Extensions/TvSatSettings/plugin.py').read_text())
         cls=next(n for n in tree.body if isinstance(n,ast.ClassDef))
         method=next(n for n in cls.body if isinstance(n,ast.FunctionDef) and n.name=='restartAnswer')
         namespace={'TryQuitMainloop':'native-quit','QUIT_RESTART':3}
@@ -110,7 +110,7 @@ class Profiles(unittest.TestCase):
 
 class RemainingTime(unittest.TestCase):
     def test_summary_fits_complete_lines_and_keeps_full_source_for_info(self):
-        path=ROOT/'runtime/Components/Renderer/PolsqSummary.py'
+        path=ROOT/'runtime/Components/Renderer/TvSatSummary.py'
         cls=next(n for n in ast.parse(path.read_text()).body if isinstance(n,ast.ClassDef))
         class Label:
             CHANGED_CLEAR=2
@@ -121,7 +121,7 @@ class RemainingTime(unittest.TestCase):
             def calculateSize(self):return NS(height=lambda:((len(self.text)+29)//30)*30)
         namespace={'Label':Label}
         exec(compile(ast.Module(body=[cls],type_ignores=[]),str(path),'exec'),namespace)
-        renderer=namespace['PolsqSummary']()
+        renderer=namespace['TvSatSummary']()
         renderer.instance=Display();full='Opis audycji z pełnymi informacjami. '*20;renderer.source=NS(text=full)
         renderer.changed((0,))
         self.assertLessEqual(renderer.instance.calculateSize().height(),60)
@@ -132,7 +132,7 @@ class RemainingTime(unittest.TestCase):
         renderer.changed((2,));self.assertEqual(renderer.instance.text,'')
 
     def test_real_event_times_missing_epg_future_and_finished_events(self):
-        path=ROOT/'runtime/Components/Converter/PolsqEventRemaining.py'
+        path=ROOT/'runtime/Components/Converter/TvSatEventRemaining.py'
         cls=next(n for n in ast.parse(path.read_text()).body if isinstance(n,ast.ClassDef))
         class Converter:
             def __init__(self,argument):pass
@@ -140,7 +140,7 @@ class RemainingTime(unittest.TestCase):
             def __init__(self):pass
         namespace={'Converter':Converter,'Poll':Poll,'cached':lambda method:method,'time':lambda:1000}
         exec(compile(ast.Module(body=[cls],type_ignores=[]),str(path),'exec'),namespace)
-        converter=namespace['PolsqEventRemaining']('')
+        converter=namespace['TvSatEventRemaining']('')
         self.assertEqual(converter.poll_interval,30000)
         for begin,duration,expected in ((900,221,'Do końca: 3 min'),(900,100,''),(1100,300,''),(900,0,'')):
             converter.source=NS(event=NS(getBeginTime=lambda:begin,getDuration=lambda:duration))
