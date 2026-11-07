@@ -8,7 +8,7 @@ import math
 from build import VERSION
 from skin_effects import FADE_TOP, BODY_ALPHA, BODY_RGB, BAR_HEIGHTS, fade_alpha, event_fade_alpha
 
-ROOT=Path(__file__).resolve().parents[1]/'TvSat'
+ROOT=Path(__file__).resolve().parents[1]/'Polsq'
 BG=(12,14,16,255); PANEL=(23,25,28,255); GREEN=(0,230,118,255)
 SELECTED=(37,71,58,255)
 WHITE=(245,245,245,255); RED=(255,98,98,255); BLUE=(94,172,255,255)
@@ -154,7 +154,7 @@ def build():
     line_icon('icons/folder.png',folder+list_lines)
     line_icon('icons/marker.png',[[(8,4),(24,4),(24,28),(16,22),(8,28),(8,4)]])
     # Native components also resolve icons relative to the selected skin.
-    large=ROOT.parent/'TvSatLarge';large.mkdir(exist_ok=True)
+    large=ROOT.parent/'PolsqLarge';large.mkdir(exist_ok=True)
     (large/'VERSION').write_text(VERSION+'\n')
     for path in ROOT.rglob('*.png'):
         dest=large/path.relative_to(ROOT);dest.parent.mkdir(parents=True,exist_ok=True)

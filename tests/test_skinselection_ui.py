@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class SkinSelectionLayout(unittest.TestCase):
     def test_specific_names_have_full_layout_and_preview_above_placeholder(self):
-        skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+        skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
         for name in ('SkinSelection','setup_Skin','SetupSkin'):
             with self.subTest(name=name):
                 s=skin.find(f"screen[@name='{name}']")
@@ -23,7 +23,7 @@ class SkinSelectionLayout(unittest.TestCase):
                 self.assertEqual(config.get('font'),config.get('valueFont'))
 
     def test_preview_description_and_restart_note_do_not_overlap(self):
-        s=E.parse(ROOT/'TvSat/skin.xml').getroot().find("screen[@name='SkinSelection']")
+        s=E.parse(ROOT/'Polsq/skin.xml').getroot().find("screen[@name='SkinSelection']")
         end=0
         for name in ('preview','description','footnote'):
             n=s.find(f"widget[@name='{name}']")

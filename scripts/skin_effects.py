@@ -23,7 +23,7 @@ def event_fade_alpha(x):
 
 
 def pixmap(parent,path,x,y,w,h,z):
-    node=E.Element('ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap=f'TvSat/assets/{path}',scale='1',alphatest='blend',zPosition=str(z))
+    node=E.Element('ePixmap',position=f'{x},{y}',size=f'{w},{h}',pixmap=f'Polsq/assets/{path}',scale='1',alphatest='blend',zPosition=str(z))
     parent.insert(0,node)
     return node
 
@@ -57,7 +57,7 @@ def modernize_bars(skin):
             pixmap(scene,'now-badge.png',348,FADE_TOP+104,128,48,-4)
             E.SubElement(scene,'eLabel',position=f'320,{FADE_TOP+34}',size='1,142',backgroundColor='line')
             for widget in scene.findall("widget[@source='session.CurrentService']"):
-                if widget.get('render')=='Label':widget.set('font','TvSatStrong;38')
+                if widget.get('render')=='Label':widget.set('font','PolsqStrong;38')
     for name in ('EventView','InfoBarEventView'):
         scene=skin.find(f"screen[@name='{name}']")
         scene.set('backgroundColor','transparent')

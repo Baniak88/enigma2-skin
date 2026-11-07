@@ -1,7 +1,7 @@
 """Explicit profile changes used only after the viewer presses Save."""
 PROFILES = {
-    'standard': {'skin': 'TvSat/skin.xml', 'template': 'TvSat', 'rows': 10, 'two_lines': True},
-    'large': {'skin': 'TvSatLarge/skin.xml', 'template': 'TvSatLarge', 'rows': 10, 'two_lines': True},
+    'standard': {'skin': 'Polsq/skin.xml', 'template': 'Polsq', 'rows': 10, 'two_lines': True},
+    'large': {'skin': 'PolsqLarge/skin.xml', 'template': 'PolsqLarge', 'rows': 10, 'two_lines': True},
 }
 
 

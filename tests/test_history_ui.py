@@ -10,7 +10,7 @@ from validate import check_template
 
 class HistoryUI(unittest.TestCase):
     def test_both_native_aliases_use_a_narrow_left_panel(self):
-        for folder,rows in (('TvSat',6),('TvSatLarge',6)):
+        for folder,rows in (('Polsq',6),('PolsqLarge',6)):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             codes=[]
             for name in ('HistoryZap','HistoryZapSelector'):
@@ -30,7 +30,7 @@ class HistoryUI(unittest.TestCase):
             self.assertEqual(codes[0],codes[1])
 
     def test_native_indices_and_non_overlapping_text_and_picons(self):
-        for folder in ('TvSat','TvSatLarge'):
+        for folder in ('Polsq','PolsqLarge'):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             node=skin.find("screen[@name='HistoryZap']/widget[@source='menu']/convert")
             template=check_template(node.text);items=template['template']
@@ -39,7 +39,7 @@ class HistoryUI(unittest.TestCase):
             picon=next(kw for kind,kw in items if kind=='pixmap')
             self.assertEqual(picon['png'],6)
             channel,event,times=texts[2],texts[3],texts[5]
-            self.assertTrue(template['fonts'][channel['font']][0]=='TvSatStrong')
+            self.assertTrue(template['fonts'][channel['font']][0]=='PolsqStrong')
             self.assertGreaterEqual(channel['pos'][0]-(picon['pos'][0]+picon['size'][0]),16)
             self.assertGreaterEqual(event['pos'][1]-(channel['pos'][1]+channel['size'][1]),2)
             self.assertGreaterEqual(times['pos'][1]-(event['pos'][1]+event['size'][1]),2)

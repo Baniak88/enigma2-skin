@@ -5,7 +5,7 @@ from Components.Converter.Poll import Poll
 from Components.Element import cached
 
 
-class TvSatEventRemaining(Converter, Poll):
+class PolsqEventRemaining(Converter, Poll):
     def __init__(self, argument):
         Converter.__init__(self, argument)
         Poll.__init__(self)

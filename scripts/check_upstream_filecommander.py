@@ -51,7 +51,7 @@ def check_file_rows(source,skin,path):
     width=int(skin.find("screen[@name='FileCommander']/widget[@name='listleft']").get('size').split(',')[0])
     for multi in (False,True):
         (listing.setMultiSelectMode if multi else listing.setSingleSelectMode)()
-        assert listing.l.font==('TvSatText',28) and listing.itemHeight==64
+        assert listing.l.font==('PolsqText',28) and listing.itemHeight==64
         row=listing.fileListComponent(name=path.name,path=str(path),isDir=False,isLink=False,selected=False if multi else None,dirIcon=None)
         for _,x,y,w,h,*_ in row[1:]:
             assert 0<=x and x+w<=width and 0<=y and y+h<=64,(multi,(x,y,w,h))
@@ -112,7 +112,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('sources',nargs='?',type=Path);parser.add_argument('--download',action='store_true')
     args=parser.parse_args()
     if args.sources is None and not args.download: parser.error('provide snapshots or --download')
-    skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+    skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
     for version,pin in PINS.items():
         def read(path):
             if args.sources is not None: return (args.sources/version/path).read_text()
@@ -120,7 +120,7 @@ def main():
                 return response.read().decode('utf-8')
         assert 'andale.ttf' in read('data/fonts/Makefile.am'), 'OpenATV must supply the registered monospace font'
         with tempfile.TemporaryDirectory() as temp:
-            path=Path(temp)/'TvSat.ipk';path.write_text('probe')
+            path=Path(temp)/'Polsq.ipk';path.write_text('probe')
             check_file_rows(read('lib/python/Components/FileList.py'),skin,path)
             module='ui.py' if version=='8.0' else 'plugin.py'
             check_focus_and_headings(read('lib/python/Plugins/Extensions/FileCommander/'+module),skin,path)

@@ -12,7 +12,7 @@ from validate import check_picon_layers
 
 class PiconLayers(unittest.TestCase):
     def test_fallback_has_no_symbol_to_bleed_through_logo(self):
-        data=(ROOT/'TvSat/picon_default.png').read_bytes();offset=8;compressed=b''
+        data=(ROOT/'Polsq/picon_default.png').read_bytes();offset=8;compressed=b''
         while offset<len(data):
             size=struct.unpack('>I',data[offset:offset+4])[0]
             if data[offset+4:offset+8]==b'IDAT':compressed+=data[offset+8:offset+8+size]
@@ -35,7 +35,7 @@ class PiconLayers(unittest.TestCase):
             check_picon_layers(original)
 
     def test_shipped_picons_above_fallback(self):
-        screens=E.parse(ROOT/'TvSat/skin.xml').getroot().findall('screen')
+        screens=E.parse(ROOT/'Polsq/skin.xml').getroot().findall('screen')
         count=0
         for screen in screens:
             check_picon_layers(screen)
@@ -47,7 +47,7 @@ class PiconLayers(unittest.TestCase):
                     if n.get('position')==picon.get('position') and n.get('size')==picon.get('size')]
                 self.assertTrue(matching,screen.get('name'))
                 for fallback in matching:
-                    self.assertEqual(fallback.get('pixmap'),'TvSat/picon_default.png')
+                    self.assertEqual(fallback.get('pixmap'),'Polsq/picon_default.png')
                     self.assertLess(int(fallback.get('zPosition','0')),int(picon.get('zPosition','0')))
         self.assertGreater(count,10)
 

@@ -1,6 +1,6 @@
-# OpenATV — zakres zgodności 0.6.6
+# OpenATV — zakres zgodności 0.3.0
 
-Układy TvSat są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
+Układy Polsq są autorskie. Nazwy ekranów, widgetów i formaty list sprawdzono
 w oficjalnym kodzie [openatv/enigma2](https://github.com/openatv/enigma2).
 Nie wykorzystujemy kodu, grafiki ani rendererów skórek z forum LinuxSat.
 Forum posłużyło jako punkt odniesienia dla zakresu typowej skórki Enigma2.
@@ -42,7 +42,7 @@ poleceniem `python3 scripts/check_upstream_templates.py <katalog-checkoutów>`.
 
 Specjalistyczne ekrany, np. strojenie tunerów, konfiguracja sieci, klawiatura
 wirtualna, kreatory i ekrany wtyczek zewnętrznych, nadal korzystają z systemowych
-definicji. Mogą mieć inny układ niż 62 ekrany TvSat.
+definicji. Mogą mieć inny układ niż 62 ekrany Polsq.
 
 ## Ważne różnice względem 0.1.0
 
@@ -63,7 +63,7 @@ definicji. Mogą mieć inny układ niż 62 ekrany TvSat.
 1. Sprawdź start GUI po wyborze skórki; zachowaj dostęp SSH do przywrócenia ustawień.
 2. Otwórz menu i podmenu w każdym używanym stylu menu. Sprawdź długie polskie nazwy.
 3. W liście kanałów otwórz bukiety niebieskim klawiszem. Sprawdź kilka bukietów,
-   tryb radia i pusty bukiet. Sprawdź tryb Legacy oraz szablon TvSat.
+   tryb radia i pusty bukiet. Sprawdź tryb Legacy oraz szablon Polsq.
 4. Sprawdź pikonę bieżącego i zaznaczonego kanału, pikonę w liście i brak logo.
 5. Otwórz EPG pojedyncze, multi, graficzne tekstowe, graficzne z teksturami,
    wariant PIG i pionowe. Zmień bukiet i dzień, otwórz opis i dodaj timer.
@@ -108,10 +108,10 @@ Wcześniej to okno było obecne wyłącznie w oddzielnym wariancie PIG. Podgląd
 rozmiar 640×360, osobne miejsce na nazwę oglądanego kanału oraz panel opisu
 zaznaczonej audycji. Dodano ChannelSelection_NoPIG jako wariant bez wideo.
 
-Fonty `TvSatText` i `TvSatStrong` wskazują odpowiednio DejaVuSans.ttf oraz
+Fonty `PolsqText` i `PolsqStrong` wskazują odpowiednio DejaVuSans.ttf oraz
 LiberationSans-Bold.ttf dostarczane przez Enigma2 (`data/fonts/Makefile.am` w
 7.5, 7.6, 8.0). Nie redefiniujemy globalnego fontu Regular dla obcych wtyczek.
-Szablon TvSat ma 88-pikselowe wiersze w liście o wysokości 704 pikseli,
+Szablon Polsq ma 88-pikselowe wiersze w liście o wysokości 704 pikseli,
 co daje osiem wierszy. W Legacy wysokość wiersza oblicza system na podstawie
 ustawień użytkownika; nie można wymusić ośmiu wierszy samym serviceItemHeight.
 
@@ -136,7 +136,7 @@ Szablony konwertera sprawdzono z trzema wersjami upstream: razem 11 kombinacji
 szablonu/stylu na wersję. Zachowano aktywną kolumnę i funkcje kolorowych przycisków.
 
 ChoiceBox ma osiem wierszy po 72 piksele. Alias ChoiceList ustawia faktyczny font
-TvSatText 30 w komponencie ChoiceList, a parametry ChoicelistName/NameSingle/Icon
+PolsqText 30 w komponencie ChoiceList, a parametry ChoicelistName/NameSingle/Icon
 ustalają pozycje zawartości. Oryginalne ChoiceList i ChoiceEntryComponent z trzech
 wersji przeszły próbę konstruktora i geometrii wiersza z zastąpioną warstwą C++
 (`scripts/check_upstream_choices.py`). Same atrybuty font/itemHeight na widżecie
@@ -144,17 +144,17 @@ nie wystarczały do zmiany fontu listy wieloelementowej.
 
 ## Nazwa i miniaturka — 0.3.2
 
-Katalog, nazwa paczki, style listy i nagłówki używają nazwy TvSat. Miniaturka
-`TvSat/prev.png` ma rozmiar 640×360 i format RGBA PNG. Jest generowana z podglądu
+Katalog, nazwa paczki, style listy i nagłówki używają nazwy Polsq. Miniaturka
+`Polsq/prev.png` ma rozmiar 640×360 i format RGBA PNG. Jest generowana z podglądu
 menu; natywny `Screens/SkinSelection.py` z OpenATV 8.0 wyszukuje `prev.png`
 w katalogu wybranej skórki. Starsza instalacja CanalPL nie jest usuwana ani
-automatycznie przełączana. Po instalacji wybierz TvSat i jego szablon listy.
+automatycznie przełączana. Po instalacji wybierz Polsq i jego szablon listy.
 
 ## Poprawki 0.3.3 — ustawienia, przezroczyste pikony i potwierdzenie instalacji
 
 Natywny ConfigList pobiera font nazwy i font wartości niezależnie. Dotychczas
 skórka ustawiała jedynie `font`, więc wartości po prawej dziedziczyły mały
-font domyślny. Dodano `valueFont=TvSatText;30` do trzech widżetów config oraz
+font domyślny. Dodano `valueFont=PolsqText;30` do trzech widżetów config oraz
 domyślne entryFont/valueFont/headerFont w windowstyle/configList. Nazwy i wartości
 mają regularny krój 30 px. Setup zawiera dziesięć pełnych wierszy 64 px.
 `scripts/check_upstream_fonts.py` wykonuje oryginalny setter valueFont
@@ -262,7 +262,7 @@ aby dekoracje utworzone później przez Screen nie zasłoniły miniatury.
 
 `python3 scripts/check_upstream_skinselection.py --download` wykonuje oryginalne
 fragmenty Setup i readSkin, sprawdza pierwszeństwo wszystkich trzech nazw oraz
-oryginalne layoutFinished/loadPreview. Test potwierdza ładowanie TvSat/prev.png,
+oryginalne layoutFinished/loadPreview. Test potwierdza ładowanie Polsq/prev.png,
 wymiary dekodera 608×342 i ukrywanie podglądu po wybraniu opcji czcionki.
 C++ ePicLoad/Pixmap jest zastąpione atrapami; test nie potwierdza renderowania
 na odbiorniku. Nie uruchamia createItems, keySave ani przeładowania GUI.
@@ -293,9 +293,9 @@ oraz kontrast napisów na różnych kolorach obrazu telewizyjnego.
 
 ## UI/UX 0.5.0 — Standard, Large i własne moduły
 
-Oba warianty mają po 62 definicje. Nowe: TvSatSettings (pasywna wtyczka pakietu),
+Oba warianty mają po 62 definicje. Nowe: PolsqSettings (pasywna wtyczka pakietu),
 ConflictTimerOverview i TimerSanityConflict (natywny ConflictTimerOverview).
-TvSatLarge ma większe fonty, wyższe wiersze, mniej wpisów i własną miniaturę.
+PolsqLarge ma większe fonty, wyższe wiersze, mniej wpisów i własną miniaturę.
 Ma również kopię ikon, ponieważ natywne komponenty szukają ich względem aktywnej
 skórki. Nazwy fontów bazują na czcionkach dostarczanych przez OpenATV.
 
@@ -315,13 +315,13 @@ Progress type to barright. Zalecany nowszy szablon ma siedem / sześć wierszy.
 Ustawienia EPG itemsperpage=0 pozwalają zadziałać skórkowej liczbie wierszy.
 
 Własne moduły runtime:
-- Plugins/Extensions/TvSatSettings: jedyne wejście WHERE_PLUGINMENU, bez autostartu.
+- Plugins/Extensions/PolsqSettings: jedyne wejście WHERE_PLUGINMENU, bez autostartu.
   Sam import i Anuluj nie modyfikują ustawień. Dopiero Zapisz ustawia profil,
   zapisuje configfile i proponuje restart GUI. Nie zmienia bukietów ani timerów.
-- Components/Converter/TvSatEventRemaining.py: odpytuje czas co 30 s, liczy
+- Components/Converter/PolsqEventRemaining.py: odpytuje czas co 30 s, liczy
   pozostałe minuty z rzeczywistego początku i długości audycji, pomija brak EPG,
   audycje przyszłe i zakończone. Nie używa zależnego od preferencji RemainingToText.
-- Components/Renderer/TvSatSummary.py: mierzy wysokość zawiniętego tekstu przez
+- Components/Renderer/PolsqSummary.py: mierzy wysokość zawiniętego tekstu przez
   eLabel.calculateSize, skraca do pełnych słów i wielokropka. Nie zmienia źródła
   opisu, więc INFO nadal ma pełny tekst. Test pomiaru C++ używa atrapy.
 
@@ -405,7 +405,7 @@ Potrzebna jest jeszcze ocena efektu na fizycznym dekoderze i telewizorze.
 Oba szablony serviceList mają dwie niezależne linie: ServiceName na x=204,
 szerokość 860 px; Title1 pod spodem, szerokość 748 px. Pole postępu zaczyna się
 na x=980, czyli 28 px za końcem tekstu audycji. Wszystkie pola tekstowe używają
-natywnego wrap=ellipsis. Nazwa kanału ma TvSatStrong 32/36 px, audycja TvSatText
+natywnego wrap=ellipsis. Nazwa kanału ma PolsqStrong 32/36 px, audycja PolsqText
 27/30 px; kolor opisu muted pozostaje także na zaznaczeniu.
 
 Jawny selectionPixmap ma jednolity kolor #25473a, 1088×116 px, i jest przycinany
@@ -416,11 +416,11 @@ apply_profile ustawia servicelist_twolines=True również dla Standard. Native
 ServiceListLegacy nadpisuje serviceItemHeight liczbą pozycji z konfiguracji,
 więc zapis ustawia serviceitems_per_page_twolines na 7/6. Procedura wtyczki nadal
 nie działa przy starcie i nie zmienia ustawień podczas instalacji ani Anuluj.
-Nowy układ wymaga Zapisz w TvSat — wygląd i restartu GUI, jeśli działa Legacy.
+Nowy układ wymaga Zapisz w Polsq — wygląd i restartu GUI, jeśli działa Legacy.
 check_upstream_service_ui wykonuje oryginalny setItemsPerPage z 7.5, 7.6 i 8.0,
 weryfikując 100/116 px oraz pełne 7/6 pozycji (wywołania C++ zastąpione).
 
-Panel PIG zachowuje podgląd 608×342. Tytuł ma 88 px i renderer TvSatSummary,
+Panel PIG zachowuje podgląd 608×342. Tytuł ma 88 px i renderer PolsqSummary,
 który mierzy linie natywnie. Godziny zaczynają się 8 px niżej; skrót opisu ma
 110 px i 8 px przerwy przed podpowiedzią INFO. Pełne źródło EPG jest zachowane.
 Podglądy zawierają długie nazwy z raportowanego przykładu. Testy automatyczne
@@ -452,7 +452,7 @@ są zastąpione; ocena wyglądu na fizycznym dekoderze pozostaje do wykonania.
 Natywny kod i ustawienia odbiornika nie są zmieniane. Do wczytania nowych nazw
 ekranów potrzebny jest restart GUI.
 
-## Gęstsze listy i boczna historia — 0.6.6
+## Gęstsze listy i boczna historia — 0.3.0
 
 Wszystkie tryby serviceList (services, bouquets, other) mają 76 px wysokości.
 Obszar listy 1136×760 na x=40/y=168 mieści dokładnie 10 pozycji. Profile Standard

@@ -20,7 +20,7 @@ def definitions(source, names):
 
 
 def probe(version, sources):
-    skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+    skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
     ns={'_':lambda text:text,'join':join,'split':split,'isfile':isfile}
     # Run native Setup's ordered name construction without its GUI/config init.
     cls=definitions(sources['Screens/Setup.py'], {'Setup'})[0]
@@ -58,7 +58,7 @@ def probe(version, sources):
         def startDecode(self,path):
             self.path=Path(path)
             for callback in self.callbacks:callback()
-    gui=NS(value='TvSat/skin.xml');lcd=NS(value='skin_display.xml')
+    gui=NS(value='Polsq/skin.xml');lcd=NS(value='skin_display.xml')
     ns.update(Setup=Setup,ePicLoad=PicLoad,config=NS(skin=NS(guiSkin=gui,lcdSkin=lcd)))
     exec(compile(ast.Module(body=definitions(sources['Screens/SkinSelection.py'],{'SkinSelection'}),type_ignores=[]),'native-SkinSelection','exec'),ns)
     selection=ns['SkinSelection'].__new__(ns['SkinSelection']);dict.__init__(selection)
@@ -69,7 +69,7 @@ def probe(version, sources):
     current=[gui];selection.getCurrentItem=lambda:current[0]
     selection.layoutFinished()
     assert selection.picLoad.params[:2]==(608,342)
-    assert selection.picLoad.path==ROOT/'TvSat/prev.png' and preview.visible and preview.pixmap=='decoded-preview'
+    assert selection.picLoad.path==ROOT/'Polsq/prev.png' and preview.visible and preview.pixmap=='decoded-preview'
     current[0]=NS(value='Fallback Font 1');selection.loadPreview()
     assert not preview.visible
     print(f'OpenATV {version}: native name priority, all three layouts, preview decode/show/hide pass (C++ stubbed).')

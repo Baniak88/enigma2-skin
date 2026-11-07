@@ -5,18 +5,18 @@ case "${1:-configure}" in
     configure) ;;
     *) exit 0 ;;
 esac
-TVSAT_ROOT=${IPKG_INSTROOT:-}
-if [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSat/skin.xml" ] || [ ! -s "$TVSAT_ROOT/usr/share/enigma2/TvSatLarge/skin.xml" ] || [ ! -s "$TVSAT_ROOT/usr/lib/enigma2/python/Components/Converter/TvSatEventRemaining.py" ] || [ ! -s "$TVSAT_ROOT/usr/lib/enigma2/python/Plugins/Extensions/TvSatSettings/plugin.py" ] || [ ! -s "$TVSAT_ROOT/usr/lib/enigma2/python/Components/Renderer/TvSatSummary.py" ]; then
-    printf '%s\n' 'TvSat: instalacja niekompletna — brak plików skórki lub modułów TvSat.' >&2
+POLSQ_ROOT=${IPKG_INSTROOT:-}
+if [ ! -s "$POLSQ_ROOT/usr/share/enigma2/Polsq/skin.xml" ] || [ ! -s "$POLSQ_ROOT/usr/share/enigma2/PolsqLarge/skin.xml" ] || [ ! -s "$POLSQ_ROOT/usr/lib/enigma2/python/Components/Converter/PolsqEventRemaining.py" ] || [ ! -s "$POLSQ_ROOT/usr/lib/enigma2/python/Plugins/Extensions/PolsqSettings/plugin.py" ] || [ ! -s "$POLSQ_ROOT/usr/lib/enigma2/python/Components/Renderer/PolsqSummary.py" ]; then
+    printf '%s\n' 'Polsq: instalacja niekompletna — brak plików skórki lub modułów Polsq.' >&2
     exit 1
 fi
 printf '\n%s\n' '======================================================'
-printf '%s\n' 'TvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE'
-if [ -r "$TVSAT_ROOT/usr/share/enigma2/TvSat/VERSION" ]; then
-    TVSAT_VERSION=$(cat "$TVSAT_ROOT/usr/share/enigma2/TvSat/VERSION")
-    printf 'Wersja: %s\n' "$TVSAT_VERSION"
+printf '%s\n' 'Polsq — INSTALACJA ZAKOŃCZONA POMYŚLNIE'
+if [ -r "$POLSQ_ROOT/usr/share/enigma2/Polsq/VERSION" ]; then
+    POLSQ_VERSION=$(cat "$POLSQ_ROOT/usr/share/enigma2/Polsq/VERSION")
+    printf 'Wersja: %s\n' "$POLSQ_VERSION"
 fi
-printf '%s\n' 'Wybierz TvSat w menu skórek, jeśli to pierwsza instalacja.'
-printf '%s\n' 'Wtyczki → TvSat — wygląd: wybierz Standard lub Duże napisy i zapisz.'
+printf '%s\n' 'Wybierz Polsq w menu skórek, jeśli to pierwsza instalacja.'
+printf '%s\n' 'Wtyczki → Polsq — wygląd: wybierz Standard lub Duże napisy i zapisz.'
 printf '%s\n' 'Uruchom ponownie interfejs GUI, aby wczytać zmiany.'
 printf '%s\n\n' '======================================================'

@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 
 class FileCommanderUI(unittest.TestCase):
-    def setUp(self): self.skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+    def setUp(self): self.skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
 
     def test_panels_have_equal_width_and_complete_readable_rows(self):
         screen=self.skin.find("screen[@name='FileCommander']")
@@ -39,8 +39,8 @@ class FileCommanderUI(unittest.TestCase):
         self.assertEqual(screen.find("widget[@name='quickselect']").get('size'),row.get('size'))
         for name in ('FileCommanderFileViewer','FileCommanderTextEditor'):
             data=self.skin.find(f"screen[@name='{name}']/widget[@name='data']")
-            self.assertTrue(data.get('font').startswith('TvSatMono;'))
-        self.assertEqual(self.skin.find("fonts/font[@name='TvSatMono']").get('filename'),'andale.ttf')
+            self.assertTrue(data.get('font').startswith('PolsqMono;'))
+        self.assertEqual(self.skin.find("fonts/font[@name='PolsqMono']").get('filename'),'andale.ttf')
 
 
 if __name__=='__main__': unittest.main()

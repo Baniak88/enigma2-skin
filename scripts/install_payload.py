@@ -12,10 +12,10 @@ def install(source, destination):
     source=Path(source);destination=Path(destination)
     share=destination/'usr/share/enigma2'
     python=destination/'usr/lib/enigma2/python'
-    units=[(source/'TvSat',share/'TvSat'),(source/'TvSatLarge',share/'TvSatLarge'),
-           (source/'runtime/Plugins/Extensions/TvSatSettings',python/'Plugins/Extensions/TvSatSettings'),
-           (source/'runtime/Components/Converter/TvSatEventRemaining.py',python/'Components/Converter/TvSatEventRemaining.py'),
-           (source/'runtime/Components/Renderer/TvSatSummary.py',python/'Components/Renderer/TvSatSummary.py')]
+    units=[(source/'Polsq',share/'Polsq'),(source/'PolsqLarge',share/'PolsqLarge'),
+           (source/'runtime/Plugins/Extensions/PolsqSettings',python/'Plugins/Extensions/PolsqSettings'),
+           (source/'runtime/Components/Converter/PolsqEventRemaining.py',python/'Components/Converter/PolsqEventRemaining.py'),
+           (source/'runtime/Components/Renderer/PolsqSummary.py',python/'Components/Renderer/PolsqSummary.py')]
     for src,target in units:
         if not src.exists():raise RuntimeError('Niekompletna paczka: '+str(src))
         if target.is_symlink():raise RuntimeError('Katalog docelowy jest dowiązaniem: '+str(target))
@@ -24,7 +24,7 @@ def install(source, destination):
     try:
         for src,target in units:
             target.parent.mkdir(parents=True,exist_ok=True)
-            staging=Path(tempfile.mkdtemp(prefix='.TvSat-stage-',dir=target.parent))
+            staging=Path(tempfile.mkdtemp(prefix='.Polsq-stage-',dir=target.parent))
             item=staging/target.name
             staged.append(staging)
             if src.is_dir():shutil.copytree(src,item)
@@ -34,9 +34,9 @@ def install(source, destination):
         for (src,target),staging in zip(units,staged):
             backup=None
             if target.exists():
-                if target.name=='TvSat':backup=target.with_name('TvSat.backup-'+stamp)
+                if target.name=='Polsq':backup=target.with_name('Polsq.backup-'+stamp)
                 else:
-                    backup=share/'.TvSat-backups'/stamp/target.name
+                    backup=share/'.Polsq-backups'/stamp/target.name
                     backup.parent.mkdir(parents=True,exist_ok=True)
                 target.rename(backup);backups.append(backup)
             committed.append((target,backup))
@@ -51,23 +51,23 @@ def install(source, destination):
     finally:
         for staging in staged:shutil.rmtree(staging,ignore_errors=True)
     for backup in backups:print('Kopia poprzedniej wersji: '+str(backup))
-    return share/'TvSat'
+    return share/'Polsq'
 
 
 def main():
     source=Path(sys.argv[1]);prefix=os.environ.get('DESTDIR','')
     if not prefix and not Path('/usr/share/enigma2').is_dir():
         raise RuntimeError('To nie wygląda na dekoder Enigma2: brak /usr/share/enigma2.')
-    print('TvSat: instalowanie plików skórki...')
+    print('Polsq: instalowanie plików skórki...')
     target=install(source,Path(prefix or '/'))
-    print('\nTvSat — INSTALACJA ZAKOŃCZONA POMYŚLNIE')
+    print('\nPolsq — INSTALACJA ZAKOŃCZONA POMYŚLNIE')
     print('Wersja: '+(target/'VERSION').read_text().strip())
-    print('Wtyczki → TvSat — wygląd: wybierz Standard lub Duże napisy i zapisz.')
+    print('Wtyczki → Polsq — wygląd: wybierz Standard lub Duże napisy i zapisz.')
     print('Uruchom ponownie interfejs GUI, aby wczytać zmiany.')
 
 
 if __name__=='__main__':
     try:main()
     except Exception as error:
-        print('TvSat: instalacja przerwana — '+str(error),file=sys.stderr)
+        print('Polsq: instalacja przerwana — '+str(error),file=sys.stderr)
         sys.exit(1)

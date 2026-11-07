@@ -47,11 +47,11 @@ class TransparencyPreview(unittest.TestCase):
 
     def test_fade_never_runs_under_text_and_background_never_covers_picons(self):
         from PIL import Image
-        for folder in ('TvSat','TvSatLarge'):
+        for folder in ('Polsq','PolsqLarge'):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             for name in ('InfoBar','SecondInfoBar','MoviePlayer'):
                 scene=skin.find(f"screen[@name='{name}']")
-                background=scene.find(f"ePixmap[@pixmap='TvSat/assets/{name.lower()}-fade.png']")
+                background=scene.find(f"ePixmap[@pixmap='Polsq/assets/{name.lower()}-fade.png']")
                 with Image.open(ROOT/background.get('pixmap')) as mask:
                     alpha=[mask.getpixel((0,y))[3] for y in range(mask.height)]
                     self.assertEqual(alpha,sorted(alpha))
@@ -63,12 +63,12 @@ class TransparencyPreview(unittest.TestCase):
                     self.assertGreater(int(logo.get('zPosition')),int(background.get('zPosition')))
 
     def test_separator_has_room_for_logo_name_and_now_badge_in_both_profiles(self):
-        for folder in ('TvSat','TvSatLarge'):
+        for folder in ('Polsq','PolsqLarge'):
             scene=E.parse(ROOT/folder/'skin.xml').getroot().find("screen[@name='InfoBar']")
             logo=scene.find("widget[@render='Picon']")
             separator=next(node for node in scene.findall('eLabel') if node.get('backgroundColor')=='line')
             name=scene.find("widget[@source='session.CurrentService'][@render='Label']")
-            badge=scene.find("ePixmap[@pixmap='TvSat/assets/now-badge.png']")
+            badge=scene.find("ePixmap[@pixmap='Polsq/assets/now-badge.png']")
             line_x=int(separator.get('position').split(',')[0])
             logo_right=int(logo.get('position').split(',')[0])+int(logo.get('size').split(',')[0])
             self.assertGreaterEqual(line_x-logo_right,32)
@@ -80,12 +80,12 @@ class TransparencyPreview(unittest.TestCase):
 
     def test_event_view_fade_protects_all_text_and_keeps_description_scrollable(self):
         from PIL import Image
-        for folder in ('TvSat','TvSatLarge'):
+        for folder in ('Polsq','PolsqLarge'):
             skin=E.parse(ROOT/folder/'skin.xml').getroot()
             for name in ('EventView','InfoBarEventView'):
                 scene=skin.find(f"screen[@name='{name}']")
                 self.assertEqual(scene.get('backgroundColor'),'transparent')
-                background=scene.find("ePixmap[@pixmap='TvSat/assets/eventview-fade.png']")
+                background=scene.find("ePixmap[@pixmap='Polsq/assets/eventview-fade.png']")
                 self.assertLess(int(background.get('zPosition')),0)
                 with Image.open(ROOT/background.get('pixmap')) as mask:
                     alpha=[mask.getpixel((x,0))[3] for x in range(mask.width)]

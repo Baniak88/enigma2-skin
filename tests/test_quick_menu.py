@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class QuickMenuUI(unittest.TestCase):
     def test_blue_menu_uses_native_two_column_sources(self):
-        skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+        skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
         menu=skin.find("screen[@name='QuickMenu']")
         self.assertIsNotNone(menu)
         self.assertEqual(menu.get('size'),'1920,1080')
@@ -22,9 +22,9 @@ class QuickMenuUI(unittest.TestCase):
             self.assertIsNotNone(menu.find(f"widget[@source='key_{key}']"))
 
     def test_device_choice_controls_actual_component_font_and_rows(self):
-        skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+        skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
         font=skin.find("fonts/alias[@name='ChoiceList']")
-        self.assertEqual(font.get('font'),'TvSatText')
+        self.assertEqual(font.get('font'),'PolsqText')
         self.assertGreaterEqual(int(font.get('size')),30)
         height=int(font.get('height'))
         box=skin.find("screen[@name='ChoiceBox']/widget[@name='list']")

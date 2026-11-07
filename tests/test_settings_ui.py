@@ -7,7 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 class SettingsUI(unittest.TestCase):
     def test_setting_names_and_values_share_a_readable_font(self):
-        skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+        skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
         fonts={n.get('name') for n in skin.findall('fonts/font')}
         defaults=skin.find('windowstyle/configList')
         self.assertEqual(defaults.get('entryFont'),defaults.get('valueFont'))
@@ -23,12 +23,12 @@ class SettingsUI(unittest.TestCase):
 
     def test_infobar_has_one_dark_transparent_surface(self):
         from PIL import Image
-        skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+        skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
         colors={n.get('name'):n.get('value') for n in skin.findall('colors/color')}
         for name in ('InfoBar','SecondInfoBar','MoviePlayer'):
             screen=skin.find(f"screen[@name='{name}']")
             self.assertEqual(screen.get('backgroundColor'),'transparent')
-            mask=screen.find(f"ePixmap[@pixmap='TvSat/assets/{name.lower()}-fade.png']")
+            mask=screen.find(f"ePixmap[@pixmap='Polsq/assets/{name.lower()}-fade.png']")
             self.assertIsNotNone(mask)
             self.assertLess(int(mask.get('zPosition')),0)
             with Image.open(ROOT/mask.get('pixmap')) as image:

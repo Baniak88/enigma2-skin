@@ -1,4 +1,4 @@
-name: Validate and package TvSat
+name: Validate and package Polsq
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -31,11 +31,11 @@ jobs:
           python3 scripts/check_upstream_filecommander.py --download
       - uses: actions/upload-artifact@v4
         with:
-          name: verified-tvsat
+          name: verified-polsq
           if-no-files-found: error
           path: |
-            TvSat/
-            TvSatLarge/
+            Polsq/
+            PolsqLarge/
             docs/*.svg
             docs/*.png
             dist/*.tar.gz
@@ -52,17 +52,17 @@ jobs:
           ref: ${{ github.sha }}
       - uses: actions/download-artifact@v4
         with:
-          name: verified-tvsat
+          name: verified-polsq
       - name: Publish tested generated files and packages
         run: |
           mkdir -p packages
           cp dist/*.tar.gz dist/*.ipk packages/
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- TvSat TvSatLarge docs/*.svg packages
+          git add -- Polsq PolsqLarge docs/*.svg packages
           git add -f -- docs/*.png
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "Build tested TvSat packages and previews [skip ci]"
+          git commit -m "Build tested Polsq packages and previews [skip ci]"
           git push origin HEAD:main

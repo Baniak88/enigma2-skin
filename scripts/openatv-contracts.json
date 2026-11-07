@@ -1929,8 +1929,8 @@
         "widgets": {},
         "required": []
       },
-      "TvSatSettings": {
-        "class": "TvSatSettings (bundled plugin)",
+      "PolsqSettings": {
+        "class": "PolsqSettings (bundled plugin)",
         "widgets": {
           "Title": "StaticText",
           "config": "ConfigList",
@@ -3918,8 +3918,8 @@
         "widgets": {},
         "required": []
       },
-      "TvSatSettings": {
-        "class": "TvSatSettings (bundled plugin)",
+      "PolsqSettings": {
+        "class": "PolsqSettings (bundled plugin)",
         "widgets": {
           "Title": "StaticText",
           "config": "ConfigList",
@@ -5692,8 +5692,8 @@
         "widgets": {},
         "required": []
       },
-      "TvSatSettings": {
-        "class": "TvSatSettings (bundled plugin)",
+      "PolsqSettings": {
+        "class": "PolsqSettings (bundled plugin)",
         "widgets": {
           "Title": "StaticText",
           "config": "ConfigList",

@@ -43,7 +43,7 @@ class Window:
     def csize(self): return self.dim
     def resize(self,dim): self.dim=dim
     def move(self,pos): self.pos=pos
-    def getFont(self): return ('TvSatText',28)
+    def getFont(self): return ('PolsqText',28)
     def setText(self,text): self.text=text
 
 
@@ -53,15 +53,15 @@ def check_selection(source,skin):
     parameters={n.get('name'):tuple(map(int,n.get('value').split(','))) for n in skin.findall('parameters/parameter')}
     ns=dict(MenuList=MenuList,eListboxPythonMultiContent=Content,fonts=fonts,parameters=parameters,
         gFont=lambda *a:a,RT_HALIGN_LEFT=1,RT_VALIGN_CENTER=2,BT_SCALE=4,BT_KEEP_ASPECT_RATIO=8,
-        SCOPE_GUISKIN=0,resolveFilename=lambda scope,path:str(ROOT/'TvSat'/path),LoadPixmap=lambda **kw:kw['path'],icons=None)
+        SCOPE_GUISKIN=0,resolveFilename=lambda scope,path:str(ROOT/'Polsq'/path),LoadPixmap=lambda **kw:kw['path'],icons=None)
     exec(compile(definitions(source),'upstream-SelectionList.py','exec'),ns)
     listing=ns['SelectionList']()
-    listing.addSelection('TvSat.ipk','/tmp/TvSat.ipk',0,False)
+    listing.addSelection('Polsq.ipk','/tmp/Polsq.ipk',0,False)
     listing.addSelection('Other.ipk','/tmp/Other.ipk',1,False)
-    assert listing.l.font==('TvSatText',30) and listing.l.height==72
+    assert listing.l.font==('PolsqText',30) and listing.l.height==72
     assert listing.getSelectionsList()==[]
     listing.toggleSelection()
-    assert listing.getSelectionsList()==[('TvSat.ipk','/tmp/TvSat.ipk',0)]
+    assert listing.getSelectionsList()==[('Polsq.ipk','/tmp/Polsq.ipk',0)]
     listing.toggleAllSelection()
     assert listing.getSelectionsList()==[('Other.ipk','/tmp/Other.ipk',1)]
     area=skin.find("screen[@name='IpkgInstaller']/widget[@name='list']")
@@ -128,7 +128,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('sources',nargs='?',type=Path);parser.add_argument('--download',action='store_true')
     args=parser.parse_args()
     if args.sources is None and not args.download: parser.error('provide snapshots or --download')
-    skin=E.parse(ROOT/'TvSat/skin.xml').getroot()
+    skin=E.parse(ROOT/'Polsq/skin.xml').getroot()
     for version,pin in PINS.items():
         def read(path):
             if args.sources is not None: return (args.sources/version/path).read_text()

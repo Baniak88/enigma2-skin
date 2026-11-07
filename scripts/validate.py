@@ -68,7 +68,7 @@ def check_picon_layers(screen):
             assert not covers or int(decoration.get('zPosition','0'))<pz,(screen.get('name'),'decoration covers picon',decoration.attrib)
 
 
-def validate(directory='TvSat'):
+def validate(directory='Polsq'):
     skin=E.parse(ROOT/directory/'skin.xml').getroot()
     colors={x.get('name') for x in skin.findall('colors/color')}
     contracts=json.loads((ROOT/'scripts/openatv-contracts.json').read_text())
@@ -117,7 +117,7 @@ def validate(directory='TvSat'):
     graph=skin.find("screen[@name='GraphicalEPG']")
     assert all(graph.find(f"widget[@name='timeline{i}']") is not None for i in range(6))
     assert graph.find("widget[@name='bouquetlist']") is not None
-    assert (ROOT/'TvSat/picon_default.png').is_file()
+    assert (ROOT/'Polsq/picon_default.png').is_file()
     # SkinSelection wyszukuje prev.png w katalogu skórki (bez wpisu w XML).
     thumbnail=(ROOT/directory/'prev.png').read_bytes()
     assert struct.unpack('>II',thumbnail[16:24])==(640,360)
@@ -126,4 +126,4 @@ def validate(directory='TvSat'):
 
 if __name__=='__main__':
     validate()
-    validate('TvSatLarge')
+    validate('PolsqLarge')

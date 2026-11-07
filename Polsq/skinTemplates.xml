@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates>
-  <template name="TvSat" component="serviceList" fonts="TvSatStrong;28,TvSatText;23,TvSatText;24">
+  <template name="Polsq" component="serviceList" fonts="PolsqStrong;28,PolsqText;23,PolsqText;24">
     <mode name="services" itemHeight="76" itemWidth="1136" foregroundColor="white" foregroundColorSelected="white" backgroundColor="bg" backgroundColorSelected="selected">
       <rectangle position="0,0" size="4,76" foregroundColor="bg" foregroundColorSelected="green" />
       <rectangle position="8,75" size="1128,1" foregroundColor="line" foregroundColorSelected="selected" />

@@ -1,4 +1,4 @@
-"""Build complete Standard/Large skins, sharing graphics through TvSat paths."""
+"""Build complete Standard/Large skins, sharing graphics through Polsq paths."""
 import ast
 from copy import deepcopy
 import xml.etree.ElementTree as E
@@ -12,9 +12,9 @@ def write_xml(path,root):
 
 def service_templates(large=False):
     root=E.Element('templates')
-    name='TvSatLarge' if large else 'TvSat'
+    name='PolsqLarge' if large else 'Polsq'
     height=76
-    template=E.SubElement(root,'template',name=name,component='serviceList',fonts='TvSatStrong;30,TvSatText;25,TvSatText;26' if large else 'TvSatStrong;28,TvSatText;23,TvSatText;24')
+    template=E.SubElement(root,'template',name=name,component='serviceList',fonts='PolsqStrong;30,PolsqText;25,PolsqText;26' if large else 'PolsqStrong;28,PolsqText;23,PolsqText;24')
     def item(mode,tag,**attrs):
         return E.SubElement(mode,tag,{k:str(v) for k,v in attrs.items()})
     for kind in ('services','bouquets','other'):
@@ -37,7 +37,7 @@ def service_templates(large=False):
 
 
 def history_template(large=False):
-    return ('{"fonts":[gFont("TvSatStrong",%d),gFont("TvSatText",%d),gFont("TvSatText",%d)],"itemHeight":112,"itemWidth":664,"template":[' % ((32,25,22) if large else (30,24,21))+
+    return ('{"fonts":[gFont("PolsqStrong",%d),gFont("PolsqText",%d),gFont("PolsqText",%d)],"itemHeight":112,"itemWidth":664,"template":[' % ((32,25,22) if large else (30,24,21))+
         'MultiContentEntryRectangle(pos=(0,0),size=(3,112),backgroundColor=0x000c0e10,backgroundColorSelected=0x0000e676),'
         'MultiContentEntryRectangle(pos=(8,111),size=(648,1),backgroundColor=0x00303438,backgroundColorSelected=0x0025473a),'
         'MultiContentEntryText(pos=(4,0),size=(16,112),font=2,flags=RT_HALIGN_CENTER|RT_VALIGN_CENTER,text=1,color=0x0000e676,color_sel=0x0000e676),'
@@ -101,14 +101,14 @@ def large_skin(skin):
                 if height>=row:node.set('size',f'{width},{height//row*row}')
     for name in ('ChannelSelection','ChannelSelection_PIG','ChannelSelection_NoPIG','ChannelSelectionRadio'):
         screen=large.find(f"screen[@name='{name}']")
-        if screen.get('label'):screen.set('label',screen.get('label').replace('TvSat','TvSat Large'))
+        if screen.get('label'):screen.set('label',screen.get('label').replace('Polsq','Polsq Large'))
         widget=screen.find("widget[@name='list']")
         widget.set('size','1136,760');widget.set('serviceItemHeight','76')
-        widget.set('serviceNameFont','TvSatText;30');widget.set('serviceInfoFont','TvSatText;25')
+        widget.set('serviceNameFont','PolsqText;30');widget.set('serviceInfoFont','PolsqText;25')
     for name in ('SimpleChannelSelection','SlimChannelSelection'):
         widget=large.find(f"screen[@name='{name}']/widget[@name='list']")
         widget.set('size','1840,760');widget.set('serviceItemHeight','76')
-        widget.set('serviceNameFont','TvSatText;30');widget.set('serviceInfoFont','TvSatText;25')
+        widget.set('serviceNameFont','PolsqText;30');widget.set('serviceInfoFont','PolsqText;25')
     for name in ('BouquetSelector','EPGBouquetSelector'):
         widget=large.find(f"screen[@name='{name}']/widget[@name='menu']")
         widget.set('itemHeight','76');widget.set('size','1136,760')
@@ -142,6 +142,6 @@ def large_skin(skin):
 
 
 def write_variants(root,skin):
-    write_xml(root/'TvSat/skinTemplates.xml',service_templates())
-    write_xml(root/'TvSatLarge/skin.xml',large_skin(skin))
-    write_xml(root/'TvSatLarge/skinTemplates.xml',service_templates(True))
+    write_xml(root/'Polsq/skinTemplates.xml',service_templates())
+    write_xml(root/'PolsqLarge/skin.xml',large_skin(skin))
+    write_xml(root/'PolsqLarge/skinTemplates.xml',service_templates(True))
